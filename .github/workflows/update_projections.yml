@@ -1,38 +1,23 @@
 name: Update Projections
 
 on:
-  # Runs at 6am CDT (11:00 UTC) during daylight saving time (Mar–Nov)
-  # Runs at 6am CST (12:00 UTC) during standard time (Nov–Mar)
-  # Both cron entries are active year-round but only one matches at a time
   schedule:
-    - cron: '0 11 * * *'   # 6am CDT (Mar–Nov)
-    - cron: '0 12 * * *'   # 6am CST (Nov–Mar)
-
-  # Also allows manual trigger from the GitHub Actions tab
-  # This is what powers the "Refresh" button on the dashboard
+    - cron: '0 11 * * *'
+    - cron: '0 12 * * *'
   workflow_dispatch:
 
 jobs:
   project:
     runs-on: ubuntu-latest
-
-    # Give the workflow permission to write back to the repo
     permissions:
       contents: write
-
     steps:
-
-      # 1. Check out the repo
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      # 2. Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      # 3. Cache pip dependencies so installs are fast after the first run
       - name: Cache pip
         uses: actions/cache@v4
         with:
@@ -40,24 +25,25 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-
-      # 4. Install dependencies
       - name: Install dependencies
         run: |
           pip install -r backend/requirements.txt
-
-      # 5. Run the projection script
+      - name: Verify structure
+        run: |
+          echo "=== backend/ ==="
+          ls -la backend/
+          echo "=== docs/ ==="
+          ls -la docs/
+          echo "=== roster.json ==="
+          cat roster.json
       - name: Run projections
         run: |
           cd backend
-          python projections.py
-
-      # 6. Commit and push the updated data.json back to the repo
-      #    GitHub Pages will automatically serve the new file
+          python -u projections.py
       - name: Commit updated projections
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data.json
+          git add docs/data.json docs/projections_log.json
           git diff --staged --quiet || git commit -m "chore: update projections $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
