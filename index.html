@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bergwicz Deli Projections</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --green:     #3B6D11;
+    --green-mid: #639922;
+    --amber:     #BA7517;
+    --amber-mid: #EF9F27;
+    --red:       #A32D2D;
+    --red-mid:   #E24B4A;
+    --blue:      #378ADD;
+    --text-1:    #1a1a1a;
+    --text-2:    #555;
+    --text-3:    #999;
+    --border:    rgba(0,0,0,0.10);
+    --border-s:  rgba(0,0,0,0.18);
+    --bg:        #f4f3ef;
+    --card:      #ffffff;
+    --surface:   #f0efe9;
+    --radius:    12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-1); min-height: 100vh; padding: 16px; }
+  .shell { max-width: 420px; margin: 0 auto; }
+
+  /* TOP BAR */
+  .topbar { background: var(--card); border: 0.5px solid var(--border-s); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 10px; }
+  .topbar-row { display: flex; justify-content: space-between; align-items: center; }
+  .app-title { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+  .app-date { font-size: 12px; color: var(--text-2); font-family: 'DM Mono', monospace; }
+  .app-sub { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+  .app-updated { font-size: 11px; color: var(--text-3); text-align: right; white-space: nowrap; }
+  .topbar-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 3px; }
+
+
+  /* TABS */
+  .tabs { display: flex; background: var(--surface); border-radius: var(--radius-sm); padding: 3px; margin-bottom: 10px; gap: 3px; }
+  .tab { flex: 1; text-align: center; font-size: 12px; font-weight: 500; padding: 7px; border-radius: 6px; cursor: pointer; color: var(--text-2); transition: all 0.15s; }
+  .tab.active { background: var(--card); color: var(--text-1); border: 0.5px solid var(--border); }
+  .tab-section { display: none; }
+  .tab-section.show { display: block; }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 14px; margin-bottom: 8px; padding: 0 2px; }
+  .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-2); }
+  .leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  /* STATE MESSAGES */
+  .state-msg { background: var(--card); border: 0.5px solid var(--border-s); border-radius: var(--radius); padding: 32px 20px; text-align: center; color: var(--text-3); font-size: 13px; }
+  .state-msg b { color: var(--text-2); display: block; margin-bottom: 6px; font-size: 14px; }
+
+  /* PLAYER CARDS */
+  .card { background: var(--card); border: 0.5px solid var(--border-s); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.15s; }
+  .card:hover { border-color: rgba(0,0,0,0.28); }
+  .card.dimmed { opacity: 0.45; cursor: default; }
+  .card.dimmed:hover { border-color: var(--border-s); }
+  .card.no-expand { cursor: default; }
+  .card-main { display: flex; align-items: center; gap: 10px; padding: 11px 12px; }
+  .conf-bar { width: 3px; border-radius: 2px; align-self: stretch; min-height: 38px; flex-shrink: 0; }
+  .rank { font-size: 12px; font-weight: 500; color: var(--text-3); min-width: 20px; text-align: center; font-family: 'DM Mono', monospace; }
+  .pinfo { flex: 1; min-width: 0; }
+  .pname { font-size: 14px; font-weight: 600; letter-spacing: -0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ppos { font-size: 10px; color: var(--text-3); font-weight: 400; margin-left: 4px; }
+  .pmeta { font-size: 11px; color: var(--text-2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pstat { font-size: 10px; color: var(--text-3); margin-top: 3px; font-family: 'DM Mono', monospace; }
+  .pright { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
+  .pts { font-size: 19px; font-weight: 600; line-height: 1; font-family: 'DM Mono', monospace; letter-spacing: -0.5px; }
+  .pts-lbl { font-size: 9px; color: var(--text-3); text-align: right; }
+  .chevron { margin-top: 3px; color: var(--text-3); transition: transform 0.2s; }
+  .chevron.open { transform: rotate(180deg); }
+  .chevron svg { width: 14px; height: 14px; }
+
+  /* EXPANDED PANEL */
+  .expanded { border-top: 0.5px solid var(--border); background: var(--surface); padding: 12px; display: none; }
+  .expanded.show { display: block; }
+  .breakdown-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px; margin-bottom: 10px; }
+  .bitem { background: var(--card); border: 0.5px solid var(--border-s); border-radius: var(--radius-sm); padding: 7px 9px; }
+  .blbl { font-size: 10px; color: var(--text-3); margin-bottom: 2px; }
+  .bval { font-size: 14px; font-weight: 600; font-family: 'DM Mono', monospace; }
+  .bsub { font-size: 10px; color: var(--text-2); margin-top: 1px; }
+  .section-divider { font-size: 10px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 0 2px; border-top: 0.5px solid var(--border); margin-top: 4px; }
+  .factor-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-top: 0.5px solid var(--border); font-size: 11px; }
+  .flbl { color: var(--text-2); flex: 1; padding-right: 8px; }
+  .fpos { font-weight: 600; color: var(--green); font-family: 'DM Mono', monospace; }
+  .fneg { font-weight: 600; color: var(--red); font-family: 'DM Mono', monospace; }
+  .fneu { font-weight: 500; color: var(--text-2); font-family: 'DM Mono', monospace; }
+
+  /* PITCH TYPE ROWS */
+  .pitch-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-top: 0.5px solid var(--border); gap: 8px; }
+  .pitch-left { display: flex; align-items: flex-start; gap: 7px; flex: 1; min-width: 0; }
+  .pitch-badge { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
+  .pb-break { background: #EEEDFE; color: #3C3489; }
+  .pb-fast  { background: #E6F1FB; color: #0C447C; }
+  .pb-off   { background: #FAEEDA; color: #633806; }
+  .pitch-meta { font-size: 11px; color: var(--text-2); }
+  .pitch-detail { font-size: 10px; color: var(--text-3); margin-top: 1px; }
+
+  /* BADGES */
+  .badge { font-size: 9px; padding: 1px 5px; border-radius: 3px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
+  .bdtd { background: #FAEEDA; color: var(--amber); }
+  .bil { background: #FCEBEB; color: var(--red); }
+  .bno-game { background: #eee; color: #888; }
+
+  /* ACCURACY TAB */
+  .acc-card { background: var(--card); border: 0.5px solid var(--border-s); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; }
+  .acc-card-title { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .filter-row { display: flex; gap: 6px; margin-bottom: 10px; }
+  .filter-btn { font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 20px; cursor: pointer; border: 0.5px solid var(--border-s); background: var(--surface); color: var(--text-2); transition: all 0.15s; }
+  .filter-btn.active { background: var(--card); border-color: var(--border-s); color: var(--text-1); font-weight: 600; }
+  .metric-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-bottom: 10px; }
+  .metric { background: var(--surface); border-radius: var(--radius-sm); padding: 9px 11px; }
+  .metric-label { font-size: 10px; color: var(--text-3); margin-bottom: 3px; }
+  .metric-val { font-size: 20px; font-weight: 500; font-family: 'DM Mono', monospace; color: var(--text-1); }
+  .metric-sub { font-size: 10px; color: var(--text-2); margin-top: 2px; }
+  .section-label { font-size: 11px; color: var(--text-3); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin: 14px 0 6px 2px; }
+  .player-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-top: 0.5px solid var(--border); font-size: 12px; }
+  .player-row:first-child { border-top: none; }
+  .pname-sm { flex: 1; color: var(--text-1); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mono-sm { font-family: 'DM Mono', monospace; font-size: 11px; min-width: 38px; text-align: right; color: var(--text-2); }
+  .mono-sm.actual { font-weight: 500; color: var(--text-1); }
+  .diff-sm { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; min-width: 44px; text-align: right; }
+  .col-hdr { font-size: 10px; color: var(--text-3); font-weight: 500; }
+  .pos { color: var(--green); }
+  .neg { color: var(--red); }
+  .neu { color: var(--text-3); }
+  .chart-legend { display: flex; gap: 14px; margin-top: 10px; }
+  .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-2); }
+  .leg-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .no-data-msg { text-align: center; color: var(--text-3); font-size: 12px; padding: 24px 0; }
+
+  /* EXPANDED CARD — SCORED STAT LINE */
+  .stat-tbl { width:100%; border-collapse:collapse; font-size:11px; table-layout:fixed; }
+  .stat-tbl td { padding:4px 0; border-top:0.5px solid var(--border); }
+  .stat-tbl tr:first-child td { border-top:none; }
+  .sc  { color:var(--text-2); width:28px; font-weight:500; }
+  .sv  { font-family:'DM Mono',monospace; font-size:11px; color:var(--text-1); width:36px; }
+  .sm  { color:var(--text-3); font-family:'DM Mono',monospace; font-size:10px; text-align:center; width:48px; }
+  .spts{ font-family:'DM Mono',monospace; font-size:11px; text-align:right; }
+  .total-row { display:flex; justify-content:space-between; align-items:center; padding:7px 0 0; margin-top:4px; border-top:1px solid var(--border-s); }
+  .total-lbl { font-size:12px; font-weight:600; color:var(--text-1); }
+  .total-pts { font-size:17px; font-weight:600; font-family:'DM Mono',monospace; color:var(--text-1); }
+  .conf-pill  { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:500; background:#EAF3DE; color:#3B6D11; border-radius:20px; padding:2px 8px; margin-top:8px; }
+
+  /* EXPANDED CARD — FACTOR BARS */
+  .context-block { padding:12px; border-top:2px solid var(--border-s); }
+  .context-note  { font-size:10px; color:var(--text-3); margin-bottom:10px; font-style:italic; }
+  .fbar-row { padding:7px 0; border-top:0.5px solid var(--border); }
+  .fbar-row:first-child { border-top:none; }
+  .fbar-top  { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; gap:6px; }
+  .fbar-label{ font-size:11px; color:var(--text-2); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .fbar-right{ display:flex; align-items:center; gap:5px; flex-shrink:0; }
+  .fbar-mult { font-size:10px; font-family:'DM Mono',monospace; color:var(--text-3); }
+  .flabel-pill{ font-size:9px; font-weight:500; padding:2px 6px; border-radius:10px; white-space:nowrap; }
+  .pill-pos  { background:#EAF3DE; color:#3B6D11; }
+  .pill-neg  { background:#FCEBEB; color:#A32D2D; }
+  .pill-neu  { background:#FAEEDA; color:#BA7517; }
+  .bar-track { position:relative; height:6px; background:var(--card); border-radius:3px; border:0.5px solid var(--border-s); }
+  .bar-center{ position:absolute; left:50%; top:0; width:0.5px; height:100%; background:var(--border-s); }
+  .bar-fill  { position:absolute; top:0; height:100%; border-radius:3px; }
+  .bar-pos   { background:#639922; }
+  .bar-neg   { background:#E24B4A; }
+  .bar-neu   { background:#EF9F27; }
+  .export-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 500;
+    color: var(--text-2); background: var(--surface);
+    border: 0.5px solid var(--border-s); border-radius: var(--radius-sm);
+    padding: 7px 12px; cursor: pointer; width: 100%; margin-bottom: 10px;
+    transition: background 0.15s;
+  }
+  .export-btn:hover { background: #e8e7e1; }
+  .export-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-row">
+      <span class="app-title">⚾ Bergwicz Deli Projections</span>
+      <span class="app-date" id="todayDate"></span>
+    </div>
+    <div class="topbar-bottom">
+      <span class="app-sub" id="appSub">Loading...</span>
+      <span class="app-updated" id="appUpdated"></span>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('today', this)">Today</div>
+    <div class="tab" onclick="switchTab('accuracy', this)">Accuracy tracker</div>
+  </div>
+
+  <!-- TAB: TODAY -->
+  <div class="tab-section show" id="tab-today">
+    <div class="legend">
+      <span class="leg"><span class="leg-dot" style="background:var(--green-mid)"></span>High confidence</span>
+      <span class="leg"><span class="leg-dot" style="background:var(--amber-mid)"></span>Medium</span>
+      <span class="leg"><span class="leg-dot" style="background:var(--red-mid)"></span>Low</span>
+    </div>
+    <div id="playerList">
+      <div class="state-msg"><b>Loading projections…</b>Fetching today's data</div>
+    </div>
+  </div>
+
+  <!-- TAB: ACCURACY -->
+  <div class="tab-section" id="tab-accuracy">
+    <div class="filter-row">
+      <div class="filter-btn active" onclick="setFilter(this,'7')">7 days</div>
+      <div class="filter-btn" onclick="setFilter(this,'14')">14 days</div>
+      <div class="filter-btn" onclick="setFilter(this,'30')">30 days</div>
+      <div class="filter-btn" onclick="setFilter(this,'0')">All</div>
+    </div>
+    <button class="export-btn" onclick="exportCSV()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <span id="exportLabel">Export CSV</span>
+    </button>
+    <div class="metric-grid" id="accMetrics">
+      <div class="metric"><div class="metric-label">Avg error</div><div class="metric-val" id="mAvgErr">—</div><div class="metric-sub">pts off per player</div></div>
+      <div class="metric"><div class="metric-label">Within 5 pts</div><div class="metric-val" id="mWithin5">—</div><div class="metric-sub">of projections</div></div>
+      <div class="metric"><div class="metric-label">Bias</div><div class="metric-val" id="mBias">—</div><div class="metric-sub" id="mBiasSub">—</div></div>
+      <div class="metric"><div class="metric-label">Best call</div><div class="metric-val" id="mBest" style="font-size:14px">—</div><div class="metric-sub" id="mBestSub">—</div></div>
+    </div>
+
+    <div class="acc-card">
+      <div class="acc-card-title">Proj vs actual — team avg</div>
+      <div style="position:relative;width:100%;height:160px">
+        <canvas id="trendChart" role="img" aria-label="Line chart comparing daily average projected and actual fantasy points">No data yet.</canvas>
+      </div>
+      <div class="chart-legend">
+        <span class="leg-item"><span class="leg-sq" style="background:var(--green-mid)"></span>Projected</span>
+        <span class="leg-item"><span class="leg-sq" style="background:var(--blue);border:1px dashed var(--blue)"></span>Actual</span>
+      </div>
+    </div>
+
+    <div class="section-label">By player — avg error</div>
+    <div class="acc-card" id="playerErrTable">
+      <div class="no-data-msg">No accuracy data yet.<br>Check back after the first game day.</div>
+    </div>
+
+    <div class="section-label" id="yesterdayLabel">Yesterday</div>
+    <div class="acc-card" id="yesterdayTable">
+      <div class="no-data-msg">No data for yesterday yet.</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ─────────────────────────────────────────────
+// CONFIG — replace with your GitHub username
+// ─────────────────────────────────────────────
+const GITHUB_OWNER = 'YOUR_GITHUB_USERNAME';
+const GITHUB_REPO  = 'fantasy-baseball-projections';
+const DATA_URL     = 'data.json';
+const LOG_URL      = 'projections_log.json';
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+let currentFilter = '7';
+let logData       = [];
+let trendChart    = null;
+
+// ─────────────────────────────────────────────
+// DATE
+// ─────────────────────────────────────────────
+document.getElementById('todayDate').textContent =
+  new Date().toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+
+// ─────────────────────────────────────────────
+// TABS
+// ─────────────────────────────────────────────
+function switchTab(id, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('show'));
+  el.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('show');
+}
+
+// ─────────────────────────────────────────────
+// FILTER
+// ─────────────────────────────────────────────
+function setFilter(el, days) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  currentFilter = days;
+  renderAccuracy();
+}
+
+function filterLog(days) {
+  if (!days || days === '0') return logData;
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - parseInt(days));
+  return logData.filter(r => new Date(r.date) >= cutoff);
+}
+
+// ─────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function confColor(label) {
+  if (label === 'high')   return 'var(--green-mid)';
+  if (label === 'medium') return 'var(--amber-mid)';
+  return 'var(--red-mid)';
+}
+function confTextColor(score) {
+  if (score >= 60) return 'var(--green)';
+  if (score >= 38) return 'var(--amber)';
+  return 'var(--red)';
+}
+function fmtDiff(val) {
+  const n = parseFloat(val);
+  if (isNaN(n)) return {str:'—', cls:'neu'};
+  const str = (n >= 0 ? '+' : '−') + Math.abs(n).toFixed(1);
+  const cls = Math.abs(n) < 0.5 ? 'neu' : n > 0 ? 'pos' : 'neg';
+  return {str, cls};
+}
+
+// ─────────────────────────────────────────────
+// RENDER HELPERS — TODAY TAB
+// ─────────────────────────────────────────────
+function renderStatLine(sl) {
+  if (!sl) return '';
+  return `${esc(sl.h_ab)} · ${sl.hr}HR · ${sl.r}R · ${sl.rbi}RBI · ${sl.bb}BB`;
+}
+function renderMeta(p) {
+  const hand = p.sp_hand ? `${p.sp_hand}HP` : '';
+  const sp   = p.probable_sp && p.probable_sp !== 'TBD' ? `(${hand} ${esc(p.probable_sp)})` : '(SP TBD)';
+  const opp  = p.opponent ? `vs ${esc(p.opponent)} ${sp}` : '— no game today';
+  const venue = p.venue ? ` · ${esc(p.venue)}` : '';
+  return opp + venue;
+}
+function renderFactorRows(factors) {
+  if (!factors || !factors.length) return '';
+  return factors.map(f => `
+    <div class="factor-row">
+      <span class="flbl">${esc(f.label)}</span>
+      <span class="${esc(f.cls)}">${esc(f.adj_str)}</span>
+    </div>`).join('');
+}
+function renderPitchRows(rows) {
+  if (!rows || !rows.length) return '';
+  return rows.map(r => `
+    <div class="pitch-row">
+      <div class="pitch-left">
+        <span class="pitch-badge ${esc(r.badge_class)}">${esc(r.label)}</span>
+        <div>
+          <div class="pitch-meta">${esc(r.meta)}</div>
+          <div class="pitch-detail">${esc(r.detail)}</div>
+        </div>
+      </div>
+      <span class="${esc(r.adj_class)}">${esc(r.adj_str)}</span>
+    </div>`).join('');
+}
+function renderExpanded(p) {
+  const sl = p.stat_line, conf = p.confidence;
+  if (!sl || !conf) return '';
+
+  // ── Scored stat line ──
+  const scoring = p.scoring_rows || [];
+  const statRows = scoring.map(r => {
+    const cls = r.pts > 0 ? 'pos' : r.pts < 0 ? 'neg' : 'neu';
+    const pts  = (r.pts >= 0 ? '+' : '') + parseFloat(r.pts).toFixed(2);
+    return `<tr>
+      <td class="sc">${esc(r.cat)}</td>
+      <td class="sv">${parseFloat(r.proj).toFixed(2)}</td>
+      <td class="sm">${esc(r.mult)}</td>
+      <td class="spts ${cls}">${pts}</td>
+    </tr>`;
+  }).join('');
+
+  const statTable = statRows ? `
+    <table class="stat-tbl">${statRows}</table>
+    <div class="total-row">
+      <span class="total-lbl">Total projected</span>
+      <span class="total-pts">${parseFloat(p.proj_pts).toFixed(1)} pts</span>
+    </div>` : `
+    <div style="font-size:11px;color:var(--text-3);padding:8px 0">
+      ${esc(sl.h_ab)} · ${sl.hr}HR · ${sl.r}R · ${sl.rbi}RBI · ${sl.bb}BB · ${sl.k}K
+    </div>
+    <div class="total-row">
+      <span class="total-lbl">Total projected</span>
+      <span class="total-pts">${parseFloat(p.proj_pts).toFixed(1)} pts</span>
+    </div>`;
+
+  const confLabel = conf.score >= 60 ? 'large sample' : conf.score >= 38 ? 'medium sample' : 'small sample';
+  const confStyle = `color:${confTextColor(conf.score)}`;
+
+  // ── Factor bars ──
+  const factors = p.factors || [];
+  const factorRows = factors.map(f => {
+    const adj   = parseFloat(f.adj || 0);
+    const isPos = adj > 0.05;
+    const isNeg = adj < -0.05;
+    const barPct = Math.min(Math.abs(adj) / 3.5 * 48, 48);
+    const barDir = isPos ? `left:50%;width:${barPct}%` : `right:50%;width:${barPct}%`;
+    const barCls = isPos ? 'bar-pos' : isNeg ? 'bar-neg' : 'bar-neu';
+    const pill   = isPos ? 'pill-pos' : isNeg ? 'pill-neg' : 'pill-neu';
+    const pillTxt= f.pill || (isPos ? 'boosted' : isNeg ? 'suppressed' : 'neutral');
+    const mult   = f.mult ? `<span class="fbar-mult">${esc(f.mult)}</span>` : '';
+    return `
+      <div class="fbar-row">
+        <div class="fbar-top">
+          <span class="fbar-label">${esc(f.label)}</span>
+          <div class="fbar-right">
+            ${mult}
+            <span class="flabel-pill ${pill}">${esc(pillTxt)}</span>
+          </div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-center"></div>
+          <div class="bar-fill ${barCls}" style="${barDir}"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // ── Pitch type rows ──
+  const pitchSection = p.pitch_rows && p.pitch_rows.length
+    ? `<div class="sec-lbl" style="margin-top:12px;font-size:10px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em">Pitch type matchup</div>${renderPitchRows(p.pitch_rows)}`
+    : '';
+
+  return `
+    <div class="sec-block">
+      <div class="sec-lbl" style="font-size:10px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Projected scoring</div>
+      ${statTable}
+      <span class="conf-pill" style="${confStyle.replace('color','background:#EAF3DE;color')}">${conf.score}% confidence · ${confLabel}</span>
+    </div>
+    <div class="context-block">
+      <div class="context-note">These factors shaped the stat line above — they are not additional points</div>
+      <div class="sec-lbl" style="font-size:10px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">How these stats were projected</div>
+      ${factorRows || '<div style="font-size:11px;color:var(--text-3);padding:4px 0">No factor data available</div>'}
+      ${pitchSection}
+    </div>`;
+}
+function renderCard(p) {
+  const status = p.status || 'active';
+  if (status.startsWith('il')) {
+    return `<div class="card dimmed no-expand"><div class="card-main">
+      <div class="conf-bar" style="background:#ccc"></div><div class="rank">IL</div>
+      <div class="pinfo"><div class="pname">${esc(p.name)}<span class="badge bil">${esc(status.toUpperCase())}</span><span class="ppos">${(p.positions||[]).join(', ')}</span></div><div class="pmeta">on injured list</div></div>
+      <div class="pright"><span class="pts" style="color:#bbb">—</span></div>
+    </div></div>`;
+  }
+  if (status === 'dtd') {
+    return `<div class="card dimmed no-expand"><div class="card-main">
+      <div class="conf-bar" style="background:#ccc"></div><div class="rank">—</div>
+      <div class="pinfo"><div class="pname">${esc(p.name)}<span class="badge bdtd">DTD</span><span class="ppos">${(p.positions||[]).join(', ')}</span></div><div class="pmeta">${renderMeta(p)}</div><div class="pstat">status uncertain — no projection</div></div>
+      <div class="pright"><span class="pts" style="color:#bbb">—</span></div>
+    </div></div>`;
+  }
+  if (status === 'no_game' || p.proj_pts === null) {
+    return `<div class="card dimmed no-expand"><div class="card-main">
+      <div class="conf-bar" style="background:#ccc"></div><div class="rank">—</div>
+      <div class="pinfo"><div class="pname">${esc(p.name)}<span class="badge bno-game">OFF</span><span class="ppos">${(p.positions||[]).join(', ')}</span></div><div class="pmeta">no game today</div></div>
+      <div class="pright"><span class="pts" style="color:#bbb">—</span></div>
+    </div></div>`;
+  }
+  const conf      = p.confidence || {};
+  const barColor  = confColor(conf.label || 'low');
+  const expanded  = renderExpanded(p);
+  const hasExpand = expanded.trim().length > 0;
+  const chevron   = hasExpand ? `<span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>` : '';
+  return `
+    <div class="card${hasExpand ? '' : ' no-expand'}" ${hasExpand ? 'onclick="toggle(this)"' : ''}>
+      <div class="card-main">
+        <div class="conf-bar" style="background:${barColor}"></div>
+        <div class="rank">${p.rank || '—'}</div>
+        <div class="pinfo">
+          <div class="pname">${esc(p.name)}<span class="ppos">${(p.positions||[]).join(', ')} · ${esc(p.team||'')}</span></div>
+          <div class="pmeta">${renderMeta(p)}</div>
+          <div class="pstat">${renderStatLine(p.stat_line)}</div>
+        </div>
+        <div class="pright">
+          <span class="pts">${p.proj_pts.toFixed(1)}</span>
+          <span class="pts-lbl">proj pts</span>
+          ${chevron}
+        </div>
+      </div>
+      ${hasExpand ? `<div class="expanded">${expanded}</div>` : ''}
+    </div>`;
+}
+
+// ─────────────────────────────────────────────
+// TOGGLE EXPAND
+// ─────────────────────────────────────────────
+function toggle(card) {
+  const exp  = card.querySelector('.expanded');
+  const chev = card.querySelector('.chevron');
+  if (!exp) return;
+  const isOpen = exp.classList.contains('show');
+  document.querySelectorAll('.expanded.show').forEach(e => {
+    e.classList.remove('show');
+    const c = e.closest('.card').querySelector('.chevron');
+    if (c) c.classList.remove('open');
+  });
+  if (!isOpen) { exp.classList.add('show'); if (chev) chev.classList.add('open'); }
+}
+
+// ─────────────────────────────────────────────
+// RENDER ACCURACY TAB
+// ─────────────────────────────────────────────
+function renderAccuracy() {
+  const rows = filterLog(currentFilter).filter(r => r.actual_pts !== null && r.actual_pts !== undefined);
+
+  // ── Metrics ──
+  if (rows.length === 0) {
+    document.getElementById('mAvgErr').textContent   = '—';
+    document.getElementById('mWithin5').textContent  = '—';
+    document.getElementById('mBias').textContent     = '—';
+    document.getElementById('mBiasSub').textContent  = '—';
+    document.getElementById('mBest').textContent     = '—';
+    document.getElementById('mBestSub').textContent  = '—';
+  } else {
+    const errors  = rows.map(r => Math.abs(r.proj_pts - r.actual_pts));
+    const diffs   = rows.map(r => r.proj_pts - r.actual_pts);
+    const avgErr  = errors.reduce((a,b) => a+b, 0) / errors.length;
+    const within5 = errors.filter(e => e <= 5).length / errors.length * 100;
+    const bias    = diffs.reduce((a,b) => a+b, 0) / diffs.length;
+
+    // Best call — player with lowest avg abs error
+    const byPlayer = {};
+    rows.forEach(r => {
+      if (!byPlayer[r.player]) byPlayer[r.player] = [];
+      byPlayer[r.player].push(Math.abs(r.proj_pts - r.actual_pts));
+    });
+    let bestPlayer = '—', bestErr = Infinity;
+    Object.entries(byPlayer).forEach(([name, errs]) => {
+      const avg = errs.reduce((a,b)=>a+b,0)/errs.length;
+      if (avg < bestErr) { bestErr = avg; bestPlayer = name.split(' ').pop(); }
+    });
+
+    document.getElementById('mAvgErr').textContent  = avgErr.toFixed(1);
+    document.getElementById('mWithin5').textContent = within5.toFixed(0) + '%';
+    document.getElementById('mBias').textContent    = (bias >= 0 ? '+' : '−') + Math.abs(bias).toFixed(1);
+    document.getElementById('mBiasSub').textContent = bias > 0.5 ? 'model runs high' : bias < -0.5 ? 'model runs low' : 'well calibrated';
+    document.getElementById('mBias').style.color    = Math.abs(bias) > 2 ? 'var(--red)' : Math.abs(bias) > 1 ? 'var(--amber)' : 'var(--green)';
+    document.getElementById('mBest').textContent    = bestPlayer;
+    document.getElementById('mBestSub').textContent = 'avg ' + bestErr.toFixed(1) + ' pts off';
+  }
+
+  // ── Trend chart ──
+  const byDate = {};
+  filterLog(currentFilter).filter(r => r.actual_pts !== null).forEach(r => {
+    if (!byDate[r.date]) byDate[r.date] = {proj:[], actual:[]};
+    byDate[r.date].proj.push(r.proj_pts);
+    byDate[r.date].actual.push(r.actual_pts);
+  });
+  const dates      = Object.keys(byDate).sort();
+  const projAvgs   = dates.map(d => parseFloat((byDate[d].proj.reduce((a,b)=>a+b,0)/byDate[d].proj.length).toFixed(1)));
+  const actualAvgs = dates.map(d => parseFloat((byDate[d].actual.reduce((a,b)=>a+b,0)/byDate[d].actual.length).toFixed(1)));
+  const shortDates = dates.map(d => { const dt = new Date(d + 'T00:00:00'); return dt.toLocaleDateString('en-US',{month:'short',day:'numeric'}); });
+
+  if (trendChart) { trendChart.destroy(); trendChart = null; }
+  const ctx = document.getElementById('trendChart').getContext('2d');
+  if (dates.length === 0) {
+    ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+    ctx.fillStyle = 'var(--text-3)';
+    ctx.font = '12px DM Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('No data yet', ctx.canvas.width/2, 80);
+  } else {
+    trendChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: shortDates,
+        datasets: [
+          { label:'Projected', data:projAvgs,   borderColor:'#639922', backgroundColor:'rgba(99,153,34,0.07)', borderWidth:2, pointRadius:3, pointBackgroundColor:'#639922', tension:0.3, fill:false },
+          { label:'Actual',    data:actualAvgs, borderColor:'#378ADD', backgroundColor:'rgba(55,138,221,0.07)', borderWidth:2, borderDash:[4,3], pointRadius:3, pointBackgroundColor:'#378ADD', pointStyle:'rectRot', tension:0.3, fill:false }
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => `${c.dataset.label}: ${c.parsed.y.toFixed(1)} pts` } } },
+        scales:{
+          x:{ ticks:{font:{size:10},color:'#999',maxRotation:0,autoSkip:true,maxTicksLimit:7}, grid:{display:false} },
+          y:{ ticks:{font:{size:10},color:'#999'}, grid:{color:'rgba(0,0,0,0.05)'} }
+        }
+      }
+    });
+  }
+
+  // ── Player error table ──
+  const playerTable = document.getElementById('playerErrTable');
+  if (rows.length === 0) {
+    playerTable.innerHTML = '<div class="no-data-msg">No accuracy data yet.<br>Check back after the first game day.</div>';
+  } else {
+    const byPlayer2 = {};
+    rows.forEach(r => {
+      if (!byPlayer2[r.player]) byPlayer2[r.player] = {proj:[],actual:[]};
+      byPlayer2[r.player].proj.push(r.proj_pts);
+      byPlayer2[r.player].actual.push(r.actual_pts);
+    });
+    const playerRows = Object.entries(byPlayer2).map(([name, d]) => {
+      const avgProj   = d.proj.reduce((a,b)=>a+b,0)/d.proj.length;
+      const avgActual = d.actual.reduce((a,b)=>a+b,0)/d.actual.length;
+      const diff      = avgActual - avgProj;
+      return {name, avgProj, avgActual, diff};
+    }).sort((a,b) => Math.abs(b.diff) - Math.abs(a.diff));
+
+    const header = `<div class="player-row"><span class="pname-sm col-hdr">Player</span><span class="mono-sm col-hdr">Proj</span><span class="mono-sm col-hdr actual">Act</span><span class="diff-sm col-hdr">Diff</span></div>`;
+    const body = playerRows.map(r => {
+      const d = fmtDiff(r.diff);
+      const short = r.name.split(' ').map((w,i) => i===0 ? w[0]+'.' : w).join(' ');
+      return `<div class="player-row">
+        <span class="pname-sm">${esc(short)}</span>
+        <span class="mono-sm">${r.avgProj.toFixed(1)}</span>
+        <span class="mono-sm actual">${r.avgActual.toFixed(1)}</span>
+        <span class="diff-sm ${d.cls}">${d.str}</span>
+      </div>`;
+    }).join('');
+    playerTable.innerHTML = header + body;
+  }
+
+  // ── Yesterday table ──
+  const yesterdayTable = document.getElementById('yesterdayTable');
+  const yesterdayLabel = document.getElementById('yesterdayLabel');
+  const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
+  const yStr = yesterday.toISOString().split('T')[0];
+  yesterdayLabel.textContent = 'Yesterday — ' + yesterday.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+
+  const yRows = logData.filter(r => r.date === yStr);
+  if (yRows.length === 0) {
+    yesterdayTable.innerHTML = '<div class="no-data-msg">No data for yesterday yet.</div>';
+  } else {
+    const sorted = [...yRows].sort((a,b) => (b.proj_pts||0) - (a.proj_pts||0));
+    const hdr = `<div class="player-row"><span class="pname-sm col-hdr">Player</span><span class="mono-sm col-hdr">Proj</span><span class="mono-sm col-hdr actual">Act</span><span class="diff-sm col-hdr">Diff</span></div>`;
+    const body = sorted.map(r => {
+      const hasActual = r.actual_pts !== null && r.actual_pts !== undefined;
+      const diff = hasActual ? fmtDiff(r.actual_pts - r.proj_pts) : {str:'—', cls:'neu'};
+      const short = r.player.split(' ').map((w,i) => i===0 ? w[0]+'.' : w).join(' ');
+      return `<div class="player-row">
+        <span class="pname-sm">${esc(short)} <span style="font-size:10px;color:var(--text-3)">${esc(r.team||'')}</span></span>
+        <span class="mono-sm">${(r.proj_pts||0).toFixed(1)}</span>
+        <span class="mono-sm actual">${hasActual ? r.actual_pts.toFixed(1) : '—'}</span>
+        <span class="diff-sm ${diff.cls}">${diff.str}</span>
+      </div>`;
+    }).join('');
+    yesterdayTable.innerHTML = hdr + body;
+  }
+}
+
+// ─────────────────────────────────────────────
+// LOAD TODAY'S PROJECTIONS
+// ─────────────────────────────────────────────
+async function loadData() {
+  const list = document.getElementById('playerList');
+  const sub  = document.getElementById('appSub');
+  try {
+    const resp = await fetch(`${DATA_URL}?t=${Date.now()}`);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    const genDate = data.generated_at ? new Date(data.generated_at) : null;
+    const genTime = genDate
+      ? genDate.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase()
+      : '—';
+    const genDay = genDate
+      ? genDate.toLocaleDateString('en-US',{month:'short',day:'numeric'})
+      : '—';
+    sub.textContent = `${data.player_count||0} players`;
+    const updEl = document.getElementById('appUpdated');
+    if (updEl) updEl.textContent = `last run ${genTime} · ${genDay}`;
+    const html = (data.projections||[]).map(renderCard).join('');
+    list.innerHTML = html || '<div class="state-msg"><b>No projections yet</b>Run the script to generate today\'s data</div>';
+  } catch(err) {
+    console.error('Failed to load data.json:', err);
+    sub.textContent = 'failed to load';
+    list.innerHTML = `<div class="state-msg"><b>Could not load projections</b>Make sure data.json exists in the docs/ folder.<br><br>Run <code>python backend/projections.py</code> locally or trigger a manual refresh from GitHub Actions.</div>`;
+  }
+}
+
+// ─────────────────────────────────────────────
+// LOAD ACCURACY LOG
+// ─────────────────────────────────────────────
+async function loadLog() {
+  try {
+    const resp = await fetch(`${LOG_URL}?t=${Date.now()}`);
+    if (!resp.ok) return;
+    logData = await resp.json();
+    renderAccuracy();
+  } catch(_) {
+    // Log doesn't exist yet — that's fine, accuracy tab shows empty state
+  }
+}
+
+
+
+// ─────────────────────────────────────────────
+// EXPORT CSV
+// ─────────────────────────────────────────────
+function exportCSV() {
+  const btn   = document.querySelector('.export-btn');
+  const label = document.getElementById('exportLabel');
+  const rows  = filterLog(currentFilter);
+
+  if (!rows || rows.length === 0) {
+    label.textContent = 'No data to export';
+    setTimeout(() => { label.textContent = 'Export CSV'; }, 2000);
+    return;
+  }
+
+  const FIELDS = [
+    'date','player','team','position','opponent','venue',
+    'probable_sp','sp_hand','proj_pts','actual_pts','diff',
+    'confidence','confidence_label','did_not_play','factor','adjustment'
+  ];
+
+  const csvRows = [FIELDS.join(',')];
+
+  rows.forEach(r => {
+    const factors = r.factors || [];
+    // Always include at least a base_rate row even if factors array is empty
+    const factorList = factors.length > 0 ? factors : [{factor:'base_rate', adjustment: r.proj_pts}];
+
+    factorList.forEach(f => {
+      const actualPts = (r.actual_pts !== null && r.actual_pts !== undefined) ? r.actual_pts : '';
+      const diff      = (r.actual_pts !== null && r.actual_pts !== undefined && r.proj_pts !== null)
+        ? (r.actual_pts - r.proj_pts).toFixed(1) : '';
+
+      const row = [
+        r.date                  || '',
+        `"${(r.player||'').replace(/"/g,'""')}"`,
+        r.team                  || '',
+        r.position              || '',
+        r.opponent              || '',
+        `"${(r.venue||'').replace(/"/g,'""')}"`,
+        `"${(r.probable_sp||'').replace(/"/g,'""')}"`,
+        r.sp_hand               || '',
+        r.proj_pts !== null && r.proj_pts !== undefined ? r.proj_pts.toFixed(1) : '',
+        actualPts !== ''        ? parseFloat(actualPts).toFixed(1) : '',
+        diff,
+        r.confidence            || '',
+        r.confidence_label      || '',
+        r.did_not_play ? 'true' : 'false',
+        f.factor                || '',
+        f.adjustment !== null && f.adjustment !== undefined ? parseFloat(f.adjustment).toFixed(2) : '',
+      ];
+      csvRows.push(row.join(','));
+    });
+  });
+
+  const csvString = csvRows.join('\n');
+  const blob      = new Blob([csvString], {type: 'text/csv;charset=utf-8;'});
+  const url       = URL.createObjectURL(blob);
+  const link      = document.createElement('a');
+  const days      = currentFilter === '0' ? 'all' : `${currentFilter}d`;
+  const dateStr   = new Date().toISOString().split('T')[0];
+
+  link.href     = url;
+  link.download = `bergwicz_deli_projections_${days}_${dateStr}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+
+  label.textContent = 'Exported!';
+  setTimeout(() => { label.textContent = 'Export CSV'; }, 2000);
+}
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+loadData();
+loadLog();
+</script>
+</body>
+</html>

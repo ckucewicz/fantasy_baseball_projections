@@ -1,0 +1,117 @@
+{
+  "team_name": "Your Team",
+  "players": [
+    {
+      "name": "Cal Raleigh",
+      "mlb_id": 663728,
+      "team": "SEA",
+      "bats": "L",
+      "positions": ["C", "DH"],
+      "status": "active"
+    },
+    {
+      "name": "Sal Stewart",
+      "mlb_id": 694973,
+      "team": "CIN",
+      "bats": "R",
+      "positions": ["1B", "3B"],
+      "status": "active"
+    },
+    {
+      "name": "Ketel Marte",
+      "mlb_id": 606466,
+      "team": "ARI",
+      "bats": "S",
+      "positions": ["2B", "DH"],
+      "status": "active"
+    },
+    {
+      "name": "Josh Jung",
+      "mlb_id": 672939,
+      "team": "TEX",
+      "bats": "R",
+      "positions": ["3B"],
+      "status": "active"
+    },
+    {
+      "name": "Geraldo Perdomo",
+      "mlb_id": 661388,
+      "team": "ARI",
+      "bats": "S",
+      "positions": ["SS"],
+      "status": "active"
+    },
+    {
+      "name": "Mickey Moniak",
+      "mlb_id": 666160,
+      "team": "COL",
+      "bats": "L",
+      "positions": ["CF", "LF", "RF"],
+      "status": "active"
+    },
+    {
+      "name": "Aaron Judge",
+      "mlb_id": 592450,
+      "team": "NYY",
+      "bats": "R",
+      "positions": ["RF", "DH"],
+      "status": "active"
+    },
+    {
+      "name": "Jorge Soler",
+      "mlb_id": 624585,
+      "team": "LAA",
+      "bats": "R",
+      "positions": ["RF", "DH"],
+      "status": "active"
+    },
+    {
+      "name": "Michael Busch",
+      "mlb_id": 683737,
+      "team": "CHC",
+      "bats": "L",
+      "positions": ["1B"],
+      "status": "active"
+    },
+    {
+      "name": "Manny Machado",
+      "mlb_id": 592518,
+      "team": "SD",
+      "bats": "R",
+      "positions": ["3B"],
+      "status": "active"
+    },
+    {
+      "name": "Brooks Lee",
+      "mlb_id": 694102,
+      "team": "MIN",
+      "bats": "S",
+      "positions": ["SS", "2B", "3B"],
+      "status": "active"
+    },
+    {
+      "name": "Cole Young",
+      "mlb_id": 726309,
+      "team": "SEA",
+      "bats": "L",
+      "positions": ["2B"],
+      "status": "active"
+    },
+    {
+      "name": "Sean Murphy",
+      "mlb_id": 669004,
+      "team": "ATL",
+      "bats": "R",
+      "positions": ["C"],
+      "status": "dtd"
+    },
+    {
+      "name": "Addison Barger",
+      "mlb_id": 681777,
+      "team": "TOR",
+      "bats": "L",
+      "positions": ["3B", "RF"],
+      "status": "il10"
+    }
+  ]
+}
