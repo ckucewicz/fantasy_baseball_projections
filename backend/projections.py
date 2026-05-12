@@ -15,6 +15,9 @@ import math
 import datetime
 import requests
 from pybaseball import playerid_lookup, statcast_batter, batting_stats, pitching_stats
+
+# Patch pybaseball session to avoid FanGraphs 403
+
 import pandas as pd
 import numpy as np
 import warnings
@@ -2607,3 +2610,6 @@ def append_actuals(projections):
 
 
 
+
+if __name__ == "__main__":
+    main()
