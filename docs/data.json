@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-12T18:09:37",
+  "generated_at": "2026-05-12T18:20:41",
   "season": 2026,
   "player_count": 12,
   "projections": [
@@ -149,7 +149,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Imai 48% usage \u00b7 5% whiff",
-          "detail": "0.282 wOBA vs fastball \u2014 vulnerability",
+          "detail": "0.282 wOBA vs fastball \u2014 strength",
           "adj": 0.75,
           "adj_str": "+0.8",
           "adj_class": "fpos"
@@ -172,12 +172,12 @@
       "venue": "Oriole Park at Camden Yards",
       "probable_sp": "Trevor Rogers",
       "sp_hand": "L",
-      "proj_pts": 4.9,
+      "proj_pts": 5.4,
       "confidence": {
         "score": 48,
         "label": "medium",
-        "pa_score": 0.389,
-        "ip_score": 0.316,
+        "pa_score": 0.391,
+        "ip_score": 0.329,
         "babip_score": 0.738
       },
       "stat_line": {
@@ -185,7 +185,7 @@
         "hr": 0.36,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.74,
+        "bb": 0.75,
         "k": 1.23
       },
       "scoring_rows": [
@@ -233,9 +233,9 @@
         },
         {
           "cat": "BB",
-          "proj": 0.74,
+          "proj": 0.75,
           "mult": "\u00d7  1.50",
-          "pts": 1.11
+          "pts": 1.12
         },
         {
           "cat": "K",
@@ -253,7 +253,7 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 4.26,
+          "adj": 4.28,
           "adj_str": "+4.3",
           "cls": "fneu",
           "mult": "",
@@ -268,11 +268,11 @@
           "pill": "boosted"
         },
         {
-          "label": "Pitcher (Trevor Rogers \u00b7 xFIP 4.35)",
-          "adj": 0.45,
-          "adj_str": "+0.5",
+          "label": "Pitcher (Trevor Rogers \u00b7 xFIP 4.50)",
+          "adj": 0.92,
+          "adj_str": "+0.9",
           "cls": "fpos",
-          "mult": "H \u00d71.03 \u00b7 K \u00d71.01",
+          "mult": "H \u00d71.05 \u00b7 K \u00d71.00",
           "pill": "boosted"
         },
         {
@@ -305,7 +305,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Rogers 66% usage \u00b7 11% whiff",
-          "detail": "0.494 wOBA vs fastball \u2014 strength",
+          "detail": "0.494 wOBA vs fastball \u2014 vulnerability",
           "adj": -4.44,
           "adj_str": "\u22124.4",
           "adj_class": "fneg"
@@ -460,7 +460,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Imai 48% usage \u00b7 5% whiff",
-          "detail": "0.360 wOBA vs fastball \u2014 strength",
+          "detail": "0.360 wOBA vs fastball \u2014 vulnerability",
           "adj": -1.02,
           "adj_str": "\u22121.0",
           "adj_class": "fneg"
@@ -487,8 +487,8 @@
       "confidence": {
         "score": 55,
         "label": "medium",
-        "pa_score": 0.363,
-        "ip_score": 0.331,
+        "pa_score": 0.366,
+        "ip_score": 0.346,
         "babip_score": 1.0
       },
       "stat_line": {
@@ -579,8 +579,8 @@
           "pill": "neutral"
         },
         {
-          "label": "Pitcher (Miles Mikolas \u00b7 xFIP 5.38)",
-          "adj": 2.54,
+          "label": "Pitcher (Miles Mikolas \u00b7 xFIP 5.33)",
+          "adj": 2.5,
           "adj_str": "+2.5",
           "cls": "fpos",
           "mult": "H \u00d71.20 \u00b7 K \u00d70.87",
@@ -593,14 +593,6 @@
           "cls": "fpos",
           "mult": "HR \u00d71.14 \u00b7 R \u00d71.06",
           "pill": "boosted"
-        },
-        {
-          "label": "BABIP (0.248 curr \u00b7 0.257 career)",
-          "adj": 0.03,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "unlucky"
         },
         {
           "label": "Recent form (14d)",
@@ -616,7 +608,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Mikolas 44% usage \u00b7 7% whiff",
-          "detail": "0.460 wOBA vs fastball \u2014 strength",
+          "detail": "0.460 wOBA vs fastball \u2014 vulnerability",
           "adj": -5.1,
           "adj_str": "\u22125.1",
           "adj_class": "fneg"
@@ -625,7 +617,7 @@
           "label": "Breaking ball",
           "badge_class": "pb-break",
           "meta": "Mikolas 44% usage \u00b7 8% whiff",
-          "detail": "0.274 wOBA vs breaking ball \u2014 vulnerability",
+          "detail": "0.274 wOBA vs breaking ball \u2014 strength",
           "adj": 0.76,
           "adj_str": "+0.8",
           "adj_class": "fpos"
@@ -653,7 +645,7 @@
         "score": 57,
         "label": "medium",
         "pa_score": 0.326,
-        "ip_score": 0.486,
+        "ip_score": 0.487,
         "babip_score": 1.0
       },
       "stat_line": {
@@ -744,9 +736,9 @@
           "pill": "neutral"
         },
         {
-          "label": "Pitcher (Slade Cecconi \u00b7 xFIP 5.36)",
-          "adj": 2.51,
-          "adj_str": "+2.5",
+          "label": "Pitcher (Slade Cecconi \u00b7 xFIP 5.34)",
+          "adj": 2.57,
+          "adj_str": "+2.6",
           "cls": "fpos",
           "mult": "H \u00d71.20 \u00b7 K \u00d70.92",
           "pill": "boosted"
@@ -781,7 +773,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Cecconi 74% usage \u00b7 9% whiff",
-          "detail": "0.350 wOBA vs fastball \u2014 strength",
+          "detail": "0.350 wOBA vs fastball \u2014 vulnerability",
           "adj": -1.2,
           "adj_str": "\u22121.2",
           "adj_class": "fneg"
@@ -936,7 +928,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Sproat 64% usage \u00b7 8% whiff",
-          "detail": "0.343 wOBA vs fastball \u2014 strength",
+          "detail": "0.343 wOBA vs fastball \u2014 vulnerability",
           "adj": -1.11,
           "adj_str": "\u22121.1",
           "adj_class": "fneg"
@@ -1091,7 +1083,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Gore 57% usage \u00b7 10% whiff",
-          "detail": "0.390 wOBA vs fastball \u2014 strength",
+          "detail": "0.390 wOBA vs fastball \u2014 vulnerability",
           "adj": -2.4,
           "adj_str": "\u22122.4",
           "adj_class": "fneg"
@@ -1247,7 +1239,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Gore 57% usage \u00b7 10% whiff",
-          "detail": "0.411 wOBA vs fastball \u2014 strength",
+          "detail": "0.411 wOBA vs fastball \u2014 vulnerability",
           "adj": -3.07,
           "adj_str": "\u22123.1",
           "adj_class": "fneg"
@@ -1274,7 +1266,7 @@
         "score": 56,
         "label": "medium",
         "pa_score": 0.357,
-        "ip_score": 0.387,
+        "ip_score": 0.389,
         "babip_score": 1.0
       },
       "stat_line": {
@@ -1365,11 +1357,11 @@
           "pill": "boosted"
         },
         {
-          "label": "Pitcher (Grant Holmes \u00b7 xFIP 3.98)",
-          "adj": -0.17,
+          "label": "Pitcher (Grant Holmes \u00b7 xFIP 3.97)",
+          "adj": -0.21,
           "adj_str": "\u22120.2",
           "cls": "fneg",
-          "mult": "H \u00d70.96 \u00b7 K \u00d71.01",
+          "mult": "H \u00d70.96 \u00b7 K \u00d71.00",
           "pill": "suppressed"
         },
         {
@@ -1402,7 +1394,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Holmes 48% usage \u00b7 5% whiff",
-          "detail": "0.342 wOBA vs fastball \u2014 strength",
+          "detail": "0.342 wOBA vs fastball \u2014 vulnerability",
           "adj": -0.66,
           "adj_str": "\u22120.7",
           "adj_class": "fneg"
@@ -1559,7 +1551,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "P\u00e9rez 51% usage \u00b7 11% whiff",
-          "detail": "0.338 wOBA vs fastball \u2014 strength",
+          "detail": "0.338 wOBA vs fastball \u2014 vulnerability",
           "adj": -0.71,
           "adj_str": "\u22120.7",
           "adj_class": "fneg"
@@ -1714,7 +1706,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Gallen 45% usage \u00b7 3% whiff",
-          "detail": "0.336 wOBA vs fastball \u2014 strength",
+          "detail": "0.336 wOBA vs fastball \u2014 vulnerability",
           "adj": -0.77,
           "adj_str": "\u22120.8",
           "adj_class": "fneg"
@@ -1740,10 +1732,10 @@
       "sp_hand": "R",
       "proj_pts": 0.2,
       "confidence": {
-        "score": 41,
+        "score": 42,
         "label": "medium",
         "pa_score": 0.229,
-        "ip_score": 0.471,
+        "ip_score": 0.5,
         "babip_score": 0.625
       },
       "stat_line": {
@@ -1834,7 +1826,7 @@
           "pill": "boosted"
         },
         {
-          "label": "Pitcher (Paul Skenes \u00b7 xFIP 2.10)",
+          "label": "Pitcher (Paul Skenes \u00b7 xFIP 2.06)",
           "adj": -3.5,
           "adj_str": "\u22123.5",
           "cls": "fneg",
@@ -1871,7 +1863,7 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Skenes 53% usage \u00b7 11% whiff",
-          "detail": "0.350 wOBA vs fastball \u2014 strength",
+          "detail": "0.350 wOBA vs fastball \u2014 vulnerability",
           "adj": -0.23,
           "adj_str": "\u22120.2",
           "adj_class": "fneg"
