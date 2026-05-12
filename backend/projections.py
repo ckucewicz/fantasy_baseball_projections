@@ -15,9 +15,6 @@ import math
 import datetime
 import requests
 from pybaseball import playerid_lookup, statcast_batter, batting_stats, pitching_stats
-
-# Patch pybaseball session to avoid FanGraphs 403
-
 import pandas as pd
 import numpy as np
 import warnings
@@ -113,10 +110,10 @@ CONF_BABIP_BAD   = 0.100   # deviation >= this → zero confidence from BABIP co
 CURRENT_SEASON = 2025
 
 # Path to roster file (relative to this script)
-ROSTER_PATH = "../roster.json"
+ROSTER_PATH = "roster.json"
 
 # Output path (GitHub Pages serves the docs/ folder)
-OUTPUT_PATH = os.path.join("..", "docs", "data.json")
+OUTPUT_PATH = os.path.join("docs", "data.json")
 
 # MLB Stats API base URL
 MLB_API = "https://statsapi.mlb.com/api/v1"
@@ -257,80 +254,63 @@ def _get_pitcher_hand(pitcher_id):
         return "R"  # safe default
 
 
+def _normalize_bref_batting(df):
+    """Normalizes a Baseball Reference batting DataFrame to our internal schema."""
+    df = df.copy()
+    rename = {"Name": "name", "Tm": "team", "PA": "pa", "AB": "ab",
+              "H": "h", "2B": "doubles", "3B": "triples", "HR": "hr",
+              "BB": "bb", "SO": "k", "HBP": "hbp", "BABIP": "babip"}
+    rename = {k: v for k, v in rename.items() if k in df.columns}
+    df = df.rename(columns=rename)
+    for col in ["pa","ab","h","doubles","triples","hr","bb","k","hbp","babip"]:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
+    if "pa"    not in df.columns: df["pa"]    = df.get("ab", pd.Series([0]*len(df)))
+    if "hbp"   not in df.columns: df["hbp"]   = 0
+    if "babip" not in df.columns: df["babip"] = LEAGUE_AVG["babip"]
+    df["hrate"]   = (df["h"]                       / df["ab"].replace(0, np.nan)).fillna(LEAGUE_AVG["hrate"])
+    df["hrrate"]  = (df["hr"]                      / df["ab"].replace(0, np.nan)).fillna(LEAGUE_AVG["hrrate"])
+    df["xbhrate"] = ((df["doubles"]+df["triples"]) / df["ab"].replace(0, np.nan)).fillna(LEAGUE_AVG["xbhrate"])
+    df["bbpct"]   = (df["bb"]                      / df["pa"].replace(0, np.nan)).fillna(LEAGUE_AVG["bbpct_bat"])
+    df["kpct"]    = (df["k"]                       / df["pa"].replace(0, np.nan)).fillna(LEAGUE_AVG["kpct_bat"])
+    df["hbprate"] = (df["hbp"]                     / df["pa"].replace(0, np.nan)).fillna(0.010)
+    return df
+
+
 def get_batter_season_stats(season=CURRENT_SEASON):
-    """
-    Pulls current-season batting stats from FanGraphs via pybaseball.
-    Returns a DataFrame indexed by player name with columns including:
-      PA, AB, H, HR, BB, SO, BABIP, wOBA, Hard%, xBA
-    Minimum 1 PA filter — we want everyone, we handle sample size ourselves.
-    """
+    """Pulls current-season batting stats from Baseball Reference (no 403 issues)."""
+    from pybaseball import batting_stats_bref
     try:
-        df = batting_stats(season, qual=1)
-        df = df.rename(columns={
-            "Name":   "name",
-            "Team":   "team",
-            "PA":     "pa",
-            "AB":     "ab",
-            "H":      "h",
-            "2B":     "doubles",
-            "3B":     "triples",
-            "HR":     "hr",
-            "BB":     "bb",
-            "SO":     "k",
-            "HBP":    "hbp",
-            "BABIP":  "babip",
-            "wOBA":   "woba",
-            "Hard%":  "hardpct",
-            "xBA":    "xba",
-        })
-        # Compute rate stats we need
-        df["hrate"]   = df["h"]   / df["ab"].replace(0, np.nan)
-        df["hrrate"]  = df["hr"]  / df["ab"].replace(0, np.nan)
-        df["xbhrate"] = (df["doubles"] + df["triples"]) / df["ab"].replace(0, np.nan)
-        df["bbpct"]   = df["bb"]  / df["pa"].replace(0, np.nan)
-        df["kpct"]    = df["k"]   / df["pa"].replace(0, np.nan)
-        df["hbprate"] = df["hbp"] / df["pa"].replace(0, np.nan)
-        return df
+        df = batting_stats_bref(season)
+        if df is None or df.empty:
+            return pd.DataFrame()
+        return _normalize_bref_batting(df)
     except Exception as e:
-        print(f"  [WARNING] FanGraphs season batting stats failed: {e}")
+        print(f"  [WARNING] Baseball Reference season batting stats failed: {e}")
         return pd.DataFrame()
 
 
 def get_batter_career_stats(start_year=2019, end_year=None):
-    """
-    Pulls multi-year batting stats from FanGraphs (default: 2019 to present).
-    Aggregated across all seasons to give a stable career baseline.
-    Returns same schema as get_batter_season_stats().
-    """
+    """Pulls multi-year batting stats from Baseball Reference, one season at a time."""
+    from pybaseball import batting_stats_bref
     if end_year is None:
-        end_year = CURRENT_SEASON - 1  # exclude current season (handled separately)
-    try:
-        df = batting_stats(start_year, end_season=end_year, qual=1)
-        df = df.rename(columns={
-            "Name":   "name",
-            "Team":   "team",
-            "PA":     "pa",
-            "AB":     "ab",
-            "H":      "h",
-            "2B":     "doubles",
-            "3B":     "triples",
-            "HR":     "hr",
-            "BB":     "bb",
-            "SO":     "k",
-            "HBP":    "hbp",
-            "BABIP":  "babip",
-            "wOBA":   "woba",
-        })
-        df["hrate"]   = df["h"]   / df["ab"].replace(0, np.nan)
-        df["hrrate"]  = df["hr"]  / df["ab"].replace(0, np.nan)
-        df["xbhrate"] = (df["doubles"] + df["triples"]) / df["ab"].replace(0, np.nan)
-        df["bbpct"]   = df["bb"]  / df["pa"].replace(0, np.nan)
-        df["kpct"]    = df["k"]   / df["pa"].replace(0, np.nan)
-        df["hbprate"] = df["hbp"] / df["pa"].replace(0, np.nan)
-        return df
-    except Exception as e:
-        print(f"  [WARNING] FanGraphs career batting stats failed: {e}")
+        end_year = CURRENT_SEASON - 1
+    frames = []
+    for yr in range(start_year, end_year + 1):
+        try:
+            df = batting_stats_bref(yr)
+            if df is not None and not df.empty:
+                frames.append(df)
+        except Exception as e:
+            print(f"  [WARNING] bref batting stats failed for {yr}: {e}")
+    if not frames:
         return pd.DataFrame()
+    combined = _normalize_bref_batting(pd.concat(frames, ignore_index=True))
+    numeric_cols = [c for c in ["pa","ab","h","doubles","triples","hr","bb","k","hbp"] if c in combined.columns]
+    career = combined.groupby("name")[numeric_cols].sum().reset_index()
+    if "babip" in combined.columns:
+        career["babip"] = combined.groupby("name")["babip"].mean().reset_index()["babip"]
+    return _normalize_bref_batting(career)
 
 
 def get_batter_recent_stats(mlb_id, days=14):
@@ -436,69 +416,60 @@ def get_batter_pitch_type_splits(mlb_id, season=CURRENT_SEASON):
         return {}
 
 
+def _normalize_bref_pitching(df):
+    """Normalizes a Baseball Reference pitching DataFrame to our internal schema."""
+    df = df.copy()
+    rename = {"Name": "name", "Tm": "team", "IP": "ip", "ERA": "era",
+              "WHIP": "whip", "SO": "k_raw", "BB": "bb_raw", "BF": "bf"}
+    rename = {k: v for k, v in rename.items() if k in df.columns}
+    df = df.rename(columns=rename)
+    for col in ["ip","era","whip","k_raw","bb_raw","bf"]:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
+    # Compute K% and BB% from raw counts
+    bf = df.get("bf", pd.Series([1]*len(df))).replace(0, np.nan)
+    df["kpct"]    = (df["k_raw"]  / bf).fillna(LEAGUE_AVG["kpct"])   if "k_raw"  in df.columns else LEAGUE_AVG["kpct"]
+    df["bbpct"]   = (df["bb_raw"] / bf).fillna(LEAGUE_AVG["bbpct"])  if "bb_raw" in df.columns else LEAGUE_AVG["bbpct"]
+    # These aren't in bref — use league averages as fallback
+    if "xfip"      not in df.columns: df["xfip"]      = LEAGUE_AVG["xfip"]
+    if "hardpct"   not in df.columns: df["hardpct"]   = LEAGUE_AVG["hardpct"]
+    if "stuffplus" not in df.columns: df["stuffplus"]  = LEAGUE_AVG["stuffplus"]
+    if "whip"      not in df.columns: df["whip"]       = LEAGUE_AVG["whip"]
+    if "era"       not in df.columns: df["era"]        = LEAGUE_AVG["xfip"]
+    if "ip"        not in df.columns: df["ip"]         = 0.0
+    return df
+
+
 def get_pitcher_season_stats(season=CURRENT_SEASON):
-    """
-    Pulls current-season pitching stats from FanGraphs via pybaseball.
-    Returns a DataFrame with columns:
-      IP, ERA, FIP, xFIP, WHIP, K%, BB%, Hard%, Stuff+
-    """
+    """Pulls current-season pitching stats from Baseball Reference."""
+    from pybaseball import pitching_stats_bref
     try:
-        df = pitching_stats(season, qual=1)
-        df = df.rename(columns={
-            "Name":    "name",
-            "Team":    "team",
-            "IP":      "ip",
-            "ERA":     "era",
-            "FIP":     "fip",
-            "xFIP":    "xfip",
-            "WHIP":    "whip",
-            "K%":      "kpct",
-            "BB%":     "bbpct",
-            "Hard%":   "hardpct",
-            "Stuff+":  "stuffplus",
-        })
-        # Normalise percentage columns (FanGraphs sometimes returns 0.22 vs 22.0)
-        for col in ["kpct", "bbpct", "hardpct"]:
-            if col in df.columns:
-                if df[col].median() > 1:   # stored as whole number, convert
-                    df[col] = df[col] / 100.0
-        return df
+        df = pitching_stats_bref(season)
+        if df is None or df.empty:
+            return pd.DataFrame()
+        return _normalize_bref_pitching(df)
     except Exception as e:
-        print(f"  [WARNING] FanGraphs season pitching stats failed: {e}")
+        print(f"  [WARNING] Baseball Reference season pitching stats failed: {e}")
         return pd.DataFrame()
 
 
 def get_pitcher_career_stats(start_year=2019, end_year=None):
-    """
-    Pulls multi-year pitching stats from FanGraphs.
-    Same schema as get_pitcher_season_stats().
-    Stuff+ is always pulled as a multi-year average (more stable).
-    """
+    """Pulls multi-year pitching stats from Baseball Reference."""
+    from pybaseball import pitching_stats_bref
     if end_year is None:
         end_year = CURRENT_SEASON - 1
-    try:
-        df = pitching_stats(start_year, end_season=end_year, qual=1)
-        df = df.rename(columns={
-            "Name":    "name",
-            "Team":    "team",
-            "IP":      "ip",
-            "ERA":     "era",
-            "FIP":     "fip",
-            "xFIP":    "xfip",
-            "WHIP":    "whip",
-            "K%":      "kpct",
-            "BB%":     "bbpct",
-            "Hard%":   "hardpct",
-            "Stuff+":  "stuffplus",
-        })
-        for col in ["kpct", "bbpct", "hardpct"]:
-            if col in df.columns:
-                if df[col].median() > 1:
-                    df[col] = df[col] / 100.0
-        return df
-    except Exception as e:
-        print(f"  [WARNING] FanGraphs career pitching stats failed: {e}")
+    frames = []
+    for yr in range(start_year, end_year + 1):
+        try:
+            df = pitching_stats_bref(yr)
+            if df is not None and not df.empty:
+                frames.append(df)
+        except Exception as e:
+            print(f"  [WARNING] bref pitching stats failed for {yr}: {e}")
+    if not frames:
         return pd.DataFrame()
+    combined = _normalize_bref_pitching(pd.concat(frames, ignore_index=True))
+    return combined
 
 
 def get_pitcher_pitch_mix(pitcher_mlb_id, season=CURRENT_SEASON):
@@ -2295,7 +2266,7 @@ def main():
 #   build_log_entry(projection, actual_stats)
 # ─────────────────────────────────────────────
 
-LOG_PATH = os.path.join("..", "docs", "projections_log.json")
+LOG_PATH = os.path.join("docs", "projections_log.json")
 
 
 def load_log():
@@ -2610,6 +2581,3 @@ def append_actuals(projections):
 
 
 
-
-if __name__ == "__main__":
-    main()
