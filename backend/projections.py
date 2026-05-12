@@ -110,10 +110,10 @@ CONF_BABIP_BAD   = 0.100   # deviation >= this → zero confidence from BABIP co
 CURRENT_SEASON = 2025
 
 # Path to roster file (relative to this script)
-ROSTER_PATH = "roster.json"
+ROSTER_PATH = "../roster.json"
 
 # Output path (GitHub Pages serves the docs/ folder)
-OUTPUT_PATH = os.path.join("docs", "data.json")
+OUTPUT_PATH = os.path.join("..", "docs", "data.json")
 
 # MLB Stats API base URL
 MLB_API = "https://statsapi.mlb.com/api/v1"
@@ -2266,7 +2266,7 @@ def main():
 #   build_log_entry(projection, actual_stats)
 # ─────────────────────────────────────────────
 
-LOG_PATH = os.path.join("docs", "projections_log.json")
+LOG_PATH = os.path.join("..", "docs", "projections_log.json")
 
 
 def load_log():
@@ -2581,3 +2581,6 @@ def append_actuals(projections):
 
 
 
+
+if __name__ == "__main__":
+    main()
