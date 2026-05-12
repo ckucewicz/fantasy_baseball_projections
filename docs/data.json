@@ -1,1 +1,1953 @@
-{"generated_at":null,"season":2025,"player_count":0,"projections":[]}
+{
+  "generated_at": "2026-05-12T18:02:17",
+  "season": 2025,
+  "player_count": 12,
+  "projections": [
+    {
+      "name": "Cal Raleigh",
+      "mlb_id": 663728,
+      "positions": [
+        "C",
+        "DH"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "HOU",
+      "venue": "Daikin Park",
+      "probable_sp": "Tatsuya Imai",
+      "sp_hand": "R",
+      "proj_pts": 3.7,
+      "confidence": {
+        "score": 75,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 0.0,
+        "babip_score": 1.0
+      },
+      "stat_line": {
+        "h_ab": "0.9H / 3.7AB",
+        "hr": 0.32,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.53,
+        "k": 1.18
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.39,
+          "mult": "\u00d7  2.80",
+          "pts": 1.09
+        },
+        {
+          "cat": "2B",
+          "proj": 0.13,
+          "mult": "\u00d7  3.80",
+          "pts": 0.49
+        },
+        {
+          "cat": "3B",
+          "proj": 0.03,
+          "mult": "\u00d7  5.70",
+          "pts": 0.17
+        },
+        {
+          "cat": "HR",
+          "proj": 0.32,
+          "mult": "\u00d7  7.50",
+          "pts": 2.4
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.53,
+          "mult": "\u00d7  1.50",
+          "pts": 0.8
+        },
+        {
+          "cat": "K",
+          "proj": 1.18,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.24
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.04,
+          "mult": "\u00d7  1.50",
+          "pts": 0.07
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 3.14,
+          "adj_str": "+3.1",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 1.38,
+          "adj_str": "+1.4",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Tatsuya Imai \u00b7 xFIP 4.20)",
+          "adj": -0.0,
+          "adj_str": "+-0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00 \u00b7 K \u00d71.00",
+          "pill": "neutral"
+        },
+        {
+          "label": "Park factor (Citizens Bank Park)",
+          "adj": 0.3,
+          "adj_str": "+0.3",
+          "cls": "fpos",
+          "mult": "HR \u00d71.12 \u00b7 R \u00d71.06",
+          "pill": "boosted"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.16,
+          "adj_str": "\u22120.2",
+          "cls": "fneg",
+          "mult": "H \u00d71.00",
+          "pill": "slight drag"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Imai 48% usage \u00b7 5% whiff",
+          "detail": "0.380 wOBA vs fastball \u2014 strength",
+          "adj": -1.47,
+          "adj_str": "\u22121.5",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "in line with career",
+      "data_source": "blended",
+      "rank": 1
+    },
+    {
+      "name": "Sal Stewart",
+      "mlb_id": 701398,
+      "positions": [
+        "1B",
+        "3B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "WSH",
+      "venue": "Great American Ball Park",
+      "probable_sp": "Miles Mikolas",
+      "sp_hand": "R",
+      "proj_pts": 3.3,
+      "confidence": {
+        "score": 48,
+        "label": "medium",
+        "pa_score": 0.023,
+        "ip_score": 1.0,
+        "babip_score": 0.738
+      },
+      "stat_line": {
+        "h_ab": "1.0H / 3.7AB",
+        "hr": 0.33,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.2,
+        "k": 1.0
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.57,
+          "mult": "\u00d7  2.80",
+          "pts": 1.6
+        },
+        {
+          "cat": "2B",
+          "proj": 0.06,
+          "mult": "\u00d7  3.80",
+          "pts": 0.23
+        },
+        {
+          "cat": "3B",
+          "proj": 0.01,
+          "mult": "\u00d7  5.70",
+          "pts": 0.06
+        },
+        {
+          "cat": "HR",
+          "proj": 0.33,
+          "mult": "\u00d7  7.50",
+          "pts": 2.48
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.2,
+          "mult": "\u00d7  1.50",
+          "pts": 0.3
+        },
+        {
+          "cat": "K",
+          "proj": 1.0,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.2
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.0,
+          "mult": "\u00d7  1.50",
+          "pts": 0.0
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.81,
+          "adj_str": "+2.8",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs RHP)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "neutral"
+        },
+        {
+          "label": "Pitcher (Miles Mikolas \u00b7 xFIP 4.67)",
+          "adj": 1.25,
+          "adj_str": "+1.2",
+          "cls": "fpos",
+          "mult": "H \u00d71.09 \u00b7 K \u00d70.86",
+          "pill": "boosted"
+        },
+        {
+          "label": "Park factor (Great American Ball Park)",
+          "adj": 0.36,
+          "adj_str": "+0.4",
+          "cls": "fpos",
+          "mult": "HR \u00d71.14 \u00b7 R \u00d71.06",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.257 curr \u00b7 0.298 career)",
+          "adj": 0.11,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "H \u00d71.02",
+          "pill": "unlucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.09,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d71.00",
+          "pill": "slight drag"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Mikolas 45% usage \u00b7 7% whiff",
+          "detail": "0.473 wOBA vs fastball \u2014 strength",
+          "adj": -5.17,
+          "adj_str": "\u22125.2",
+          "adj_class": "fneg"
+        },
+        {
+          "label": "Breaking ball",
+          "badge_class": "pb-break",
+          "meta": "Mikolas 43% usage \u00b7 8% whiff",
+          "detail": "0.289 wOBA vs breaking ball \u2014 vulnerability",
+          "adj": 0.48,
+          "adj_str": "+0.5",
+          "adj_class": "fpos"
+        }
+      ],
+      "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "season",
+      "rank": 2
+    },
+    {
+      "name": "Ketel Marte",
+      "mlb_id": 606466,
+      "positions": [
+        "2B",
+        "DH"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "TEX",
+      "venue": "Globe Life Field",
+      "probable_sp": "MacKenzie Gore",
+      "sp_hand": "L",
+      "proj_pts": 3.1,
+      "confidence": {
+        "score": 95,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 1.0,
+        "babip_score": 0.963
+      },
+      "stat_line": {
+        "h_ab": "1.1H / 3.7AB",
+        "hr": 0.2,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.45,
+        "k": 0.65
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.64,
+          "mult": "\u00d7  2.80",
+          "pts": 1.79
+        },
+        {
+          "cat": "2B",
+          "proj": 0.19,
+          "mult": "\u00d7  3.80",
+          "pts": 0.72
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.2,
+          "mult": "\u00d7  7.50",
+          "pts": 1.5
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.45,
+          "mult": "\u00d7  1.50",
+          "pts": 0.68
+        },
+        {
+          "cat": "K",
+          "proj": 0.65,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.13
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.06,
+          "mult": "\u00d7  1.50",
+          "pts": 0.09
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 3.23,
+          "adj_str": "+3.2",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs LHP)",
+          "adj": 0.99,
+          "adj_str": "+1.0",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (MacKenzie Gore \u00b7 xFIP 4.21)",
+          "adj": -0.13,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d71.00 \u00b7 K \u00d71.09",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Globe Life Field)",
+          "adj": 0.08,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.290 curr \u00b7 0.313 career)",
+          "adj": 0.08,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "H \u00d71.01",
+          "pill": "unlucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.08,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d71.00",
+          "pill": "slight drag"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Gore 55% usage \u00b7 10% whiff",
+          "detail": "0.425 wOBA vs fastball \u2014 strength",
+          "adj": -3.23,
+          "adj_str": "\u22123.2",
+          "adj_class": "fneg"
+        },
+        {
+          "label": "Breaking ball",
+          "badge_class": "pb-break",
+          "meta": "Gore 34% usage \u00b7 15% whiff",
+          "detail": "0.364 wOBA vs breaking ball \u2014 strength",
+          "adj": -0.19,
+          "adj_str": "\u22120.2",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "blended",
+      "rank": 3
+    },
+    {
+      "name": "Manny Machado",
+      "mlb_id": 592518,
+      "positions": [
+        "3B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "MIL",
+      "venue": "American Family Field",
+      "probable_sp": "Brandon Sproat",
+      "sp_hand": "R",
+      "proj_pts": 2.9,
+      "confidence": {
+        "score": 79,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 0.146,
+        "babip_score": 1.0
+      },
+      "stat_line": {
+        "h_ab": "1.0H / 3.7AB",
+        "hr": 0.17,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.34,
+        "k": 0.79
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.61,
+          "mult": "\u00d7  2.80",
+          "pts": 1.71
+        },
+        {
+          "cat": "2B",
+          "proj": 0.16,
+          "mult": "\u00d7  3.80",
+          "pts": 0.61
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.17,
+          "mult": "\u00d7  7.50",
+          "pts": 1.28
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.34,
+          "mult": "\u00d7  1.50",
+          "pts": 0.51
+        },
+        {
+          "cat": "K",
+          "proj": 0.79,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.16
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.02,
+          "mult": "\u00d7  1.50",
+          "pts": 0.03
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.55,
+          "adj_str": "+2.5",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs RHP)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "neutral"
+        },
+        {
+          "label": "Pitcher (Brandon Sproat \u00b7 xFIP 4.79)",
+          "adj": 1.3,
+          "adj_str": "+1.3",
+          "cls": "fpos",
+          "mult": "H \u00d71.11 \u00b7 K \u00d70.96",
+          "pill": "boosted"
+        },
+        {
+          "label": "Park factor (American Family Field)",
+          "adj": 0.08,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.307 curr \u00b7 0.295 career)",
+          "adj": -0.04,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d70.99",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.05,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Sproat 60% usage \u00b7 7% whiff",
+          "detail": "0.372 wOBA vs fastball \u2014 strength",
+          "adj": -2.12,
+          "adj_str": "\u22122.1",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "in line with career",
+      "data_source": "blended",
+      "rank": 4
+    },
+    {
+      "name": "Cole Young",
+      "mlb_id": 702284,
+      "positions": [
+        "2B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "HOU",
+      "venue": "Daikin Park",
+      "probable_sp": "Tatsuya Imai",
+      "sp_hand": "R",
+      "proj_pts": 2.9,
+      "confidence": {
+        "score": 45,
+        "label": "medium",
+        "pa_score": 0.591,
+        "ip_score": 0.0,
+        "babip_score": 0.613
+      },
+      "stat_line": {
+        "h_ab": "0.8H / 3.7AB",
+        "hr": 0.06,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.45,
+        "k": 0.77
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.65,
+          "mult": "\u00d7  2.80",
+          "pts": 1.82
+        },
+        {
+          "cat": "2B",
+          "proj": 0.11,
+          "mult": "\u00d7  3.80",
+          "pts": 0.42
+        },
+        {
+          "cat": "3B",
+          "proj": 0.02,
+          "mult": "\u00d7  5.70",
+          "pts": 0.11
+        },
+        {
+          "cat": "HR",
+          "proj": 0.06,
+          "mult": "\u00d7  7.50",
+          "pts": 0.45
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.45,
+          "mult": "\u00d7  1.50",
+          "pts": 0.68
+        },
+        {
+          "cat": "K",
+          "proj": 0.77,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.15
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.03,
+          "mult": "\u00d7  1.50",
+          "pts": 0.05
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 1.73,
+          "adj_str": "+1.7",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 1.38,
+          "adj_str": "+1.4",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Tatsuya Imai \u00b7 xFIP 4.20)",
+          "adj": -0.0,
+          "adj_str": "+-0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00 \u00b7 K \u00d71.00",
+          "pill": "neutral"
+        },
+        {
+          "label": "Park factor (Citizens Bank Park)",
+          "adj": 0.07,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.12 \u00b7 R \u00d71.06",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.247 curr \u00b7 0.298 career)",
+          "adj": 0.17,
+          "adj_str": "+0.2",
+          "cls": "fpos",
+          "mult": "H \u00d71.03",
+          "pill": "unlucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.02,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Imai 48% usage \u00b7 5% whiff",
+          "detail": "0.325 wOBA vs fastball \u2014 neutral",
+          "adj": -0.23,
+          "adj_str": "\u22120.2",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "season",
+      "rank": 5
+    },
+    {
+      "name": "Geraldo Perdomo",
+      "mlb_id": 661388,
+      "positions": [
+        "SS"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "TEX",
+      "venue": "Globe Life Field",
+      "probable_sp": "MacKenzie Gore",
+      "sp_hand": "L",
+      "proj_pts": 2.8,
+      "confidence": {
+        "score": 73,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 1.0,
+        "babip_score": 0.1
+      },
+      "stat_line": {
+        "h_ab": "1.1H / 3.7AB",
+        "hr": 0.12,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.51,
+        "k": 0.82
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.77,
+          "mult": "\u00d7  2.80",
+          "pts": 2.16
+        },
+        {
+          "cat": "2B",
+          "proj": 0.16,
+          "mult": "\u00d7  3.80",
+          "pts": 0.61
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.12,
+          "mult": "\u00d7  7.50",
+          "pts": 0.9
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.51,
+          "mult": "\u00d7  1.50",
+          "pts": 0.77
+        },
+        {
+          "cat": "K",
+          "proj": 0.82,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.16
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.02,
+          "mult": "\u00d7  1.50",
+          "pts": 0.03
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.88,
+          "adj_str": "+2.9",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs LHP)",
+          "adj": 0.99,
+          "adj_str": "+1.0",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (MacKenzie Gore \u00b7 xFIP 4.21)",
+          "adj": -0.13,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d71.00 \u00b7 K \u00d71.09",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Globe Life Field)",
+          "adj": 0.05,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
+          "pill": "neutral"
+        },
+        {
+          "label": "BABIP (0.299 curr \u00b7 0.391 career)",
+          "adj": 0.29,
+          "adj_str": "+0.3",
+          "cls": "fpos",
+          "mult": "H \u00d71.06",
+          "pill": "unlucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Gore 55% usage \u00b7 10% whiff",
+          "detail": "0.365 wOBA vs fastball \u2014 strength",
+          "adj": -1.47,
+          "adj_str": "\u22121.5",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "blended",
+      "rank": 6
+    },
+    {
+      "name": "Michael Busch",
+      "mlb_id": 683737,
+      "positions": [
+        "1B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "ATL",
+      "venue": "Truist Park",
+      "probable_sp": "Grant Holmes",
+      "sp_hand": "R",
+      "proj_pts": 2.3,
+      "confidence": {
+        "score": 95,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 1.0,
+        "babip_score": 1.0
+      },
+      "stat_line": {
+        "h_ab": "0.9H / 3.7AB",
+        "hr": 0.21,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.43,
+        "k": 1.05
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.51,
+          "mult": "\u00d7  2.80",
+          "pts": 1.43
+        },
+        {
+          "cat": "2B",
+          "proj": 0.17,
+          "mult": "\u00d7  3.80",
+          "pts": 0.65
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.21,
+          "mult": "\u00d7  7.50",
+          "pts": 1.57
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.43,
+          "mult": "\u00d7  1.50",
+          "pts": 0.65
+        },
+        {
+          "cat": "K",
+          "proj": 1.05,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.21
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.06,
+          "mult": "\u00d7  1.50",
+          "pts": 0.09
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.75,
+          "adj_str": "+2.8",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 1.38,
+          "adj_str": "+1.4",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Grant Holmes \u00b7 xFIP 3.84)",
+          "adj": -0.93,
+          "adj_str": "\u22120.9",
+          "cls": "fneg",
+          "mult": "H \u00d70.93 \u00b7 K \u00d71.06",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Truist Park)",
+          "adj": 0.06,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.04 \u00b7 R \u00d71.01",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.292 curr \u00b7 0.275 career)",
+          "adj": -0.05,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d70.99",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.02,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Holmes 48% usage \u00b7 6% whiff",
+          "detail": "0.386 wOBA vs fastball \u2014 strength",
+          "adj": -2.43,
+          "adj_str": "\u22122.4",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "in line with career",
+      "data_source": "blended",
+      "rank": 7
+    },
+    {
+      "name": "Jorge Soler",
+      "mlb_id": 624585,
+      "positions": [
+        "RF",
+        "DH"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "CLE",
+      "venue": "Progressive Field",
+      "probable_sp": "Slade Cecconi",
+      "sp_hand": "R",
+      "proj_pts": 2.1,
+      "confidence": {
+        "score": 89,
+        "label": "high",
+        "pa_score": 0.757,
+        "ip_score": 1.0,
+        "babip_score": 1.0
+      },
+      "stat_line": {
+        "h_ab": "0.8H / 3.7AB",
+        "hr": 0.19,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.41,
+        "k": 1.17
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.48,
+          "mult": "\u00d7  2.80",
+          "pts": 1.34
+        },
+        {
+          "cat": "2B",
+          "proj": 0.15,
+          "mult": "\u00d7  3.80",
+          "pts": 0.57
+        },
+        {
+          "cat": "3B",
+          "proj": 0.03,
+          "mult": "\u00d7  5.70",
+          "pts": 0.17
+        },
+        {
+          "cat": "HR",
+          "proj": 0.19,
+          "mult": "\u00d7  7.50",
+          "pts": 1.43
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.41,
+          "mult": "\u00d7  1.50",
+          "pts": 0.61
+        },
+        {
+          "cat": "K",
+          "proj": 1.17,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.23
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.05,
+          "mult": "\u00d7  1.50",
+          "pts": 0.08
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.32,
+          "adj_str": "+2.3",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs RHP)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "neutral"
+        },
+        {
+          "label": "Pitcher (Slade Cecconi \u00b7 xFIP 4.72)",
+          "adj": 0.69,
+          "adj_str": "+0.7",
+          "cls": "fpos",
+          "mult": "H \u00d71.09 \u00b7 K \u00d70.94",
+          "pill": "boosted"
+        },
+        {
+          "label": "Park factor (Globe Life Field)",
+          "adj": 0.07,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
+          "pill": "boosted"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.0,
+          "adj_str": "+-0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Cecconi 63% usage \u00b7 7% whiff",
+          "detail": "0.353 wOBA vs fastball \u2014 strength",
+          "adj": -1.38,
+          "adj_str": "\u22121.4",
+          "adj_class": "fneg"
+        },
+        {
+          "label": "Breaking ball",
+          "badge_class": "pb-break",
+          "meta": "Cecconi 32% usage \u00b7 14% whiff",
+          "detail": "0.273 wOBA vs breaking ball \u2014 vulnerability",
+          "adj": 0.34,
+          "adj_str": "+0.3",
+          "adj_class": "fpos"
+        }
+      ],
+      "babip_note": "in line with career",
+      "data_source": "blended",
+      "rank": 8
+    },
+    {
+      "name": "Aaron Judge",
+      "mlb_id": 592450,
+      "positions": [
+        "RF",
+        "DH"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "BAL",
+      "venue": "Oriole Park at Camden Yards",
+      "probable_sp": "Trevor Rogers",
+      "sp_hand": "L",
+      "proj_pts": 1.8,
+      "confidence": {
+        "score": 90,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 1.0,
+        "babip_score": 0.675
+      },
+      "stat_line": {
+        "h_ab": "1.1H / 3.7AB",
+        "hr": 0.36,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.79,
+        "k": 1.12
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.57,
+          "mult": "\u00d7  2.80",
+          "pts": 1.6
+        },
+        {
+          "cat": "2B",
+          "proj": 0.17,
+          "mult": "\u00d7  3.80",
+          "pts": 0.65
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.36,
+          "mult": "\u00d7  7.50",
+          "pts": 2.7
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.79,
+          "mult": "\u00d7  1.50",
+          "pts": 1.19
+        },
+        {
+          "cat": "K",
+          "proj": 1.12,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.22
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.04,
+          "mult": "\u00d7  1.50",
+          "pts": 0.06
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 4.55,
+          "adj_str": "+4.5",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs LHP)",
+          "adj": 0.99,
+          "adj_str": "+1.0",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Trevor Rogers \u00b7 xFIP 2.80)",
+          "adj": -2.95,
+          "adj_str": "\u22123.0",
+          "cls": "fneg",
+          "mult": "H \u00d70.80 \u00b7 K \u00d71.04",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Camden Yards)",
+          "adj": 0.22,
+          "adj_str": "+0.2",
+          "cls": "fpos",
+          "mult": "HR \u00d71.08 \u00b7 R \u00d71.05",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.376 curr \u00b7 0.330 career)",
+          "adj": -0.12,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d70.98",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.02,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Rogers 67% usage \u00b7 11% whiff",
+          "detail": "0.532 wOBA vs fastball \u2014 strength",
+          "adj": -3.4,
+          "adj_str": "\u22123.4",
+          "adj_class": "fneg"
+        },
+        {
+          "label": "Breaking ball",
+          "badge_class": "pb-break",
+          "meta": "Rogers 9% usage \u00b7 20% whiff",
+          "detail": "0.385 wOBA vs breaking ball \u2014 strength",
+          "adj": 0.21,
+          "adj_str": "+0.2",
+          "adj_class": "fpos"
+        },
+        {
+          "label": "Offspeed",
+          "badge_class": "pb-off",
+          "meta": "Rogers 24% usage \u00b7 14% whiff",
+          "detail": "0.352 wOBA vs offspeed \u2014 strength",
+          "adj": -0.15,
+          "adj_str": "\u22120.1",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "lucky \u2014 H rate nudged down",
+      "data_source": "blended",
+      "rank": 9
+    },
+    {
+      "name": "Josh Jung",
+      "mlb_id": 673962,
+      "positions": [
+        "3B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "AZ",
+      "venue": "Globe Life Field",
+      "probable_sp": "Zac Gallen",
+      "sp_hand": "R",
+      "proj_pts": 1.7,
+      "confidence": {
+        "score": 95,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 1.0,
+        "babip_score": 1.0
+      },
+      "stat_line": {
+        "h_ab": "0.9H / 3.7AB",
+        "hr": 0.13,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.2,
+        "k": 1.02
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.63,
+          "mult": "\u00d7  2.80",
+          "pts": 1.76
+        },
+        {
+          "cat": "2B",
+          "proj": 0.15,
+          "mult": "\u00d7  3.80",
+          "pts": 0.57
+        },
+        {
+          "cat": "3B",
+          "proj": 0.03,
+          "mult": "\u00d7  5.70",
+          "pts": 0.17
+        },
+        {
+          "cat": "HR",
+          "proj": 0.13,
+          "mult": "\u00d7  7.50",
+          "pts": 0.98
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.2,
+          "mult": "\u00d7  1.50",
+          "pts": 0.3
+        },
+        {
+          "cat": "K",
+          "proj": 1.02,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.2
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.02,
+          "mult": "\u00d7  1.50",
+          "pts": 0.03
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 1.96,
+          "adj_str": "+2.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs RHP)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "neutral"
+        },
+        {
+          "label": "Pitcher (Zac Gallen \u00b7 xFIP 4.28)",
+          "adj": -0.2,
+          "adj_str": "\u22120.2",
+          "cls": "fneg",
+          "mult": "H \u00d71.01 \u00b7 K \u00d71.02",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Globe Life Field)",
+          "adj": 0.05,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
+          "pill": "neutral"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.01,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Gallen 47% usage \u00b7 4% whiff",
+          "detail": "0.329 wOBA vs fastball \u2014 neutral",
+          "adj": -0.4,
+          "adj_str": "\u22120.4",
+          "adj_class": "fneg"
+        },
+        {
+          "label": "Breaking ball",
+          "badge_class": "pb-break",
+          "meta": "Gallen 38% usage \u00b7 15% whiff",
+          "detail": "0.296 wOBA vs breaking ball \u2014 neutral",
+          "adj": 0.29,
+          "adj_str": "+0.3",
+          "adj_class": "fpos"
+        }
+      ],
+      "babip_note": "in line with career",
+      "data_source": "blended",
+      "rank": 10
+    },
+    {
+      "name": "Brooks Lee",
+      "mlb_id": 686797,
+      "positions": [
+        "SS",
+        "2B",
+        "3B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "MIA",
+      "venue": "Target Field",
+      "probable_sp": "Eury P\u00e9rez",
+      "sp_hand": "R",
+      "proj_pts": 0.7,
+      "confidence": {
+        "score": 95,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 1.0,
+        "babip_score": 1.0
+      },
+      "stat_line": {
+        "h_ab": "0.8H / 3.7AB",
+        "hr": 0.1,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.23,
+        "k": 0.66
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.62,
+          "mult": "\u00d7  2.80",
+          "pts": 1.74
+        },
+        {
+          "cat": "2B",
+          "proj": 0.11,
+          "mult": "\u00d7  3.80",
+          "pts": 0.42
+        },
+        {
+          "cat": "3B",
+          "proj": 0.02,
+          "mult": "\u00d7  5.70",
+          "pts": 0.11
+        },
+        {
+          "cat": "HR",
+          "proj": 0.1,
+          "mult": "\u00d7  7.50",
+          "pts": 0.75
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.23,
+          "mult": "\u00d7  1.50",
+          "pts": 0.35
+        },
+        {
+          "cat": "K",
+          "proj": 0.66,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.13
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.02,
+          "mult": "\u00d7  1.50",
+          "pts": 0.03
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 1.62,
+          "adj_str": "+1.6",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 1.38,
+          "adj_str": "+1.4",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Eury P\u00e9rez \u00b7 xFIP 3.87)",
+          "adj": -1.97,
+          "adj_str": "\u22122.0",
+          "cls": "fneg",
+          "mult": "H \u00d70.94 \u00b7 K \u00d71.13",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (PNC Park)",
+          "adj": -0.05,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "HR \u00d70.94 \u00b7 R \u00d70.97",
+          "pill": "neutral"
+        },
+        {
+          "label": "BABIP (0.258 curr \u00b7 0.243 career)",
+          "adj": -0.05,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d70.99",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.01,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "P\u00e9rez 53% usage \u00b7 11% whiff",
+          "detail": "0.340 wOBA vs fastball \u2014 strength",
+          "adj": -0.58,
+          "adj_str": "\u22120.6",
+          "adj_class": "fneg"
+        },
+        {
+          "label": "Breaking ball",
+          "badge_class": "pb-break",
+          "meta": "P\u00e9rez 38% usage \u00b7 16% whiff",
+          "detail": "0.218 wOBA vs breaking ball \u2014 vulnerability",
+          "adj": 0.45,
+          "adj_str": "+0.5",
+          "adj_class": "fpos"
+        },
+        {
+          "label": "Offspeed",
+          "badge_class": "pb-off",
+          "meta": "P\u00e9rez 9% usage \u00b7 16% whiff",
+          "detail": "0.226 wOBA vs offspeed \u2014 vulnerability",
+          "adj": -0.16,
+          "adj_str": "\u22120.2",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "in line with career",
+      "data_source": "blended",
+      "rank": 11
+    },
+    {
+      "name": "Mickey Moniak",
+      "mlb_id": 666160,
+      "positions": [
+        "CF",
+        "LF",
+        "RF"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "PIT",
+      "venue": "PNC Park",
+      "probable_sp": "Paul Skenes",
+      "sp_hand": "R",
+      "proj_pts": 0.0,
+      "confidence": {
+        "score": 95,
+        "label": "high",
+        "pa_score": 1.0,
+        "ip_score": 1.0,
+        "babip_score": 0.975
+      },
+      "stat_line": {
+        "h_ab": "0.9H / 3.7AB",
+        "hr": 0.19,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.19,
+        "k": 1.04
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.52,
+          "mult": "\u00d7  2.80",
+          "pts": 1.46
+        },
+        {
+          "cat": "2B",
+          "proj": 0.19,
+          "mult": "\u00d7  3.80",
+          "pts": 0.72
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.19,
+          "mult": "\u00d7  7.50",
+          "pts": 1.43
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.19,
+          "mult": "\u00d7  1.50",
+          "pts": 0.29
+        },
+        {
+          "cat": "K",
+          "proj": 1.04,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.21
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.02,
+          "mult": "\u00d7  1.50",
+          "pts": 0.03
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.29,
+          "adj_str": "+2.3",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 1.38,
+          "adj_str": "+1.4",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Paul Skenes \u00b7 xFIP 1.97)",
+          "adj": -3.5,
+          "adj_str": "\u22123.5",
+          "cls": "fneg",
+          "mult": "H \u00d70.80 \u00b7 K \u00d71.19",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (American Family Field)",
+          "adj": 0.09,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.307 curr \u00b7 0.285 career)",
+          "adj": -0.06,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d70.99",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.03,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Skenes 50% usage \u00b7 12% whiff",
+          "detail": "0.373 wOBA vs fastball \u2014 strength",
+          "adj": -0.58,
+          "adj_str": "\u22120.6",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "lucky \u2014 H rate nudged down",
+      "data_source": "blended",
+      "rank": 12
+    },
+    {
+      "name": "Sean Murphy",
+      "mlb_id": 669004,
+      "positions": [
+        "C"
+      ],
+      "status": "dtd",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "rank": null
+    },
+    {
+      "name": "Addison Barger",
+      "mlb_id": 681777,
+      "positions": [
+        "3B",
+        "RF"
+      ],
+      "status": "il10",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "rank": null
+    }
+  ]
+}
