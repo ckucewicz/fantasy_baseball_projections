@@ -1353,13 +1353,12 @@ def pitch_type_matchup_adj(batter_splits, pitcher_mix):
         if abs(impact) < MIN_IMPACT:
             continue  # not meaningful enough to show on dashboard
 
-        if batter_woba < LEAGUE_WOBA - 0.020:
+        if impact < -MIN_IMPACT:
             direction = "vulnerability"
-        elif batter_woba > LEAGUE_WOBA + 0.020:
+        elif impact > MIN_IMPACT:
             direction = "strength"
         else:
             direction = "neutral"
-
         meta = BUCKET_META[bucket]
         detail.append({
             "bucket":       bucket,
