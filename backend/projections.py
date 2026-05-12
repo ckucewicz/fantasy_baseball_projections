@@ -254,63 +254,168 @@ def _get_pitcher_hand(pitcher_id):
         return "R"  # safe default
 
 
-def _normalize_bref_batting(df):
-    """Normalizes a Baseball Reference batting DataFrame to our internal schema."""
-    df = df.copy()
-    rename = {"Name": "name", "Tm": "team", "PA": "pa", "AB": "ab",
-              "H": "h", "2B": "doubles", "3B": "triples", "HR": "hr",
-              "BB": "bb", "SO": "k", "HBP": "hbp", "BABIP": "babip"}
-    rename = {k: v for k, v in rename.items() if k in df.columns}
-    df = df.rename(columns=rename)
-    for col in ["pa","ab","h","doubles","triples","hr","bb","k","hbp","babip"]:
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
-    if "pa"    not in df.columns: df["pa"]    = df.get("ab", pd.Series([0]*len(df)))
-    if "hbp"   not in df.columns: df["hbp"]   = 0
-    if "babip" not in df.columns: df["babip"] = LEAGUE_AVG["babip"]
-    df["hrate"]   = (df["h"]                       / df["ab"].replace(0, np.nan)).fillna(LEAGUE_AVG["hrate"])
-    df["hrrate"]  = (df["hr"]                      / df["ab"].replace(0, np.nan)).fillna(LEAGUE_AVG["hrrate"])
-    df["xbhrate"] = ((df["doubles"]+df["triples"]) / df["ab"].replace(0, np.nan)).fillna(LEAGUE_AVG["xbhrate"])
-    df["bbpct"]   = (df["bb"]                      / df["pa"].replace(0, np.nan)).fillna(LEAGUE_AVG["bbpct_bat"])
-    df["kpct"]    = (df["k"]                       / df["pa"].replace(0, np.nan)).fillna(LEAGUE_AVG["kpct_bat"])
-    df["hbprate"] = (df["hbp"]                     / df["pa"].replace(0, np.nan)).fillna(0.010)
-    return df
+def _mlb_stats_to_row(player_name, stat):
+    """Converts an MLB Stats API stat dict to our internal batting row schema."""
+    ab      = int(stat.get("atBats", 0))
+    pa      = int(stat.get("plateAppearances", 0))
+    h       = int(stat.get("hits", 0))
+    doubles = int(stat.get("doubles", 0))
+    triples = int(stat.get("triples", 0))
+    hr      = int(stat.get("homeRuns", 0))
+    bb      = int(stat.get("baseOnBalls", 0))
+    k       = int(stat.get("strikeOuts", 0))
+    hbp     = int(stat.get("hitByPitch", 0))
+    babip   = float(stat.get("babip", LEAGUE_AVG["babip"]))
+
+    ab_safe = max(ab, 1)
+    pa_safe = max(pa, 1)
+
+    return {
+        "name":     player_name,
+        "pa":       pa,
+        "ab":       ab,
+        "h":        h,
+        "doubles":  doubles,
+        "triples":  triples,
+        "hr":       hr,
+        "bb":       bb,
+        "k":        k,
+        "hbp":      hbp,
+        "babip":    babip,
+        "hrate":    h       / ab_safe,
+        "hrrate":   hr      / ab_safe,
+        "xbhrate":  (doubles + triples) / ab_safe,
+        "bbpct":    bb      / pa_safe,
+        "kpct":     k       / pa_safe,
+        "hbprate":  hbp     / pa_safe,
+    }
 
 
-def get_batter_season_stats(season=CURRENT_SEASON):
-    """Pulls current-season batting stats from Baseball Reference (no 403 issues)."""
-    from pybaseball import batting_stats_bref
-    try:
-        df = batting_stats_bref(season)
-        if df is None or df.empty:
-            return pd.DataFrame()
-        return _normalize_bref_batting(df)
-    except Exception as e:
-        print(f"  [WARNING] Baseball Reference season batting stats failed: {e}")
-        return pd.DataFrame()
-
-
-def get_batter_career_stats(start_year=2019, end_year=None):
-    """Pulls multi-year batting stats from Baseball Reference, one season at a time."""
-    from pybaseball import batting_stats_bref
-    if end_year is None:
-        end_year = CURRENT_SEASON - 1
-    frames = []
-    for yr in range(start_year, end_year + 1):
+def _get_mlb_batting_stats_for_players(player_list, season=CURRENT_SEASON):
+    """
+    Fetches season batting stats for a list of players from the MLB Stats API.
+    player_list: list of dicts with keys 'name' and 'mlb_id'
+    Returns a dict keyed by normalised name: stat row dict.
+    """
+    results = {}
+    for player in player_list:
+        mlb_id = player.get("mlb_id")
+        name   = player.get("name", "")
+        if not mlb_id:
+            continue
         try:
-            df = batting_stats_bref(yr)
-            if df is not None and not df.empty:
-                frames.append(df)
+            url  = f"{MLB_API}/people/{mlb_id}/stats?stats=season&season={season}&group=hitting"
+            resp = requests.get(url, timeout=10)
+            resp.raise_for_status()
+            data = resp.json()
+            splits = data.get("stats", [{}])[0].get("splits", [])
+            if not splits:
+                continue
+            stat = splits[0].get("stat", {})
+            row  = _mlb_stats_to_row(name, stat)
+            norm = lookup_player_fg_name(mlb_id, name)
+            results[norm] = row
         except Exception as e:
-            print(f"  [WARNING] bref batting stats failed for {yr}: {e}")
-    if not frames:
-        return pd.DataFrame()
-    combined = _normalize_bref_batting(pd.concat(frames, ignore_index=True))
-    numeric_cols = [c for c in ["pa","ab","h","doubles","triples","hr","bb","k","hbp"] if c in combined.columns]
-    career = combined.groupby("name")[numeric_cols].sum().reset_index()
-    if "babip" in combined.columns:
-        career["babip"] = combined.groupby("name")["babip"].mean().reset_index()["babip"]
-    return _normalize_bref_batting(career)
+            pass  # silently fall through to league avg
+    return results
+
+
+def _get_mlb_career_batting_stats_for_players(player_list, start_year=2019):
+    """
+    Fetches career batting stats by aggregating multiple seasons from MLB Stats API.
+    Returns a dict keyed by normalised name: aggregated stat row dict.
+    """
+    results = {}
+    end_year = CURRENT_SEASON - 1
+
+    for player in player_list:
+        mlb_id = player.get("mlb_id")
+        name   = player.get("name", "")
+        if not mlb_id:
+            continue
+
+        totals = {"pa":0,"ab":0,"h":0,"doubles":0,"triples":0,
+                  "hr":0,"bb":0,"k":0,"hbp":0,"babip_sum":0,"seasons":0}
+
+        for yr in range(start_year, end_year + 1):
+            try:
+                url  = f"{MLB_API}/people/{mlb_id}/stats?stats=season&season={yr}&group=hitting"
+                resp = requests.get(url, timeout=10)
+                resp.raise_for_status()
+                data = resp.json()
+                splits = data.get("stats", [{}])[0].get("splits", [])
+                if not splits:
+                    continue
+                stat = splits[0].get("stat", {})
+                totals["pa"]       += int(stat.get("plateAppearances", 0))
+                totals["ab"]       += int(stat.get("atBats",           0))
+                totals["h"]        += int(stat.get("hits",             0))
+                totals["doubles"]  += int(stat.get("doubles",          0))
+                totals["triples"]  += int(stat.get("triples",          0))
+                totals["hr"]       += int(stat.get("homeRuns",         0))
+                totals["bb"]       += int(stat.get("baseOnBalls",      0))
+                totals["k"]        += int(stat.get("strikeOuts",       0))
+                totals["hbp"]      += int(stat.get("hitByPitch",       0))
+                babip = float(stat.get("babip", LEAGUE_AVG["babip"]))
+                totals["babip_sum"] += babip
+                totals["seasons"]   += 1
+            except Exception:
+                pass
+
+        if totals["ab"] == 0:
+            continue
+
+        ab_safe = max(totals["ab"], 1)
+        pa_safe = max(totals["pa"], 1)
+        babip   = totals["babip_sum"] / max(totals["seasons"], 1)
+
+        row = {
+            "name":     name,
+            "pa":       totals["pa"],
+            "ab":       totals["ab"],
+            "h":        totals["h"],
+            "doubles":  totals["doubles"],
+            "triples":  totals["triples"],
+            "hr":       totals["hr"],
+            "bb":       totals["bb"],
+            "k":        totals["k"],
+            "hbp":      totals["hbp"],
+            "babip":    babip,
+            "hrate":    totals["h"]                               / ab_safe,
+            "hrrate":   totals["hr"]                              / ab_safe,
+            "xbhrate":  (totals["doubles"] + totals["triples"])   / ab_safe,
+            "bbpct":    totals["bb"]                              / pa_safe,
+            "kpct":     totals["k"]                               / pa_safe,
+            "hbprate":  totals["hbp"]                             / pa_safe,
+        }
+        norm = lookup_player_fg_name(mlb_id, name)
+        results[norm] = row
+
+    return results
+
+
+def get_batter_season_stats(season=CURRENT_SEASON, player_list=None):
+    """
+    Pulls current-season batting stats from the MLB Stats API.
+    player_list: list of dicts with 'name' and 'mlb_id' keys.
+    Returns a dict keyed by normalised name (not a DataFrame).
+    """
+    if not player_list:
+        return {}
+    print(f"  Fetching MLB API season batting stats for {len(player_list)} players...")
+    return _get_mlb_batting_stats_for_players(player_list, season)
+
+
+def get_batter_career_stats(start_year=2019, end_year=None, player_list=None):
+    """
+    Pulls career batting stats from the MLB Stats API (2019–last season).
+    player_list: list of dicts with 'name' and 'mlb_id' keys.
+    Returns a dict keyed by normalised name.
+    """
+    if not player_list:
+        return {}
+    print(f"  Fetching MLB API career batting stats for {len(player_list)} players...")
+    return _get_mlb_career_batting_stats_for_players(player_list, start_year)
 
 
 def get_batter_recent_stats(mlb_id, days=14):
@@ -416,60 +521,119 @@ def get_batter_pitch_type_splits(mlb_id, season=CURRENT_SEASON):
         return {}
 
 
-def _normalize_bref_pitching(df):
-    """Normalizes a Baseball Reference pitching DataFrame to our internal schema."""
-    df = df.copy()
-    rename = {"Name": "name", "Tm": "team", "IP": "ip", "ERA": "era",
-              "WHIP": "whip", "SO": "k_raw", "BB": "bb_raw", "BF": "bf"}
-    rename = {k: v for k, v in rename.items() if k in df.columns}
-    df = df.rename(columns=rename)
-    for col in ["ip","era","whip","k_raw","bb_raw","bf"]:
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
-    # Compute K% and BB% from raw counts
-    bf = df.get("bf", pd.Series([1]*len(df))).replace(0, np.nan)
-    df["kpct"]    = (df["k_raw"]  / bf).fillna(LEAGUE_AVG["kpct"])   if "k_raw"  in df.columns else LEAGUE_AVG["kpct"]
-    df["bbpct"]   = (df["bb_raw"] / bf).fillna(LEAGUE_AVG["bbpct"])  if "bb_raw" in df.columns else LEAGUE_AVG["bbpct"]
-    # These aren't in bref — use league averages as fallback
-    if "xfip"      not in df.columns: df["xfip"]      = LEAGUE_AVG["xfip"]
-    if "hardpct"   not in df.columns: df["hardpct"]   = LEAGUE_AVG["hardpct"]
-    if "stuffplus" not in df.columns: df["stuffplus"]  = LEAGUE_AVG["stuffplus"]
-    if "whip"      not in df.columns: df["whip"]       = LEAGUE_AVG["whip"]
-    if "era"       not in df.columns: df["era"]        = LEAGUE_AVG["xfip"]
-    if "ip"        not in df.columns: df["ip"]         = 0.0
-    return df
-
-
-def get_pitcher_season_stats(season=CURRENT_SEASON):
-    """Pulls current-season pitching stats from Baseball Reference."""
-    from pybaseball import pitching_stats_bref
+def _get_mlb_pitching_stats_for_pitcher(pitcher_id, pitcher_name, season=CURRENT_SEASON):
+    """
+    Fetches season pitching stats for a single pitcher from the MLB Stats API.
+    Returns a dict with our internal pitching schema, or None if not found.
+    """
     try:
-        df = pitching_stats_bref(season)
-        if df is None or df.empty:
-            return pd.DataFrame()
-        return _normalize_bref_pitching(df)
-    except Exception as e:
-        print(f"  [WARNING] Baseball Reference season pitching stats failed: {e}")
-        return pd.DataFrame()
+        url  = f"{MLB_API}/people/{pitcher_id}/stats?stats=season&season={season}&group=pitching"
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+        splits = data.get("stats", [{}])[0].get("splits", [])
+        if not splits:
+            return None
+        stat = splits[0].get("stat", {})
+
+        ip  = float(stat.get("inningsPitched", 0))
+        era = float(stat.get("era",  LEAGUE_AVG["xfip"]))
+        whip= float(stat.get("whip", LEAGUE_AVG["whip"]))
+        bf  = int(stat.get("battersFaced",   0))
+        k   = int(stat.get("strikeOuts",     0))
+        bb  = int(stat.get("baseOnBalls",    0))
+
+        bf_safe = max(bf, 1)
+        return {
+            "name":      pitcher_name,
+            "ip":        ip,
+            "era":       era,
+            "xfip":      era,       # use ERA as xFIP proxy — no xFIP in MLB API
+            "whip":      whip,
+            "kpct":      k  / bf_safe,
+            "bbpct":     bb / bf_safe,
+            "hardpct":   LEAGUE_AVG["hardpct"],   # not in MLB API
+            "stuffplus":  LEAGUE_AVG["stuffplus"], # not in MLB API
+            "source":    "mlb_api",
+        }
+    except Exception:
+        return None
 
 
-def get_pitcher_career_stats(start_year=2019, end_year=None):
-    """Pulls multi-year pitching stats from Baseball Reference."""
-    from pybaseball import pitching_stats_bref
-    if end_year is None:
-        end_year = CURRENT_SEASON - 1
-    frames = []
+def _get_mlb_pitching_career_for_pitcher(pitcher_id, pitcher_name, start_year=2019):
+    """Aggregates career pitching stats from MLB Stats API."""
+    end_year = CURRENT_SEASON - 1
+    totals = {"ip":0.0,"era_sum":0.0,"whip_sum":0.0,"bf":0,"k":0,"bb":0,"seasons":0}
+
     for yr in range(start_year, end_year + 1):
         try:
-            df = pitching_stats_bref(yr)
-            if df is not None and not df.empty:
-                frames.append(df)
-        except Exception as e:
-            print(f"  [WARNING] bref pitching stats failed for {yr}: {e}")
-    if not frames:
-        return pd.DataFrame()
-    combined = _normalize_bref_pitching(pd.concat(frames, ignore_index=True))
-    return combined
+            url  = f"{MLB_API}/people/{pitcher_id}/stats?stats=season&season={yr}&group=pitching"
+            resp = requests.get(url, timeout=10)
+            resp.raise_for_status()
+            data = resp.json()
+            splits = data.get("stats", [{}])[0].get("splits", [])
+            if not splits:
+                continue
+            stat = splits[0].get("stat", {})
+            totals["ip"]       += float(stat.get("inningsPitched", 0))
+            totals["era_sum"]  += float(stat.get("era",  LEAGUE_AVG["xfip"]))
+            totals["whip_sum"] += float(stat.get("whip", LEAGUE_AVG["whip"]))
+            totals["bf"]       += int(stat.get("battersFaced",  0))
+            totals["k"]        += int(stat.get("strikeOuts",    0))
+            totals["bb"]       += int(stat.get("baseOnBalls",   0))
+            totals["seasons"]  += 1
+        except Exception:
+            pass
+
+    if totals["ip"] == 0:
+        return None
+
+    bf_safe = max(totals["bf"], 1)
+    seasons = max(totals["seasons"], 1)
+    return {
+        "name":      pitcher_name,
+        "ip":        totals["ip"],
+        "era":       totals["era_sum"]  / seasons,
+        "xfip":      totals["era_sum"]  / seasons,
+        "whip":      totals["whip_sum"] / seasons,
+        "kpct":      totals["k"]  / bf_safe,
+        "bbpct":     totals["bb"] / bf_safe,
+        "hardpct":   LEAGUE_AVG["hardpct"],
+        "stuffplus":  LEAGUE_AVG["stuffplus"],
+        "source":    "mlb_api_career",
+    }
+
+
+def get_pitcher_season_stats(season=CURRENT_SEASON, pitcher_ids=None):
+    """
+    Pulls season pitching stats from MLB Stats API for a list of pitcher IDs.
+    pitcher_ids: list of (id, name) tuples.
+    Returns a dict keyed by normalised name.
+    """
+    if not pitcher_ids:
+        return {}
+    results = {}
+    for pid, pname in pitcher_ids:
+        row = _get_mlb_pitching_stats_for_pitcher(pid, pname, season)
+        if row:
+            results[lookup_player_fg_name(pid, pname)] = row
+    return results
+
+
+def get_pitcher_career_stats(start_year=2019, end_year=None, pitcher_ids=None):
+    """
+    Pulls career pitching stats from MLB Stats API for a list of pitcher IDs.
+    pitcher_ids: list of (id, name) tuples.
+    Returns a dict keyed by normalised name.
+    """
+    if not pitcher_ids:
+        return {}
+    results = {}
+    for pid, pname in pitcher_ids:
+        row = _get_mlb_pitching_career_for_pitcher(pid, pname, start_year)
+        if row:
+            results[lookup_player_fg_name(pid, pname)] = row
+    return results
 
 
 def get_pitcher_pitch_mix(pitcher_mlb_id, season=CURRENT_SEASON):
@@ -567,30 +731,39 @@ def lookup_player_fg_name(mlb_id, mlb_name):
 
 def fetch_all_data(active_players, matchups):
     """
-    Master fetch function — pulls all data needed for projections in one pass.
-    Runs once at startup so we don't re-fetch FanGraphs for each player.
-
-    Returns:
-      batter_season  — DataFrame of all batters this season
-      batter_career  — DataFrame of all batters career
-      pitcher_season — DataFrame of all pitchers this season
-      pitcher_career — DataFrame of all pitchers career (for Stuff+ blend)
-      pitch_splits   — dict keyed by mlb_id: batter pitch type splits
-      pitcher_mixes  — dict keyed by pitcher_id: pitcher pitch mix
+    Master fetch function. Now uses MLB Stats API for batting/pitching stats.
+    Returns dicts keyed by normalised name instead of DataFrames.
     """
-    print("  Fetching FanGraphs season batting stats...")
-    batter_season  = get_batter_season_stats()
+    batter_list = [
+        {"name": p["name"], "mlb_id": p["mlb_id"]}
+        for p in active_players
+        if p["status"] != "dtd" and not p["status"].startswith("il")
+    ]
 
-    print("  Fetching FanGraphs career batting stats...")
-    batter_career  = get_batter_career_stats()
+    seen = set()
+    pitcher_ids = []
+    for team, matchup in matchups.items():
+        sp = matchup.get("probable_pitcher")
+        if sp and sp["id"] and sp["id"] not in seen:
+            pitcher_ids.append((sp["id"], sp["name"]))
+            seen.add(sp["id"])
 
-    print("  Fetching FanGraphs season pitching stats...")
-    pitcher_season = get_pitcher_season_stats()
+    print("  Fetching MLB API season batting stats...")
+    batter_season = get_batter_season_stats(player_list=batter_list)
+    print(f"    Got {len(batter_season)} players")
 
-    print("  Fetching FanGraphs career pitching stats...")
-    pitcher_career = get_pitcher_career_stats()
+    print("  Fetching MLB API career batting stats...")
+    batter_career = get_batter_career_stats(player_list=batter_list)
+    print(f"    Got {len(batter_career)} players")
 
-    # Per-player Statcast fetches (one per batter, one per probable pitcher)
+    print("  Fetching MLB API season pitching stats...")
+    pitcher_season = get_pitcher_season_stats(pitcher_ids=pitcher_ids)
+    print(f"    Got {len(pitcher_season)} pitchers")
+
+    print("  Fetching MLB API career pitching stats...")
+    pitcher_career = get_pitcher_career_stats(pitcher_ids=pitcher_ids)
+    print(f"    Got {len(pitcher_career)} pitchers")
+
     pitch_splits  = {}
     pitcher_mixes = {}
 
@@ -598,7 +771,7 @@ def fetch_all_data(active_players, matchups):
     for player in active_players:
         mlb_id = player["mlb_id"]
         if player["status"] == "dtd":
-            continue  # skip — no projection anyway
+            continue
         print(f"    {player['name']}...")
         pitch_splits[mlb_id] = get_batter_pitch_type_splits(mlb_id)
 
@@ -613,25 +786,6 @@ def fetch_all_data(active_players, matchups):
 
     return batter_season, batter_career, pitcher_season, pitcher_career, \
            pitch_splits, pitcher_mixes
-
-
-
-# ─────────────────────────────────────────────
-# SECTION 3 — BLENDING LOGIC
-# ─────────────────────────────────────────────
-#
-# Core idea: we never fully trust a small sample.
-# At low PA/IP we lean on career numbers.
-# At high PA/IP we lean on current season.
-# The blend is a smooth linear interpolation between the two.
-#
-# Functions:
-#   blend_weight(n, n_min, n_max, floor, ceil)  → season weight scalar
-#   blend_batter_stats(season_row, career_row)  → merged stat dict
-#   blend_pitcher_stats(season_row, career_row) → merged stat dict
-#   get_batter_stats_for_player(name, mlb_id, batter_season, batter_career)
-#   get_pitcher_stats_for_pitcher(name, pitcher_id, pitcher_season, pitcher_career)
-# ─────────────────────────────────────────────
 
 
 def blend_weight(n, n_min, n_max, floor, ceil):
@@ -810,36 +964,13 @@ def blend_pitcher_stats(season_row, career_row, season_ip):
 
 def get_batter_stats_for_player(name, mlb_id, batter_season, batter_career):
     """
-    Looks up a player by name in the season and career DataFrames,
-    then blends them. Returns the blended stat dict.
-
-    Name matching uses the normalised name from lookup_player_fg_name().
-    Falls back gracefully if the player isn't found in one or both sources.
+    Looks up a player in the season and career dicts (keyed by norm name),
+    then blends them. batter_season and batter_career are now dicts not DataFrames.
     """
-    norm_name = lookup_player_fg_name(mlb_id, name)
-
-    season_row = None
-    career_row = None
-    season_pa  = 0
-
-    # Search season stats
-    if not batter_season.empty and "name" in batter_season.columns:
-        mask = batter_season["name"].apply(
-            lambda n: lookup_player_fg_name(0, str(n)) == norm_name
-        )
-        matches = batter_season[mask]
-        if not matches.empty:
-            season_row = matches.iloc[0]
-            season_pa  = int(_safe_get(season_row, "pa", 0))
-
-    # Search career stats
-    if not batter_career.empty and "name" in batter_career.columns:
-        mask = batter_career["name"].apply(
-            lambda n: lookup_player_fg_name(0, str(n)) == norm_name
-        )
-        matches = batter_career[mask]
-        if not matches.empty:
-            career_row = matches.iloc[0]
+    norm_name  = lookup_player_fg_name(mlb_id, name)
+    season_row = batter_season.get(norm_name) if isinstance(batter_season, dict) else None
+    career_row = batter_career.get(norm_name) if isinstance(batter_career, dict) else None
+    season_pa  = int(season_row.get("pa", 0)) if season_row else 0
 
     if season_row is None and career_row is None:
         print(f"    [WARNING] No batting stats found for {name} — using league avg")
@@ -850,35 +981,16 @@ def get_batter_stats_for_player(name, mlb_id, batter_season, batter_career):
 
 def get_pitcher_stats_for_pitcher(name, pitcher_id, pitcher_season, pitcher_career):
     """
-    Looks up a pitcher in the season and career DataFrames and blends them.
-    Returns the blended pitcher stat dict.
-    Falls back to league average if pitcher not found anywhere.
+    Looks up a pitcher in the season and career dicts (keyed by norm name),
+    then blends them.
     """
     if not name:
-        # No probable pitcher announced — return league average
         return blend_pitcher_stats(None, None, 0)
 
     norm_name  = lookup_player_fg_name(pitcher_id or 0, name)
-    season_row = None
-    career_row = None
-    season_ip  = 0.0
-
-    if not pitcher_season.empty and "name" in pitcher_season.columns:
-        mask = pitcher_season["name"].apply(
-            lambda n: lookup_player_fg_name(0, str(n)) == norm_name
-        )
-        matches = pitcher_season[mask]
-        if not matches.empty:
-            season_row = matches.iloc[0]
-            season_ip  = float(_safe_get(season_row, "ip", 0.0))
-
-    if not pitcher_career.empty and "name" in pitcher_career.columns:
-        mask = pitcher_career["name"].apply(
-            lambda n: lookup_player_fg_name(0, str(n)) == norm_name
-        )
-        matches = pitcher_career[mask]
-        if not matches.empty:
-            career_row = matches.iloc[0]
+    season_row = pitcher_season.get(norm_name) if isinstance(pitcher_season, dict) else None
+    career_row = pitcher_career.get(norm_name) if isinstance(pitcher_career, dict) else None
+    season_ip  = float(season_row.get("ip", 0.0)) if season_row else 0.0
 
     if season_row is None and career_row is None:
         print(f"    [WARNING] No pitching stats found for {name} — using league avg")
