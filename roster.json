@@ -11,7 +11,7 @@
     },
     {
       "name": "Sal Stewart",
-      "mlb_id": 694973,
+      "mlb_id": 701398,
       "team": "CIN",
       "bats": "R",
       "positions": ["1B", "3B"],
@@ -27,7 +27,7 @@
     },
     {
       "name": "Josh Jung",
-      "mlb_id": 672939,
+      "mlb_id": 673962,
       "team": "TEX",
       "bats": "R",
       "positions": ["3B"],
@@ -83,7 +83,7 @@
     },
     {
       "name": "Brooks Lee",
-      "mlb_id": 694102,
+      "mlb_id": 686797,
       "team": "MIN",
       "bats": "S",
       "positions": ["SS", "2B", "3B"],
@@ -91,7 +91,7 @@
     },
     {
       "name": "Cole Young",
-      "mlb_id": 726309,
+      "mlb_id": 702284,
       "team": "SEA",
       "bats": "L",
       "positions": ["2B"],
