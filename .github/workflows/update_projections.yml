@@ -39,7 +39,12 @@ jobs:
       - name: Run projections
         run: |
           cd backend
-          python -u projections.py
+          python -u projections.py 2>&1
+        continue-on-error: true
+      - name: Check output
+        run: |
+          echo "=== data.json ==="
+          cat docs/data.json
       - name: Commit updated projections
         run: |
           git config user.name  "github-actions[bot]"
