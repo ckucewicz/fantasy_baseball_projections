@@ -1346,7 +1346,7 @@ def pitch_type_matchup_adj(batter_splits, pitcher_mix):
         # Bucket impact:
         # batter_z negative + pitcher_z positive = bad for batter (negative adj)
         # batter_z positive + pitcher_z negative = good for batter (positive adj)
-        impact = batter_z * pitcher_z * usage * SCALE
+        impact = batter_z * (-pitcher_z) * usage * SCALE
 
         total_adj += impact
 
