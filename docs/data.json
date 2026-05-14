@@ -1,474 +1,8 @@
 {
-  "generated_at": "2026-05-13T14:03:00",
+  "generated_at": "2026-05-14T13:00:01",
   "season": 2026,
-  "player_count": 12,
+  "player_count": 7,
   "projections": [
-    {
-      "name": "Geraldo Perdomo",
-      "mlb_id": 661388,
-      "positions": [
-        "SS"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "TEX",
-      "venue": "Globe Life Field",
-      "probable_sp": "Kumar Rocker",
-      "sp_hand": "R",
-      "proj_pts": 7.6,
-      "confidence": {
-        "score": 40,
-        "label": "medium",
-        "pa_score": 0.329,
-        "ip_score": 0.316,
-        "babip_score": 0.562
-      },
-      "stat_line": {
-        "h_ab": "1.1H / 3.7AB",
-        "hr": 0.12,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.45,
-        "k": 0.74
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.78,
-          "mult": "\u00d7  2.80",
-          "pts": 2.18
-        },
-        {
-          "cat": "2B",
-          "proj": 0.17,
-          "mult": "\u00d7  3.80",
-          "pts": 0.65
-        },
-        {
-          "cat": "3B",
-          "proj": 0.04,
-          "mult": "\u00d7  5.70",
-          "pts": 0.23
-        },
-        {
-          "cat": "HR",
-          "proj": 0.12,
-          "mult": "\u00d7  7.50",
-          "pts": 0.9
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.45,
-          "mult": "\u00d7  1.50",
-          "pts": 0.68
-        },
-        {
-          "cat": "K",
-          "proj": 0.74,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.15
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.02,
-          "mult": "\u00d7  1.50",
-          "pts": 0.04
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 2.88,
-          "adj_str": "+2.9",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 1.38,
-          "adj_str": "+1.4",
-          "cls": "fpos",
-          "mult": "",
-          "pill": "boosted"
-        },
-        {
-          "label": "Pitcher (Kumar Rocker \u00b7 xFIP 4.87)",
-          "adj": 2.26,
-          "adj_str": "+2.3",
-          "cls": "fpos",
-          "mult": "H \u00d71.12 \u00b7 K \u00d70.95",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (Globe Life Field)",
-          "adj": 0.05,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
-          "pill": "neutral"
-        },
-        {
-          "label": "BABIP (0.320 curr \u00b7 0.376 career)",
-          "adj": 0.18,
-          "adj_str": "+0.2",
-          "cls": "fpos",
-          "mult": "H \u00d71.03",
-          "pill": "unlucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "neutral"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Rocker 54% usage \u00b7 6% whiff",
-          "detail": "0.401 wOBA vs fastball \u2014 strength",
-          "adj": 3.94,
-          "adj_str": "+3.9",
-          "adj_class": "fpos"
-        }
-      ],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "blended",
-      "rank": 1
-    },
-    {
-      "name": "Ketel Marte",
-      "mlb_id": 606466,
-      "positions": [
-        "2B",
-        "DH"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "TEX",
-      "venue": "Globe Life Field",
-      "probable_sp": "Kumar Rocker",
-      "sp_hand": "R",
-      "proj_pts": 7.3,
-      "confidence": {
-        "score": 29,
-        "label": "low",
-        "pa_score": 0.329,
-        "ip_score": 0.316,
-        "babip_score": 0.213
-      },
-      "stat_line": {
-        "h_ab": "1.0H / 3.7AB",
-        "hr": 0.15,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.35,
-        "k": 0.69
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.66,
-          "mult": "\u00d7  2.80",
-          "pts": 1.85
-        },
-        {
-          "cat": "2B",
-          "proj": 0.19,
-          "mult": "\u00d7  3.80",
-          "pts": 0.72
-        },
-        {
-          "cat": "3B",
-          "proj": 0.04,
-          "mult": "\u00d7  5.70",
-          "pts": 0.23
-        },
-        {
-          "cat": "HR",
-          "proj": 0.15,
-          "mult": "\u00d7  7.50",
-          "pts": 1.12
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.35,
-          "mult": "\u00d7  1.50",
-          "pts": 0.52
-        },
-        {
-          "cat": "K",
-          "proj": 0.69,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.14
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.03,
-          "mult": "\u00d7  1.50",
-          "pts": 0.04
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 2.7,
-          "adj_str": "+2.7",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 1.38,
-          "adj_str": "+1.4",
-          "cls": "fpos",
-          "mult": "",
-          "pill": "boosted"
-        },
-        {
-          "label": "Pitcher (Kumar Rocker \u00b7 xFIP 4.87)",
-          "adj": 2.26,
-          "adj_str": "+2.3",
-          "cls": "fpos",
-          "mult": "H \u00d71.12 \u00b7 K \u00d70.95",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (Globe Life Field)",
-          "adj": 0.06,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
-          "pill": "boosted"
-        },
-        {
-          "label": "BABIP (0.227 curr \u00b7 0.310 career)",
-          "adj": 0.27,
-          "adj_str": "+0.3",
-          "cls": "fpos",
-          "mult": "H \u00d71.05",
-          "pill": "unlucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.07,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d71.00",
-          "pill": "slight drag"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Rocker 54% usage \u00b7 6% whiff",
-          "detail": "0.396 wOBA vs fastball \u2014 strength",
-          "adj": 3.71,
-          "adj_str": "+3.7",
-          "adj_class": "fpos"
-        }
-      ],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "blended",
-      "rank": 2
-    },
-    {
-      "name": "Cole Young",
-      "mlb_id": 702284,
-      "positions": [
-        "2B"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "HOU",
-      "venue": "Daikin Park",
-      "probable_sp": "Lance McCullers Jr.",
-      "sp_hand": "R",
-      "proj_pts": 6.4,
-      "confidence": {
-        "score": 34,
-        "label": "low",
-        "pa_score": 0.34,
-        "ip_score": 0.343,
-        "babip_score": 0.325
-      },
-      "stat_line": {
-        "h_ab": "0.8H / 3.7AB",
-        "hr": 0.07,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.41,
-        "k": 0.84
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.54,
-          "mult": "\u00d7  2.80",
-          "pts": 1.51
-        },
-        {
-          "cat": "2B",
-          "proj": 0.12,
-          "mult": "\u00d7  3.80",
-          "pts": 0.46
-        },
-        {
-          "cat": "3B",
-          "proj": 0.03,
-          "mult": "\u00d7  5.70",
-          "pts": 0.17
-        },
-        {
-          "cat": "HR",
-          "proj": 0.07,
-          "mult": "\u00d7  7.50",
-          "pts": 0.53
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.41,
-          "mult": "\u00d7  1.50",
-          "pts": 0.61
-        },
-        {
-          "cat": "K",
-          "proj": 0.84,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.17
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.06,
-          "mult": "\u00d7  1.50",
-          "pts": 0.09
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 1.55,
-          "adj_str": "+1.6",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 1.38,
-          "adj_str": "+1.4",
-          "cls": "fpos",
-          "mult": "",
-          "pill": "boosted"
-        },
-        {
-          "label": "Pitcher (Lance McCullers Jr. \u00b7 xFIP 5.15)",
-          "adj": 2.44,
-          "adj_str": "+2.4",
-          "cls": "fpos",
-          "mult": "H \u00d71.17 \u00b7 K \u00d71.07",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (Citizens Bank Park)",
-          "adj": 0.07,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.12 \u00b7 R \u00d71.06",
-          "pill": "boosted"
-        },
-        {
-          "label": "BABIP (0.321 curr \u00b7 0.247 career)",
-          "adj": -0.24,
-          "adj_str": "\u22120.2",
-          "cls": "fneg",
-          "mult": "H \u00d70.95",
-          "pill": "lucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.03,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "neutral"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Jr. 56% usage \u00b7 6% whiff",
-          "detail": "0.372 wOBA vs fastball \u2014 strength",
-          "adj": 2.36,
-          "adj_str": "+2.4",
-          "adj_class": "fpos"
-        }
-      ],
-      "babip_note": "lucky \u2014 H rate nudged down",
-      "data_source": "blended",
-      "rank": 3
-    },
     {
       "name": "Sal Stewart",
       "mlb_id": 701398,
@@ -480,14 +14,14 @@
       "team": "",
       "opponent": "WSH",
       "venue": "Great American Ball Park",
-      "probable_sp": "Jake Irvin",
-      "sp_hand": "R",
-      "proj_pts": 6.1,
+      "probable_sp": "Foster Griffin",
+      "sp_hand": "L",
+      "proj_pts": 4.0,
       "confidence": {
-        "score": 57,
-        "label": "medium",
-        "pa_score": 0.377,
-        "ip_score": 0.417,
+        "score": 61,
+        "label": "high",
+        "pa_score": 0.391,
+        "ip_score": 0.517,
         "babip_score": 1.0
       },
       "stat_line": {
@@ -495,8 +29,8 @@
         "hr": 0.29,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.29,
-        "k": 0.93
+        "bb": 0.3,
+        "k": 0.92
       },
       "scoring_rows": [
         {
@@ -543,15 +77,15 @@
         },
         {
           "cat": "BB",
-          "proj": 0.29,
+          "proj": 0.3,
           "mult": "\u00d7  1.50",
-          "pts": 0.43
+          "pts": 0.45
         },
         {
           "cat": "K",
-          "proj": 0.93,
+          "proj": 0.92,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.19
+          "pts": -0.18
         },
         {
           "cat": "HBP",
@@ -563,47 +97,39 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.72,
+          "adj": 2.73,
           "adj_str": "+2.7",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
         },
         {
-          "label": "Platoon (R vs RHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "neutral"
-        },
-        {
-          "label": "Pitcher (Jake Irvin \u00b7 xFIP 5.03)",
-          "adj": 2.12,
-          "adj_str": "+2.1",
+          "label": "Platoon (R vs LHP)",
+          "adj": 0.99,
+          "adj_str": "+1.0",
           "cls": "fpos",
-          "mult": "H \u00d71.15 \u00b7 K \u00d70.95",
+          "mult": "",
           "pill": "boosted"
         },
         {
+          "label": "Pitcher (Foster Griffin \u00b7 xFIP 3.35)",
+          "adj": -0.93,
+          "adj_str": "\u22120.9",
+          "cls": "fneg",
+          "mult": "H \u00d70.85 \u00b7 K \u00d70.88",
+          "pill": "suppressed"
+        },
+        {
           "label": "Park factor (Great American Ball Park)",
-          "adj": 0.32,
+          "adj": 0.31,
           "adj_str": "+0.3",
           "cls": "fpos",
           "mult": "HR \u00d71.14 \u00b7 R \u00d71.06",
           "pill": "boosted"
         },
         {
-          "label": "BABIP (0.265 curr \u00b7 0.257 career)",
-          "adj": -0.02,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "lucky"
-        },
-        {
           "label": "Recent form (14d)",
-          "adj": -0.07,
+          "adj": -0.08,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "H \u00d71.00",
@@ -614,200 +140,44 @@
         {
           "label": "Fastball",
           "badge_class": "pb-fast",
-          "meta": "Irvin 63% usage \u00b7 7% whiff",
-          "detail": "0.451 wOBA vs fastball \u2014 strength",
-          "adj": 5.14,
-          "adj_str": "+5.1",
+          "meta": "Griffin 58% usage \u00b7 8% whiff",
+          "detail": "0.452 wOBA vs fastball \u2014 strength",
+          "adj": 3.57,
+          "adj_str": "+3.6",
           "adj_class": "fpos"
         }
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 4
+      "rank": 1
     },
     {
-      "name": "Michael Busch",
-      "mlb_id": 683737,
+      "name": "Cole Young",
+      "mlb_id": 702284,
       "positions": [
-        "1B"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "ATL",
-      "venue": "Truist Park",
-      "probable_sp": "JR Ritchie",
-      "sp_hand": "R",
-      "proj_pts": 6.0,
-      "confidence": {
-        "score": 49,
-        "label": "medium",
-        "pa_score": 0.369,
-        "ip_score": 0.101,
-        "babip_score": 1.0
-      },
-      "stat_line": {
-        "h_ab": "0.9H / 3.7AB",
-        "hr": 0.15,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.52,
-        "k": 1.03
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.54,
-          "mult": "\u00d7  2.80",
-          "pts": 1.51
-        },
-        {
-          "cat": "2B",
-          "proj": 0.18,
-          "mult": "\u00d7  3.80",
-          "pts": 0.68
-        },
-        {
-          "cat": "3B",
-          "proj": 0.04,
-          "mult": "\u00d7  5.70",
-          "pts": 0.23
-        },
-        {
-          "cat": "HR",
-          "proj": 0.15,
-          "mult": "\u00d7  7.50",
-          "pts": 1.12
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.52,
-          "mult": "\u00d7  1.50",
-          "pts": 0.78
-        },
-        {
-          "cat": "K",
-          "proj": 1.03,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.21
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.05,
-          "mult": "\u00d7  1.50",
-          "pts": 0.07
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 2.55,
-          "adj_str": "+2.5",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 1.38,
-          "adj_str": "+1.4",
-          "cls": "fpos",
-          "mult": "",
-          "pill": "boosted"
-        },
-        {
-          "label": "Pitcher (JR Ritchie \u00b7 xFIP 3.63)",
-          "adj": 1.23,
-          "adj_str": "+1.2",
-          "cls": "fpos",
-          "mult": "H \u00d70.90 \u00b7 K \u00d70.89",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (Truist Park)",
-          "adj": 0.05,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.04 \u00b7 R \u00d71.01",
-          "pill": "neutral"
-        },
-        {
-          "label": "BABIP (0.291 curr \u00b7 0.280 career)",
-          "adj": -0.03,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d70.99",
-          "pill": "lucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": 0.04,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "neutral"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Ritchie 52% usage \u00b7 5% whiff",
-          "detail": "0.350 wOBA vs fastball \u2014 strength",
-          "adj": 0.77,
-          "adj_str": "+0.8",
-          "adj_class": "fpos"
-        }
-      ],
-      "babip_note": "in line with career",
-      "data_source": "blended",
-      "rank": 5
-    },
-    {
-      "name": "Cal Raleigh",
-      "mlb_id": 663728,
-      "positions": [
-        "C",
-        "DH"
+        "2B"
       ],
       "status": "active",
       "team": "",
       "opponent": "HOU",
       "venue": "Daikin Park",
-      "probable_sp": "Lance McCullers Jr.",
+      "probable_sp": "Mike Burrows",
       "sp_hand": "R",
-      "proj_pts": 5.5,
+      "proj_pts": 3.7,
       "confidence": {
-        "score": 41,
+        "score": 40,
         "label": "medium",
-        "pa_score": 0.363,
-        "ip_score": 0.343,
-        "babip_score": 0.537
+        "pa_score": 0.351,
+        "ip_score": 0.489,
+        "babip_score": 0.4
       },
       "stat_line": {
-        "h_ab": "0.8H / 3.7AB",
-        "hr": 0.22,
+        "h_ab": "0.7H / 3.7AB",
+        "hr": 0.07,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.44,
-        "k": 1.23
+        "bb": 0.41,
+        "k": 0.86
       },
       "scoring_rows": [
         {
@@ -818,171 +188,15 @@
         },
         {
           "cat": "1B",
-          "proj": 0.43,
+          "proj": 0.53,
           "mult": "\u00d7  2.80",
-          "pts": 1.2
+          "pts": 1.48
         },
         {
           "cat": "2B",
-          "proj": 0.11,
+          "proj": 0.12,
           "mult": "\u00d7  3.80",
-          "pts": 0.42
-        },
-        {
-          "cat": "3B",
-          "proj": 0.02,
-          "mult": "\u00d7  5.70",
-          "pts": 0.11
-        },
-        {
-          "cat": "HR",
-          "proj": 0.22,
-          "mult": "\u00d7  7.50",
-          "pts": 1.65
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.44,
-          "mult": "\u00d7  1.50",
-          "pts": 0.66
-        },
-        {
-          "cat": "K",
-          "proj": 1.23,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.25
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.02,
-          "mult": "\u00d7  1.50",
-          "pts": 0.03
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 2.18,
-          "adj_str": "+2.2",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 1.38,
-          "adj_str": "+1.4",
-          "cls": "fpos",
-          "mult": "",
-          "pill": "boosted"
-        },
-        {
-          "label": "Pitcher (Lance McCullers Jr. \u00b7 xFIP 5.15)",
-          "adj": 2.44,
-          "adj_str": "+2.4",
-          "cls": "fpos",
-          "mult": "H \u00d71.17 \u00b7 K \u00d71.07",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (Citizens Bank Park)",
-          "adj": 0.21,
-          "adj_str": "+0.2",
-          "cls": "fpos",
-          "mult": "HR \u00d71.12 \u00b7 R \u00d71.06",
-          "pill": "boosted"
-        },
-        {
-          "label": "BABIP (0.196 curr \u00b7 0.253 career)",
-          "adj": 0.15,
-          "adj_str": "+0.2",
-          "cls": "fpos",
-          "mult": "H \u00d71.03",
-          "pill": "unlucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.1,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d71.00",
-          "pill": "slight drag"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Jr. 56% usage \u00b7 6% whiff",
-          "detail": "0.299 wOBA vs fastball \u2014 vulnerability",
-          "adj": -0.66,
-          "adj_str": "\u22120.7",
-          "adj_class": "fneg"
-        }
-      ],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "blended",
-      "rank": 6
-    },
-    {
-      "name": "Aaron Judge",
-      "mlb_id": 592450,
-      "positions": [
-        "RF",
-        "DH"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "BAL",
-      "venue": "Oriole Park at Camden Yards",
-      "probable_sp": "Kyle Bradish",
-      "sp_hand": "R",
-      "proj_pts": 4.8,
-      "confidence": {
-        "score": 58,
-        "label": "medium",
-        "pa_score": 0.4,
-        "ip_score": 0.443,
-        "babip_score": 0.95
-      },
-      "stat_line": {
-        "h_ab": "1.1H / 3.7AB",
-        "hr": 0.36,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.76,
-        "k": 1.22
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.55,
-          "mult": "\u00d7  2.80",
-          "pts": 1.54
-        },
-        {
-          "cat": "2B",
-          "proj": 0.15,
-          "mult": "\u00d7  3.80",
-          "pts": 0.57
+          "pts": 0.46
         },
         {
           "cat": "3B",
@@ -992,9 +206,9 @@
         },
         {
           "cat": "HR",
-          "proj": 0.36,
+          "proj": 0.07,
           "mult": "\u00d7  7.50",
-          "pts": 2.7
+          "pts": 0.53
         },
         {
           "cat": "R",
@@ -1010,67 +224,67 @@
         },
         {
           "cat": "BB",
-          "proj": 0.76,
+          "proj": 0.41,
           "mult": "\u00d7  1.50",
-          "pts": 1.14
+          "pts": 0.61
         },
         {
           "cat": "K",
-          "proj": 1.22,
+          "proj": 0.86,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.24
+          "pts": -0.17
         },
         {
           "cat": "HBP",
-          "proj": 0.04,
+          "proj": 0.06,
           "mult": "\u00d7  1.50",
-          "pts": 0.06
+          "pts": 0.08
         }
       ],
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 4.29,
-          "adj_str": "+4.3",
+          "adj": 1.52,
+          "adj_str": "+1.5",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
         },
         {
-          "label": "Platoon (R vs RHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "neutral"
-        },
-        {
-          "label": "Pitcher (Kyle Bradish \u00b7 xFIP 3.87)",
-          "adj": -0.71,
-          "adj_str": "\u22120.7",
-          "cls": "fneg",
-          "mult": "H \u00d70.94 \u00b7 K \u00d71.07",
-          "pill": "suppressed"
-        },
-        {
-          "label": "Park factor (Camden Yards)",
-          "adj": 0.23,
-          "adj_str": "+0.2",
+          "label": "Platoon (L vs RHP)",
+          "adj": 1.38,
+          "adj_str": "+1.4",
           "cls": "fpos",
-          "mult": "HR \u00d71.08 \u00b7 R \u00d71.05",
+          "mult": "",
           "pill": "boosted"
         },
         {
-          "label": "BABIP (0.313 curr \u00b7 0.337 career)",
-          "adj": 0.06,
+          "label": "Pitcher (Mike Burrows \u00b7 xFIP 4.03)",
+          "adj": -0.21,
+          "adj_str": "\u22120.2",
+          "cls": "fneg",
+          "mult": "H \u00d70.97 \u00b7 K \u00d71.02",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Citizens Bank Park)",
+          "adj": 0.07,
           "adj_str": "+0.1",
           "cls": "fpos",
-          "mult": "H \u00d71.01",
-          "pill": "unlucky"
+          "mult": "HR \u00d71.12 \u00b7 R \u00d71.06",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.315 curr \u00b7 0.247 career)",
+          "adj": -0.22,
+          "adj_str": "\u22120.2",
+          "cls": "fneg",
+          "mult": "H \u00d70.96",
+          "pill": "lucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.02,
+          "adj": -0.04,
           "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
@@ -1081,16 +295,171 @@
         {
           "label": "Fastball",
           "badge_class": "pb-fast",
-          "meta": "Bradish 49% usage \u00b7 4% whiff",
-          "detail": "0.496 wOBA vs fastball \u2014 strength",
-          "adj": 6.71,
-          "adj_str": "+6.7",
+          "meta": "Burrows 43% usage \u00b7 4% whiff",
+          "detail": "0.368 wOBA vs fastball \u2014 strength",
+          "adj": 1.91,
+          "adj_str": "+1.9",
+          "adj_class": "fpos"
+        }
+      ],
+      "babip_note": "lucky \u2014 H rate nudged down",
+      "data_source": "blended",
+      "rank": 2
+    },
+    {
+      "name": "Manny Machado",
+      "mlb_id": 592518,
+      "positions": [
+        "3B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "MIL",
+      "venue": "American Family Field",
+      "probable_sp": "Kyle Harrison",
+      "sp_hand": "L",
+      "proj_pts": 3.0,
+      "confidence": {
+        "score": 27,
+        "label": "low",
+        "pa_score": 0.34,
+        "ip_score": 0.331,
+        "babip_score": 0.1
+      },
+      "stat_line": {
+        "h_ab": "1.0H / 3.7AB",
+        "hr": 0.18,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.42,
+        "k": 0.83
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.65,
+          "mult": "\u00d7  2.80",
+          "pts": 1.82
+        },
+        {
+          "cat": "2B",
+          "proj": 0.13,
+          "mult": "\u00d7  3.80",
+          "pts": 0.49
+        },
+        {
+          "cat": "3B",
+          "proj": 0.03,
+          "mult": "\u00d7  5.70",
+          "pts": 0.17
+        },
+        {
+          "cat": "HR",
+          "proj": 0.18,
+          "mult": "\u00d7  7.50",
+          "pts": 1.35
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.42,
+          "mult": "\u00d7  1.50",
+          "pts": 0.63
+        },
+        {
+          "cat": "K",
+          "proj": 0.83,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.17
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.01,
+          "mult": "\u00d7  1.50",
+          "pts": 0.01
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.67,
+          "adj_str": "+2.7",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs LHP)",
+          "adj": 0.99,
+          "adj_str": "+1.0",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Kyle Harrison \u00b7 xFIP 3.63)",
+          "adj": -1.52,
+          "adj_str": "\u22121.5",
+          "cls": "fneg",
+          "mult": "H \u00d70.90 \u00b7 K \u00d71.06",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (American Family Field)",
+          "adj": 0.09,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.204 curr \u00b7 0.296 career)",
+          "adj": 0.29,
+          "adj_str": "+0.3",
+          "cls": "fpos",
+          "mult": "H \u00d71.06",
+          "pill": "unlucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.06,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d71.00",
+          "pill": "slight drag"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Harrison 61% usage \u00b7 15% whiff",
+          "detail": "0.339 wOBA vs fastball \u2014 strength",
+          "adj": 0.81,
+          "adj_str": "+0.8",
           "adj_class": "fpos"
         }
       ],
       "babip_note": "unlucky \u2014 H rate nudged up",
       "data_source": "blended",
-      "rank": 7
+      "rank": 3
     },
     {
       "name": "Brooks Lee",
@@ -1104,23 +473,23 @@
       "team": "",
       "opponent": "MIA",
       "venue": "Target Field",
-      "probable_sp": "Max Meyer",
+      "probable_sp": "TBD",
       "sp_hand": "R",
-      "proj_pts": 4.3,
+      "proj_pts": 3.0,
       "confidence": {
-        "score": 41,
-        "label": "medium",
-        "pa_score": 0.283,
-        "ip_score": 0.457,
-        "babip_score": 0.575
+        "score": 34,
+        "label": "low",
+        "pa_score": 0.297,
+        "ip_score": 0.0,
+        "babip_score": 0.688
       },
       "stat_line": {
         "h_ab": "0.8H / 3.7AB",
         "hr": 0.11,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.24,
-        "k": 0.68
+        "bb": 0.25,
+        "k": 0.69
       },
       "scoring_rows": [
         {
@@ -1167,13 +536,13 @@
         },
         {
           "cat": "BB",
-          "proj": 0.24,
+          "proj": 0.25,
           "mult": "\u00d7  1.50",
-          "pts": 0.36
+          "pts": 0.38
         },
         {
           "cat": "K",
-          "proj": 0.68,
+          "proj": 0.69,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.14
         },
@@ -1187,7 +556,7 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 1.68,
+          "adj": 1.69,
           "adj_str": "+1.7",
           "cls": "fneu",
           "mult": "",
@@ -1202,12 +571,12 @@
           "pill": "boosted"
         },
         {
-          "label": "Pitcher (Max Meyer \u00b7 xFIP 4.71)",
-          "adj": 0.82,
-          "adj_str": "+0.8",
-          "cls": "fpos",
-          "mult": "H \u00d71.09 \u00b7 K \u00d71.02",
-          "pill": "boosted"
+          "label": "Pitcher (TBD \u00b7 xFIP 4.20)",
+          "adj": -0.0,
+          "adj_str": "+-0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00 \u00b7 K \u00d71.00",
+          "pill": "neutral"
         },
         {
           "label": "Park factor (PNC Park)",
@@ -1218,8 +587,8 @@
           "pill": "suppressed"
         },
         {
-          "label": "BABIP (0.305 curr \u00b7 0.251 career)",
-          "adj": -0.18,
+          "label": "BABIP (0.296 curr \u00b7 0.251 career)",
+          "adj": -0.15,
           "adj_str": "\u22120.2",
           "cls": "fneg",
           "mult": "H \u00d70.97",
@@ -1227,57 +596,46 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
+          "adj": -0.01,
+          "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
           "pill": "neutral"
         }
       ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Meyer 34% usage \u00b7 5% whiff",
-          "detail": "0.338 wOBA vs fastball \u2014 strength",
-          "adj": 0.47,
-          "adj_str": "+0.5",
-          "adj_class": "fpos"
-        }
-      ],
+      "pitch_rows": [],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
-      "rank": 8
+      "rank": 4
     },
     {
-      "name": "Mickey Moniak",
-      "mlb_id": 666160,
+      "name": "Cal Raleigh",
+      "mlb_id": 663728,
       "positions": [
-        "CF",
-        "LF",
-        "RF"
+        "C",
+        "DH"
       ],
       "status": "active",
       "team": "",
-      "opponent": "PIT",
-      "venue": "PNC Park",
-      "probable_sp": "Mitch Keller",
+      "opponent": "HOU",
+      "venue": "Daikin Park",
+      "probable_sp": "Mike Burrows",
       "sp_hand": "R",
-      "proj_pts": 4.0,
+      "proj_pts": 2.7,
       "confidence": {
-        "score": 41,
+        "score": 44,
         "label": "medium",
-        "pa_score": 0.234,
-        "ip_score": 0.529,
-        "babip_score": 0.575
+        "pa_score": 0.374,
+        "ip_score": 0.489,
+        "babip_score": 0.488
       },
       "stat_line": {
-        "h_ab": "0.9H / 3.7AB",
+        "h_ab": "0.8H / 3.7AB",
         "hr": 0.22,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.2,
-        "k": 1.14
+        "bb": 0.43,
+        "k": 1.24
       },
       "scoring_rows": [
         {
@@ -1288,21 +646,21 @@
         },
         {
           "cat": "1B",
-          "proj": 0.48,
+          "proj": 0.43,
           "mult": "\u00d7  2.80",
-          "pts": 1.34
+          "pts": 1.2
         },
         {
           "cat": "2B",
-          "proj": 0.18,
+          "proj": 0.11,
           "mult": "\u00d7  3.80",
-          "pts": 0.68
+          "pts": 0.42
         },
         {
           "cat": "3B",
-          "proj": 0.04,
+          "proj": 0.02,
           "mult": "\u00d7  5.70",
-          "pts": 0.23
+          "pts": 0.11
         },
         {
           "cat": "HR",
@@ -1324,28 +682,28 @@
         },
         {
           "cat": "BB",
-          "proj": 0.2,
+          "proj": 0.43,
           "mult": "\u00d7  1.50",
-          "pts": 0.3
+          "pts": 0.65
         },
         {
           "cat": "K",
-          "proj": 1.14,
+          "proj": 1.24,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.23
+          "pts": -0.25
         },
         {
           "cat": "HBP",
-          "proj": 0.03,
+          "proj": 0.02,
           "mult": "\u00d7  1.50",
-          "pts": 0.04
+          "pts": 0.03
         }
       ],
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.38,
-          "adj_str": "+2.4",
+          "adj": 2.17,
+          "adj_str": "+2.2",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -1359,80 +717,82 @@
           "pill": "boosted"
         },
         {
-          "label": "Pitcher (Mitch Keller \u00b7 xFIP 3.90)",
-          "adj": -0.45,
-          "adj_str": "\u22120.5",
+          "label": "Pitcher (Mike Burrows \u00b7 xFIP 4.03)",
+          "adj": -0.21,
+          "adj_str": "\u22120.2",
           "cls": "fneg",
-          "mult": "H \u00d70.95 \u00b7 K \u00d70.96",
+          "mult": "H \u00d70.97 \u00b7 K \u00d71.02",
           "pill": "suppressed"
         },
         {
-          "label": "Park factor (American Family Field)",
-          "adj": 0.1,
-          "adj_str": "+0.1",
+          "label": "Park factor (Citizens Bank Park)",
+          "adj": 0.21,
+          "adj_str": "+0.2",
           "cls": "fpos",
-          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
+          "mult": "HR \u00d71.12 \u00b7 R \u00d71.06",
           "pill": "boosted"
         },
         {
-          "label": "BABIP (0.342 curr \u00b7 0.288 career)",
-          "adj": -0.15,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d70.97",
-          "pill": "lucky"
+          "label": "BABIP (0.192 curr \u00b7 0.253 career)",
+          "adj": 0.16,
+          "adj_str": "+0.2",
+          "cls": "fpos",
+          "mult": "H \u00d71.03",
+          "pill": "unlucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": 0.03,
-          "adj_str": "+0.0",
-          "cls": "fneu",
+          "adj": -0.11,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
           "mult": "H \u00d71.00",
-          "pill": "neutral"
+          "pill": "slight drag"
         }
       ],
       "pitch_rows": [
         {
           "label": "Fastball",
           "badge_class": "pb-fast",
-          "meta": "Keller 56% usage \u00b7 9% whiff",
-          "detail": "0.346 wOBA vs fastball \u2014 strength",
-          "adj": 0.56,
-          "adj_str": "+0.6",
-          "adj_class": "fpos"
+          "meta": "Burrows 43% usage \u00b7 4% whiff",
+          "detail": "0.295 wOBA vs fastball \u2014 vulnerability",
+          "adj": -0.72,
+          "adj_str": "\u22120.7",
+          "adj_class": "fneg"
         }
       ],
-      "babip_note": "lucky \u2014 H rate nudged down",
+      "babip_note": "unlucky \u2014 H rate nudged up",
       "data_source": "blended",
-      "rank": 9
+      "rank": 5
     },
     {
-      "name": "Josh Jung",
-      "mlb_id": 673962,
+      "name": "Mickey Moniak",
+      "mlb_id": 666160,
       "positions": [
-        "3B"
+        "CF",
+        "LF",
+        "RF"
       ],
       "status": "active",
       "team": "",
-      "opponent": "AZ",
-      "venue": "Globe Life Field",
-      "probable_sp": "Ryne Nelson",
-      "sp_hand": "R",
-      "proj_pts": 3.2,
+      "opponent": "PIT",
+      "venue": "PNC Park",
+      "probable_sp": "Mason Montgomery",
+      "sp_hand": "L",
+      "proj_pts": 0.7,
       "confidence": {
-        "score": 46,
-        "label": "medium",
-        "pa_score": 0.314,
-        "ip_score": 0.4,
-        "babip_score": 0.725
+        "score": 26,
+        "label": "low",
+        "pa_score": 0.249,
+        "ip_score": 0.074,
+        "babip_score": 0.425
       },
       "stat_line": {
-        "h_ab": "1.0H / 3.7AB",
-        "hr": 0.14,
+        "h_ab": "0.9H / 3.7AB",
+        "hr": 0.23,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.21,
-        "k": 0.91
+        "bb": 0.2,
+        "k": 1.13
       },
       "scoring_rows": [
         {
@@ -1443,9 +803,164 @@
         },
         {
           "cat": "1B",
-          "proj": 0.63,
+          "proj": 0.47,
           "mult": "\u00d7  2.80",
-          "pts": 1.76
+          "pts": 1.32
+        },
+        {
+          "cat": "2B",
+          "proj": 0.2,
+          "mult": "\u00d7  3.80",
+          "pts": 0.76
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.23,
+          "mult": "\u00d7  7.50",
+          "pts": 1.73
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.2,
+          "mult": "\u00d7  1.50",
+          "pts": 0.3
+        },
+        {
+          "cat": "K",
+          "proj": 1.13,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.23
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.03,
+          "mult": "\u00d7  1.50",
+          "pts": 0.04
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.5,
+          "adj_str": "+2.5",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs LHP)",
+          "adj": -0.82,
+          "adj_str": "\u22120.8",
+          "cls": "fneg",
+          "mult": "",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Pitcher (Mason Montgomery \u00b7 xFIP 3.54)",
+          "adj": -1.5,
+          "adj_str": "\u22121.5",
+          "cls": "fneg",
+          "mult": "H \u00d70.88 \u00b7 K \u00d71.20",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (American Family Field)",
+          "adj": 0.11,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.354 curr \u00b7 0.288 career)",
+          "adj": -0.18,
+          "adj_str": "\u22120.2",
+          "cls": "fneg",
+          "mult": "H \u00d70.97",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.06,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "H \u00d71.00",
+          "pill": "slight boost"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Montgomery 64% usage \u00b7 16% whiff",
+          "detail": "0.351 wOBA vs fastball \u2014 strength",
+          "adj": 0.35,
+          "adj_str": "+0.3",
+          "adj_class": "fpos"
+        }
+      ],
+      "babip_note": "lucky \u2014 H rate nudged down",
+      "data_source": "blended",
+      "rank": 6
+    },
+    {
+      "name": "Michael Busch",
+      "mlb_id": 683737,
+      "positions": [
+        "1B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "ATL",
+      "venue": "Truist Park",
+      "probable_sp": "Chris Sale",
+      "sp_hand": "L",
+      "proj_pts": 0.0,
+      "confidence": {
+        "score": 61,
+        "label": "high",
+        "pa_score": 0.38,
+        "ip_score": 0.557,
+        "babip_score": 1.0
+      },
+      "stat_line": {
+        "h_ab": "0.9H / 3.7AB",
+        "hr": 0.14,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.53,
+        "k": 1.05
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.54,
+          "mult": "\u00d7  2.80",
+          "pts": 1.51
         },
         {
           "cat": "2B",
@@ -1479,68 +994,68 @@
         },
         {
           "cat": "BB",
-          "proj": 0.21,
+          "proj": 0.53,
           "mult": "\u00d7  1.50",
-          "pts": 0.32
+          "pts": 0.8
         },
         {
           "cat": "K",
-          "proj": 0.91,
+          "proj": 1.05,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.18
+          "pts": -0.21
         },
         {
           "cat": "HBP",
-          "proj": 0.03,
+          "proj": 0.05,
           "mult": "\u00d7  1.50",
-          "pts": 0.05
+          "pts": 0.07
         }
       ],
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.26,
-          "adj_str": "+2.3",
+          "adj": 2.49,
+          "adj_str": "+2.5",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
         },
         {
-          "label": "Platoon (R vs RHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
+          "label": "Platoon (L vs LHP)",
+          "adj": -0.82,
+          "adj_str": "\u22120.8",
+          "cls": "fneg",
           "mult": "",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Pitcher (Chris Sale \u00b7 xFIP 2.83)",
+          "adj": -3.5,
+          "adj_str": "\u22123.5",
+          "cls": "fneg",
+          "mult": "H \u00d70.80 \u00b7 K \u00d71.19",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Truist Park)",
+          "adj": 0.05,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.04 \u00b7 R \u00d71.01",
           "pill": "neutral"
         },
         {
-          "label": "Pitcher (Ryne Nelson \u00b7 xFIP 4.37)",
-          "adj": 0.27,
-          "adj_str": "+0.3",
-          "cls": "fpos",
-          "mult": "H \u00d71.03 \u00b7 K \u00d70.95",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (Globe Life Field)",
-          "adj": 0.06,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
-          "pill": "boosted"
-        },
-        {
-          "label": "BABIP (0.356 curr \u00b7 0.314 career)",
-          "adj": -0.13,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d70.98",
+          "label": "BABIP (0.288 curr \u00b7 0.280 career)",
+          "adj": -0.02,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
           "pill": "lucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.01,
-          "adj_str": "\u22120.0",
+          "adj": 0.04,
+          "adj_str": "+0.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
           "pill": "neutral"
@@ -1550,16 +1065,78 @@
         {
           "label": "Fastball",
           "badge_class": "pb-fast",
-          "meta": "Nelson 71% usage \u00b7 10% whiff",
-          "detail": "0.338 wOBA vs fastball \u2014 strength",
+          "meta": "Sale 48% usage \u00b7 10% whiff",
+          "detail": "0.350 wOBA vs fastball \u2014 strength",
           "adj": 0.6,
           "adj_str": "+0.6",
           "adj_class": "fpos"
         }
       ],
-      "babip_note": "lucky \u2014 H rate nudged down",
+      "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 10
+      "rank": 7
+    },
+    {
+      "name": "Ketel Marte",
+      "mlb_id": 606466,
+      "positions": [
+        "2B",
+        "DH"
+      ],
+      "status": "no_game",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "note": "No game scheduled today",
+      "rank": null
+    },
+    {
+      "name": "Josh Jung",
+      "mlb_id": 673962,
+      "positions": [
+        "3B"
+      ],
+      "status": "no_game",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "note": "No game scheduled today",
+      "rank": null
+    },
+    {
+      "name": "Geraldo Perdomo",
+      "mlb_id": 661388,
+      "positions": [
+        "SS"
+      ],
+      "status": "no_game",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "note": "No game scheduled today",
+      "rank": null
+    },
+    {
+      "name": "Aaron Judge",
+      "mlb_id": 592450,
+      "positions": [
+        "RF",
+        "DH"
+      ],
+      "status": "no_game",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "note": "No game scheduled today",
+      "rank": null
     },
     {
       "name": "Jorge Soler",
@@ -1568,301 +1145,14 @@
         "RF",
         "DH"
       ],
-      "status": "active",
-      "team": "",
-      "opponent": "CLE",
-      "venue": "Progressive Field",
-      "probable_sp": "Parker Messick",
-      "sp_hand": "L",
-      "proj_pts": 0.8,
-      "confidence": {
-        "score": 58,
-        "label": "medium",
-        "pa_score": 0.331,
-        "ip_score": 0.529,
-        "babip_score": 1.0
-      },
-      "stat_line": {
-        "h_ab": "0.9H / 3.7AB",
-        "hr": 0.21,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.46,
-        "k": 1.19
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.45,
-          "mult": "\u00d7  2.80",
-          "pts": 1.26
-        },
-        {
-          "cat": "2B",
-          "proj": 0.16,
-          "mult": "\u00d7  3.80",
-          "pts": 0.61
-        },
-        {
-          "cat": "3B",
-          "proj": 0.04,
-          "mult": "\u00d7  5.70",
-          "pts": 0.23
-        },
-        {
-          "cat": "HR",
-          "proj": 0.21,
-          "mult": "\u00d7  7.50",
-          "pts": 1.57
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.46,
-          "mult": "\u00d7  1.50",
-          "pts": 0.69
-        },
-        {
-          "cat": "K",
-          "proj": 1.19,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.24
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.07,
-          "mult": "\u00d7  1.50",
-          "pts": 0.1
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 2.58,
-          "adj_str": "+2.6",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (R vs LHP)",
-          "adj": 0.99,
-          "adj_str": "+1.0",
-          "cls": "fpos",
-          "mult": "",
-          "pill": "boosted"
-        },
-        {
-          "label": "Pitcher (Parker Messick \u00b7 xFIP 2.54)",
-          "adj": -3.5,
-          "adj_str": "\u22123.5",
-          "cls": "fneg",
-          "mult": "H \u00d70.80 \u00b7 K \u00d71.07",
-          "pill": "suppressed"
-        },
-        {
-          "label": "Park factor (Globe Life Field)",
-          "adj": 0.08,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.05 \u00b7 R \u00d71.02",
-          "pill": "boosted"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.02,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "neutral"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Messick 56% usage \u00b7 7% whiff",
-          "detail": "0.342 wOBA vs fastball \u2014 strength",
-          "adj": 0.62,
-          "adj_str": "+0.6",
-          "adj_class": "fpos"
-        }
-      ],
-      "babip_note": "in line with career",
-      "data_source": "blended",
-      "rank": 11
-    },
-    {
-      "name": "Manny Machado",
-      "mlb_id": 592518,
-      "positions": [
-        "3B"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "MIL",
-      "venue": "American Family Field",
-      "probable_sp": "Jacob Misiorowski",
-      "sp_hand": "R",
-      "proj_pts": 0.5,
-      "confidence": {
-        "score": 33,
-        "label": "low",
-        "pa_score": 0.329,
-        "ip_score": 0.486,
-        "babip_score": 0.2
-      },
-      "stat_line": {
-        "h_ab": "1.0H / 3.7AB",
-        "hr": 0.18,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.42,
-        "k": 0.85
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.64,
-          "mult": "\u00d7  2.80",
-          "pts": 1.79
-        },
-        {
-          "cat": "2B",
-          "proj": 0.13,
-          "mult": "\u00d7  3.80",
-          "pts": 0.49
-        },
-        {
-          "cat": "3B",
-          "proj": 0.03,
-          "mult": "\u00d7  5.70",
-          "pts": 0.17
-        },
-        {
-          "cat": "HR",
-          "proj": 0.18,
-          "mult": "\u00d7  7.50",
-          "pts": 1.35
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.42,
-          "mult": "\u00d7  1.50",
-          "pts": 0.63
-        },
-        {
-          "cat": "K",
-          "proj": 0.85,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.17
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.01,
-          "mult": "\u00d7  1.50",
-          "pts": 0.01
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 2.64,
-          "adj_str": "+2.6",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (R vs RHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "neutral"
-        },
-        {
-          "label": "Pitcher (Jacob Misiorowski \u00b7 xFIP 3.58)",
-          "adj": -2.45,
-          "adj_str": "\u22122.5",
-          "cls": "fneg",
-          "mult": "H \u00d70.89 \u00b7 K \u00d71.20",
-          "pill": "suppressed"
-        },
-        {
-          "label": "Park factor (American Family Field)",
-          "adj": 0.09,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
-          "pill": "boosted"
-        },
-        {
-          "label": "BABIP (0.212 curr \u00b7 0.296 career)",
-          "adj": 0.26,
-          "adj_str": "+0.3",
-          "cls": "fpos",
-          "mult": "H \u00d71.05",
-          "pill": "unlucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.06,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d71.00",
-          "pill": "slight drag"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Misiorowski 59% usage \u00b7 18% whiff",
-          "detail": "0.341 wOBA vs fastball \u2014 strength",
-          "adj": 0.27,
-          "adj_str": "+0.3",
-          "adj_class": "fpos"
-        }
-      ],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "blended",
-      "rank": 12
+      "status": "no_game",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "note": "No game scheduled today",
+      "rank": null
     },
     {
       "name": "Sean Murphy",
