@@ -109,6 +109,8 @@
   .bil { background: #FCEBEB; color: var(--red); }
   .bno-game { background: #eee; color: #888; }
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
+  .starter-dot { width: 7px; height: 7px; border-radius: 50%; background: #639922; flex-shrink: 0; }
+  .bench-dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--border-s); flex-shrink: 0; }
   .lineup-total {
     background: var(--card);
     border: 0.5px solid var(--border-s);
@@ -221,7 +223,7 @@
   <div class="tab-section show" id="tab-today">
     <div id="lineupTotal" style="display:none" class="lineup-total">
       <div class="lineup-left">
-        <span class="lineup-label">Optimal lineup projected</span>
+        <span class="lineup-label">Optimal 9-man lineup</span>
         <span class="lineup-slots" id="lineupSlots"></span>
       </div>
       <div style="text-align:right">
@@ -502,9 +504,12 @@ function renderCard(p) {
   const expanded  = renderExpanded(p);
   const hasExpand = expanded.trim().length > 0;
   const chevron   = hasExpand ? `<span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>` : '';
+  const isStarter = window._starterIds && window._starterIds.has(p.mlb_id);
+  const dot       = `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}"></div>`;
   return `
     <div class="card${hasExpand ? '' : ' no-expand'}" ${hasExpand ? 'onclick="toggle(this)"' : ''}>
       <div class="card-main">
+        ${dot}
         <div class="conf-bar" style="background:${barColor}"></div>
         <div class="rank">${p.rank || '—'}</div>
         <div class="pinfo">
@@ -861,7 +866,8 @@ function computeOptimalLineup(projections) {
     .map(([slot, p]) => `${slot}: ${p.name.split(' ').pop()}`)
     .join(' · ');
 
-  return { total: round(total, 1), slots: slotStr, count: starters.length };
+  const starterIds = new Set(starters.map(p => p.mlb_id));
+  return { total: round(total, 1), slots: slotStr, count: starters.length, starterIds };
 }
 
 function round(n, dec) {
@@ -875,8 +881,10 @@ function renderLineupTotal(projections) {
   const slots  = document.getElementById('lineupSlots');
   if (!result || !el) return;
   pts.textContent   = result.total.toFixed(1);
-  slots.textContent = result.slots;
+  slots.textContent = `${result.count} starters`;
   el.style.display  = 'flex';
+  // Store starter IDs globally so renderCard can access them
+  window._starterIds = result.starterIds;
 }
 
 // ─────────────────────────────────────────────
