@@ -1,1 +1,562 @@
-[]
+[
+  {
+    "date": "2026-05-15",
+    "player": "Sal Stewart",
+    "mlb_id": 701398,
+    "team": "",
+    "position": "1B",
+    "opponent": "CLE",
+    "venue": "Progressive Field",
+    "probable_sp": "Tanner Bibee",
+    "sp_hand": "R",
+    "proj_pts": 0.8,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 48,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.84
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -1.11
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.13
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.11
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.08
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -5.56
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Mickey Moniak",
+    "mlb_id": 666160,
+    "team": "",
+    "position": "CF",
+    "opponent": "AZ",
+    "venue": "Coors Field",
+    "probable_sp": "Merrill Kelly",
+    "sp_hand": "R",
+    "proj_pts": 1.3,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.28
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 1.38
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -1.82
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.35
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.07
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -2.09
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Michael Busch",
+    "mlb_id": 683737,
+    "team": "",
+    "position": "1B",
+    "opponent": "CWS",
+    "venue": "Rate Field",
+    "probable_sp": "Sean Burke",
+    "sp_hand": "R",
+    "proj_pts": 1.5,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.75
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 1.38
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -1.8
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.18
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.74
+      },
+      {
+        "factor": "pitch_type_offspeed",
+        "adjustment": -0.36
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Manny Machado",
+    "mlb_id": 592518,
+    "team": "",
+    "position": "3B",
+    "opponent": "SEA",
+    "venue": "T-Mobile Park",
+    "probable_sp": "Emerson Hancock",
+    "sp_hand": "R",
+    "proj_pts": 3.7,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.58
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 2.23
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.1
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.04
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.74
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Ketel Marte",
+    "mlb_id": 606466,
+    "team": "",
+    "position": "2B",
+    "opponent": "COL",
+    "venue": "Coors Field",
+    "probable_sp": "Kyle Freeland",
+    "sp_hand": "L",
+    "proj_pts": 5.6,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 3.23
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.99
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 2.16
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.36
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.08
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.1
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -4.64
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Josh Jung",
+    "mlb_id": 673962,
+    "team": "",
+    "position": "3B",
+    "opponent": "HOU",
+    "venue": "Daikin Park",
+    "probable_sp": "Spencer Arrighetti",
+    "sp_hand": "R",
+    "proj_pts": 3.6,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 84,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.96
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 1.75
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.12
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.01
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.39
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Jorge Soler",
+    "mlb_id": 624585,
+    "team": "",
+    "position": "RF",
+    "opponent": "LAD",
+    "venue": "Angel Stadium",
+    "probable_sp": "Blake Snell",
+    "sp_hand": "L",
+    "proj_pts": 0.0,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 82,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.29
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.99
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -2.93
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.02
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.85
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Geraldo Perdomo",
+    "mlb_id": 661388,
+    "team": "",
+    "position": "SS",
+    "opponent": "COL",
+    "venue": "Coors Field",
+    "probable_sp": "Kyle Freeland",
+    "sp_hand": "L",
+    "proj_pts": 5.2,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 73,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.88
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.99
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 2.16
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.23
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.29
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.04
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -2.34
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Cole Young",
+    "mlb_id": 702284,
+    "team": "",
+    "position": "2B",
+    "opponent": "SD",
+    "venue": "T-Mobile Park",
+    "probable_sp": "Randy V\u00e1squez",
+    "sp_hand": "R",
+    "proj_pts": 3.4,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 70,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.67
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 1.38
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.79
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.04
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.17
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.5
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Cal Raleigh",
+    "mlb_id": 663728,
+    "team": "",
+    "position": "C",
+    "opponent": "SD",
+    "venue": "T-Mobile Park",
+    "probable_sp": "Randy V\u00e1squez",
+    "sp_hand": "R",
+    "proj_pts": 4.0,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 3.14
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 1.38
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.79
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.17
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.14
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -2.38
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.18
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Brooks Lee",
+    "mlb_id": 686797,
+    "team": "",
+    "position": "SS",
+    "opponent": "MIL",
+    "venue": "Target Field",
+    "probable_sp": "TBD",
+    "sp_hand": "R",
+    "proj_pts": 3.0,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 75,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.62
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 1.38
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.0
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.0
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "player": "Aaron Judge",
+    "mlb_id": 592450,
+    "team": "",
+    "position": "RF",
+    "opponent": "NYM",
+    "venue": "Citi Field",
+    "probable_sp": "Clay Holmes",
+    "sp_hand": "R",
+    "proj_pts": 2.4,
+    "actual_pts": null,
+    "diff": null,
+    "confidence": 90,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 4.47
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -1.13
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.11
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.12
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -5.86
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": -0.53
+      }
+    ]
+  }
+]

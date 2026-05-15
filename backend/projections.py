@@ -107,7 +107,7 @@ CONF_BABIP_GREAT = 0.020   # deviation <= this → full confidence from BABIP co
 CONF_BABIP_BAD   = 0.100   # deviation >= this → zero confidence from BABIP component
 
 # Current MLB season
-CURRENT_SEASON = datetime.date.today().year
+CURRENT_SEASON = 2025
 
 # Path to roster file (relative to this script)
 ROSTER_PATH = "../roster.json"
@@ -1346,19 +1346,20 @@ def pitch_type_matchup_adj(batter_splits, pitcher_mix):
         # Bucket impact:
         # batter_z negative + pitcher_z positive = bad for batter (negative adj)
         # batter_z positive + pitcher_z negative = good for batter (positive adj)
-        impact = batter_z * (-pitcher_z) * usage * SCALE
+        impact = batter_z * pitcher_z * usage * SCALE
 
         total_adj += impact
 
         if abs(impact) < MIN_IMPACT:
             continue  # not meaningful enough to show on dashboard
 
-        if impact < -MIN_IMPACT:
+        if batter_woba < LEAGUE_WOBA - 0.020:
             direction = "vulnerability"
-        elif impact > MIN_IMPACT:
+        elif batter_woba > LEAGUE_WOBA + 0.020:
             direction = "strength"
         else:
             direction = "neutral"
+
         meta = BUCKET_META[bucket]
         detail.append({
             "bucket":       bucket,
@@ -2373,7 +2374,7 @@ def main():
 #   extract_player_game_stats(boxscore, mlb_id)
 #   load_log()
 #   save_log(log)
-#   append_actuals(projections)
+    append_actuals(projections)
 #   build_log_entry(projection, actual_stats)
 # ─────────────────────────────────────────────
 
@@ -2550,136 +2551,154 @@ def find_player_in_boxscores(mlb_id, boxscores):
     return None, None
 
 
-def build_log_entry(projection, actual_stats, game):
-    """
-    Builds a single log entry dict from a projection and
-    yesterday's actual stats.
-
-    projection   — dict from project_player()
-    actual_stats — dict from find_player_in_boxscores(), or None
-    game         — game dict with home_team/away_team/venue, or None
-    """
-    yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
-
-    proj_pts  = projection.get("proj_pts")
-    conf      = projection.get("confidence") or {}
-
-    # Actual points
-    if actual_stats and actual_stats.get("played"):
-        actual_pts   = compute_actual_pts(actual_stats)
-        did_not_play = False
-        diff         = round(actual_pts - proj_pts, 2) if proj_pts is not None else None
-    else:
-        actual_pts   = None
-        did_not_play = True if actual_stats is None else False
-        diff         = None
-
-    # Extract factor rows into tidy list
+def _extract_factors(projection):
+    """Extracts tidy factor list from a projection dict."""
     factors = []
     for f in projection.get("factors", []):
         label = f.get("label", "")
         adj   = f.get("adj")
         if adj is None:
             continue
-
-        # Map display label to tidy factor name
-        if "base rate"           in label.lower(): key = "base_rate"
-        elif "platoon"           in label.lower(): key = "platoon"
-        elif "pitcher difficulty" in label.lower(): key = "pitcher_difficulty"
-        elif "park factor"       in label.lower(): key = "park_factor"
-        elif "recent form"       in label.lower(): key = "recent_form"
-        elif "babip"             in label.lower(): key = "babip_adjustment"
-        else:                                       key = label.lower().replace(" ","_")
-
+        if "base rate"            in label.lower(): key = "base_rate"
+        elif "platoon"            in label.lower(): key = "platoon"
+        elif "pitcher"            in label.lower(): key = "pitcher_difficulty"
+        elif "park factor"        in label.lower(): key = "park_factor"
+        elif "recent form"        in label.lower(): key = "recent_form"
+        elif "babip"              in label.lower(): key = "babip_adjustment"
+        else:                                        key = label.lower().replace(" ","_")
         factors.append({"factor": key, "adjustment": round(float(adj), 2)})
-
-    # Add pitch type rows
     for row in projection.get("pitch_rows", []):
         bucket = row.get("label","").lower().replace(" ","_")
         factors.append({
             "factor":     f"pitch_type_{bucket}",
             "adjustment": round(float(row.get("adj", 0)), 2),
         })
+    return factors
 
-    # Infer position from positions list
+
+def build_projection_log_entry(projection, today_str):
+    """
+    Builds a log entry for TODAY's projection with actual_pts=null.
+    Called at projection time — actuals filled in tomorrow.
+    """
+    conf      = projection.get("confidence") or {}
     positions = projection.get("positions", [])
     position  = positions[0] if positions else ""
 
     return {
-        "date":             yesterday,
+        "date":             today_str,
         "player":           projection.get("name", ""),
+        "mlb_id":           projection.get("mlb_id"),
         "team":             projection.get("team", ""),
         "position":         position,
         "opponent":         projection.get("opponent", ""),
         "venue":            projection.get("venue", ""),
         "probable_sp":      projection.get("probable_sp", ""),
         "sp_hand":          projection.get("sp_hand", ""),
-        "proj_pts":         proj_pts,
-        "actual_pts":       actual_pts,
-        "diff":             diff,
+        "proj_pts":         projection.get("proj_pts"),
+        "actual_pts":       None,
+        "diff":             None,
         "confidence":       conf.get("score"),
         "confidence_label": conf.get("label"),
-        "did_not_play":     did_not_play,
-        "factors":          factors,
+        "did_not_play":     False,
+        "factors":          _extract_factors(projection),
     }
 
 
-def append_actuals(projections):
+def log_today_projections(projections):
     """
-    Master function for Section 9.
-    Called at the end of main() after today's projections are written.
-
-    Steps:
-      1. Load existing log
-      2. Check if yesterday's entries already exist (avoid duplicates)
-      3. Fetch yesterday's boxscores
-      4. For each player with a projection, find their actual stats
-      5. Build log entries and append
-      6. Save updated log
-
-    Only processes players with actual projections (skips IL/DTD).
+    Step A — called right after write_output().
+    Appends today's projections to the log with actual_pts=null.
+    Skips players with no projection (DTD, IL, no game).
+    Skips if today's entries already exist (idempotent).
     """
-    print("\n[9] Fetching yesterday's actuals...")
+    today_str = datetime.date.today().strftime("%Y-%m-%d")
+    log       = load_log()
 
-    yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
-
-    # Load existing log
-    log = load_log()
-
-    # Check for duplicate — if yesterday's entries already exist, skip
+    # Check for duplicate
     existing_dates = {entry["date"] for entry in log}
-    if yesterday in existing_dates:
-        print(f"  Actuals for {yesterday} already in log — skipping")
-        return
-
-    # Fetch all boxscores from yesterday
-    boxscores = get_yesterday_boxscores()
-    if not boxscores:
-        print("  No boxscores found — skipping actuals for yesterday")
+    if today_str in existing_dates:
+        print(f"  Projections for {today_str} already in log — skipping")
         return
 
     new_entries = []
     for proj in projections:
-        # Skip players with no projection (IL, DTD, no game)
         if proj.get("proj_pts") is None:
             continue
-        if proj.get("status") in ("dtd", "no_game") or \
-           (proj.get("status") or "").startswith("il"):
+        if proj.get("status") in ("dtd", "no_game") or            (proj.get("status") or "").startswith("il"):
             continue
-
-        mlb_id = proj.get("mlb_id")
-        game, actual_stats = find_player_in_boxscores(mlb_id, boxscores)
-
-        entry = build_log_entry(proj, actual_stats, game)
-        new_entries.append(entry)
-
-        pts_str = f"{entry['actual_pts']:.1f}" if entry['actual_pts'] is not None else "DNP"
-        diff_str = f"{entry['diff']:+.1f}" if entry['diff'] is not None else "—"
-        print(f"  {proj['name']:<22} proj={entry['proj_pts']:.1f}  actual={pts_str}  diff={diff_str}")
+        new_entries.append(build_projection_log_entry(proj, today_str))
 
     log.extend(new_entries)
     save_log(log)
-    print(f"  Added {len(new_entries)} entries for {yesterday}")
+    print(f"  Logged {len(new_entries)} projections for {today_str}")
+
+
+def fill_yesterday_actuals():
+    """
+    Step B — called after log_today_projections().
+    Finds yesterday's log entries where actual_pts is null,
+    fetches boxscores, and fills in the actuals.
+    """
+    yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+    print(f"\n[9b] Filling actuals for {yesterday}...")
+
+    log = load_log()
+
+    # Find yesterday's entries that need actuals filled in
+    pending = [
+        (i, entry) for i, entry in enumerate(log)
+        if entry.get("date") == yesterday and entry.get("actual_pts") is None
+        and not entry.get("did_not_play", False)
+    ]
+
+    if not pending:
+        print(f"  No pending entries for {yesterday}")
+        return
+
+    print(f"  Found {len(pending)} entries needing actuals")
+
+    # Fetch boxscores
+    boxscores = get_yesterday_boxscores()
+    if not boxscores:
+        print("  No boxscores found — skipping")
+        return
+
+    filled = 0
+    for idx, entry in pending:
+        mlb_id = entry.get("mlb_id")
+        if not mlb_id:
+            continue
+
+        game, actual_stats = find_player_in_boxscores(mlb_id, boxscores)
+
+        if actual_stats and actual_stats.get("played"):
+            actual_pts = compute_actual_pts(actual_stats)
+            proj_pts   = entry.get("proj_pts")
+            diff       = round(actual_pts - proj_pts, 2) if proj_pts is not None else None
+            log[idx]["actual_pts"]   = actual_pts
+            log[idx]["diff"]         = diff
+            log[idx]["did_not_play"] = False
+            filled += 1
+            diff_str = f"{diff:+.1f}" if diff is not None else "—"
+            print(f"  {entry['player']:<22} proj={proj_pts:.1f}  actual={actual_pts:.1f}  diff={diff_str}")
+        else:
+            # Player had no game or didn't play
+            log[idx]["did_not_play"] = True
+            print(f"  {entry['player']:<22} DNP or no game")
+
+    save_log(log)
+    print(f"  Filled actuals for {filled}/{len(pending)} players")
+
+
+def append_actuals(projections):
+    """
+    Master Section 9 function — now a thin wrapper that calls
+    the two-step process: log today's projections, fill yesterday's actuals.
+    """
+    print("\n[9] Updating projections log...")
+    log_today_projections(projections)
+    fill_yesterday_actuals()
 
 
 # ─────────────────────────────────────────────
