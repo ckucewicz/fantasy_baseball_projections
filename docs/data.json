@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T00:16:23",
+  "generated_at": "2026-05-15T05:35:00",
   "season": 2025,
   "player_count": 12,
   "projections": [
@@ -315,163 +315,6 @@
       "rank": 2
     },
     {
-      "name": "Cal Raleigh",
-      "mlb_id": 663728,
-      "positions": [
-        "C",
-        "DH"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "SD",
-      "venue": "T-Mobile Park",
-      "probable_sp": "Randy V\u00e1squez",
-      "sp_hand": "R",
-      "proj_pts": 4.0,
-      "confidence": {
-        "score": 95,
-        "label": "high",
-        "pa_score": 1.0,
-        "ip_score": 1.0,
-        "babip_score": 1.0
-      },
-      "stat_line": {
-        "h_ab": "0.9H / 3.7AB",
-        "hr": 0.32,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.53,
-        "k": 1.19
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.39,
-          "mult": "\u00d7  2.80",
-          "pts": 1.09
-        },
-        {
-          "cat": "2B",
-          "proj": 0.13,
-          "mult": "\u00d7  3.80",
-          "pts": 0.49
-        },
-        {
-          "cat": "3B",
-          "proj": 0.03,
-          "mult": "\u00d7  5.70",
-          "pts": 0.17
-        },
-        {
-          "cat": "HR",
-          "proj": 0.32,
-          "mult": "\u00d7  7.50",
-          "pts": 2.4
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.53,
-          "mult": "\u00d7  1.50",
-          "pts": 0.8
-        },
-        {
-          "cat": "K",
-          "proj": 1.19,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.24
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.04,
-          "mult": "\u00d7  1.50",
-          "pts": 0.07
-        }
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 3.14,
-          "adj_str": "+3.1",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 1.38,
-          "adj_str": "+1.4",
-          "cls": "fpos",
-          "mult": "",
-          "pill": "boosted"
-        },
-        {
-          "label": "Pitcher (Randy V\u00e1squez \u00b7 xFIP 3.85)",
-          "adj": 0.79,
-          "adj_str": "+0.8",
-          "cls": "fpos",
-          "mult": "H \u00d70.94 \u00b7 K \u00d70.83",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (T-Mobile Park)",
-          "adj": -0.17,
-          "adj_str": "\u22120.2",
-          "cls": "fneg",
-          "mult": "HR \u00d70.93 \u00b7 R \u00d70.97",
-          "pill": "suppressed"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.14,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d71.00",
-          "pill": "slight drag"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "V\u00e1squez 66% usage \u00b7 7% whiff",
-          "detail": "0.382 wOBA vs fastball \u2014 strength",
-          "adj": -2.38,
-          "adj_str": "\u22122.4",
-          "adj_class": "fneg"
-        },
-        {
-          "label": "Breaking ball",
-          "badge_class": "pb-break",
-          "meta": "V\u00e1squez 26% usage \u00b7 10% whiff",
-          "detail": "0.296 wOBA vs breaking ball \u2014 neutral",
-          "adj": 0.18,
-          "adj_str": "+0.2",
-          "adj_class": "fpos"
-        }
-      ],
-      "babip_note": "in line with career",
-      "data_source": "blended",
-      "rank": 3
-    },
-    {
       "name": "Manny Machado",
       "mlb_id": 592518,
       "positions": [
@@ -624,7 +467,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 4
+      "rank": 3
     },
     {
       "name": "Josh Jung",
@@ -771,7 +614,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 5
+      "rank": 4
     },
     {
       "name": "Cole Young",
@@ -926,7 +769,7 @@
       ],
       "babip_note": "unlucky \u2014 H rate nudged up",
       "data_source": "season",
-      "rank": 6
+      "rank": 5
     },
     {
       "name": "Brooks Lee",
@@ -1073,7 +916,7 @@
       "pitch_rows": [],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 7
+      "rank": 6
     },
     {
       "name": "Aaron Judge",
@@ -1238,7 +1081,7 @@
       ],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
-      "rank": 8
+      "rank": 7
     },
     {
       "name": "Michael Busch",
@@ -1402,7 +1245,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 9
+      "rank": 8
     },
     {
       "name": "Mickey Moniak",
@@ -1559,6 +1402,151 @@
       ],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
+      "rank": 9
+    },
+    {
+      "name": "Drew Romo",
+      "mlb_id": 691011,
+      "positions": [
+        "C"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "CHC",
+      "venue": "Rate Field",
+      "probable_sp": "Edward Cabrera",
+      "sp_hand": "R",
+      "proj_pts": 1.1,
+      "confidence": {
+        "score": 53,
+        "label": "medium",
+        "pa_score": 0.0,
+        "ip_score": 1.0,
+        "babip_score": 0.938
+      },
+      "stat_line": {
+        "h_ab": "0.6H / 3.7AB",
+        "hr": 0.01,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.16,
+        "k": 1.3
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.4,
+          "mult": "\u00d7  2.80",
+          "pts": 1.12
+        },
+        {
+          "cat": "2B",
+          "proj": 0.18,
+          "mult": "\u00d7  3.80",
+          "pts": 0.68
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.01,
+          "mult": "\u00d7  7.50",
+          "pts": 0.07
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.16,
+          "mult": "\u00d7  1.50",
+          "pts": 0.24
+        },
+        {
+          "cat": "K",
+          "proj": 1.3,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.26
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.0,
+          "mult": "\u00d7  1.50",
+          "pts": 0.0
+        }
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 0.44,
+          "adj_str": "+0.4",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 1.38,
+          "adj_str": "+1.4",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Edward Cabrera \u00b7 xFIP 3.87)",
+          "adj": -0.81,
+          "adj_str": "\u22120.8",
+          "cls": "fneg",
+          "mult": "H \u00d70.94 \u00b7 K \u00d71.08",
+          "pill": "suppressed"
+        },
+        {
+          "label": "Park factor (Yankee Stadium)",
+          "adj": 0.01,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "HR \u00d71.11 \u00b7 R \u00d71.03",
+          "pill": "neutral"
+        },
+        {
+          "label": "BABIP (0.298 curr \u00b7 0.273 career)",
+          "adj": -0.07,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d70.99",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.08,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "H \u00d71.00",
+          "pill": "slight boost"
+        }
+      ],
+      "pitch_rows": [],
+      "babip_note": "lucky \u2014 H rate nudged down",
+      "data_source": "career",
       "rank": 10
     },
     {
@@ -1866,12 +1854,13 @@
       "rank": 12
     },
     {
-      "name": "Sean Murphy",
-      "mlb_id": 669004,
+      "name": "Cal Raleigh",
+      "mlb_id": 663728,
       "positions": [
-        "C"
+        "C",
+        "DH"
       ],
-      "status": "dtd",
+      "status": "il10",
       "proj_pts": null,
       "confidence": null,
       "stat_line": null,
