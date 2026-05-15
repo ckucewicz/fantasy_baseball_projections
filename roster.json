@@ -7,7 +7,7 @@
       "team": "SEA",
       "bats": "L",
       "positions": ["C", "DH"],
-      "status": "active"
+      "status": "il10"
     },
     {
       "name": "Sal Stewart",
@@ -98,12 +98,12 @@
       "status": "active"
     },
     {
-      "name": "Sean Murphy",
-      "mlb_id": 669004,
-      "team": "ATL",
-      "bats": "R",
+      "name": "Drew Romo",
+      "mlb_id": 691011,
+      "team": "CWS",
+      "bats": "S",
       "positions": ["C"],
-      "status": "dtd"
+      "status": "active"
     },
     {
       "name": "Addison Barger",
