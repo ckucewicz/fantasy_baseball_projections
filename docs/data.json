@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T01:59:26",
+  "generated_at": "2026-05-15T13:04:04",
   "season": 2025,
   "player_count": 12,
   "projections": [
@@ -350,7 +350,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.53,
-        "k": 0.77
+        "k": 0.78
       },
       "scoring_rows": [
         {
@@ -361,9 +361,9 @@
         },
         {
           "cat": "1B",
-          "proj": 0.79,
+          "proj": 0.78,
           "mult": "\u00d7  2.80",
-          "pts": 2.21
+          "pts": 2.18
         },
         {
           "cat": "2B",
@@ -403,9 +403,9 @@
         },
         {
           "cat": "K",
-          "proj": 0.77,
+          "proj": 0.78,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.15
+          "pts": -0.16
         },
         {
           "cat": "HBP",
@@ -916,8 +916,8 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
+          "adj": -0.0,
+          "adj_str": "+-0.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
           "pill": "neutral"
@@ -1209,7 +1209,7 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": 0.03,
+          "adj": 0.02,
           "adj_str": "+0.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
@@ -1412,7 +1412,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.29,
-        "k": 0.92
+        "k": 0.93
       },
       "scoring_rows": [
         {
@@ -1465,9 +1465,9 @@
         },
         {
           "cat": "K",
-          "proj": 0.92,
+          "proj": 0.93,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.18
+          "pts": -0.19
         },
         {
           "cat": "HBP",
@@ -1519,7 +1519,7 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.08,
+          "adj": -0.09,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "H \u00d71.00",
@@ -1531,9 +1531,9 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Bibee 66% usage \u00b7 9% whiff",
-          "detail": "0.466 wOBA vs fastball \u2014 strength",
-          "adj": -5.56,
-          "adj_str": "\u22125.6",
+          "detail": "0.454 wOBA vs fastball \u2014 strength",
+          "adj": -5.12,
+          "adj_str": "\u22125.1",
           "adj_class": "fneg"
         }
       ],
@@ -1568,7 +1568,7 @@
         "hr": 0.22,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.17,
+        "bb": 0.18,
         "k": 1.09
       },
       "scoring_rows": [
@@ -1616,9 +1616,9 @@
         },
         {
           "cat": "BB",
-          "proj": 0.17,
+          "proj": 0.18,
           "mult": "\u00d7  1.50",
-          "pts": 0.26
+          "pts": 0.27
         },
         {
           "cat": "K",
@@ -1652,7 +1652,7 @@
         },
         {
           "label": "Pitcher (Merrill Kelly \u00b7 xFIP 3.58)",
-          "adj": -0.23,
+          "adj": -0.22,
           "adj_str": "\u22120.2",
           "cls": "fneg",
           "mult": "H \u00d70.89 \u00b7 K \u00d71.00",
@@ -1676,7 +1676,7 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": 0.07,
+          "adj": 0.06,
           "adj_str": "+0.1",
           "cls": "fpos",
           "mult": "H \u00d71.00",
@@ -1688,9 +1688,9 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Kelly 55% usage \u00b7 7% whiff",
-          "detail": "0.373 wOBA vs fastball \u2014 strength",
-          "adj": -2.09,
-          "adj_str": "\u22122.1",
+          "detail": "0.372 wOBA vs fastball \u2014 strength",
+          "adj": -2.05,
+          "adj_str": "\u22122.0",
           "adj_class": "fneg"
         }
       ],
@@ -1831,9 +1831,9 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.05,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
+          "adj": -0.04,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
           "mult": "H \u00d71.00",
           "pill": "neutral"
         }
