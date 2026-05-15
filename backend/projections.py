@@ -1685,9 +1685,9 @@ def compute_confidence(batter_stats, pitcher_stats, babip_meta):
     score = int(round(raw * 100))
     score = max(5, min(95, score))  # floor/ceiling — never claim 0% or 100%
 
-    if score >= 60:
+    if score >= 85:
         label = "high"
-    elif score >= 38:
+    elif score >= 50:
         label = "medium"
     else:
         label = "low"

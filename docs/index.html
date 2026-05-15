@@ -108,6 +108,7 @@
   .bdtd { background: #FAEEDA; color: var(--amber); }
   .bil { background: #FCEBEB; color: var(--red); }
   .bno-game { background: #eee; color: #888; }
+  .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
 
   /* ACCURACY TAB */
   .acc-card { background: var(--card); border: 0.5px solid var(--border-s); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; }
@@ -489,6 +490,7 @@ function renderCard(p) {
         <div class="pright">
           <span class="pts">${p.proj_pts.toFixed(1)}</span>
           <span class="pts-lbl">proj pts</span>
+          ${conf.score !== undefined ? `<span class="conf-pct-sm" style="color:${confTextColor(conf.score)}">${conf.score}% conf</span>` : ''}
           ${chevron}
         </div>
       </div>
