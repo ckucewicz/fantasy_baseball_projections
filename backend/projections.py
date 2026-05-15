@@ -110,10 +110,10 @@ CONF_BABIP_BAD   = 0.100   # deviation >= this → zero confidence from BABIP co
 CURRENT_SEASON = 2025
 
 # Path to roster file (relative to this script)
-ROSTER_PATH = "../roster.json"
+ROSTER_PATH = "roster.json"
 
 # Output path (GitHub Pages serves the docs/ folder)
-OUTPUT_PATH = os.path.join("..", "docs", "data.json")
+OUTPUT_PATH = os.path.join("docs", "data.json")
 
 # MLB Stats API base URL
 MLB_API = "https://statsapi.mlb.com/api/v1"
@@ -1685,9 +1685,9 @@ def compute_confidence(batter_stats, pitcher_stats, babip_meta):
     score = int(round(raw * 100))
     score = max(5, min(95, score))  # floor/ceiling — never claim 0% or 100%
 
-    if score >= 85:
+    if score >= 60:
         label = "high"
-    elif score >= 50:
+    elif score >= 38:
         label = "medium"
     else:
         label = "low"
@@ -2460,11 +2460,11 @@ def main():
 #   extract_player_game_stats(boxscore, mlb_id)
 #   load_log()
 #   save_log(log)
-    append_actuals(projections)
+#   append_actuals(projections)
 #   build_log_entry(projection, actual_stats)
 # ─────────────────────────────────────────────
 
-LOG_PATH = os.path.join("..", "docs", "projections_log.json")
+LOG_PATH = os.path.join("docs", "projections_log.json")
 
 
 def load_log():
@@ -2797,6 +2797,3 @@ def append_actuals(projections):
 
 
 
-
-if __name__ == "__main__":
-    main()
