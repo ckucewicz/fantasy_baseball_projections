@@ -729,6 +729,80 @@ def lookup_player_fg_name(mlb_id, mlb_name):
     return norm(mlb_name)
 
 
+def _get_mlb_platoon_splits_for_player(mlb_id, player_name, start_year=2022):
+    """
+    Fetches vs-Left and vs-Right batting splits from MLB Stats API.
+    Aggregates across start_year to current season for stability.
+    Returns dict: {"vL": stat_row, "vR": stat_row} or {} if unavailable.
+    Each stat_row has same schema as _mlb_stats_to_row output.
+    """
+    end_year = datetime.date.today().year
+    totals = {
+        "vL": {"pa":0,"ab":0,"h":0,"doubles":0,"triples":0,"hr":0,"bb":0,"k":0,"hbp":0},
+        "vR": {"pa":0,"ab":0,"h":0,"doubles":0,"triples":0,"hr":0,"bb":0,"k":0,"hbp":0},
+    }
+
+    for yr in range(start_year, end_year + 1):
+        try:
+            url  = f"{MLB_API}/people/{mlb_id}/stats?stats=statSplits&season={yr}&group=hitting&sitCodes=vl,vr"
+            resp = requests.get(url, timeout=10)
+            resp.raise_for_status()
+            data = resp.json()
+            splits = data.get("stats", [{}])[0].get("splits", [])
+            for s in splits:
+                desc = s.get("split", {}).get("description", "")
+                stat = s.get("stat", {})
+                key  = "vL" if "Left" in desc else "vR" if "Right" in desc else None
+                if not key:
+                    continue
+                totals[key]["pa"]      += int(stat.get("plateAppearances", 0))
+                totals[key]["ab"]      += int(stat.get("atBats",           0))
+                totals[key]["h"]       += int(stat.get("hits",             0))
+                totals[key]["doubles"] += int(stat.get("doubles",          0))
+                totals[key]["triples"] += int(stat.get("triples",          0))
+                totals[key]["hr"]      += int(stat.get("homeRuns",         0))
+                totals[key]["bb"]      += int(stat.get("baseOnBalls",      0))
+                totals[key]["k"]       += int(stat.get("strikeOuts",       0))
+                totals[key]["hbp"]     += int(stat.get("hitByPitch",       0))
+        except Exception:
+            pass
+
+    result = {}
+    for key, t in totals.items():
+        if t["ab"] < 20:
+            continue   # too little data — skip this split
+        ab_s = max(t["ab"], 1)
+        pa_s = max(t["pa"], 1)
+        result[key] = {
+            "pa":      t["pa"],
+            "ab":      t["ab"],
+            "hrate":   t["h"]                           / ab_s,
+            "hrrate":  t["hr"]                          / ab_s,
+            "xbhrate": (t["doubles"] + t["triples"])    / ab_s,
+            "bbpct":   t["bb"]                          / pa_s,
+            "kpct":    t["k"]                           / pa_s,
+            "hbprate": t["hbp"]                         / pa_s,
+        }
+    return result
+
+
+def get_all_platoon_splits(player_list):
+    """
+    Fetches platoon splits for all active players.
+    Returns dict keyed by mlb_id: {"vL": row, "vR": row}
+    """
+    result = {}
+    for player in player_list:
+        mlb_id = player.get("mlb_id")
+        name   = player.get("name", "")
+        if not mlb_id:
+            continue
+        splits = _get_mlb_platoon_splits_for_player(mlb_id, name)
+        if splits:
+            result[mlb_id] = splits
+    return result
+
+
 def fetch_all_data(active_players, matchups):
     """
     Master fetch function. Now uses MLB Stats API for batting/pitching stats.
@@ -767,6 +841,10 @@ def fetch_all_data(active_players, matchups):
     pitch_splits  = {}
     pitcher_mixes = {}
 
+    print("  Fetching MLB API platoon splits (vs L / vs R)...")
+    platoon_splits = get_all_platoon_splits(batter_list)
+    print(f"    Got splits for {len(platoon_splits)} players")
+
     print("  Fetching Statcast pitch type splits for batters...")
     for player in active_players:
         mlb_id = player["mlb_id"]
@@ -785,7 +863,7 @@ def fetch_all_data(active_players, matchups):
             seen_pitchers.add(sp["id"])
 
     return batter_season, batter_career, pitcher_season, pitcher_career, \
-           pitch_splits, pitcher_mixes
+           pitch_splits, pitcher_mixes, platoon_splits
 
 
 def blend_weight(n, n_min, n_max, floor, ceil):
@@ -1898,7 +1976,7 @@ def build_factor_breakdown(base_pts, platoon_adj, pitcher_diff,
 
 def project_player(player, matchup, batter_season, batter_career,
                    pitcher_season, pitcher_career,
-                   pitch_splits, pitcher_mixes):
+                   pitch_splits, pitcher_mixes, platoon_splits=None):
     """
     Full projection pipeline for a single player.
 
@@ -1967,10 +2045,30 @@ def project_player(player, matchup, batter_season, batter_career,
 
     # --- Step 4: Platoon adjustment ---
     batter_stats["bats"] = player.get("bats", "R")
-    platoon_adj, platoon_label = _platoon_adjustment(
-        batter_stats, sp_hand, batter_season, batter_career, name, mlb_id
+    platoon_result = _platoon_adjustment(
+        batter_stats, sp_hand, batter_season, batter_career, name, mlb_id,
+        platoon_splits=platoon_splits
     )
+
+    # Handle both return cases:
+    # Real splits: returns (split_row, label)
+    # Fallback:    returns (None, label, delta_woba)
+    if len(platoon_result) == 3:
+        # League average fallback
+        _, platoon_label, platoon_woba_delta = platoon_result
+        platoon_split_row = None
+    else:
+        platoon_split_row, platoon_label = platoon_result
+        platoon_woba_delta = 0.0
+
     batter_stats["platoon_label"] = platoon_label
+
+    # If we have real split rates, override base batter stats with split rates
+    # This is the key improvement — use actual vs-L or vs-R rates directly
+    if platoon_split_row:
+        for rate in ["hrate", "hrrate", "xbhrate", "bbpct", "kpct", "hbprate"]:
+            if rate in platoon_split_row:
+                batter_stats[rate] = platoon_split_row[rate]
 
     # --- Step 5: Pitcher difficulty ---
     pitcher_stats = get_pitcher_stats_for_pitcher(
@@ -1989,16 +2087,19 @@ def project_player(player, matchup, batter_season, batter_career,
 
     adjusted = dict(batter_stats)  # copy
 
-    # Platoon — affects hrate and hrrate
-    # Convert platoon_adj (pts) back to approximate rate multiplier
-    # pts_per_woba_point = 55.0 (from _platoon_adjustment)
-    # woba_delta = platoon_adj / 55.0
-    # hrate multiplier ≈ 1 + woba_delta * 1.5  (woba → hit rate approximation)
-    platoon_woba = platoon_adj / 55.0
-    platoon_h_mult  = 1.0 + platoon_woba * 1.5
-    platoon_hr_mult = 1.0 + platoon_woba * 0.8
-    adjusted["hrate"]  = max(adjusted["hrate"]  * platoon_h_mult,  0.050)
-    adjusted["hrrate"] = max(adjusted["hrrate"] * platoon_hr_mult, 0.005)
+    # Platoon — if real splits were applied in Step 4, rates are already
+    # set correctly. If fallback, apply legacy wOBA delta as multiplier.
+    if platoon_split_row:
+        # Real splits already applied to batter_stats in Step 4
+        # adjusted already copied from batter_stats so no additional change needed
+        platoon_h_mult  = 1.0
+        platoon_hr_mult = 1.0
+    else:
+        # Fallback: league average wOBA delta as rate multiplier
+        platoon_h_mult  = 1.0 + platoon_woba_delta * 1.5
+        platoon_hr_mult = 1.0 + platoon_woba_delta * 0.8
+        adjusted["hrate"]  = max(adjusted["hrate"]  * platoon_h_mult,  0.050)
+        adjusted["hrrate"] = max(adjusted["hrrate"] * platoon_hr_mult, 0.005)
 
     # Pitcher difficulty — affects hrate, kpct, bbpct
     # Use normalized component scores from pitch_diff
@@ -2163,60 +2264,52 @@ def _infer_team(player):
 
 
 def _platoon_adjustment(batter_stats, sp_hand, batter_season,
-                        batter_career, name, mlb_id):
+                        batter_career, name, mlb_id, platoon_splits=None):
     """
-    Computes the platoon adjustment — how much better or worse a batter
-    performs against this pitcher's handedness vs. their overall stats.
+    Computes the platoon adjustment using each player's actual L/R splits
+    from the MLB Stats API (2022-present aggregated).
 
-    Uses the same PA-weighted blending logic as the base stats.
-    Returns (adj_pts, label_str).
+    For switch hitters: uses the favorable side vs pitcher hand.
+    Falls back to league average if splits unavailable.
 
-    e.g. (+1.8, "Platoon (R vs RHP)")
+    Returns (split_stats_or_None, label_str).
+    split_stats: the relevant split row (vL or vR) to use as rate override,
+                 or None if falling back to league average.
     """
-    # For now we use a simplified approach:
-    # Pull L/R splits from FanGraphs if available, otherwise use
-    # league-average platoon advantage as a rough estimate.
-    #
-    # Full split implementation will use pybaseball splits in a future update.
-    # League-average platoon advantages (wOBA delta, L batter vs RHP vs LHP):
-    #   RHB vs LHP: +0.018 wOBA advantage (easier matchup)
-    #   RHB vs RHP:  0.000 (baseline)
-    #   LHB vs RHP: +0.025 wOBA advantage
-    #   LHB vs LHP: -0.015 wOBA disadvantage
-
-    # batter_hand is now read from roster.json 'bats' field.
-    # "S" (switch hitter) is treated as opposite of pitcher hand.
     bats = batter_stats.get("bats", "R")
     if bats == "S":
         batter_hand = "L" if sp_hand == "R" else "R"
     else:
         batter_hand = bats
 
+    hand_label = "L" if batter_hand == "L" else "R"
+    label      = f"Platoon ({hand_label} vs {sp_hand}HP)"
+
+    # Try to use real splits
+    if platoon_splits and mlb_id in platoon_splits:
+        player_splits = platoon_splits[mlb_id]
+        # Which split to use: vs L pitcher or vs R pitcher
+        split_key = "vL" if sp_hand == "L" else "vR"
+        split_row = player_splits.get(split_key)
+        if split_row and split_row.get("pa", 0) >= 20:
+            return split_row, label
+
+    # Fallback — league average wOBA delta
     PLATOON_WOBA_DELTA = {
         ("R", "L"):  +0.018,
         ("R", "R"):   0.000,
         ("L", "R"):  +0.025,
         ("L", "L"):  -0.015,
     }
-
     delta_woba = PLATOON_WOBA_DELTA.get((batter_hand, sp_hand), 0.0)
-
-    # Convert wOBA delta to approximate fantasy point impact
-    # wOBA of +0.025 ≈ +0.5 hits per 20 PA ≈ roughly +1.4 pts in this scoring system
-    pts_per_woba_point = 55.0   # calibrated to this league's scoring
-    adj = delta_woba * pts_per_woba_point
-    adj = round(adj, 2)
-
-    hand_label = "L" if batter_hand == "L" else "R"
-    label      = f"Platoon ({hand_label} vs {sp_hand}HP)"
-
-    return adj, label
+    # Return None for split_row — caller uses delta_woba via legacy path
+    return None, label, delta_woba
 
 
 def project_all(active_players, il_players, matchups,
                 batter_season, batter_career,
                 pitcher_season, pitcher_career,
-                pitch_splits, pitcher_mixes):
+                pitch_splits, pitcher_mixes, platoon_splits=None):
     """
     Runs project_player() for every active/DTD player,
     appends IL players as skeletons, sorts by projected points.
@@ -2240,7 +2333,8 @@ def project_all(active_players, il_players, matchups,
                 player, matchup,
                 batter_season, batter_career,
                 pitcher_season, pitcher_career,
-                pitch_splits, pitcher_mixes
+                pitch_splits, pitcher_mixes,
+                platoon_splits=platoon_splits
             )
         projections.append(proj)
 
@@ -2383,7 +2477,8 @@ def main():
     print("\n[3/5] Fetching stats (this takes ~30-40 seconds)...")
     (batter_season, batter_career,
      pitcher_season, pitcher_career,
-     pitch_splits, pitcher_mixes) = fetch_all_data(active, matchups)
+     pitch_splits, pitcher_mixes,
+     platoon_splits) = fetch_all_data(active, matchups)
 
     # Step 4 — Projections
     print("\n[4/5] Running projections...")
@@ -2391,7 +2486,8 @@ def main():
         active, il, matchups,
         batter_season, batter_career,
         pitcher_season, pitcher_career,
-        pitch_splits, pitcher_mixes
+        pitch_splits, pitcher_mixes,
+        platoon_splits=platoon_splits
     )
 
     # Print summary to console

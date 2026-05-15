@@ -707,8 +707,9 @@ async function loadData() {
     sub.textContent = `${data.player_count||0} players`;
     const updEl = document.getElementById('appUpdated');
     if (updEl) updEl.textContent = `last run ${genTime} · ${genDay}`;
-    const html = (data.projections||[]).map(renderCard).join('');
+    // Compute optimal lineup FIRST so dots render correctly
     renderLineupTotal(data.projections||[]);
+    const html = (data.projections||[]).map(renderCard).join('');
     list.innerHTML = html || '<div class="state-msg"><b>No projections yet</b>Run the script to generate today\'s data</div>';
   } catch(err) {
     console.error('Failed to load data.json:', err);
