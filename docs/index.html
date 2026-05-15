@@ -230,7 +230,7 @@
     </button>
     <div class="metric-grid" id="accMetrics">
       <div class="metric"><div class="metric-label">Avg error</div><div class="metric-val" id="mAvgErr">—</div><div class="metric-sub">pts off per player</div></div>
-      <div class="metric"><div class="metric-label">Within 5 pts</div><div class="metric-val" id="mWithin5">—</div><div class="metric-sub">of projections</div></div>
+      <div class="metric"><div class="metric-label">Within 5 pts</div><div class="metric-val" id="mWithin5">—</div><div class="metric-sub">within 2.5 pts</div></div>
       <div class="metric"><div class="metric-label">Bias</div><div class="metric-val" id="mBias">—</div><div class="metric-sub" id="mBiasSub">—</div></div>
       <div class="metric"><div class="metric-label">Best call</div><div class="metric-val" id="mBest" style="font-size:14px">—</div><div class="metric-sub" id="mBestSub">—</div></div>
     </div>
@@ -532,7 +532,7 @@ function renderAccuracy() {
     const errors  = rows.map(r => Math.abs(r.proj_pts - r.actual_pts));
     const diffs   = rows.map(r => r.proj_pts - r.actual_pts);
     const avgErr  = errors.reduce((a,b) => a+b, 0) / errors.length;
-    const within5 = errors.filter(e => e <= 5).length / errors.length * 100;
+    const within5 = errors.filter(e => e <= 2.5).length / errors.length * 100;
     const bias    = diffs.reduce((a,b) => a+b, 0) / diffs.length;
 
     // Best call — player with lowest avg abs error

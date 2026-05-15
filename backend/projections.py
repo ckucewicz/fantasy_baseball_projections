@@ -1972,45 +1972,131 @@ def project_player(player, matchup, batter_season, batter_career,
     )
     batter_stats["platoon_label"] = platoon_label
 
-    # --- Step 5: Project stat line and base score ---
-    stat_line  = project_stat_line(batter_stats)
-    base_score = score_stat_line(stat_line)
-    base_pts   = base_score["total"]
-
-    # --- Step 6: Pitcher difficulty ---
+    # --- Step 5: Pitcher difficulty ---
     pitcher_stats = get_pitcher_stats_for_pitcher(
         sp_name, sp_id, pitcher_season, pitcher_career
     )
     pitch_diff = pitcher_difficulty_adj(pitcher_stats, sp_name)
 
-    # --- Step 7: Park factor ---
-    park   = get_park_factors(venue_id, venue)
-    p_adj  = park_factor_adj(batter_stats, park)
+    # --- Step 6: Park factor ---
+    park  = get_park_factors(venue_id, venue)
+    p_adj = park_factor_adj(batter_stats, park)
 
-    # --- Step 8: Pitch type matchup ---
+    # --- Step 7: Apply all factors as rate multipliers ---
+    # Convert each adjustment into a rate multiplier and apply to
+    # the batter's stat rates BEFORE scoring. This means adjustments
+    # compound through the scoring math rather than stacking additively.
+
+    adjusted = dict(batter_stats)  # copy
+
+    # Platoon — affects hrate and hrrate
+    # Convert platoon_adj (pts) back to approximate rate multiplier
+    # pts_per_woba_point = 55.0 (from _platoon_adjustment)
+    # woba_delta = platoon_adj / 55.0
+    # hrate multiplier ≈ 1 + woba_delta * 1.5  (woba → hit rate approximation)
+    platoon_woba = platoon_adj / 55.0
+    platoon_h_mult  = 1.0 + platoon_woba * 1.5
+    platoon_hr_mult = 1.0 + platoon_woba * 0.8
+    adjusted["hrate"]  = max(adjusted["hrate"]  * platoon_h_mult,  0.050)
+    adjusted["hrrate"] = max(adjusted["hrrate"] * platoon_hr_mult, 0.005)
+
+    # Pitcher difficulty — affects hrate, kpct, bbpct
+    # Use normalized component scores from pitch_diff
+    comps     = pitch_diff.get("components", {})
+    xfip_z    = comps.get("xfip",   0.0)   # positive = harder pitcher
+    kpct_z    = comps.get("kpct",   0.0)
+    bbpct_z   = comps.get("bbpct",  0.0)
+
+    # Harder pitcher suppresses hits, elevates Ks, lowers BBs
+    pitcher_h_mult  = 1.0 - xfip_z  * 0.06   # max ~12% suppression at 2 std devs
+    pitcher_hr_mult = 1.0 - xfip_z  * 0.05
+    pitcher_k_mult  = 1.0 + kpct_z  * 0.08
+    pitcher_bb_mult = 1.0 - bbpct_z * 0.05
+
+    adjusted["hrate"]  = max(adjusted["hrate"]  * pitcher_h_mult,  0.050)
+    adjusted["hrrate"] = max(adjusted["hrrate"] * pitcher_hr_mult, 0.005)
+    adjusted["kpct"]   = max(adjusted["kpct"]   * pitcher_k_mult,  0.050)
+    adjusted["bbpct"]  = max(adjusted["bbpct"]  * pitcher_bb_mult, 0.020)
+
+    # Park factor — affects hrrate and run environment
+    hr_mult  = park["hr"]   # e.g. 1.11 for Camden Yards
+    run_mult = park["run"]  # e.g. 1.05
+    adjusted["hrrate"]    = max(adjusted["hrrate"] * hr_mult,  0.005)
+    # Run environment affects r_per_ab and rbi_per_ab implicitly via scoring
+    # Store run_mult for use in project_stat_line
+    adjusted["run_mult"]  = run_mult
+
+    # Recent form is already blended into the rates by blend_recent_form()
+    # form_delta is kept for display only — no additional rate adjustment needed
+
+    # --- Step 8: Score the adjusted stat line ---
+    stat_line  = project_stat_line(adjusted)
+    scored     = score_stat_line(stat_line)
+    proj_pts_base = scored["total"]
+
+    # Apply run environment multiplier to R and RBI components
+    r_rbi_base = (
+        stat_line["r"]   * SCORING["R"] +
+        stat_line["rbi"] * SCORING["RBI"]
+    )
+    r_rbi_adj  = r_rbi_base * (run_mult - 1.0)
+    proj_pts_base += r_rbi_adj
+
+    # Compute base_pts from UNADJUSTED stat line for dashboard display
+    base_stat_line = project_stat_line(batter_stats)
+    base_score     = score_stat_line(base_stat_line)
+    base_pts       = base_score["total"]
+
+    # Compute individual factor point impacts for dashboard
+    # (difference between adjusted and base for each factor)
+    def _pts_with(rates):
+        sl = project_stat_line(rates)
+        return score_stat_line(sl)["total"]
+
+    # Platoon impact
+    platoon_only = dict(batter_stats)
+    platoon_only["hrate"]  = max(batter_stats["hrate"]  * platoon_h_mult,  0.050)
+    platoon_only["hrrate"] = max(batter_stats["hrrate"] * platoon_hr_mult, 0.005)
+    platoon_impact = round(_pts_with(platoon_only) - base_pts, 2)
+
+    # Pitcher impact
+    pitcher_only = dict(batter_stats)
+    pitcher_only["hrate"]  = max(batter_stats["hrate"]  * pitcher_h_mult,  0.050)
+    pitcher_only["hrrate"] = max(batter_stats["hrrate"] * pitcher_hr_mult, 0.005)
+    pitcher_only["kpct"]   = max(batter_stats["kpct"]   * pitcher_k_mult,  0.050)
+    pitcher_only["bbpct"]  = max(batter_stats["bbpct"]  * pitcher_bb_mult, 0.020)
+    pitcher_impact = round(_pts_with(pitcher_only) - base_pts, 2)
+
+    # Park impact
+    park_only = dict(batter_stats)
+    park_only["hrrate"]   = max(batter_stats["hrrate"] * hr_mult, 0.005)
+    park_only["run_mult"] = run_mult
+    park_sl    = project_stat_line(park_only)
+    park_scored = score_stat_line(park_sl)["total"]
+    park_r_rbi  = (park_sl["r"] * SCORING["R"] + park_sl["rbi"] * SCORING["RBI"]) * (run_mult - 1.0)
+    park_impact = round((park_scored + park_r_rbi) - base_pts, 2)
+
+    # Override p_adj with computed impact for dashboard display
+    p_adj["adj"] = park_impact
+
+    # --- Step 9: Pitch type matchup (still additive — small wOBA-based adj) ---
     b_splits  = pitch_splits.get(mlb_id, {})
     p_mix     = pitcher_mixes.get(sp_id, {}) if sp_id else {}
     pt_result = pitch_type_matchup_adj(b_splits, p_mix)
     pt_rows   = format_pitch_rows(pt_result["detail"], sp_name)
 
-    # --- Step 9: Confidence ---
-    confidence = compute_confidence(batter_stats, pitcher_stats, babip_meta)
+    # --- Step 10: Confidence ---
+    confidence = compute_confidence(adjusted, pitcher_stats, babip_meta)
 
-    # --- Step 10: Final score ---
-    proj_pts = (
-        base_pts
-        + platoon_adj
-        + pitch_diff["adj"]
-        + p_adj["adj"]
-        + form_delta
-        + pt_result["total_adj"]
-    )
+    # --- Step 11: Final score ---
+    proj_pts = proj_pts_base + pt_result["total_adj"]
     proj_pts = max(0.0, round(proj_pts, 1))
 
-    # --- Step 11: Factor breakdown for dashboard ---
+    # --- Step 12: Factor breakdown for dashboard ---
+    pitch_diff["adj"]           = pitcher_impact
     pitch_diff["platoon_label"] = platoon_label
     factors = build_factor_breakdown(
-        base_pts, platoon_adj, pitch_diff,
+        base_pts, platoon_impact, pitch_diff,
         p_adj, form_delta, pt_result["total_adj"],
         babip_meta
     )
