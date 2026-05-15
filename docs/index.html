@@ -315,14 +315,14 @@ function filterLog(days) {
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-function confColor(label) {
-  if (label === 'high')   return 'var(--green-mid)';
-  if (label === 'medium') return 'var(--amber-mid)';
+function confColor(score) {
+  if (score >= 85) return 'var(--green-mid)';
+  if (score >= 50) return 'var(--amber-mid)';
   return 'var(--red-mid)';
 }
 function confTextColor(score) {
-  if (score >= 60) return 'var(--green)';
-  if (score >= 38) return 'var(--amber)';
+  if (score >= 85) return 'var(--green)';
+  if (score >= 50) return 'var(--amber)';
   return 'var(--red)';
 }
 function fmtDiff(val) {
@@ -400,7 +400,7 @@ function renderExpanded(p) {
       <span class="total-pts">${parseFloat(p.proj_pts).toFixed(1)} pts</span>
     </div>`;
 
-  const confLabel = conf.score >= 60 ? 'large sample' : conf.score >= 38 ? 'medium sample' : 'small sample';
+  const confLabel = conf.score >= 85 ? 'large sample' : conf.score >= 50 ? 'medium sample' : 'small sample';
   const confStyle = `color:${confTextColor(conf.score)}`;
 
   // ── Factor bars ──
@@ -473,7 +473,7 @@ function renderCard(p) {
     </div></div>`;
   }
   const conf      = p.confidence || {};
-  const barColor  = confColor(conf.label || 'low');
+  const barColor  = confColor(conf.score || 0);
   const expanded  = renderExpanded(p);
   const hasExpand = expanded.trim().length > 0;
   const chevron   = hasExpand ? `<span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>` : '';
