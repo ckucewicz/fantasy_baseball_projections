@@ -28,27 +28,15 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r backend/requirements.txt
-      - name: Verify structure
-        run: |
-          echo "=== backend/ ==="
-          ls -la backend/
-          echo "=== docs/ ==="
-          ls -la docs/
-          echo "=== roster.json ==="
-          cat roster.json
       - name: Run projections
         run: |
           cd backend
           python -u projections.py 2>&1
-        continue-on-error: true
-      - name: Check output
-        run: |
-          echo "=== data.json ==="
-          cat docs/data.json
       - name: Commit updated projections
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data.json docs/projections_log.json
           git diff --staged --quiet || git commit -m "chore: update projections $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull --rebase
           git push
