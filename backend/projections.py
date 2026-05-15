@@ -54,14 +54,14 @@ WEIGHTS = {
     # Between             → linear interpolation
     "pa_blend_min":      50,     # PA floor — lean heavily on career
     "pa_blend_max":     400,     # PA ceiling — lean heavily on current season
-    "career_floor":      0.80,   # career weight at pa_blend_min  (80%)
-    "season_ceil":       0.70,   # season weight at pa_blend_max  (70%)
+    "career_floor":      0.70,   # career weight at pa_blend_min  (80%)
+    "season_ceil":       0.80,   # season weight at pa_blend_max  (70%)
 
     # Same logic for pitchers but using IP instead of PA
     "ip_blend_min":      20,     # IP floor
     "ip_blend_max":      80,     # IP ceiling
-    "career_floor_p":    0.75,
-    "season_ceil_p":     0.65,
+    "career_floor_p":    0.70,
+    "season_ceil_p":     0.70,
 
     # Pitcher difficulty — how much each metric contributes to composite score
     # Must sum to 1.0
