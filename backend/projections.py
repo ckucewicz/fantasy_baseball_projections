@@ -110,10 +110,10 @@ CONF_BABIP_BAD   = 0.100   # deviation >= this → zero confidence from BABIP co
 CURRENT_SEASON = 2025
 
 # Path to roster file (relative to this script)
-ROSTER_PATH = "roster.json"
+ROSTER_PATH = "../roster.json"
 
 # Output path (GitHub Pages serves the docs/ folder)
-OUTPUT_PATH = os.path.join("docs", "data.json")
+OUTPUT_PATH = os.path.join("..", "docs", "data.json")
 
 # MLB Stats API base URL
 MLB_API = "https://statsapi.mlb.com/api/v1"
@@ -1763,9 +1763,9 @@ def compute_confidence(batter_stats, pitcher_stats, babip_meta):
     score = int(round(raw * 100))
     score = max(5, min(95, score))  # floor/ceiling — never claim 0% or 100%
 
-    if score >= 60:
+    if score >= 85:
         label = "high"
-    elif score >= 38:
+    elif score >= 50:
         label = "medium"
     else:
         label = "low"
@@ -2063,12 +2063,16 @@ def project_player(player, matchup, batter_season, batter_career,
 
     batter_stats["platoon_label"] = platoon_label
 
-    # If we have real split rates, override base batter stats with split rates
-    # This is the key improvement — use actual vs-L or vs-R rates directly
+    # If we have real split rates, blend them with overall rates
+    # 70% weight on split (ABs against starter), 30% on overall (bullpen ABs)
+    PLATOON_WEIGHT = 0.70
     if platoon_split_row:
         for rate in ["hrate", "hrrate", "xbhrate", "bbpct", "kpct", "hbprate"]:
-            if rate in platoon_split_row:
-                batter_stats[rate] = platoon_split_row[rate]
+            if rate in platoon_split_row and rate in batter_stats:
+                batter_stats[rate] = (
+                    batter_stats[rate] * (1 - PLATOON_WEIGHT) +
+                    platoon_split_row[rate] * PLATOON_WEIGHT
+                )
 
     # --- Step 5: Pitcher difficulty ---
     pitcher_stats = get_pitcher_stats_for_pitcher(
@@ -2556,11 +2560,11 @@ def main():
 #   extract_player_game_stats(boxscore, mlb_id)
 #   load_log()
 #   save_log(log)
-#   append_actuals(projections)
+    append_actuals(projections)
 #   build_log_entry(projection, actual_stats)
 # ─────────────────────────────────────────────
 
-LOG_PATH = os.path.join("docs", "projections_log.json")
+LOG_PATH = os.path.join("..", "docs", "projections_log.json")
 
 
 def load_log():
@@ -2893,3 +2897,6 @@ def append_actuals(projections):
 
 
 
+
+if __name__ == "__main__":
+    main()
