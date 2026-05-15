@@ -109,6 +109,21 @@
   .bil { background: #FCEBEB; color: var(--red); }
   .bno-game { background: #eee; color: #888; }
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
+  .lineup-total {
+    background: var(--card);
+    border: 0.5px solid var(--border-s);
+    border-radius: var(--radius);
+    padding: 11px 14px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .lineup-left { display: flex; flex-direction: column; gap: 2px; }
+  .lineup-label { font-size: 11px; color: var(--text-3); }
+  .lineup-slots { font-size: 10px; color: var(--text-3); margin-top:2px; }
+  .lineup-pts { font-size: 26px; font-weight: 600; font-family: 'DM Mono', monospace; letter-spacing: -0.5px; color: var(--text-1); }
+  .lineup-pts-lbl { font-size: 10px; color: var(--text-3); text-align: right; margin-top:2px; }
 
   /* ACCURACY TAB */
   .acc-card { background: var(--card); border: 0.5px solid var(--border-s); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; }
@@ -204,6 +219,16 @@
 
   <!-- TAB: TODAY -->
   <div class="tab-section show" id="tab-today">
+    <div id="lineupTotal" style="display:none" class="lineup-total">
+      <div class="lineup-left">
+        <span class="lineup-label">Optimal lineup projected</span>
+        <span class="lineup-slots" id="lineupSlots"></span>
+      </div>
+      <div style="text-align:right">
+        <div class="lineup-pts" id="lineupPts">—</div>
+        <div class="lineup-pts-lbl">proj pts</div>
+      </div>
+    </div>
     <div class="legend">
       <span class="leg"><span class="leg-dot" style="background:var(--green-mid)"></span>High confidence</span>
       <span class="leg"><span class="leg-dot" style="background:var(--amber-mid)"></span>Medium</span>
@@ -678,6 +703,7 @@ async function loadData() {
     const updEl = document.getElementById('appUpdated');
     if (updEl) updEl.textContent = `last run ${genTime} · ${genDay}`;
     const html = (data.projections||[]).map(renderCard).join('');
+    renderLineupTotal(data.projections||[]);
     list.innerHTML = html || '<div class="state-msg"><b>No projections yet</b>Run the script to generate today\'s data</div>';
   } catch(err) {
     console.error('Failed to load data.json:', err);
@@ -772,6 +798,85 @@ function exportCSV() {
 
   label.textContent = 'Exported!';
   setTimeout(() => { label.textContent = 'Export CSV'; }, 2000);
+}
+
+// ─────────────────────────────────────────────
+// OPTIMAL LINEUP CALCULATOR
+// Fills slots: C, 1B, 2B, 3B, SS, CF, OF, OF, UTIL
+// Uses greedy algorithm: sort by pts desc, fill each slot
+// with highest available eligible player, remaining goes to UTIL
+// ─────────────────────────────────────────────
+function computeOptimalLineup(projections) {
+  const SLOTS = ['C','1B','2B','3B','SS','CF','OF','OF','UTIL'];
+
+  // Only active players with projections
+  const active = projections.filter(p =>
+    p.proj_pts !== null && p.proj_pts !== undefined &&
+    p.status === 'active'
+  ).sort((a, b) => b.proj_pts - a.proj_pts);
+
+  if (!active.length) return null;
+
+  const filled   = {};   // slot -> player
+  const used     = new Set();
+
+  // Position eligibility — what slots can each position play
+  const SLOT_ELIGIBLE = {
+    'C':    ['C'],
+    '1B':   ['1B'],
+    '2B':   ['2B'],
+    '3B':   ['3B'],
+    'SS':   ['SS'],
+    'CF':   ['CF','OF'],
+    'OF':   ['OF','CF','LF','RF'],
+    'UTIL': ['C','1B','2B','3B','SS','CF','OF','LF','RF','DH'],
+  };
+
+  // Fill non-UTIL slots first
+  for (const slot of SLOTS.filter(s => s !== 'UTIL')) {
+    const eligible = SLOT_ELIGIBLE[slot];
+    // Find highest pts player eligible for this slot not yet used
+    // Handle duplicate OF slot
+    const candidates = active.filter(p =>
+      !used.has(p.mlb_id) &&
+      p.positions && p.positions.some(pos => eligible.includes(pos))
+    );
+    if (candidates.length) {
+      filled[slot] = candidates[0];
+      used.add(candidates[0].mlb_id);
+    }
+  }
+
+  // Fill UTIL with highest remaining
+  const utilCandidates = active.filter(p => !used.has(p.mlb_id));
+  if (utilCandidates.length) {
+    filled['UTIL'] = utilCandidates[0];
+    used.add(utilCandidates[0].mlb_id);
+  }
+
+  const starters = Object.values(filled).filter(Boolean);
+  const total    = starters.reduce((sum, p) => sum + (p.proj_pts || 0), 0);
+  const slotStr  = Object.entries(filled)
+    .filter(([,p]) => p)
+    .map(([slot, p]) => `${slot}: ${p.name.split(' ').pop()}`)
+    .join(' · ');
+
+  return { total: round(total, 1), slots: slotStr, count: starters.length };
+}
+
+function round(n, dec) {
+  return Math.round(n * Math.pow(10, dec)) / Math.pow(10, dec);
+}
+
+function renderLineupTotal(projections) {
+  const result = computeOptimalLineup(projections);
+  const el     = document.getElementById('lineupTotal');
+  const pts    = document.getElementById('lineupPts');
+  const slots  = document.getElementById('lineupSlots');
+  if (!result || !el) return;
+  pts.textContent   = result.total.toFixed(1);
+  slots.textContent = result.slots;
+  el.style.display  = 'flex';
 }
 
 // ─────────────────────────────────────────────
