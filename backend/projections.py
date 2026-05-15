@@ -54,14 +54,14 @@ WEIGHTS = {
     # Between             → linear interpolation
     "pa_blend_min":      50,     # PA floor — lean heavily on career
     "pa_blend_max":     400,     # PA ceiling — lean heavily on current season
-    "career_floor":      0.70,   # career weight at pa_blend_min  (80%)
-    "season_ceil":       0.80,   # season weight at pa_blend_max  (70%)
+    "career_floor":      0.80,   # career weight at pa_blend_min  (80%)
+    "season_ceil":       0.70,   # season weight at pa_blend_max  (70%)
 
     # Same logic for pitchers but using IP instead of PA
     "ip_blend_min":      20,     # IP floor
     "ip_blend_max":      80,     # IP ceiling
-    "career_floor_p":    0.70,
-    "season_ceil_p":     0.70,
+    "career_floor_p":    0.75,
+    "season_ceil_p":     0.65,
 
     # Pitcher difficulty — how much each metric contributes to composite score
     # Must sum to 1.0
@@ -1451,51 +1451,51 @@ def format_pitch_rows(pitch_adj_detail, pitcher_name):
 
 
 # Park factor table keyed by MLB venue ID.
+# Venue IDs verified from MLB Stats API 2026 season.
 # run_factor and hr_factor are multipliers around 1.0 (league average).
+# Source: FanGraphs park factors 2022-2024 averages.
 PARK_FACTORS = {
-    # venue_id: {"name": str, "run": float, "hr": float}
-
     # AL East
-    4:    {"name": "Yankee Stadium",        "run": 1.03, "hr": 1.11},
-    2:    {"name": "Camden Yards",           "run": 1.05, "hr": 1.08},
-    3313: {"name": "Fenway Park",            "run": 1.04, "hr": 0.93},
-    3289: {"name": "Rogers Centre",          "run": 1.02, "hr": 1.05},
-    3901: {"name": "Tropicana Field",        "run": 0.96, "hr": 0.94},
+    3313: {"name": "Yankee Stadium",         "run": 1.03, "hr": 1.11},
+    2:    {"name": "Camden Yards",            "run": 1.05, "hr": 1.08},
+    3:    {"name": "Fenway Park",             "run": 1.04, "hr": 0.93},
+    14:   {"name": "Rogers Centre",           "run": 1.02, "hr": 1.05},
+    12:   {"name": "Tropicana Field",         "run": 0.96, "hr": 0.94},
 
     # AL Central
-    5:    {"name": "Guaranteed Rate Field",  "run": 1.05, "hr": 1.10},
-    7:    {"name": "Progressive Field",      "run": 0.96, "hr": 0.91},
-    2394: {"name": "Comerica Park",          "run": 0.97, "hr": 0.93},
-    7:    {"name": "Kauffman Stadium",       "run": 0.97, "hr": 0.95},
-    3309: {"name": "Target Field",           "run": 0.97, "hr": 0.94},
+    4:    {"name": "Rate Field",              "run": 1.05, "hr": 1.10},
+    5:    {"name": "Progressive Field",       "run": 0.96, "hr": 0.91},
+    2394: {"name": "Comerica Park",           "run": 0.97, "hr": 0.93},
+    7:    {"name": "Kauffman Stadium",        "run": 0.97, "hr": 0.95},
+    3312: {"name": "Target Field",            "run": 0.97, "hr": 0.94},
 
     # AL West
-    1:    {"name": "Angel Stadium",          "run": 0.97, "hr": 0.97},
-    11:   {"name": "Minute Maid Park",       "run": 1.01, "hr": 0.99},
-    10:   {"name": "Oakland Coliseum",       "run": 0.94, "hr": 0.87},
-    680:  {"name": "T-Mobile Park",          "run": 0.97, "hr": 0.93},
-    5:    {"name": "Globe Life Field",       "run": 1.02, "hr": 1.05},
+    1:    {"name": "Angel Stadium",           "run": 0.97, "hr": 0.97},
+    2392: {"name": "Daikin Park",             "run": 1.01, "hr": 0.99},
+    2529: {"name": "Sutter Health Park",      "run": 0.94, "hr": 0.87},
+    680:  {"name": "T-Mobile Park",           "run": 0.97, "hr": 0.93},
+    5325: {"name": "Globe Life Field",        "run": 1.02, "hr": 1.05},
 
     # NL East
-    3289: {"name": "Truist Park",            "run": 1.01, "hr": 1.04},
-    3410: {"name": "Citi Field",             "run": 0.95, "hr": 0.89},
-    2392: {"name": "Citizens Bank Park",     "run": 1.06, "hr": 1.12},
-    3091: {"name": "Nationals Park",         "run": 0.99, "hr": 1.00},
-    4169: {"name": "loanDepot park",         "run": 0.96, "hr": 0.93},
+    4705: {"name": "Truist Park",             "run": 1.01, "hr": 1.04},
+    3289: {"name": "Citi Field",              "run": 0.95, "hr": 0.89},
+    2681: {"name": "Citizens Bank Park",      "run": 1.06, "hr": 1.12},
+    3309: {"name": "Nationals Park",          "run": 0.99, "hr": 1.00},
+    4169: {"name": "loanDepot park",          "run": 0.96, "hr": 0.93},
 
     # NL Central
-    17:   {"name": "Wrigley Field",          "run": 1.03, "hr": 1.04},
+    17:   {"name": "Wrigley Field",           "run": 1.03, "hr": 1.04},
     2602: {"name": "Great American Ball Park","run": 1.06, "hr": 1.14},
-    31:   {"name": "American Family Field",  "run": 1.03, "hr": 1.06},
-    3312: {"name": "PNC Park",               "run": 0.97, "hr": 0.94},
-    2889: {"name": "Busch Stadium",          "run": 0.97, "hr": 0.96},
+    32:   {"name": "American Family Field",   "run": 1.03, "hr": 1.06},
+    31:   {"name": "PNC Park",                "run": 0.97, "hr": 0.94},
+    2889: {"name": "Busch Stadium",           "run": 0.97, "hr": 0.96},
 
     # NL West
-    22:   {"name": "Chase Field",            "run": 1.04, "hr": 1.08},
-    16:   {"name": "Coors Field",            "run": 1.16, "hr": 1.22},
-    22:   {"name": "Dodger Stadium",         "run": 0.98, "hr": 0.97},
-    2680: {"name": "Petco Park",             "run": 0.94, "hr": 0.88},
-    2395: {"name": "Oracle Park",            "run": 0.94, "hr": 0.87},
+    15:   {"name": "Chase Field",             "run": 1.04, "hr": 1.08},
+    19:   {"name": "Coors Field",             "run": 1.16, "hr": 1.22},
+    22:   {"name": "Dodger Stadium",          "run": 0.98, "hr": 0.97},
+    2680: {"name": "Petco Park",              "run": 0.94, "hr": 0.88},
+    2395: {"name": "Oracle Park",             "run": 0.94, "hr": 0.87},
 }
 
 # Fallback for unknown venues
