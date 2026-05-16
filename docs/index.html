@@ -109,7 +109,7 @@
   .bil { background: #FCEBEB; color: var(--red); }
   .bno-game { background: #eee; color: #888; }
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
-  .proj-range { font-size: 17px; font-weight: 500; color: var(--color-text-primary); line-height: 1; white-space: nowrap; }
+  .proj-range { font-size: 10px; color: var(--color-text-tertiary); text-align: right; white-space: nowrap; margin-top: 1px; }
   .proj-mid   { font-size: 10px; color: var(--color-text-tertiary); text-align: right; }
   .starter-dot { width: 14px; height: 14px; border-radius: 50%; background: #378ADD; flex-shrink: 0; cursor: pointer; transition: transform .15s; }
   .starter-dot:active { transform: scale(0.85); }
@@ -237,7 +237,7 @@
       </div>
       <div style="text-align:right">
         <div class="lineup-pts" id="lineupPts">—</div>
-        <div class="lineup-pts-lbl">proj range</div>
+        <div class="lineup-pts-lbl">proj pts</div>
         <div class="lineup-mid" id="lineupMid"></div>
       </div>
     </div>
@@ -574,12 +574,13 @@ function renderCard(p) {
           <div class="pstat">${renderStatLine(p.stat_line)}</div>
         </div>
         <div class="pright">
+          <span class="pts">${p.proj_pts.toFixed(1)}</span>
+          <span class="pts-lbl">proj pts</span>
           ${(p.proj_low !== undefined && p.proj_high !== undefined)
-            ? `<span class="proj-range">${p.proj_low.toFixed(1)} – ${p.proj_high.toFixed(1)}</span>
-               <span class="proj-mid">mid ${p.proj_pts.toFixed(1)} pts</span>`
-            : `<span class="pts">${p.proj_pts.toFixed(1)}</span><span class="pts-lbl">proj pts</span>`
+            ? `<span class="proj-range">${p.proj_low.toFixed(1)} – ${p.proj_high.toFixed(1)} <span style="opacity:0.6">50% CI</span></span>`
+            : ''
           }
-          ${conf.score !== undefined ? `<span class="conf-pct-sm" style="color:${confTextColor(conf.score)}">${conf.score}% conf</span>` : ''}
+          ${p.interval_games ? `<span class="proj-range">${p.interval_games} games</span>` : ''}
           ${chevron}
         </div>
       </div>
@@ -1189,8 +1190,8 @@ function updateLineupDisplay() {
   const rangeLow  = selProjs.reduce((s,p) => s + (p.proj_low  ?? p.proj_pts), 0);
   const rangeHigh = selProjs.reduce((s,p) => s + (p.proj_high ?? p.proj_pts), 0);
 
-  document.getElementById('lineupPts').textContent   = `${rangeLow.toFixed(1)} – ${rangeHigh.toFixed(1)}`;
-  document.getElementById('lineupMid').textContent   = `mid ${total.toFixed(1)} pts`;
+  document.getElementById('lineupPts').textContent   = total.toFixed(1);
+  document.getElementById('lineupMid').textContent   = `range ${rangeLow.toFixed(1)} – ${rangeHigh.toFixed(1)}`;
   document.getElementById('lineupSlots').textContent = `${count}/9 starters selected`;
 
   const warn = document.getElementById('lineupWarn');
