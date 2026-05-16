@@ -2894,6 +2894,66 @@ def project_all_historical(active_players, il_players, matchups,
 # ─────────────────────────────────────────────
 
 
+def compute_lineup_mc(projections_hist, n_sim=10000,
+                       thresholds=None, n_starters=9):
+    """
+    Runs a lineup-level Monte Carlo simulation across all starters.
+    For each simulation, samples one outcome per starter and sums them.
+    Returns probabilities of the lineup hitting various point thresholds.
+    """
+    import random
+
+    if thresholds is None:
+        thresholds = [40.0, 30.0, 20.0, 0.0]
+
+    # Get starters with score distributions
+    eligible = [
+        p for p in projections_hist
+        if p.get("score_dist") and p.get("composite_mult") and
+           p.get("proj_pts") is not None and p.get("status") == "active"
+    ]
+
+    if len(eligible) < 1:
+        return {"probs": {}, "n_sim": n_sim, "n_starters": 0}
+
+    # Use top n_starters by proj_pts (optimal lineup)
+    starters = sorted(eligible, key=lambda x: x.get("proj_pts", 0), reverse=True)[:n_starters]
+
+    # Pre-shift each player's distribution
+    shifted_dists = []
+    for p in starters:
+        mult   = p["composite_mult"]
+        scores = p["score_dist"]
+        shifted_dists.append([s * mult for s in scores])
+
+    # Simulate
+    lineup_totals = []
+    for _ in range(n_sim):
+        total = sum(random.choice(dist) for dist in shifted_dists)
+        lineup_totals.append(total)
+
+    lineup_totals.sort()
+
+    # Compute probabilities
+    probs = {}
+    for t in thresholds:
+        if t == 0.0:
+            count = sum(1 for s in lineup_totals if s < 0)
+        else:
+            count = sum(1 for s in lineup_totals if s >= t)
+        probs[str(t)] = round(count / n_sim * 100, 1)
+
+    median = lineup_totals[n_sim // 2]
+
+    return {
+        "probs":      probs,
+        "median":     round(median, 1),
+        "n_sim":      n_sim,
+        "n_starters": len(starters),
+    }
+
+
+
 def write_output(projections, projections_historical=None):
     """
     Serializes projections to docs/data.json.
@@ -2901,12 +2961,16 @@ def write_output(projections, projections_historical=None):
     """
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
 
+    # Compute lineup-level Monte Carlo probabilities
+    lineup_mc = compute_lineup_mc(projections_historical or [])
+
     output = {
         "generated_at":           datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
         "season":                 CURRENT_SEASON,
         "player_count":           len([p for p in projections if p.get("proj_pts") is not None]),
         "projections":            projections,
         "projections_historical": projections_historical or [],
+        "lineup_mc":              lineup_mc,
     }
 
     with open(OUTPUT_PATH, "w") as f:

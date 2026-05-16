@@ -45,7 +45,7 @@
   .tabs { display: flex; background: var(--surface); border-radius: var(--radius-sm); padding: 3px; margin-bottom: 10px; gap: 3px; }
   .tab { flex: 1; text-align: center; font-size: 12px; font-weight: 500; padding: 7px; border-radius: 6px; cursor: pointer; color: var(--text-2); transition: all 0.15s; }
   .tab.active { background: var(--card); color: var(--text-1); border: 0.5px solid var(--border); }
-  .tab-section { display: none; }
+  .tab-section { display: none; padding: 0 12px 16px; }
   .tab-section.show { display: block; }
 
   /* LEGEND */
@@ -285,9 +285,7 @@
     <div id="playerList">
       <div class="state-msg"><b>Loading projections…</b>Fetching today's data</div>
     </div>
-  </div>
-
-    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')">
+    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')" style="margin-top:12px">
       How this model works <i class="ti ti-chevron-down" aria-hidden="true" style="font-size:14px;color:var(--color-text-tertiary);transition:transform .2s"></i>
     </div>
     <div class="how-body">
@@ -311,8 +309,7 @@
         <span class="lineup-slots" id="histLineupSlots"></span>
       </div>
       <div style="text-align:right">
-        <div class="lineup-pts" id="histLineupPts">—</div>
-        <div class="lineup-pts-lbl">proj range</div>
+        <div id="histLineupPts">—</div>
         <div class="lineup-mid" id="histLineupMid"></div>
       </div>
     </div>
@@ -322,9 +319,7 @@
       <span class="leg-item"><span class="leg-dot-sm" style="background:#E24B4A"></span>Low conf</span>
     </div>
     <div id="histPlayerList"><div class="no-data-msg">Loading historical projections...</div></div>
-  </div>
-
-    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')">
+    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')" style="margin-top:12px">
       How this model works <i class="ti ti-chevron-down" aria-hidden="true" style="font-size:14px;color:var(--color-text-tertiary);transition:transform .2s"></i>
     </div>
     <div class="how-body">
@@ -1120,17 +1115,25 @@ function renderHistoricalTab(data) {
   // Compute optimal lineup for historical model
   const histResult = computeOptimalLineup(projs);
   if (histResult) {
-    window._histStarterIds = histResult.starterIds;
-    const el = document.getElementById('histLineupTotal');
-    const histSel = new Set(histResult.starterIds);
-    const hLow  = projs.filter(p => histSel.has(p.mlb_id) && p.proj_pts !== null)
-                       .reduce((s,p) => s + (p.proj_low ?? p.proj_pts), 0);
-    const hHigh = projs.filter(p => histSel.has(p.mlb_id) && p.proj_pts !== null)
-                       .reduce((s,p) => s + (p.proj_high ?? p.proj_pts), 0);
-    const hMid  = projs.filter(p => histSel.has(p.mlb_id) && p.proj_pts !== null)
-                       .reduce((s,p) => s + (p.proj_pts || 0), 0);
-    document.getElementById('histLineupPts').textContent  = `${hLow.toFixed(1)} – ${hHigh.toFixed(1)}`;
-    document.getElementById('histLineupMid').textContent  = `mid ${hMid.toFixed(1)} pts`;
+    window._histStarterIds  = histResult.starterIds;
+  window._histSelectedIds = new Set(histResult.starterIds);
+  window._histAllProjs    = projs;
+    const el  = document.getElementById('histLineupTotal');
+    const lmc = window._data && window._data.lineup_mc ? window._data.lineup_mc : null;
+    if (lmc && lmc.probs) {
+      const p40  = lmc.probs["40.0"] !== undefined ? lmc.probs["40.0"].toFixed(0)+'%' : '—';
+      const p30  = lmc.probs["30.0"] !== undefined ? lmc.probs["30.0"].toFixed(0)+'%' : '—';
+      const p20  = lmc.probs["20.0"] !== undefined ? lmc.probs["20.0"].toFixed(0)+'%' : '—';
+      const pNeg = lmc.probs["0.0"]  !== undefined ? lmc.probs["0.0"].toFixed(0)+'%'  : '—';
+      document.getElementById('histLineupPts').innerHTML =
+        `<span style="font-size:11px;line-height:1.6;text-align:right;font-family:var(--font-sans);font-weight:400;color:var(--color-text-secondary)">` +
+        `<span style="color:#3B6D11;font-weight:500">${p40}</span> chance of 40+ pts<br>` +
+        `<span style="color:#3B6D11;font-weight:500">${p30}</span> chance of 30+ pts<br>` +
+        `<span style="color:#3B6D11;font-weight:500">${p20}</span> chance of 20+ pts<br>` +
+        `<span style="color:#A32D2D;font-weight:500">${pNeg}</span> chance of going negative` +
+        `</span>`;
+      document.getElementById('histLineupMid').textContent = `median ${lmc.median.toFixed(1)} pts · ${lmc.n_starters} starters`;
+    }
     document.getElementById('histLineupSlots').textContent = `${histResult.count}/9 starters selected`;
     el.style.display = 'flex';
   }
@@ -1138,8 +1141,13 @@ function renderHistoricalTab(data) {
   const html = projs.map(p => {
     const conf     = p.confidence || {};
     const barColor = confColor(conf.score || 0);
-    const isStarter = window._histStarterIds && window._histStarterIds.has(p.mlb_id);
-    const dot      = `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}" style="pointer-events:none"></div>`;
+    const isStarter = window._histSelectedIds
+      ? window._histSelectedIds.has(p.mlb_id)
+      : (window._histStarterIds && window._histStarterIds.has(p.mlb_id));
+    const dot = `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}"
+      onclick="toggleHistPlayer(${p.mlb_id}, event)"
+      role="checkbox" aria-checked="${isStarter}"
+      aria-label="Toggle ${esc(p.name)} in Monte Carlo lineup"></div>`;
 
     if (p.proj_pts === null || p.proj_pts === undefined) {
       return `<div class="card no-expand">
@@ -1325,6 +1333,25 @@ function updateLineupDisplay() {
     if (!dot) return;
     const on = sel.has(p.mlb_id);
     dot.className    = on ? 'starter-dot' : 'bench-dot';
+    dot.setAttribute('aria-checked', on);
+  });
+}
+
+function toggleHistPlayer(mlb_id, e) {
+  e.stopPropagation();
+  if (!window._histSelectedIds) return;
+  if (window._histSelectedIds.has(mlb_id)) {
+    window._histSelectedIds.delete(mlb_id);
+  } else {
+    window._histSelectedIds.add(mlb_id);
+  }
+  // Update dots
+  const projs = window._histAllProjs || [];
+  projs.forEach(p => {
+    const dot = document.querySelector(`[aria-label="Toggle ${p.name} in Monte Carlo lineup"]`);
+    if (!dot) return;
+    const on = window._histSelectedIds.has(p.mlb_id);
+    dot.className = on ? 'starter-dot' : 'bench-dot';
     dot.setAttribute('aria-checked', on);
   });
 }
