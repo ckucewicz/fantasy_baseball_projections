@@ -111,7 +111,7 @@
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
   .proj-range { font-size: 10px; color: var(--color-text-tertiary); text-align: right; white-space: nowrap; margin-top: 1px; }
   .model-desc { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; margin-bottom: 8px; font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
-  .how-btn { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); cursor: pointer; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px; }
+  .how-btn { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); cursor: pointer; font-size: 12px; font-weight: 500; color: #185FA5; margin-bottom: 8px; gap: 8px; }
   .how-body { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 12px; font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 8px; display: none; }
   .how-body.open { display: block; }
   .how-steps { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; }
@@ -264,6 +264,18 @@
   <!-- TAB: TODAY -->
   <div class="tab-section show" id="tab-today">
     <div class="model-desc">Projects today's score using each player's stat rates adjusted for pitcher, park, and platoon matchup.</div>
+    <div class="how-btn" onclick="var s=this.querySelector('svg');s.style.transform=s.style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')" style="margin-bottom:8px">
+      How this model works <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .2s"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="how-body">
+      <ol class="how-steps">
+        <li class="how-step"><span class="step-num">1</span><span class="step-txt"><strong>Blend season + career stats</strong> — weights toward current season as plate appearances accumulate.</span></li>
+        <li class="how-step"><span class="step-num">2</span><span class="step-txt"><strong>Apply platoon splits</strong> — uses each player's real vs-left / vs-right rates from 2022–present.</span></li>
+        <li class="how-step"><span class="step-num">3</span><span class="step-txt"><strong>Apply matchup factors</strong> — pitcher difficulty, park factor, and recent form shift the rates up or down.</span></li>
+        <li class="how-step"><span class="step-num">4</span><span class="step-txt"><strong>Project a stat line</strong> — adjusted rates × expected ABs per game = projected H, HR, BB, K, etc.</span></li>
+        <li class="how-step"><span class="step-num">5</span><span class="step-txt"><strong>Score it</strong> — each stat is multiplied by your league's exact point values and summed.</span></li>
+      </ol>
+    </div>
 
     <div id="lineupTotal" style="display:none" class="lineup-total">
       <div class="lineup-left">
@@ -285,23 +297,23 @@
     <div id="playerList">
       <div class="state-msg"><b>Loading projections…</b>Fetching today's data</div>
     </div>
-    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')" style="margin-top:12px">
-      How this model works <i class="ti ti-chevron-down" aria-hidden="true" style="font-size:14px;color:var(--color-text-tertiary);transition:transform .2s"></i>
-    </div>
-    <div class="how-body">
-      <ol class="how-steps">
-        <li class="how-step"><span class="step-num">1</span><span class="step-txt"><strong>Blend season + career stats</strong> — weights toward current season as plate appearances accumulate.</span></li>
-        <li class="how-step"><span class="step-num">2</span><span class="step-txt"><strong>Apply platoon splits</strong> — uses each player's real vs-left / vs-right rates from 2022–present.</span></li>
-        <li class="how-step"><span class="step-num">3</span><span class="step-txt"><strong>Apply matchup factors</strong> — pitcher difficulty, park factor, and recent form shift the rates up or down.</span></li>
-        <li class="how-step"><span class="step-num">4</span><span class="step-txt"><strong>Project a stat line</strong> — adjusted rates × expected ABs per game = projected H, HR, BB, K, etc.</span></li>
-        <li class="how-step"><span class="step-num">5</span><span class="step-txt"><strong>Score it</strong> — each stat is multiplied by your league's exact point values and summed.</span></li>
-      </ol>
-    </div>
   </div>
 
   <!-- TAB: HISTORICAL MODEL -->
   <div class="tab-section" id="tab-historical">
     <div class="model-desc">Simulates 10,000 possible outcomes based on each player's historical game-by-game scoring, adjusted for today's matchup.</div>
+    <div class="how-btn" onclick="var s=this.querySelector('svg');s.style.transform=s.style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')" style="margin-bottom:8px">
+      How this model works <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .2s"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="how-body">
+      <ol class="how-steps">
+        <li class="how-step"><span class="step-num">1</span><span class="step-txt"><strong>Fetch historical game logs</strong> — pulls every game from 2024–present for each player and computes their actual fantasy score.</span></li>
+        <li class="how-step"><span class="step-num">2</span><span class="step-txt"><strong>Compute a matchup multiplier</strong> — combines today's pitcher difficulty, platoon split, and park factor into a single adjustment (e.g. 0.73× for a tough matchup).</span></li>
+        <li class="how-step"><span class="step-num">3</span><span class="step-txt"><strong>Shift the distribution</strong> — multiplies each historical score by the matchup multiplier, reflecting today's conditions.</span></li>
+        <li class="how-step"><span class="step-num">4</span><span class="step-txt"><strong>Run 10,000 simulations</strong> — randomly samples from the shifted historical scores 10,000 times to simulate today's possible outcomes.</span></li>
+        <li class="how-step"><span class="step-num">5</span><span class="step-txt"><strong>Compute probabilities</strong> — counts how often each threshold (3+, 6+, negative) was hit across all simulations.</span></li>
+      </ol>
+    </div>
 
     <div id="histLineupTotal" style="display:none" class="lineup-total">
       <div class="lineup-left">
@@ -319,18 +331,6 @@
       <span class="leg-item"><span class="leg-dot-sm" style="background:#E24B4A"></span>Low conf</span>
     </div>
     <div id="histPlayerList"><div class="no-data-msg">Loading historical projections...</div></div>
-    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')" style="margin-top:12px">
-      How this model works <i class="ti ti-chevron-down" aria-hidden="true" style="font-size:14px;color:var(--color-text-tertiary);transition:transform .2s"></i>
-    </div>
-    <div class="how-body">
-      <ol class="how-steps">
-        <li class="how-step"><span class="step-num">1</span><span class="step-txt"><strong>Fetch historical game logs</strong> — pulls every game from 2024–present for each player and computes their actual fantasy score.</span></li>
-        <li class="how-step"><span class="step-num">2</span><span class="step-txt"><strong>Compute a matchup multiplier</strong> — combines today's pitcher difficulty, platoon split, and park factor into a single adjustment (e.g. 0.73× for a tough matchup).</span></li>
-        <li class="how-step"><span class="step-num">3</span><span class="step-txt"><strong>Shift the distribution</strong> — multiplies each historical score by the matchup multiplier, reflecting today's conditions.</span></li>
-        <li class="how-step"><span class="step-num">4</span><span class="step-txt"><strong>Run 10,000 simulations</strong> — randomly samples from the shifted historical scores 10,000 times to simulate today's possible outcomes.</span></li>
-        <li class="how-step"><span class="step-num">5</span><span class="step-txt"><strong>Compute probabilities</strong> — counts how often each threshold (3+, 6+, negative) was hit across all simulations.</span></li>
-      </ol>
-    </div>
   </div>
 
   <!-- TAB: ACCURACY -->
@@ -1119,7 +1119,7 @@ function renderHistoricalTab(data) {
   window._histSelectedIds = new Set(histResult.starterIds);
   window._histAllProjs    = projs;
     const el  = document.getElementById('histLineupTotal');
-    const lmc = window._data && window._data.lineup_mc ? window._data.lineup_mc : null;
+    const lmc = data && data.lineup_mc ? data.lineup_mc : (window._data && window._data.lineup_mc ? window._data.lineup_mc : null);
     if (lmc && lmc.probs) {
       const p40  = lmc.probs["40.0"] !== undefined ? lmc.probs["40.0"].toFixed(0)+'%' : '—';
       const p30  = lmc.probs["30.0"] !== undefined ? lmc.probs["30.0"].toFixed(0)+'%' : '—';
