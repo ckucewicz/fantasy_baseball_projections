@@ -236,7 +236,8 @@
       </div>
       <div style="text-align:right">
         <div class="lineup-pts" id="lineupPts">—</div>
-        <div class="lineup-pts-lbl">proj pts</div>
+        <div class="lineup-pts-lbl">proj range</div>
+        <div class="lineup-mid" id="lineupMid"></div>
       </div>
     </div>
     <div class="legend">
@@ -1003,7 +1004,13 @@ function updateLineupDisplay() {
     .reduce((s, p) => s + (p.proj_pts || 0), 0);
   const count = sel.size;
 
-  document.getElementById('lineupPts').textContent   = total.toFixed(1);
+  // Compute range from selected players
+  const selProjs = projs.filter(p => sel.has(p.mlb_id) && p.proj_pts !== null);
+  const rangeLow  = selProjs.reduce((s,p) => s + (p.proj_low  ?? p.proj_pts), 0);
+  const rangeHigh = selProjs.reduce((s,p) => s + (p.proj_high ?? p.proj_pts), 0);
+
+  document.getElementById('lineupPts').textContent   = `${rangeLow.toFixed(1)} – ${rangeHigh.toFixed(1)}`;
+  document.getElementById('lineupMid').textContent   = `mid ${total.toFixed(1)} pts`;
   document.getElementById('lineupSlots').textContent = `${count}/9 starters selected`;
 
   const warn = document.getElementById('lineupWarn');
