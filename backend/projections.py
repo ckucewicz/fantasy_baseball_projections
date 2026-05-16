@@ -1779,6 +1779,115 @@ def compute_confidence(batter_stats, pitcher_stats, babip_meta):
     }
 
 
+def _fetch_game_log_scores(mlb_id, player_name, seasons=None):
+    """
+    Fetches per-game fantasy scores for a player across multiple seasons.
+    Applies the exact league scoring formula to each game.
+    Returns a sorted list of fantasy point totals (one per game played).
+    """
+    if seasons is None:
+        seasons = [CURRENT_SEASON - 2, CURRENT_SEASON - 1, CURRENT_SEASON]
+
+    all_scores = []
+    for season in seasons:
+        try:
+            url  = f"{MLB_API}/people/{mlb_id}/stats?stats=gameLog&season={season}&group=hitting"
+            resp = requests.get(url, timeout=15)
+            resp.raise_for_status()
+            data   = resp.json()
+            splits = data.get("stats", [{}])[0].get("splits", [])
+            for s in splits:
+                stat = s.get("stat", {})
+                ab   = int(stat.get("atBats",       0))
+                h    = int(stat.get("hits",          0))
+                d    = int(stat.get("doubles",       0))
+                t    = int(stat.get("triples",       0))
+                hr   = int(stat.get("homeRuns",      0))
+                bb   = int(stat.get("baseOnBalls",   0))
+                k    = int(stat.get("strikeOuts",    0))
+                hbp  = int(stat.get("hitByPitch",    0))
+                r    = int(stat.get("runs",          0))
+                rbi  = int(stat.get("rbi",           0))
+                singles = max(0, h - d - t - hr)
+
+                pts = (
+                    ab  * SCORING["AB"]  +
+                    singles * SCORING["1B"]  +
+                    d   * SCORING["2B"]  +
+                    t   * SCORING["3B"]  +
+                    hr  * SCORING["HR"]  +
+                    bb  * SCORING["BB"]  +
+                    k   * SCORING["K"]   +
+                    hbp * SCORING["HBP"] +
+                    r   * SCORING["R"]   +
+                    rbi * SCORING["RBI"]
+                )
+                all_scores.append(round(pts, 2))
+        except Exception:
+            pass
+
+    return sorted(all_scores)
+
+
+def get_empirical_interval(mlb_id, player_name, proj_pts, confidence=0.80):
+    """
+    Computes an empirical prediction interval from historical game log data.
+
+    Fetches per-game fantasy scores across last 3 seasons, sorts them,
+    and takes the (1-confidence)/2 and (1+confidence)/2 percentiles
+    as the low and high bounds.
+
+    Falls back to normal approximation if insufficient data (<20 games).
+
+    Returns: {"proj_low": float, "proj_high": float, "std_dev": float,
+              "n_games": int, "method": str, "score_dist": list}
+    score_dist is the full sorted list of historical scores for histogram rendering.
+    """
+    scores = _fetch_game_log_scores(mlb_id, player_name)
+    n      = len(scores)
+
+    if n >= 20:
+        alpha    = (1 - confidence) / 2
+        lo_idx   = int(alpha * n)
+        hi_idx   = int((1 - alpha) * n) - 1
+        lo_idx   = max(0, min(lo_idx, n - 1))
+        hi_idx   = max(0, min(hi_idx, n - 1))
+
+        proj_low  = round(max(scores[lo_idx],  -3.0), 1)
+        proj_high = round(scores[hi_idx], 1)
+
+        hist_mid  = (scores[lo_idx] + scores[hi_idx]) / 2
+        shift     = proj_pts - hist_mid
+        proj_low  = round(max(proj_low  + shift, -3.0), 1)
+        proj_high = round(proj_high + shift, 1)
+
+        mean     = sum(scores) / n
+        variance = sum((x - mean) ** 2 for x in scores) / n
+        std_dev  = round(variance ** 0.5, 2)
+
+        return {
+            "proj_low":   proj_low,
+            "proj_high":  proj_high,
+            "std_dev":    std_dev,
+            "n_games":    n,
+            "method":     "empirical",
+            "score_dist": scores,
+        }
+    else:
+        std_dev   = 1.8
+        z         = 1.28
+        proj_low  = round(max(proj_pts - z * std_dev, -3.0), 1)
+        proj_high = round(proj_pts + z * std_dev, 1)
+        return {
+            "proj_low":   proj_low,
+            "proj_high":  proj_high,
+            "std_dev":    round(std_dev, 2),
+            "n_games":    n,
+            "method":     "normal_approx",
+            "score_dist": scores,
+        }
+
+
 def compute_projection_range(proj_pts, batter_stats, log_entries=None):
     """
     Computes a projection range [low, high] around the midpoint.
@@ -2244,11 +2353,8 @@ def project_player(player, matchup, batter_season, batter_career,
     proj_pts = proj_pts_base + pt_result["total_adj"]
     proj_pts = max(0.0, round(proj_pts, 1))
 
-    # --- Projection range ---
-    # Look up this player's log entries for real std dev if available
-    log        = load_log()
-    log_entries = [e for e in log if e.get("player") == name and e.get("actual_pts") is not None]
-    proj_range = compute_projection_range(proj_pts, adjusted, log_entries)
+    # --- Projection range (empirical 80% prediction interval) ---
+    proj_range = get_empirical_interval(mlb_id, name, proj_pts, confidence=0.80)
 
     # --- Step 12: Factor breakdown for dashboard ---
     pitch_diff["adj"]           = pitcher_impact
@@ -2306,8 +2412,11 @@ def project_player(player, matchup, batter_season, batter_career,
             "k":       round(stat_line["k"],   2),
         },
         "scoring_rows": scoring_rows,
-        "proj_low":     proj_range["proj_low"],
-        "proj_high":    proj_range["proj_high"],
+        "proj_low":          proj_range["proj_low"],
+        "proj_high":         proj_range["proj_high"],
+        "interval_method":   proj_range["method"],
+        "interval_games":    proj_range["n_games"],
+        "score_dist":        proj_range.get("score_dist", []),
         "factors":      factors,
         "pitch_rows":   pt_rows,
         "babip_note":   babip_meta.get("direction", ""),
@@ -2365,6 +2474,203 @@ def _platoon_adjustment(batter_stats, sp_hand, batter_season,
     delta_woba = PLATOON_WOBA_DELTA.get((batter_hand, sp_hand), 0.0)
     # Return None for split_row — caller uses delta_woba via legacy path
     return None, label, delta_woba
+
+
+def _compute_composite_multiplier(batter_stats, sp_hand, platoon_split_row,
+                                   platoon_woba_delta, pitch_diff, park,
+                                   form_delta, pt_result):
+    """
+    Computes a single composite multiplier for the historical model.
+    All factors combined into one number around 1.0.
+
+    >1.0 = favorable matchup (project above historical mean)
+    <1.0 = unfavorable matchup (project below historical mean)
+    =1.0 = neutral day
+    """
+    mult = 1.0
+
+    # Platoon
+    if platoon_split_row:
+        overall_hrate = batter_stats.get("hrate", LEAGUE_AVG["hrate"])
+        split_hrate   = platoon_split_row.get("hrate", overall_hrate)
+        if overall_hrate > 0:
+            platoon_mult = (0.30 * overall_hrate + 0.70 * split_hrate) / overall_hrate
+            mult *= max(0.5, min(1.5, platoon_mult))
+    else:
+        platoon_mult = 1.0 + platoon_woba_delta * 1.2
+        mult *= max(0.8, min(1.2, platoon_mult))
+
+    # Pitcher difficulty
+    comps  = pitch_diff.get("components", {})
+    xfip_z = comps.get("xfip", 0.0)
+    pitcher_mult = 1.0 - xfip_z * 0.06
+    mult *= max(0.6, min(1.4, pitcher_mult))
+
+    # Park factor — blend run and HR factors
+    park_mult = (park["run"] + park["hr"]) / 2.0
+    mult *= max(0.8, min(1.3, park_mult))
+
+    # Recent form
+    form_mult = 1.0 + form_delta * 0.02
+    mult *= max(0.9, min(1.1, form_mult))
+
+    # Pitch type matchup (small additive → convert to multiplier)
+    if pt_result["total_adj"] != 0:
+        hist_mean_approx = 3.5  # rough league avg pts/game
+        pt_mult = 1.0 + (pt_result["total_adj"] / max(hist_mean_approx, 0.1)) * 0.5
+        mult *= max(0.85, min(1.15, pt_mult))
+
+    return round(mult, 4)
+
+
+def project_player_historical(player, matchup, batter_season, batter_career,
+                               pitcher_season, pitcher_career,
+                               pitch_splits, pitcher_mixes,
+                               platoon_splits=None):
+    """
+    Historical model projection for a single player.
+
+    Methodology:
+    1. Fetch empirical game log (2024-2026) → historical mean + std dev
+    2. Compute composite matchup multiplier from all factors
+    3. adjusted_mean = historical_mean × multiplier
+    4. 80% prediction interval = adjusted_mean ± 1.28 × std_dev
+
+    Returns same schema as project_player() but with _hist suffix on key fields,
+    plus model="historical" marker.
+    """
+    name   = player["name"]
+    mlb_id = player["mlb_id"]
+    team   = player.get("team", "")
+    status = player.get("status", "active")
+
+    # Check for IL/DTD
+    if status.startswith("il") or status == "dtd":
+        return {
+            "name":       name,
+            "mlb_id":     mlb_id,
+            "status":     status,
+            "proj_pts":   None,
+            "proj_low":   None,
+            "proj_high":  None,
+            "model":      "historical",
+        }
+
+    # Matchup
+    if not matchup or matchup.get("status") == "no_game":
+        return {
+            "name":       name,
+            "mlb_id":     mlb_id,
+            "status":     "no_game",
+            "proj_pts":   None,
+            "proj_low":   None,
+            "proj_high":  None,
+            "model":      "historical",
+        }
+
+    sp_name    = matchup.get("probable_pitcher", {}).get("name", "TBD")
+    sp_id      = matchup.get("probable_pitcher", {}).get("id")
+    sp_hand    = matchup.get("probable_pitcher", {}).get("hand", "R")
+    opponent   = matchup.get("opponent", "")
+    venue      = matchup.get("venue", "")
+    venue_id   = matchup.get("venue_id")
+
+    # Get batter stats (needed for factor computation)
+    batter_stats = get_batter_stats_for_player(name, mlb_id, batter_season, batter_career)
+    batter_stats["bats"] = player.get("bats", "R")
+
+    # Platoon
+    platoon_result = _platoon_adjustment(
+        batter_stats, sp_hand, batter_season, batter_career, name, mlb_id,
+        platoon_splits=platoon_splits
+    )
+    if len(platoon_result) == 3:
+        _, platoon_label, platoon_woba_delta = platoon_result
+        platoon_split_row = None
+    else:
+        platoon_split_row, platoon_label = platoon_result
+        platoon_woba_delta = 0.0
+
+    if platoon_split_row:
+        PLATOON_WEIGHT = 0.70
+        for rate in ["hrate","hrrate","xbhrate","bbpct","kpct","hbprate"]:
+            if rate in platoon_split_row and rate in batter_stats:
+                batter_stats[rate] = (
+                    batter_stats[rate] * (1 - PLATOON_WEIGHT) +
+                    platoon_split_row[rate] * PLATOON_WEIGHT
+                )
+
+    # Pitcher
+    pitcher_stats = get_pitcher_stats_for_pitcher(sp_name, sp_id, pitcher_season, pitcher_career)
+    pitch_diff    = pitcher_difficulty_adj(pitcher_stats, sp_name)
+
+    # Park
+    park  = get_park_factors(venue_id, venue)
+
+    # Recent form (pass None for recent_stats in historical model)
+    form_result = blend_recent_form(batter_stats, None)
+    form_delta  = form_result.get("form_delta", 0.0) if isinstance(form_result, dict) else 0.0
+
+    # Pitch type matchup
+    b_splits  = pitch_splits.get(mlb_id, {})
+    p_mix     = pitcher_mixes.get(sp_id, {}) if sp_id else {}
+    pt_result = pitch_type_matchup_adj(b_splits, p_mix)
+
+    # Step 1 — empirical distribution
+    emp = get_empirical_interval(mlb_id, name, 0.0, confidence=0.80)
+    scores     = emp.get("score_dist", [])
+    n_games    = emp["n_games"]
+    std_dev    = emp["std_dev"]
+    method     = emp["method"]
+
+    if n_games >= 20:
+        hist_mean = round(sum(scores) / len(scores), 2)
+    else:
+        # Fallback: use rate model score as mean estimate
+        stat_line = project_stat_line(batter_stats)
+        hist_mean = score_stat_line(stat_line)["total"]
+
+    # Step 2 — composite multiplier
+    composite_mult = _compute_composite_multiplier(
+        batter_stats, sp_hand, platoon_split_row, platoon_woba_delta,
+        pitch_diff, park, form_delta, pt_result
+    )
+
+    # Step 3 — adjusted mean
+    adjusted_mean = round(hist_mean * composite_mult, 2)
+
+    # Step 4 — 80% prediction interval
+    z        = 1.28
+    proj_low  = round(max(adjusted_mean - z * std_dev, -3.0), 1)
+    proj_high = round(adjusted_mean + z * std_dev, 1)
+    proj_pts  = round(adjusted_mean, 1)
+
+    # Confidence — same PA-based metric as rate model
+    babip_meta    = babip_adjust(batter_stats)
+    confidence    = compute_confidence(batter_stats, pitcher_stats, babip_meta)
+
+    return {
+        "name":             name,
+        "mlb_id":           mlb_id,
+        "positions":        player["positions"],
+        "status":           status,
+        "team":             team,
+        "opponent":         opponent,
+        "venue":            venue,
+        "probable_sp":      sp_name,
+        "sp_hand":          sp_hand,
+        "proj_pts":         proj_pts,
+        "proj_low":         proj_low,
+        "proj_high":        proj_high,
+        "hist_mean":        hist_mean,
+        "composite_mult":   composite_mult,
+        "n_games":          n_games,
+        "std_dev":          std_dev,
+        "interval_method":  method,
+        "score_dist":       scores,
+        "confidence":       confidence,
+        "model":            "historical",
+    }
 
 
 def project_all(active_players, il_players, matchups,
@@ -2464,6 +2770,38 @@ def _no_game_skeleton(player):
 
 
 
+def project_all_historical(active_players, il_players, matchups,
+                           batter_season, batter_career,
+                           pitcher_season, pitcher_career,
+                           pitch_splits, pitcher_mixes, platoon_splits=None):
+    """Runs historical model projections for all players."""
+    results = []
+    for player in active_players:
+        team    = player.get("team", "")
+        matchup = matchups.get(team)
+        print(f"  [Historical] Projecting {player['name']}...")
+        proj = project_player_historical(
+            player, matchup,
+            batter_season, batter_career,
+            pitcher_season, pitcher_career,
+            pitch_splits, pitcher_mixes,
+            platoon_splits=platoon_splits
+        )
+        results.append(proj)
+
+    for player in il_players:
+        results.append({
+            "name": player["name"], "mlb_id": player["mlb_id"],
+            "positions": player["positions"], "status": player["status"],
+            "proj_pts": None, "proj_low": None, "proj_high": None,
+            "model": "historical",
+        })
+
+    # Sort by proj_pts descending
+    results.sort(key=lambda x: (x.get("proj_pts") or -999), reverse=True)
+    return results
+
+
 # ─────────────────────────────────────────────
 # SECTION 8 — OUTPUT WRITER + MAIN ENTRY POINT
 # ─────────────────────────────────────────────
@@ -2485,18 +2823,19 @@ def _no_game_skeleton(player):
 # ─────────────────────────────────────────────
 
 
-def write_output(projections):
+def write_output(projections, projections_historical=None):
     """
     Serializes projections to docs/data.json.
-    Creates the docs/ directory if it doesn't exist.
+    Includes both rate model and historical model outputs.
     """
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
 
     output = {
-        "generated_at":  datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
-        "season":        CURRENT_SEASON,
-        "player_count":  len([p for p in projections if p.get("proj_pts") is not None]),
-        "projections":   projections,
+        "generated_at":           datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+        "season":                 CURRENT_SEASON,
+        "player_count":           len([p for p in projections if p.get("proj_pts") is not None]),
+        "projections":            projections,
+        "projections_historical": projections_historical or [],
     }
 
     with open(OUTPUT_PATH, "w") as f:
@@ -2562,9 +2901,30 @@ def main():
         else:
             print(f"       {p['name']:<22} —  ({p['status']})")
 
+    # Step 4b — Historical model projections
+    print("\n[4b/5] Running historical model projections...")
+    projections_hist = project_all_historical(
+        active, il, matchups,
+        batter_season, batter_career,
+        pitcher_season, pitcher_career,
+        pitch_splits, pitcher_mixes,
+        platoon_splits=platoon_splits
+    )
+
+    print("\n  --- Historical Model Summary ---")
+    for p in projections_hist:
+        if p.get("proj_pts") is not None:
+            conf = p["confidence"]["score"] if p.get("confidence") else "?"
+            sp   = p.get("probable_sp", "TBD")
+            mult = p.get("composite_mult", 1.0)
+            print(f"  {p['name']:<22} {p['proj_pts']:>5.1f} pts "
+                  f"(hist_mean={p.get('hist_mean',0):.1f} × {mult:.2f})  vs {sp}")
+        else:
+            print(f"  {p['name']:<22} —  ({p.get('status','')})")
+
     # Step 5 — Write output
     print("\n[5/5] Writing output...")
-    write_output(projections)
+    write_output(projections, projections_historical=projections_hist)
 
     print("\nDone.")
     print("=" * 50)
@@ -2841,6 +3201,8 @@ def build_projection_log_entry(projection, today_str):
         "proj_pts":         projection.get("proj_pts"),
         "proj_low":         projection.get("proj_low"),
         "proj_high":        projection.get("proj_high"),
+        "interval_method":  projection.get("interval_method", "normal_approx"),
+        "interval_games":   projection.get("interval_games", 0),
         "actual_pts":       None,
         "diff":             None,
         "in_range":         None,
@@ -2851,29 +3213,47 @@ def build_projection_log_entry(projection, today_str):
     }
 
 
-def log_today_projections(projections):
+def log_today_projections(projections, projections_historical=None):
     """
     Step A — called right after write_output().
     Appends today's projections to the log with actual_pts=null.
-    Skips players with no projection (DTD, IL, no game).
+    Stores both rate model and historical model projections.
     Skips if today's entries already exist (idempotent).
     """
     today_str = datetime.date.today().strftime("%Y-%m-%d")
     log       = load_log()
 
-    # Check for duplicate
     existing_dates = {entry["date"] for entry in log}
     if today_str in existing_dates:
         print(f"  Projections for {today_str} already in log — skipping")
         return
 
+    hist_lookup = {}
+    if projections_historical:
+        for h in projections_historical:
+            if h.get("mlb_id") and h.get("proj_pts") is not None:
+                hist_lookup[h["mlb_id"]] = h
+
     new_entries = []
     for proj in projections:
         if proj.get("proj_pts") is None:
             continue
-        if proj.get("status") in ("dtd", "no_game") or            (proj.get("status") or "").startswith("il"):
+        if proj.get("status") in ("dtd", "no_game") or \
+           (proj.get("status") or "").startswith("il"):
             continue
-        new_entries.append(build_projection_log_entry(proj, today_str))
+        entry = build_projection_log_entry(proj, today_str)
+        hist  = hist_lookup.get(proj.get("mlb_id"))
+        if hist:
+            entry["proj_pts_hist"]  = hist.get("proj_pts")
+            entry["proj_low_hist"]  = hist.get("proj_low")
+            entry["proj_high_hist"] = hist.get("proj_high")
+            entry["in_range_hist"]  = None
+        else:
+            entry["proj_pts_hist"]  = None
+            entry["proj_low_hist"]  = None
+            entry["proj_high_hist"] = None
+            entry["in_range_hist"]  = None
+        new_entries.append(entry)
 
     log.extend(new_entries)
     save_log(log)
@@ -2925,11 +3305,20 @@ def fill_yesterday_actuals():
             log[idx]["actual_pts"]   = actual_pts
             log[idx]["diff"]         = diff
             log[idx]["did_not_play"] = False
-            # Check if actual landed within projected range
+            # Rate model in_range
             proj_low  = log[idx].get("proj_low")
             proj_high = log[idx].get("proj_high")
             if proj_low is not None and proj_high is not None:
                 log[idx]["in_range"] = proj_low <= actual_pts <= proj_high
+            # Historical model in_range
+            h_low  = log[idx].get("proj_low_hist")
+            h_high = log[idx].get("proj_high_hist")
+            if h_low is not None and h_high is not None:
+                log[idx]["in_range_hist"] = h_low <= actual_pts <= h_high
+            # Historical model diff
+            h_pts = log[idx].get("proj_pts_hist")
+            if h_pts is not None:
+                log[idx]["diff_hist"] = round(actual_pts - h_pts, 2)
             filled += 1
             diff_str = f"{diff:+.1f}" if diff is not None else "—"
             print(f"  {entry['player']:<22} proj={proj_pts:.1f}  actual={actual_pts:.1f}  diff={diff_str}")
@@ -2942,26 +3331,19 @@ def fill_yesterday_actuals():
     print(f"  Filled actuals for {filled}/{len(pending)} players")
 
 
-def append_actuals(projections):
+def append_actuals(projections, projections_historical=None):
     """
     Master Section 9 function — now a thin wrapper that calls
     the two-step process: log today's projections, fill yesterday's actuals.
     """
     print("\n[9] Updating projections log...")
-    log_today_projections(projections)
+    log_today_projections(projections, projections_historical=projections_historical)
     fill_yesterday_actuals()
 
 
 # ─────────────────────────────────────────────
 # END SECTION 9
 # ─────────────────────────────────────────────
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     main()

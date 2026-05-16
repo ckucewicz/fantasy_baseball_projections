@@ -222,7 +222,8 @@
 
   <!-- TABS -->
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('today', this)">Today</div>
+    <div class="tab active" onclick="switchTab('today', this)">Rate model</div>
+    <div class="tab" onclick="switchTab('historical', this)">Historical model</div>
     <div class="tab" onclick="switchTab('accuracy', this)">Accuracy tracker</div>
   </div>
 
@@ -248,6 +249,27 @@
     <div id="playerList">
       <div class="state-msg"><b>Loading projections…</b>Fetching today's data</div>
     </div>
+  </div>
+
+  <!-- TAB: HISTORICAL MODEL -->
+  <div class="tab-section" id="tab-historical">
+    <div id="histLineupTotal" style="display:none" class="lineup-total">
+      <div class="lineup-left">
+        <span class="lineup-label">Historical model lineup</span>
+        <span class="lineup-slots" id="histLineupSlots"></span>
+      </div>
+      <div style="text-align:right">
+        <div class="lineup-pts" id="histLineupPts">—</div>
+        <div class="lineup-pts-lbl">proj range</div>
+        <div class="lineup-mid" id="histLineupMid"></div>
+      </div>
+    </div>
+    <div class="legend">
+      <span class="leg-item"><span class="leg-dot-sm" style="background:#639922"></span>High conf</span>
+      <span class="leg-item"><span class="leg-dot-sm" style="background:#EF9F27"></span>Med conf</span>
+      <span class="leg-item"><span class="leg-dot-sm" style="background:#E24B4A"></span>Low conf</span>
+    </div>
+    <div id="histPlayerList"><div class="no-data-msg">Loading historical projections...</div></div>
   </div>
 
   <!-- TAB: ACCURACY -->
@@ -293,12 +315,22 @@
       <select class="player-chart-select" id="playerChartSelect" onchange="renderPlayerChart()">
         <option value="">Select a player...</option>
       </select>
-      <div style="position:relative;width:100%;height:180px;display:none" id="playerChartWrap">
+      <div style="position:relative;width:100%;height:160px;display:none" id="playerChartWrap">
         <canvas id="playerChart" role="img" aria-label="Projected vs actual points for selected player over time">No data.</canvas>
       </div>
       <div class="chart-legend-row" id="playerChartLegend" style="display:none">
         <span><span class="leg-dot" style="background:#185FA5;border-top:2px dashed #185FA5"></span>Projected</span>
         <span><span class="leg-dot" style="background:#639922"></span>Actual</span>
+      </div>
+      <div style="margin-top:14px;display:none" id="playerHistWrap">
+        <div style="font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px" id="histTitle"></div>
+        <div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:8px">
+          <span style="display:inline-block;width:10px;height:10px;background:#B5D4F4;border-radius:2px;margin-right:4px"></span>80% interval
+          <span style="display:inline-block;width:10px;height:10px;background:rgba(128,128,128,0.2);border-radius:2px;margin-right:4px;margin-left:10px"></span>outside interval
+        </div>
+        <div style="position:relative;width:100%;height:140px">
+          <canvas id="playerHist" role="img" aria-label="Histogram of historical fantasy scores for selected player">No data.</canvas>
+        </div>
       </div>
     </div>
 
@@ -575,6 +607,18 @@ function toggle(card) {
 // RENDER ACCURACY TAB
 // ─────────────────────────────────────────────
 let _playerChart = null;
+let _histChart   = null;
+
+function buildHistogram(scores) {
+  if (!scores || !scores.length) return { labels: [], counts: [] };
+  const min   = Math.floor(Math.min(...scores));
+  const max   = Math.ceil(Math.max(...scores));
+  const step  = 1;
+  const bins  = [];
+  for (let b = min; b <= max; b += step) bins.push(b);
+  const counts = bins.map(b => scores.filter(s => s >= b && s < b + step).length);
+  return { labels: bins.map(b => b.toFixed(0)), counts };
+}
 
 function renderPlayerChart() {
   const select = document.getElementById('playerChartSelect');
@@ -589,51 +633,106 @@ function renderPlayerChart() {
     r.proj_pts !== null
   ).sort((a,b) => a.date.localeCompare(b.date));
 
-  if (!rows.length) { wrap.style.display = 'none'; legend.style.display = 'none'; return; }
-
   wrap.style.display   = 'block';
   legend.style.display = 'flex';
 
+  // --- Line chart: proj vs actual ---
   const labels = rows.map(r => r.date.slice(5));
   const proj   = rows.map(r => parseFloat(r.proj_pts.toFixed(1)));
   const actual = rows.map(r => parseFloat(r.actual_pts.toFixed(1)));
 
   if (_playerChart) _playerChart.destroy();
-  _playerChart = new Chart(document.getElementById('playerChart'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'Projected',
-          data: proj,
-          borderColor: '#185FA5',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          borderDash: [4,3],
-          pointRadius: 3,
-          pointBackgroundColor: '#185FA5',
-          tension: 0.3,
-        },
-        {
-          label: 'Actual',
-          data: actual,
-          borderColor: '#639922',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          pointRadius: 4,
-          pointBackgroundColor: '#639922',
-          tension: 0.3,
+  if (rows.length) {
+    _playerChart = new Chart(document.getElementById('playerChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label:'Projected', data:proj, borderColor:'#185FA5', backgroundColor:'transparent',
+            borderWidth:2, borderDash:[4,3], pointRadius:3, pointBackgroundColor:'#185FA5', tension:0.3 },
+          { label:'Actual', data:actual, borderColor:'#639922', backgroundColor:'transparent',
+            borderWidth:2, pointRadius:4, pointBackgroundColor:'#639922', tension:0.3 }
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{display:false}, tooltip:{mode:'index',intersect:false} },
+        scales:{
+          x:{ grid:{display:false}, ticks:{font:{size:10}} },
+          y:{ grid:{color:'rgba(128,128,128,0.1)'}, ticks:{font:{size:10}}, min:0 }
         }
-      ]
+      }
+    });
+  }
+
+  // --- Histogram: empirical distribution ---
+  const histWrap = document.getElementById('playerHistWrap');
+  const histCanvas = document.getElementById('playerHist');
+  if (!histWrap || !histCanvas) return;
+
+  // Find score_dist from data.json projections
+  const projData = window._data && window._data.projections
+    ? window._data.projections.find(p => p.name === player)
+    : null;
+  const dist = projData && projData.score_dist ? projData.score_dist : [];
+
+  if (!dist.length) { histWrap.style.display = 'none'; return; }
+  histWrap.style.display = 'block';
+
+  const { labels: hLabels, counts } = buildHistogram(dist);
+  const projLow  = projData.proj_low;
+  const projHigh = projData.proj_high;
+  const projMid  = projData.proj_pts;
+  const nGames   = projData.interval_games || dist.length;
+  const method   = projData.interval_method || 'empirical';
+
+  // Color bars: gray outside interval, blue inside
+  const barColors = hLabels.map(l => {
+    const v = parseFloat(l);
+    return (v >= projLow && v < projHigh) ? '#B5D4F4' : 'rgba(128,128,128,0.2)';
+  });
+
+  document.getElementById('histTitle').textContent =
+    `${player} — ${nGames} games (${method === 'empirical' ? 'empirical' : 'approx'})`;
+
+  if (_histChart) _histChart.destroy();
+  _histChart = new Chart(histCanvas, {
+    type: 'bar',
+    data: {
+      labels: hLabels,
+      datasets: [{
+        label: 'Games',
+        data: counts,
+        backgroundColor: barColors,
+        borderWidth: 0,
+        borderRadius: 2,
+      }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: ctx => `${ctx[0].label} pts`,
+            label: ctx => `${ctx.raw} games`
+          }
+        },
+        annotation: {
+          annotations: {
+            midLine: {
+              type: 'line', scaleID: 'x',
+              value: projMid.toFixed(0),
+              borderColor: '#185FA5', borderWidth: 2,
+              borderDash: [4,3],
+              label: { display: true, content: `proj ${projMid.toFixed(1)}`, position: 'end', font: { size: 10 } }
+            }
+          }
+        }
+      },
       scales: {
         x: { grid: { display: false }, ticks: { font: { size: 10 } } },
-        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 } }, min: 0 }
+        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, stepSize: 1 } }
       }
     }
   });
@@ -818,6 +917,7 @@ async function loadData() {
     if (updEl) updEl.textContent = `last run ${genTime} · ${genDay}`;
     // Compute optimal lineup FIRST so dots render correctly
     renderLineupTotal(data.projections||[]);
+    renderHistoricalTab(data);
     const html = (data.projections||[]).map(renderCard).join('');
     list.innerHTML = html || '<div class="state-msg"><b>No projections yet</b>Run the script to generate today\'s data</div>';
   } catch(err) {
@@ -913,6 +1013,86 @@ function exportCSV() {
 
   label.textContent = 'Exported!';
   setTimeout(() => { label.textContent = 'Export CSV'; }, 2000);
+}
+
+// ─────────────────────────────────────────────
+// HISTORICAL MODEL TAB
+// ─────────────────────────────────────────────
+function renderHistoricalTab(data) {
+  const projs = data.projections_historical || [];
+  if (!projs.length) {
+    document.getElementById('histPlayerList').innerHTML =
+      '<div class="no-data-msg">No historical model data yet.</div>';
+    return;
+  }
+
+  // Compute optimal lineup for historical model
+  const histResult = computeOptimalLineup(projs);
+  if (histResult) {
+    window._histStarterIds = histResult.starterIds;
+    const el = document.getElementById('histLineupTotal');
+    const histSel = new Set(histResult.starterIds);
+    const hLow  = projs.filter(p => histSel.has(p.mlb_id) && p.proj_pts !== null)
+                       .reduce((s,p) => s + (p.proj_low ?? p.proj_pts), 0);
+    const hHigh = projs.filter(p => histSel.has(p.mlb_id) && p.proj_pts !== null)
+                       .reduce((s,p) => s + (p.proj_high ?? p.proj_pts), 0);
+    const hMid  = projs.filter(p => histSel.has(p.mlb_id) && p.proj_pts !== null)
+                       .reduce((s,p) => s + (p.proj_pts || 0), 0);
+    document.getElementById('histLineupPts').textContent  = `${hLow.toFixed(1)} – ${hHigh.toFixed(1)}`;
+    document.getElementById('histLineupMid').textContent  = `mid ${hMid.toFixed(1)} pts`;
+    document.getElementById('histLineupSlots').textContent = `${histResult.count}/9 starters selected`;
+    el.style.display = 'flex';
+  }
+
+  const html = projs.map(p => {
+    const conf     = p.confidence || {};
+    const barColor = confColor(conf.score || 0);
+    const isStarter = window._histStarterIds && window._histStarterIds.has(p.mlb_id);
+    const dot      = `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}" style="pointer-events:none"></div>`;
+
+    if (p.proj_pts === null || p.proj_pts === undefined) {
+      return `<div class="card no-expand">
+        <div class="card-main">
+          ${dot}
+          <div class="conf-bar" style="background:var(--border-s)"></div>
+          <div class="rank">—</div>
+          <div class="pinfo">
+            <div class="pname">${esc(p.name)} <span class="ppos">${(p.positions||[]).join('/')}</span></div>
+            <div class="pmeta">${esc(p.status || 'no game')}</div>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    const multStr = p.composite_mult ? `×${p.composite_mult.toFixed(2)}` : '';
+    const histStr = p.hist_mean ? `hist avg ${p.hist_mean.toFixed(1)} pts ${multStr}` : '';
+
+    return `<div class="card no-expand">
+      <div class="card-main">
+        ${dot}
+        <div class="conf-bar" style="background:${barColor}"></div>
+        <div class="rank">${p.rank || '—'}</div>
+        <div class="pinfo">
+          <div class="pname">${esc(p.name)} <span class="ppos">${(p.positions||[]).join('/')} · ${esc(p.team||'')}</span></div>
+          <div class="pmeta">${esc(p.probable_sp||'TBD')} · ${esc(p.venue||'')} · ${histStr}</div>
+        </div>
+        <div class="pright">
+          ${(p.proj_low !== undefined && p.proj_high !== undefined)
+            ? `<span class="proj-range">${p.proj_low.toFixed(1)} – ${p.proj_high.toFixed(1)}</span>
+               <span class="proj-mid">mid ${p.proj_pts.toFixed(1)} pts</span>`
+            : `<span class="pts">${p.proj_pts.toFixed(1)}</span><span class="pts-lbl">proj pts</span>`
+          }
+          ${conf.score !== undefined ? `<span class="conf-pct-sm" style="color:${confTextColor(conf.score)}">${conf.score}% conf</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Add rank to historical projs
+  let rank = 1;
+  projs.forEach(p => { if (p.proj_pts !== null) p.rank = rank++; });
+
+  document.getElementById('histPlayerList').innerHTML = html;
 }
 
 // ─────────────────────────────────────────────
