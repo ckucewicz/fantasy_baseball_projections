@@ -109,8 +109,12 @@
   .bil { background: #FCEBEB; color: var(--red); }
   .bno-game { background: #eee; color: #888; }
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
-  .starter-dot { width: 7px; height: 7px; border-radius: 50%; background: #639922; flex-shrink: 0; }
-  .bench-dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--border-s); flex-shrink: 0; }
+  .proj-range { font-size: 17px; font-weight: 500; color: var(--color-text-primary); line-height: 1; white-space: nowrap; }
+  .proj-mid   { font-size: 10px; color: var(--color-text-tertiary); text-align: right; }
+  .starter-dot { width: 14px; height: 14px; border-radius: 50%; background: #378ADD; flex-shrink: 0; cursor: pointer; transition: transform .15s; }
+  .starter-dot:active { transform: scale(0.85); }
+  .bench-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--border-s); flex-shrink: 0; cursor: pointer; transition: transform .15s; }
+  .bench-dot:active { transform: scale(0.85); }
   .lineup-total {
     background: var(--card);
     border: 0.5px solid var(--border-s);
@@ -153,6 +157,9 @@
   .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-2); }
   .leg-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
   .no-data-msg { text-align: center; color: var(--text-3); font-size: 12px; padding: 24px 0; }
+  .player-chart-select { width: 100%; font-family: var(--font-sans); font-size: 13px; padding: 8px 10px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-secondary); color: var(--color-text-primary); margin-bottom: 12px; }
+  .chart-legend-row { display: flex; gap: 14px; margin-top: 8px; font-size: 11px; color: var(--color-text-secondary); }
+  .leg-dot { width: 10px; height: 2px; border-radius: 1px; display: inline-block; margin-right: 4px; vertical-align: middle; }
 
   /* EXPANDED CARD — SCORED STAT LINE */
   .stat-tbl { width:100%; border-collapse:collapse; font-size:11px; table-layout:fixed; }
@@ -223,8 +230,9 @@
   <div class="tab-section show" id="tab-today">
     <div id="lineupTotal" style="display:none" class="lineup-total">
       <div class="lineup-left">
-        <span class="lineup-label">Optimal 9-man lineup</span>
+        <span class="lineup-label">Lineup projected</span>
         <span class="lineup-slots" id="lineupSlots"></span>
+        <span id="lineupWarn" style="font-size:10px;color:var(--amber);display:none"></span>
       </div>
       <div style="text-align:right">
         <div class="lineup-pts" id="lineupPts">—</div>
@@ -260,6 +268,7 @@
       <div class="metric"><div class="metric-label">Within 2.5 pts</div><div class="metric-val" id="mWithin5">—</div><div class="metric-sub">of projections</div></div>
       <div class="metric"><div class="metric-label">Bias</div><div class="metric-val" id="mBias">—</div><div class="metric-sub" id="mBiasSub">—</div></div>
       <div class="metric"><div class="metric-label">Best call</div><div class="metric-val" id="mBest" style="font-size:14px">—</div><div class="metric-sub" id="mBestSub">—</div></div>
+      <div class="metric"><div class="metric-label">In range</div><div class="metric-val" id="mInRange">—</div><div class="metric-sub">landed in proj range</div></div>
     </div>
 
     <div class="acc-card">
@@ -276,6 +285,20 @@
     <div class="section-label">By player — avg error</div>
     <div class="acc-card" id="playerErrTable">
       <div class="no-data-msg">No accuracy data yet.<br>Check back after the first game day.</div>
+    </div>
+
+    <div class="section-label">Player chart</div>
+    <div class="acc-card">
+      <select class="player-chart-select" id="playerChartSelect" onchange="renderPlayerChart()">
+        <option value="">Select a player...</option>
+      </select>
+      <div style="position:relative;width:100%;height:180px;display:none" id="playerChartWrap">
+        <canvas id="playerChart" role="img" aria-label="Projected vs actual points for selected player over time">No data.</canvas>
+      </div>
+      <div class="chart-legend-row" id="playerChartLegend" style="display:none">
+        <span><span class="leg-dot" style="background:#185FA5;border-top:2px dashed #185FA5"></span>Projected</span>
+        <span><span class="leg-dot" style="background:#639922"></span>Actual</span>
+      </div>
     </div>
 
     <div class="section-label" id="yesterdayLabel">Yesterday</div>
@@ -504,8 +527,8 @@ function renderCard(p) {
   const expanded  = renderExpanded(p);
   const hasExpand = expanded.trim().length > 0;
   const chevron   = hasExpand ? `<span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>` : '';
-  const isStarter = window._starterIds && window._starterIds.has(p.mlb_id);
-  const dot       = `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}"></div>`;
+  const isStarter = window._selectedIds ? window._selectedIds.has(p.mlb_id) : (window._starterIds && window._starterIds.has(p.mlb_id));
+  const dot = `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}" onclick="toggleLineupPlayer(${p.mlb_id}, event)" role="checkbox" aria-checked="${isStarter}" aria-label="Toggle ${esc(p.name)} in lineup"></div>`;
   return `
     <div class="card${hasExpand ? '' : ' no-expand'}" ${hasExpand ? 'onclick="toggle(this)"' : ''}>
       <div class="card-main">
@@ -518,8 +541,11 @@ function renderCard(p) {
           <div class="pstat">${renderStatLine(p.stat_line)}</div>
         </div>
         <div class="pright">
-          <span class="pts">${p.proj_pts.toFixed(1)}</span>
-          <span class="pts-lbl">proj pts</span>
+          ${(p.proj_low !== undefined && p.proj_high !== undefined)
+            ? `<span class="proj-range">${p.proj_low.toFixed(1)} – ${p.proj_high.toFixed(1)}</span>
+               <span class="proj-mid">mid ${p.proj_pts.toFixed(1)} pts</span>`
+            : `<span class="pts">${p.proj_pts.toFixed(1)}</span><span class="pts-lbl">proj pts</span>`
+          }
           ${conf.score !== undefined ? `<span class="conf-pct-sm" style="color:${confTextColor(conf.score)}">${conf.score}% conf</span>` : ''}
           ${chevron}
         </div>
@@ -547,6 +573,79 @@ function toggle(card) {
 // ─────────────────────────────────────────────
 // RENDER ACCURACY TAB
 // ─────────────────────────────────────────────
+let _playerChart = null;
+
+function renderPlayerChart() {
+  const select = document.getElementById('playerChartSelect');
+  const wrap   = document.getElementById('playerChartWrap');
+  const legend = document.getElementById('playerChartLegend');
+  const player = select.value;
+  if (!player || !window._accLog) { wrap.style.display = 'none'; legend.style.display = 'none'; return; }
+
+  const rows = window._accLog.filter(r =>
+    r.player === player &&
+    r.actual_pts !== null &&
+    r.proj_pts !== null
+  ).sort((a,b) => a.date.localeCompare(b.date));
+
+  if (!rows.length) { wrap.style.display = 'none'; legend.style.display = 'none'; return; }
+
+  wrap.style.display   = 'block';
+  legend.style.display = 'flex';
+
+  const labels = rows.map(r => r.date.slice(5));
+  const proj   = rows.map(r => parseFloat(r.proj_pts.toFixed(1)));
+  const actual = rows.map(r => parseFloat(r.actual_pts.toFixed(1)));
+
+  if (_playerChart) _playerChart.destroy();
+  _playerChart = new Chart(document.getElementById('playerChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Projected',
+          data: proj,
+          borderColor: '#185FA5',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [4,3],
+          pointRadius: 3,
+          pointBackgroundColor: '#185FA5',
+          tension: 0.3,
+        },
+        {
+          label: 'Actual',
+          data: actual,
+          borderColor: '#639922',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: '#639922',
+          tension: 0.3,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 } }, min: 0 }
+      }
+    }
+  });
+}
+
+function populatePlayerSelect(log) {
+  const select = document.getElementById('playerChartSelect');
+  if (!select) return;
+  const players = [...new Set(log.filter(r => r.actual_pts !== null).map(r => r.player))].sort();
+  select.innerHTML = '<option value="">Select a player...</option>' +
+    players.map(p => `<option value="${p}">${p}</option>`).join('');
+}
+
 function renderAccuracy() {
   const rows = filterLog(currentFilter).filter(r => r.actual_pts !== null && r.actual_pts !== undefined);
 
@@ -578,7 +677,16 @@ function renderAccuracy() {
     });
 
     document.getElementById('mAvgErr').textContent  = avgErr.toFixed(1);
-    document.getElementById('mWithin5').textContent = within5.toFixed(0) + '%';
+    // In range %
+  const inRangeRows = filtered.filter(r =>
+    r.in_range !== null && r.in_range !== undefined && r.actual_pts !== null
+  );
+  const inRangePct = inRangeRows.length
+    ? Math.round(inRangeRows.filter(r => r.in_range).length / inRangeRows.length * 100)
+    : null;
+  document.getElementById('mInRange').textContent = inRangePct !== null ? inRangePct + '%' : '—';
+
+  document.getElementById('mWithin5').textContent = within5.toFixed(0) + '%';
     document.getElementById('mBias').textContent    = (bias >= 0 ? '+' : '−') + Math.abs(bias).toFixed(1);
     document.getElementById('mBiasSub').textContent = bias > 0.5 ? 'model runs high' : bias < -0.5 ? 'model runs low' : 'well calibrated';
     document.getElementById('mBias').style.color    = Math.abs(bias) > 2 ? 'var(--red)' : Math.abs(bias) > 1 ? 'var(--amber)' : 'var(--green)';
@@ -878,14 +986,58 @@ function round(n, dec) {
 function renderLineupTotal(projections) {
   const result = computeOptimalLineup(projections);
   const el     = document.getElementById('lineupTotal');
-  const pts    = document.getElementById('lineupPts');
-  const slots  = document.getElementById('lineupSlots');
   if (!result || !el) return;
-  pts.textContent   = result.total.toFixed(1);
-  slots.textContent = `${result.count} starters`;
-  el.style.display  = 'flex';
-  // Store starter IDs globally so renderCard can access them
-  window._starterIds = result.starterIds;
+  window._starterIds   = result.starterIds;
+  window._selectedIds  = new Set(result.starterIds);
+  window._allProjs     = projections;
+  el.style.display     = 'flex';
+  updateLineupDisplay();
+}
+
+function updateLineupDisplay() {
+  const sel   = window._selectedIds || new Set();
+  const projs = window._allProjs    || [];
+  const MAX   = 9;
+  const total = projs
+    .filter(p => sel.has(p.mlb_id) && p.proj_pts !== null)
+    .reduce((s, p) => s + (p.proj_pts || 0), 0);
+  const count = sel.size;
+
+  document.getElementById('lineupPts').textContent   = total.toFixed(1);
+  document.getElementById('lineupSlots').textContent = `${count}/9 starters selected`;
+
+  const warn = document.getElementById('lineupWarn');
+  if (count > MAX) {
+    warn.textContent  = `${count - MAX} over limit`;
+    warn.style.display = 'block';
+    warn.style.color   = 'var(--amber)';
+  } else if (count < MAX) {
+    warn.textContent  = `${MAX - count} spot${MAX-count>1?'s':''} remaining`;
+    warn.style.display = 'block';
+    warn.style.color   = 'var(--text-3)';
+  } else {
+    warn.style.display = 'none';
+  }
+
+  // Update all dot states without re-rendering cards
+  projs.forEach(p => {
+    const dot = document.querySelector(`[aria-label="Toggle ${p.name} in lineup"]`);
+    if (!dot) return;
+    const on = sel.has(p.mlb_id);
+    dot.className    = on ? 'starter-dot' : 'bench-dot';
+    dot.setAttribute('aria-checked', on);
+  });
+}
+
+function toggleLineupPlayer(mlb_id, e) {
+  e.stopPropagation();
+  if (!window._selectedIds) return;
+  if (window._selectedIds.has(mlb_id)) {
+    window._selectedIds.delete(mlb_id);
+  } else {
+    window._selectedIds.add(mlb_id);
+  }
+  updateLineupDisplay();
 }
 
 // ─────────────────────────────────────────────

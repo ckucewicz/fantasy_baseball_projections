@@ -1779,6 +1779,53 @@ def compute_confidence(batter_stats, pitcher_stats, babip_meta):
     }
 
 
+def compute_projection_range(proj_pts, batter_stats, log_entries=None):
+    """
+    Computes a projection range [low, high] around the midpoint.
+
+    Hybrid approach:
+    - If 20+ actual_pts entries exist in log for this player → use real std dev
+    - Otherwise → approximate std dev from batting profile
+
+    Range = midpoint ± std_dev
+    Low  = max(0, midpoint - std_dev)
+    High = midpoint + std_dev
+    """
+    std_dev = None
+
+    # Step 1 — try real std dev from accuracy log
+    if log_entries and len(log_entries) >= 20:
+        actuals = [e["actual_pts"] for e in log_entries
+                   if e.get("actual_pts") is not None]
+        if len(actuals) >= 20:
+            mean = sum(actuals) / len(actuals)
+            variance = sum((x - mean) ** 2 for x in actuals) / len(actuals)
+            std_dev = variance ** 0.5
+
+    # Step 2 — approximate from batting profile
+    if std_dev is None:
+        hr_rate  = batter_stats.get("hrrate", LEAGUE_AVG["hrrate"])
+        bb_pct   = batter_stats.get("bbpct",  LEAGUE_AVG["bbpct_bat"])
+        k_pct    = batter_stats.get("kpct",   LEAGUE_AVG["kpct_bat"])
+
+        # Power hitters (high HR rate) have higher variance
+        # Contact hitters (low K, high avg) have lower variance
+        # Base std dev ~1.8 pts, adjusted by player profile
+        base_std  = 1.8
+        power_adj = (hr_rate - LEAGUE_AVG["hrrate"]) * 15.0   # +/- up to ~0.5
+        k_adj     = (k_pct   - LEAGUE_AVG["kpct_bat"]) * 3.0  # strikeout-prone = more variance
+        std_dev   = max(0.8, min(3.5, base_std + power_adj + k_adj))
+
+    proj_low  = round(max(0.0, proj_pts - std_dev), 1)
+    proj_high = round(proj_pts + std_dev, 1)
+
+    return {
+        "proj_low":  proj_low,
+        "proj_high": proj_high,
+        "std_dev":   round(std_dev, 2),
+    }
+
+
 def project_stat_line(batter_stats):
     """
     Converts blended rate stats into a projected per-game stat line.
@@ -2197,6 +2244,12 @@ def project_player(player, matchup, batter_season, batter_career,
     proj_pts = proj_pts_base + pt_result["total_adj"]
     proj_pts = max(0.0, round(proj_pts, 1))
 
+    # --- Projection range ---
+    # Look up this player's log entries for real std dev if available
+    log        = load_log()
+    log_entries = [e for e in log if e.get("player") == name and e.get("actual_pts") is not None]
+    proj_range = compute_projection_range(proj_pts, adjusted, log_entries)
+
     # --- Step 12: Factor breakdown for dashboard ---
     pitch_diff["adj"]           = pitcher_impact
     pitch_diff["platoon_label"] = platoon_label
@@ -2210,6 +2263,8 @@ def project_player(player, matchup, batter_season, batter_career,
     h_ab_str = f"{stat_line['h']:.1f}H / {stat_line['ab']:.1f}AB"
 
     # Build scoring rows for the new card layout
+    proj_low  = proj_range["proj_low"]
+    proj_high = proj_range["proj_high"]
     scoring_rows = []
     for cat, proj_val, mult_str, pts_val in [
         ("AB",  stat_line["ab"],      "× −0.50", stat_line["ab"]      * SCORING["AB"]),
@@ -2251,6 +2306,8 @@ def project_player(player, matchup, batter_season, batter_career,
             "k":       round(stat_line["k"],   2),
         },
         "scoring_rows": scoring_rows,
+        "proj_low":     proj_range["proj_low"],
+        "proj_high":    proj_range["proj_high"],
         "factors":      factors,
         "pitch_rows":   pt_rows,
         "babip_note":   babip_meta.get("direction", ""),
@@ -2782,8 +2839,11 @@ def build_projection_log_entry(projection, today_str):
         "probable_sp":      projection.get("probable_sp", ""),
         "sp_hand":          projection.get("sp_hand", ""),
         "proj_pts":         projection.get("proj_pts"),
+        "proj_low":         projection.get("proj_low"),
+        "proj_high":        projection.get("proj_high"),
         "actual_pts":       None,
         "diff":             None,
+        "in_range":         None,
         "confidence":       conf.get("score"),
         "confidence_label": conf.get("label"),
         "did_not_play":     False,
@@ -2865,6 +2925,11 @@ def fill_yesterday_actuals():
             log[idx]["actual_pts"]   = actual_pts
             log[idx]["diff"]         = diff
             log[idx]["did_not_play"] = False
+            # Check if actual landed within projected range
+            proj_low  = log[idx].get("proj_low")
+            proj_high = log[idx].get("proj_high")
+            if proj_low is not None and proj_high is not None:
+                log[idx]["in_range"] = proj_low <= actual_pts <= proj_high
             filled += 1
             diff_str = f"{diff:+.1f}" if diff is not None else "—"
             print(f"  {entry['player']:<22} proj={proj_pts:.1f}  actual={actual_pts:.1f}  diff={diff_str}")
