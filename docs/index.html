@@ -110,6 +110,40 @@
   .bno-game { background: #eee; color: #888; }
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
   .proj-range { font-size: 10px; color: var(--color-text-tertiary); text-align: right; white-space: nowrap; margin-top: 1px; }
+  .model-desc { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; margin-bottom: 8px; font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .how-btn { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); cursor: pointer; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px; }
+  .how-body { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 12px; font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 8px; display: none; }
+  .how-body.open { display: block; }
+  .how-steps { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; }
+  .how-step { display: flex; gap: 8px; align-items: flex-start; }
+  .step-num { font-size: 10px; font-weight: 500; color: #185FA5; background: #E6F1FB; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-txt { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; flex: 1; }
+  .step-txt strong { font-weight: 500; color: var(--color-text-primary); }
+  .chance-block { margin-top: 7px; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 6px; }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .compare-table th { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); text-align: right; padding: 4px 0; border-bottom: 0.5px solid var(--color-border-secondary); }
+  .compare-table th:first-child { text-align: left; }
+  .compare-table td { padding: 6px 0; border-top: 0.5px solid var(--color-border-tertiary); text-align: right; font-family: var(--font-mono); font-size: 12px; color: var(--color-text-primary); }
+  .compare-table td:first-child { text-align: left; font-family: var(--font-sans); color: var(--color-text-secondary); font-size: 11px; }
+  .compare-winner { color: #3B6D11; font-weight: 500; }
+  .calib-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-top: 0.5px solid var(--color-border-tertiary); font-size: 11px; }
+  .calib-row:first-child { border-top: none; }
+  .calib-label { color: var(--color-text-secondary); }
+  .calib-vals { display: flex; gap: 12px; font-family: var(--font-mono); font-size: 11px; }
+  .calib-pred { color: var(--color-text-tertiary); }
+  .calib-actual { font-weight: 500; }
+  .calib-good { color: #3B6D11; }
+  .calib-off { color: #A32D2D; }
+  .chance-lbl { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .chance-row { display: flex; justify-content: space-between; align-items: center; padding: 2px 0; font-size: 11px; }
+  .chance-name { color: var(--color-text-secondary); }
+  .chance-pct { font-family: var(--font-mono); font-weight: 500; }
+  .chance-pos { color: #3B6D11; }
+  .chance-neg { color: #A32D2D; }
+  .chance-median { display: flex; justify-content: space-between; align-items: center; padding-top: 5px; margin-top: 3px; border-top: 0.5px solid var(--color-border-tertiary); font-size: 11px; }
+  .chance-median-lbl { color: var(--color-text-tertiary); }
+  .chance-median-val { font-family: var(--font-mono); font-weight: 500; color: var(--color-text-primary); }
+  .mc-games { font-size: 10px; color: var(--color-text-tertiary); margin-top: 4px; }
   .proj-mid   { font-size: 10px; color: var(--color-text-tertiary); text-align: right; }
   .starter-dot { width: 14px; height: 14px; border-radius: 50%; background: #378ADD; flex-shrink: 0; cursor: pointer; transition: transform .15s; }
   .starter-dot:active { transform: scale(0.85); }
@@ -223,12 +257,14 @@
   <!-- TABS -->
   <div class="tabs">
     <div class="tab active" onclick="switchTab('today', this)">Rate model</div>
-    <div class="tab" onclick="switchTab('historical', this)">Historical model</div>
+    <div class="tab" onclick="switchTab('historical', this)">Monte Carlo</div>
     <div class="tab" onclick="switchTab('accuracy', this)">Accuracy tracker</div>
   </div>
 
   <!-- TAB: TODAY -->
   <div class="tab-section show" id="tab-today">
+    <div class="model-desc">Projects today's score using each player's stat rates adjusted for pitcher, park, and platoon matchup.</div>
+
     <div id="lineupTotal" style="display:none" class="lineup-total">
       <div class="lineup-left">
         <span class="lineup-label">Lineup projected</span>
@@ -251,11 +287,27 @@
     </div>
   </div>
 
+    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')">
+      How this model works <i class="ti ti-chevron-down" aria-hidden="true" style="font-size:14px;color:var(--color-text-tertiary);transition:transform .2s"></i>
+    </div>
+    <div class="how-body">
+      <ol class="how-steps">
+        <li class="how-step"><span class="step-num">1</span><span class="step-txt"><strong>Blend season + career stats</strong> — weights toward current season as plate appearances accumulate.</span></li>
+        <li class="how-step"><span class="step-num">2</span><span class="step-txt"><strong>Apply platoon splits</strong> — uses each player's real vs-left / vs-right rates from 2022–present.</span></li>
+        <li class="how-step"><span class="step-num">3</span><span class="step-txt"><strong>Apply matchup factors</strong> — pitcher difficulty, park factor, and recent form shift the rates up or down.</span></li>
+        <li class="how-step"><span class="step-num">4</span><span class="step-txt"><strong>Project a stat line</strong> — adjusted rates × expected ABs per game = projected H, HR, BB, K, etc.</span></li>
+        <li class="how-step"><span class="step-num">5</span><span class="step-txt"><strong>Score it</strong> — each stat is multiplied by your league's exact point values and summed.</span></li>
+      </ol>
+    </div>
+  </div>
+
   <!-- TAB: HISTORICAL MODEL -->
   <div class="tab-section" id="tab-historical">
+    <div class="model-desc">Simulates 10,000 possible outcomes based on each player's historical game-by-game scoring, adjusted for today's matchup.</div>
+
     <div id="histLineupTotal" style="display:none" class="lineup-total">
       <div class="lineup-left">
-        <span class="lineup-label">Historical model lineup</span>
+        <span class="lineup-label">Monte Carlo lineup</span>
         <span class="lineup-slots" id="histLineupSlots"></span>
       </div>
       <div style="text-align:right">
@@ -272,6 +324,20 @@
     <div id="histPlayerList"><div class="no-data-msg">Loading historical projections...</div></div>
   </div>
 
+    <div class="how-btn" onclick="this.querySelector('i').style.transform=this.querySelector('i').style.transform?'':'rotate(180deg)';this.nextElementSibling.classList.toggle('open')">
+      How this model works <i class="ti ti-chevron-down" aria-hidden="true" style="font-size:14px;color:var(--color-text-tertiary);transition:transform .2s"></i>
+    </div>
+    <div class="how-body">
+      <ol class="how-steps">
+        <li class="how-step"><span class="step-num">1</span><span class="step-txt"><strong>Fetch historical game logs</strong> — pulls every game from 2024–present for each player and computes their actual fantasy score.</span></li>
+        <li class="how-step"><span class="step-num">2</span><span class="step-txt"><strong>Compute a matchup multiplier</strong> — combines today's pitcher difficulty, platoon split, and park factor into a single adjustment (e.g. 0.73× for a tough matchup).</span></li>
+        <li class="how-step"><span class="step-num">3</span><span class="step-txt"><strong>Shift the distribution</strong> — multiplies each historical score by the matchup multiplier, reflecting today's conditions.</span></li>
+        <li class="how-step"><span class="step-num">4</span><span class="step-txt"><strong>Run 10,000 simulations</strong> — randomly samples from the shifted historical scores 10,000 times to simulate today's possible outcomes.</span></li>
+        <li class="how-step"><span class="step-num">5</span><span class="step-txt"><strong>Compute probabilities</strong> — counts how often each threshold (3+, 6+, negative) was hit across all simulations.</span></li>
+      </ol>
+    </div>
+  </div>
+
   <!-- TAB: ACCURACY -->
   <div class="tab-section" id="tab-accuracy">
     <div class="filter-row">
@@ -286,9 +352,33 @@
       </svg>
       <span id="exportLabel">Export CSV</span>
     </button>
+    <div class="section-label">Model comparison</div>
+    <div class="acc-card">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Rate model</th>
+            <th>Monte Carlo</th>
+          </tr>
+        </thead>
+        <tbody id="compareTableBody">
+          <tr><td>Avg error</td><td id="cAvgErrRate">—</td><td id="cAvgErrMC">—</td></tr>
+          <tr><td>Within 2.5 pts</td><td id="cWithinRate">—</td><td id="cWithinMC">—</td></tr>
+          <tr><td>Bias</td><td id="cBiasRate">—</td><td id="cBiasMC">—</td></tr>
+          <tr><td>In range %</td><td id="cInRangeRate">—</td><td id="cInRangeMC">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-label">Monte Carlo calibration</div>
+    <div class="acc-card" id="calibCard">
+      <div class="no-data-msg">No calibration data yet — check back after more games.</div>
+    </div>
+
     <div class="metric-grid" id="accMetrics">
-      <div class="metric"><div class="metric-label">Avg error</div><div class="metric-val" id="mAvgErr">—</div><div class="metric-sub">pts off per player</div></div>
-      <div class="metric"><div class="metric-label">Within 2.5 pts</div><div class="metric-val" id="mWithin5">—</div><div class="metric-sub">of projections</div></div>
+      <div class="metric"><div class="metric-label">Avg error</div><div class="metric-val" id="mAvgErr">—</div><div class="metric-sub">rate model</div></div>
+      <div class="metric"><div class="metric-label">Within 2.5 pts</div><div class="metric-val" id="mWithin5">—</div><div class="metric-sub">rate model</div></div>
       <div class="metric"><div class="metric-label">Bias</div><div class="metric-val" id="mBias">—</div><div class="metric-sub" id="mBiasSub">—</div></div>
       <div class="metric"><div class="metric-label">Best call</div><div class="metric-val" id="mBest" style="font-size:14px">—</div><div class="metric-sub" id="mBestSub">—</div></div>
       <div class="metric"><div class="metric-label">In range</div><div class="metric-val" id="mInRange">—</div><div class="metric-sub">landed in proj range</div></div>
@@ -1066,7 +1156,36 @@ function renderHistoricalTab(data) {
     }
 
     const multStr = p.composite_mult ? `×${p.composite_mult.toFixed(2)}` : '';
-    const histStr = p.hist_mean ? `hist avg ${p.hist_mean.toFixed(1)} pts ${multStr}` : '';
+    // Build Monte Carlo chance-of block
+    const probs    = p.mc_probs || {};
+    const median   = p.mc_median !== undefined ? p.mc_median : p.proj_pts;
+    const nSim     = p.mc_n_sim  || 10000;
+    const nGames   = p.mc_n_games || p.n_games || 0;
+    const p6       = probs["6.0"] !== undefined ? probs["6.0"].toFixed(0) : '—';
+    const p3       = probs["3.0"] !== undefined ? probs["3.0"].toFixed(0) : '—';
+    const pNeg     = probs["0.0"] !== undefined ? probs["0.0"].toFixed(0) : '—';
+
+    const chanceBlock = p.mc_probs ? `
+      <div class="chance-block">
+        <div class="chance-lbl">Chance of:</div>
+        <div class="chance-row">
+          <span class="chance-name">6+ points</span>
+          <span class="chance-pct chance-pos">${p6}%</span>
+        </div>
+        <div class="chance-row">
+          <span class="chance-name">3+ points</span>
+          <span class="chance-pct chance-pos">${p3}%</span>
+        </div>
+        <div class="chance-row">
+          <span class="chance-name">Negative points</span>
+          <span class="chance-pct chance-neg">${pNeg}%</span>
+        </div>
+        <div class="chance-median">
+          <span class="chance-median-lbl">Median</span>
+          <span class="chance-median-val">${median.toFixed(1)} pts</span>
+        </div>
+      </div>
+      <div class="mc-games">${nSim.toLocaleString()} simulations · based on ${nGames} historical games</div>` : '';
 
     return `<div class="card no-expand">
       <div class="card-main">
@@ -1075,15 +1194,8 @@ function renderHistoricalTab(data) {
         <div class="rank">${p.rank || '—'}</div>
         <div class="pinfo">
           <div class="pname">${esc(p.name)} <span class="ppos">${(p.positions||[]).join('/')} · ${esc(p.team||'')}</span></div>
-          <div class="pmeta">${esc(p.probable_sp||'TBD')} · ${esc(p.venue||'')} · ${histStr}</div>
-        </div>
-        <div class="pright">
-          ${(p.proj_low !== undefined && p.proj_high !== undefined)
-            ? `<span class="proj-range">${p.proj_low.toFixed(1)} – ${p.proj_high.toFixed(1)}</span>
-               <span class="proj-mid">mid ${p.proj_pts.toFixed(1)} pts</span>`
-            : `<span class="pts">${p.proj_pts.toFixed(1)}</span><span class="pts-lbl">proj pts</span>`
-          }
-          ${conf.score !== undefined ? `<span class="conf-pct-sm" style="color:${confTextColor(conf.score)}">${conf.score}% conf</span>` : ''}
+          <div class="pmeta">${esc(p.probable_sp||'TBD')} · ${esc(p.venue||'')}</div>
+          ${chanceBlock}
         </div>
       </div>
     </div>`;

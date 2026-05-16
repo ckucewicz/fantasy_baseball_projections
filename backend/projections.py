@@ -1875,7 +1875,7 @@ def get_empirical_interval(mlb_id, player_name, proj_pts, confidence=0.80):
         }
     else:
         std_dev   = 1.8
-        z         = 1.28
+        z         = 0.67
         proj_low  = round(max(proj_pts - z * std_dev, -3.0), 1)
         proj_high = round(proj_pts + z * std_dev, 1)
         return {
@@ -2354,7 +2354,7 @@ def project_player(player, matchup, batter_season, batter_career,
     proj_pts = max(0.0, round(proj_pts, 1))
 
     # --- Projection range (empirical 80% prediction interval) ---
-    proj_range = get_empirical_interval(mlb_id, name, proj_pts, confidence=0.80)
+    proj_range = get_empirical_interval(mlb_id, name, proj_pts, confidence=0.50)
 
     # --- Step 12: Factor breakdown for dashboard ---
     pitch_diff["adj"]           = pitcher_impact
@@ -2523,6 +2523,70 @@ def _compute_composite_multiplier(batter_stats, sp_hand, platoon_split_row,
     return round(mult, 4)
 
 
+def monte_carlo_simulation(scores, composite_mult, n_sim=10000,
+                            thresholds=None):
+    """
+    Runs a Monte Carlo simulation for today's game.
+
+    Steps:
+    1. Shift historical scores by composite_mult
+       (multiply each score by the multiplier to reflect today's matchup)
+    2. Sample n_sim times with replacement from shifted scores
+    3. Compute probability of exceeding each threshold
+    4. Compute median
+
+    Args:
+        scores:         list of historical fantasy scores (sorted)
+        composite_mult: float, matchup multiplier (e.g. 0.73 for tough pitcher)
+        n_sim:          number of simulations (default 10,000)
+        thresholds:     list of point thresholds to compute probabilities for
+
+    Returns dict with median, probabilities, and simulation metadata.
+    """
+    import random
+
+    if thresholds is None:
+        thresholds = [6.0, 3.0, 0.0]
+
+    if not scores:
+        return {
+            "median":      0.0,
+            "probs":       {str(t): 0.0 for t in thresholds},
+            "n_sim":       n_sim,
+            "n_games":     0,
+            "method":      "no_data",
+        }
+
+    # Shift scores by composite multiplier
+    shifted = [s * composite_mult for s in scores]
+
+    # Sample with replacement
+    simulated = [random.choice(shifted) for _ in range(n_sim)]
+    simulated.sort()
+
+    # Median
+    mid = n_sim // 2
+    median = round((simulated[mid] + simulated[mid - 1]) / 2, 1)
+
+    # Probabilities
+    probs = {}
+    for t in thresholds:
+        if t == 0.0:
+            # "negative" = strictly less than 0
+            count = sum(1 for s in simulated if s < 0)
+        else:
+            count = sum(1 for s in simulated if s >= t)
+        probs[str(t)] = round(count / n_sim * 100, 1)
+
+    return {
+        "median":  median,
+        "probs":   probs,
+        "n_sim":   n_sim,
+        "n_games": len(scores),
+        "method":  "monte_carlo",
+    }
+
+
 def project_player_historical(player, matchup, batter_season, batter_career,
                                pitcher_season, pitcher_career,
                                pitch_splits, pitcher_mixes,
@@ -2617,7 +2681,7 @@ def project_player_historical(player, matchup, batter_season, batter_career,
     pt_result = pitch_type_matchup_adj(b_splits, p_mix)
 
     # Step 1 — empirical distribution
-    emp = get_empirical_interval(mlb_id, name, 0.0, confidence=0.80)
+    emp = get_empirical_interval(mlb_id, name, 0.0, confidence=0.50)
     scores     = emp.get("score_dist", [])
     n_games    = emp["n_games"]
     std_dev    = emp["std_dev"]
@@ -2649,6 +2713,9 @@ def project_player_historical(player, matchup, batter_season, batter_career,
     babip_meta    = babip_adjust(batter_stats)
     confidence    = compute_confidence(batter_stats, pitcher_stats, babip_meta)
 
+    # Run Monte Carlo simulation
+    mc = monte_carlo_simulation(scores, composite_mult, n_sim=10000)
+
     return {
         "name":             name,
         "mlb_id":           mlb_id,
@@ -2670,6 +2737,10 @@ def project_player_historical(player, matchup, batter_season, batter_career,
         "score_dist":       scores,
         "confidence":       confidence,
         "model":            "historical",
+        "mc_median":        mc["median"],
+        "mc_probs":         mc["probs"],
+        "mc_n_sim":         mc["n_sim"],
+        "mc_n_games":       mc["n_games"],
     }
 
 
