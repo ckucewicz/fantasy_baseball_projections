@@ -863,16 +863,16 @@ function renderAccuracy() {
     });
 
     document.getElementById('mAvgErr').textContent  = avgErr.toFixed(1);
-    // In range %
-  const inRangeRows = filtered.filter(r =>
-    r.in_range !== null && r.in_range !== undefined && r.actual_pts !== null
-  );
-  const inRangePct = inRangeRows.length
-    ? Math.round(inRangeRows.filter(r => r.in_range).length / inRangeRows.length * 100)
-    : null;
-  document.getElementById('mInRange').textContent = inRangePct !== null ? inRangePct + '%' : '—';
+    document.getElementById('mWithin5').textContent = within5.toFixed(0) + '%';
 
-  document.getElementById('mWithin5').textContent = within5.toFixed(0) + '%';
+    // In range %
+    const inRangeRows = rows.filter(r =>
+      r.in_range !== null && r.in_range !== undefined
+    );
+    const inRangePct = inRangeRows.length
+      ? Math.round(inRangeRows.filter(r => r.in_range).length / inRangeRows.length * 100)
+      : null;
+    document.getElementById('mInRange').textContent = inRangePct !== null ? inRangePct + '%' : '—';
     document.getElementById('mBias').textContent    = (bias >= 0 ? '+' : '−') + Math.abs(bias).toFixed(1);
     document.getElementById('mBiasSub').textContent = bias > 0.5 ? 'model runs high' : bias < -0.5 ? 'model runs low' : 'well calibrated';
     document.getElementById('mBias').style.color    = Math.abs(bias) > 2 ? 'var(--red)' : Math.abs(bias) > 1 ? 'var(--amber)' : 'var(--green)';
@@ -952,6 +952,49 @@ function renderAccuracy() {
     }).join('');
     playerTable.innerHTML = header + body;
   }
+
+  // ── Model comparison table ──
+  populatePlayerSelect(logData);
+
+  const mcRows     = logData.filter(r => r.proj_pts_hist !== null && r.proj_pts_hist !== undefined && r.actual_pts !== null);
+  const rateErrors = rows.map(r => Math.abs(r.actual_pts - r.proj_pts));
+  const mcErrors   = mcRows.map(r => Math.abs(r.actual_pts - r.proj_pts_hist));
+
+  const rateAvg  = rateErrors.length ? (rateErrors.reduce((a,b)=>a+b,0)/rateErrors.length).toFixed(2) : '—';
+  const mcAvg    = mcErrors.length   ? (mcErrors.reduce((a,b)=>a+b,0)/mcErrors.length).toFixed(2)     : '—';
+
+  const rateWithin = rateErrors.length ? Math.round(rateErrors.filter(e=>e<=2.5).length/rateErrors.length*100)+'%' : '—';
+  const mcWithin   = mcErrors.length   ? Math.round(mcErrors.filter(e=>e<=2.5).length/mcErrors.length*100)+'%'     : '—';
+
+  const rateBiasVals = rows.map(r => r.actual_pts - r.proj_pts);
+  const mcBiasVals   = mcRows.map(r => r.actual_pts - r.proj_pts_hist);
+  const rateBias = rateBiasVals.length ? (rateBiasVals.reduce((a,b)=>a+b,0)/rateBiasVals.length).toFixed(2) : '—';
+  const mcBias   = mcBiasVals.length   ? (mcBiasVals.reduce((a,b)=>a+b,0)/mcBiasVals.length).toFixed(2)     : '—';
+
+  const rateInR    = rows.filter(r => r.in_range !== null && r.in_range !== undefined);
+  const mcInR      = mcRows.filter(r => r.in_range_hist !== null && r.in_range_hist !== undefined);
+  const rateInRPct = rateInR.length ? Math.round(rateInR.filter(r=>r.in_range).length/rateInR.length*100)+'%' : '—';
+  const mcInRPct   = mcInR.length   ? Math.round(mcInR.filter(r=>r.in_range_hist).length/mcInR.length*100)+'%' : '—';
+
+  const setCompare = (rateId, mcId, rateVal, mcVal, lowerBetter=true) => {
+    const re = document.getElementById(rateId);
+    const me = document.getElementById(mcId);
+    if (!re||!me) return;
+    re.textContent = rateVal;
+    me.textContent = mcVal;
+    const rn = parseFloat(rateVal);
+    const mn = parseFloat(mcVal);
+    if (!isNaN(rn) && !isNaN(mn)) {
+      const rateWins = lowerBetter ? rn < mn : rn > mn;
+      re.className = rateWins ? 'compare-winner' : '';
+      me.className = rateWins ? '' : 'compare-winner';
+    }
+  };
+  setCompare('cAvgErrRate','cAvgErrMC', rateAvg, mcAvg, true);
+  setCompare('cWithinRate','cWithinMC', rateWithin, mcWithin, false);
+  document.getElementById('cBiasRate').textContent = rateBias;
+  document.getElementById('cBiasMC').textContent   = mcBias;
+  setCompare('cInRangeRate','cInRangeMC', rateInRPct, mcInRPct, false);
 
   // ── Yesterday table ──
   const yesterdayTable = document.getElementById('yesterdayTable');
