@@ -110,6 +110,15 @@
   .bno-game { background: #eee; color: #888; }
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
   .proj-range { font-size: 10px; color: var(--color-text-tertiary); text-align: right; white-space: nowrap; margin-top: 1px; }
+  .how-use-btn { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; background: var(--color-background-secondary); border-bottom: 0.5px solid var(--color-border-secondary); cursor: pointer; font-size: 12px; font-weight: 500; color: #185FA5; }
+  .how-use-body { background: var(--color-background-secondary); border-bottom: 0.5px solid var(--color-border-secondary); padding: 0 12px 12px; display: none; }
+  .how-use-body.open { display: block; }
+  .guide-item { display: flex; gap: 8px; padding: 6px 0; border-top: 0.5px solid var(--color-border-tertiary); font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .guide-item:first-child { border-top: none; padding-top: 2px; }
+  .guide-tab { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .gt-rate { background: #E6F1FB; color: #0C447C; }
+  .gt-mc   { background: #EAF3DE; color: #3B6D11; }
+  .gt-acc  { background: #FAEEDA; color: #BA7517; }
   .model-desc { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; margin-bottom: 8px; font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
   .how-btn { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); cursor: pointer; font-size: 12px; font-weight: 500; color: #185FA5; margin-bottom: 8px; gap: 8px; }
   .how-body { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 12px; font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 8px; display: none; }
@@ -324,11 +333,6 @@
         <div id="histLineupPts">—</div>
         <div class="lineup-mid" id="histLineupMid"></div>
       </div>
-    </div>
-    <div class="legend">
-      <span class="leg-item"><span class="leg-dot-sm" style="background:#639922"></span>High conf</span>
-      <span class="leg-item"><span class="leg-dot-sm" style="background:#EF9F27"></span>Med conf</span>
-      <span class="leg-item"><span class="leg-dot-sm" style="background:#E24B4A"></span>Low conf</span>
     </div>
     <div id="histPlayerList"><div class="no-data-msg">Loading historical projections...</div></div>
   </div>
