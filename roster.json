@@ -112,6 +112,14 @@
       "bats": "L",
       "positions": ["3B", "RF"],
       "status": "il10"
+    }, 
+    {
+      "name": "Anthony Volpe",
+      "mlb_id": 683011,
+      "team": "NYY",
+      "bats": "R",
+      "positions": ["SS"],
+      "status": "active"
     }
   ]
 }
