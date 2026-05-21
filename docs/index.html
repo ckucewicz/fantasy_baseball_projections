@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fantasy Baseball Projections: Team Bergwicz Deli</title>
+<title>Bergwicz Deli Projections</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
 
@@ -69,7 +69,7 @@
   .pinfo { flex: 1; min-width: 0; }
   .pname { font-size: 14px; font-weight: 600; letter-spacing: -0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .ppos { font-size: 10px; color: var(--text-3); font-weight: 400; margin-left: 4px; }
-  .pmeta { font-size: 11px; color: var(--text-2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pmeta { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
   .pstat { font-size: 10px; color: var(--text-3); margin-top: 3px; font-family: 'DM Mono', monospace; }
   .pright { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
   .pts { font-size: 19px; font-weight: 600; line-height: 1; font-family: 'DM Mono', monospace; letter-spacing: -0.5px; }
@@ -254,7 +254,7 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="topbar-row">
-      <span class="app-title">⚾ Fantasy Baseball Projections: Team Bergwicz Deli</span>
+      <span class="app-title">⚾ Bergwicz Deli Projections</span>
       <span class="app-date" id="todayDate"></span>
     </div>
     <div class="topbar-bottom">
@@ -534,11 +534,10 @@ function renderStatLine(sl) {
   return `${esc(sl.h_ab)} · ${sl.hr}HR · ${sl.r}R · ${sl.rbi}RBI · ${sl.bb}BB`;
 }
 function renderMeta(p) {
-  const hand = p.sp_hand ? `${p.sp_hand}HP` : '';
-  const sp   = p.probable_sp && p.probable_sp !== 'TBD' ? `(${hand} ${esc(p.probable_sp)})` : '(SP TBD)';
-  const opp  = p.opponent ? `vs ${esc(p.opponent)} ${sp}` : '— no game today';
-  const venue = p.venue ? ` · ${esc(p.venue)}` : '';
-  return opp + venue;
+  const hand    = p.sp_hand ? `${p.sp_hand}HP ` : '';
+  const sp      = p.probable_sp && p.probable_sp !== 'TBD' ? `${hand}${esc(p.probable_sp)}` : 'SP TBD';
+  const oppLine = p.opponent ? `vs ${esc(p.opponent)} · ${esc(p.venue||'')}` : '— no game today';
+  return `<span style="display:block">${sp}</span><span style="display:block;font-size:10px;color:var(--color-text-tertiary);margin-top:1px">${oppLine}</span>`;
 }
 function renderFactorRows(factors) {
   if (!factors || !factors.length) return '';
