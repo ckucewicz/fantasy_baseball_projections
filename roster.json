@@ -6,7 +6,10 @@
       "mlb_id": 663728,
       "team": "SEA",
       "bats": "L",
-      "positions": ["C", "DH"],
+      "positions": [
+        "C",
+        "DH"
+      ],
       "status": "il10"
     },
     {
@@ -14,7 +17,10 @@
       "mlb_id": 701398,
       "team": "CIN",
       "bats": "R",
-      "positions": ["1B", "3B"],
+      "positions": [
+        "1B",
+        "3B"
+      ],
       "status": "active"
     },
     {
@@ -22,7 +28,10 @@
       "mlb_id": 606466,
       "team": "AZ",
       "bats": "S",
-      "positions": ["2B", "DH"],
+      "positions": [
+        "2B",
+        "DH"
+      ],
       "status": "active"
     },
     {
@@ -30,7 +39,9 @@
       "mlb_id": 673962,
       "team": "TEX",
       "bats": "R",
-      "positions": ["3B"],
+      "positions": [
+        "3B"
+      ],
       "status": "active"
     },
     {
@@ -38,7 +49,9 @@
       "mlb_id": 672695,
       "team": "AZ",
       "bats": "S",
-      "positions": ["SS"],
+      "positions": [
+        "SS"
+      ],
       "status": "active"
     },
     {
@@ -46,7 +59,11 @@
       "mlb_id": 666160,
       "team": "COL",
       "bats": "L",
-      "positions": ["CF", "LF", "RF"],
+      "positions": [
+        "CF",
+        "LF",
+        "RF"
+      ],
       "status": "active"
     },
     {
@@ -54,7 +71,10 @@
       "mlb_id": 592450,
       "team": "NYY",
       "bats": "R",
-      "positions": ["RF", "DH"],
+      "positions": [
+        "RF",
+        "DH"
+      ],
       "status": "active"
     },
     {
@@ -62,7 +82,10 @@
       "mlb_id": 624585,
       "team": "LAA",
       "bats": "R",
-      "positions": ["RF", "DH"],
+      "positions": [
+        "RF",
+        "DH"
+      ],
       "status": "active"
     },
     {
@@ -70,7 +93,9 @@
       "mlb_id": 683737,
       "team": "CHC",
       "bats": "L",
-      "positions": ["1B"],
+      "positions": [
+        "1B"
+      ],
       "status": "active"
     },
     {
@@ -78,7 +103,9 @@
       "mlb_id": 592518,
       "team": "SD",
       "bats": "R",
-      "positions": ["3B"],
+      "positions": [
+        "3B"
+      ],
       "status": "active"
     },
     {
@@ -86,7 +113,11 @@
       "mlb_id": 686797,
       "team": "MIN",
       "bats": "S",
-      "positions": ["SS", "2B", "3B"],
+      "positions": [
+        "SS",
+        "2B",
+        "3B"
+      ],
       "status": "active"
     },
     {
@@ -94,7 +125,9 @@
       "mlb_id": 702284,
       "team": "SEA",
       "bats": "L",
-      "positions": ["2B"],
+      "positions": [
+        "2B"
+      ],
       "status": "active"
     },
     {
@@ -102,7 +135,9 @@
       "mlb_id": 691011,
       "team": "CWS",
       "bats": "S",
-      "positions": ["C"],
+      "positions": [
+        "C"
+      ],
       "status": "active"
     },
     {
@@ -110,15 +145,21 @@
       "mlb_id": 680718,
       "team": "TOR",
       "bats": "L",
-      "positions": ["3B", "RF"],
+      "positions": [
+        "3B",
+        "RF"
+      ],
       "status": "il10"
-    }, 
+    },
     {
       "name": "Jake Mccarthy",
       "mlb_id": 664983,
       "team": "COL",
       "bats": "L",
-      "positions": ["CF", "LF"],
+      "positions": [
+        "CF",
+        "LF"
+      ],
       "status": "active"
     },
     {
@@ -126,7 +167,20 @@
       "mlb_id": 683011,
       "team": "NYY",
       "bats": "R",
-      "positions": ["SS"],
+      "positions": [
+        "SS"
+      ],
+      "status": "active"
+    },
+    {
+      "name": "Jake McCarthy",
+      "mlb_id": 664983,
+      "team": "COL",
+      "bats": "L",
+      "positions": [
+        "CF",
+        "LF"
+      ],
       "status": "active"
     }
   ]
