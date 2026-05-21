@@ -114,6 +114,14 @@
       "status": "il10"
     }, 
     {
+      "name": "Jake Mccarthy",
+      "mlb_id": 664983,
+      "team": "COL",
+      "bats": "L",
+      "positions": ["CF", "LF"],
+      "status": "active"
+    },
+    {
       "name": "Anthony Volpe",
       "mlb_id": 683011,
       "team": "NYY",
