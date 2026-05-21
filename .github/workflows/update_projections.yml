@@ -2,8 +2,7 @@ name: Update Projections
 
 on:
   schedule:
-    - cron: '0 11 * * *'
-    - cron: '0 12 * * *'
+    - cron: '0 10 * * *'   # 5am CDT (UTC-5)
   workflow_dispatch:
 
 jobs:
