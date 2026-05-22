@@ -2,7 +2,7 @@ name: Update Projections
 
 on:
   schedule:
-    - cron: '0 10 * * *'   # 5am CDT (UTC-5)
+    - cron: '30 7 * * *'   # 2:30am CDT (UTC-5) — runs ~5-6am after GitHub delay
   workflow_dispatch:
 
 jobs:
