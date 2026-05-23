@@ -165,7 +165,7 @@ def load_roster(path=ROSTER_PATH):
         data = json.load(f)
     players = data["players"]
     # Separate active/dtd from IL
-    active = [p for p in players if not p["status"].startswith("il") or p["status"] == "minors" and p["status"] != "minors"]
+    active = [p for p in players if not p["status"].startswith("il") and p["status"] != "minors"]
     il     = [p for p in players if p["status"].startswith("il") or p["status"] == "minors"]
     return active, il
 
@@ -811,7 +811,7 @@ def fetch_all_data(active_players, matchups):
     batter_list = [
         {"name": p["name"], "mlb_id": p["mlb_id"]}
         for p in active_players
-        if p["status"] != "dtd" and not p["status"].startswith("il") and p["status"] != "minors" or p["status"] == "minors" and p["status"] != "minors"
+        if p["status"] != "dtd" and not p["status"].startswith("il") and p["status"] != "minors"
     ]
 
     seen = set()

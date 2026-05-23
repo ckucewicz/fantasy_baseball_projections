@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-23T08:47:42",
+  "generated_at": "2026-05-23T08:55:19",
   "season": 2025,
-  "player_count": 14,
+  "player_count": 13,
   "projections": [
     {
       "name": "Aaron Judge",
@@ -1763,13 +1763,13 @@
       "probable_sp": "Jovani Mor\u00e1n",
       "sp_hand": "L",
       "sp_id": 663558,
-      "proj_pts": 2.2,
+      "proj_pts": 2.1,
       "confidence": {
-        "score": 68,
+        "score": 75,
         "label": "medium",
         "pa_score": 1.0,
         "ip_score": 0.0,
-        "babip_score": 0.75
+        "babip_score": 1.0
       },
       "stat_line": {
         "h_ab": "1.0H / 3.7AB",
@@ -1777,7 +1777,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.2,
-        "k": 0.85
+        "k": 0.84
       },
       "scoring_rows": [
         {
@@ -1788,15 +1788,15 @@
         },
         {
           "cat": "1B",
-          "proj": 0.82,
+          "proj": 0.79,
           "mult": "\u00d7  2.80",
-          "pts": 2.3
+          "pts": 2.21
         },
         {
           "cat": "2B",
-          "proj": 0.08,
+          "proj": 0.09,
           "mult": "\u00d7  3.80",
-          "pts": 0.3
+          "pts": 0.34
         },
         {
           "cat": "3B",
@@ -1830,19 +1830,19 @@
         },
         {
           "cat": "K",
-          "proj": 0.85,
+          "proj": 0.84,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.17
         },
         {
           "cat": "HBP",
-          "proj": 0.04,
+          "proj": 0.03,
           "mult": "\u00d7  1.50",
-          "pts": 0.06
+          "pts": 0.05
         }
       ],
-      "proj_low": -0.2,
-      "proj_high": 4.6,
+      "proj_low": -0.3,
+      "proj_high": 4.5,
       "interval_method": "empirical",
       "interval_games": 189,
       "score_dist": [
@@ -2039,8 +2039,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 1.76,
-          "adj_str": "+1.8",
+          "adj": 1.66,
+          "adj_str": "+1.7",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -2063,27 +2063,27 @@
         },
         {
           "label": "Park factor (Fenway Park)",
-          "adj": -0.04,
-          "adj_str": "\u22120.0",
+          "adj": 0.04,
+          "adj_str": "+0.0",
           "cls": "fneu",
           "mult": "HR \u00d70.93 \u00b7 R \u00d71.04",
           "pill": "neutral"
         },
         {
-          "label": "BABIP (0.258 curr \u00b7 0.298 career)",
-          "adj": 0.13,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "H \u00d71.03",
-          "pill": "unlucky"
+          "label": "BABIP (0.258 curr \u00b7 0.243 career)",
+          "adj": -0.05,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d70.99",
+          "pill": "lucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.06,
+          "adj": -0.05,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "H \u00d71.00",
-          "pill": "slight drag"
+          "pill": "neutral"
         }
       ],
       "pitch_rows": [
@@ -2106,8 +2106,8 @@
           "adj_class": "fneg"
         }
       ],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "season",
+      "babip_note": "in line with career",
+      "data_source": "blended",
       "rank": 5
     },
     {
@@ -2721,7 +2721,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.31,
-        "k": 0.82
+        "k": 0.81
       },
       "scoring_rows": [
         {
@@ -2738,9 +2738,9 @@
         },
         {
           "cat": "2B",
-          "proj": 0.17,
+          "proj": 0.16,
           "mult": "\u00d7  3.80",
-          "pts": 0.65
+          "pts": 0.61
         },
         {
           "cat": "3B",
@@ -2774,7 +2774,7 @@
         },
         {
           "cat": "K",
-          "proj": 0.82,
+          "proj": 0.81,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.16
         },
@@ -3243,8 +3243,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.6,
-          "adj_str": "+2.6",
+          "adj": 2.54,
+          "adj_str": "+2.5",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -3259,7 +3259,7 @@
         },
         {
           "label": "Pitcher (J.T. Ginn \u00b7 xFIP 4.79)",
-          "adj": 0.2,
+          "adj": 0.22,
           "adj_str": "+0.2",
           "cls": "fpos",
           "mult": "H \u00d71.11 \u00b7 K \u00d71.03",
@@ -3267,15 +3267,15 @@
         },
         {
           "label": "Park factor (Petco Park)",
-          "adj": -0.1,
+          "adj": -0.11,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "HR \u00d70.88 \u00b7 R \u00d70.94",
           "pill": "suppressed"
         },
         {
-          "label": "BABIP (0.307 curr \u00b7 0.298 career)",
-          "adj": -0.03,
+          "label": "BABIP (0.307 curr \u00b7 0.295 career)",
+          "adj": -0.04,
           "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "H \u00d70.99",
@@ -3302,7 +3302,7 @@
         }
       ],
       "babip_note": "in line with career",
-      "data_source": "season",
+      "data_source": "blended",
       "rank": 7
     },
     {
@@ -3880,245 +3880,6 @@
       "rank": 8
     },
     {
-      "name": "Jett Williams",
-      "mlb_id": 702284,
-      "positions": [
-        "SS, 3B, CF"
-      ],
-      "status": "inactive",
-      "team": "",
-      "opponent": "LAD",
-      "venue": "American Family Field",
-      "probable_sp": "Roki Sasaki",
-      "sp_hand": "R",
-      "sp_id": 808963,
-      "proj_pts": 1.5,
-      "confidence": {
-        "score": 54,
-        "label": "medium",
-        "pa_score": 0.591,
-        "ip_score": 0.373,
-        "babip_score": 0.613
-      },
-      "stat_line": {
-        "h_ab": "0.9H / 3.7AB",
-        "hr": 0.07,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.53,
-        "k": 0.74
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.65,
-          "mult": "\u00d7  2.80",
-          "pts": 1.82
-        },
-        {
-          "cat": "2B",
-          "proj": 0.12,
-          "mult": "\u00d7  3.80",
-          "pts": 0.46
-        },
-        {
-          "cat": "3B",
-          "proj": 0.03,
-          "mult": "\u00d7  5.70",
-          "pts": 0.17
-        },
-        {
-          "cat": "HR",
-          "proj": 0.07,
-          "mult": "\u00d7  7.50",
-          "pts": 0.53
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.53,
-          "mult": "\u00d7  1.50",
-          "pts": 0.8
-        },
-        {
-          "cat": "K",
-          "proj": 0.74,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.15
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.05,
-          "mult": "\u00d7  1.50",
-          "pts": 0.07
-        }
-      ],
-      "proj_low": -0.7,
-      "proj_high": 3.7,
-      "interval_method": "empirical",
-      "interval_games": 77,
-      "score_dist": [
-        -2.7,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.0,
-        -2.0,
-        -2.0,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.2,
-        -1.0,
-        -1.0,
-        -0.8,
-        -0.5,
-        -0.5,
-        -0.2,
-        -0.2,
-        -0.2,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.3,
-        0.3,
-        0.3,
-        0.5,
-        0.5,
-        0.8,
-        0.8,
-        1.1,
-        1.3,
-        1.3,
-        1.3,
-        1.3,
-        2.0,
-        2.3,
-        2.5,
-        2.6,
-        2.6,
-        2.6,
-        2.7,
-        2.8,
-        2.9,
-        3.0,
-        3.0,
-        3.1,
-        3.3,
-        3.3,
-        3.4,
-        3.5,
-        3.8,
-        3.8,
-        4.3,
-        4.8,
-        5.5,
-        5.7,
-        6.4,
-        6.5,
-        6.6,
-        7.0,
-        8.5,
-        10.5,
-        12.0
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 1.88,
-          "adj_str": "+1.9",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "neutral"
-        },
-        {
-          "label": "Pitcher (Roki Sasaki \u00b7 xFIP 4.46)",
-          "adj": 0.16,
-          "adj_str": "+0.2",
-          "cls": "fpos",
-          "mult": "H \u00d71.05 \u00b7 K \u00d70.89",
-          "pill": "boosted"
-        },
-        {
-          "label": "Park factor (American Family Field)",
-          "adj": 0.01,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
-          "pill": "neutral"
-        },
-        {
-          "label": "BABIP (0.247 curr \u00b7 0.298 career)",
-          "adj": 0.17,
-          "adj_str": "+0.2",
-          "cls": "fpos",
-          "mult": "H \u00d71.03",
-          "pill": "unlucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.04,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "neutral"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Sasaki 48% usage \u00b7 5% whiff",
-          "detail": "0.327 wOBA vs fastball \u2014 neutral",
-          "adj": -0.45,
-          "adj_str": "\u22120.5",
-          "adj_class": "fneg"
-        }
-      ],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "season",
-      "rank": 9
-    },
-    {
       "name": "Josh Jung",
       "mlb_id": 673962,
       "positions": [
@@ -4569,7 +4330,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 10
+      "rank": 9
     },
     {
       "name": "Mickey Moniak",
@@ -5077,7 +4838,7 @@
       ],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
-      "rank": 11
+      "rank": 10
     },
     {
       "name": "Jorge Soler",
@@ -5593,7 +5354,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 12
+      "rank": 11
     },
     {
       "name": "Drew Romo",
@@ -5764,7 +5525,7 @@
       "pitch_rows": [],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "career",
-      "rank": 13
+      "rank": 12
     },
     {
       "name": "Anthony Volpe",
@@ -6407,7 +6168,7 @@
       ],
       "babip_note": "unlucky \u2014 H rate nudged up",
       "data_source": "blended",
-      "rank": 14
+      "rank": 13
     },
     {
       "name": "Cal Raleigh",
@@ -6417,6 +6178,20 @@
         "DH"
       ],
       "status": "il10",
+      "proj_pts": null,
+      "confidence": null,
+      "stat_line": null,
+      "factors": [],
+      "pitch_rows": [],
+      "rank": null
+    },
+    {
+      "name": "Jett Williams",
+      "mlb_id": 702284,
+      "positions": [
+        "SS, 3B, CF"
+      ],
+      "status": "minors",
       "proj_pts": null,
       "confidence": null,
       "stat_line": null,
@@ -6888,11 +6663,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 2.8,
+      "mc_median": 2.9,
       "mc_probs": {
-        "6.0": 28.9,
-        "3.0": 47.8,
-        "0.0": 21.1
+        "6.0": 28.4,
+        "3.0": 49.0,
+        "0.0": 20.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 416
@@ -7342,9 +7117,9 @@
       "model": "historical",
       "mc_median": 2.1,
       "mc_probs": {
-        "6.0": 21.8,
-        "3.0": 42.7,
-        "0.0": 23.4
+        "6.0": 21.9,
+        "3.0": 42.3,
+        "0.0": 23.6
       },
       "mc_n_sim": 10000,
       "mc_n_games": 412
@@ -7400,9 +7175,9 @@
       "model": "historical",
       "mc_median": 0.1,
       "mc_probs": {
-        "6.0": 33.5,
-        "3.0": 38.9,
-        "0.0": 44.1
+        "6.0": 33.1,
+        "3.0": 38.5,
+        "0.0": 44.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 18
@@ -7773,8 +7548,8 @@
       "model": "historical",
       "mc_median": 1.1,
       "mc_probs": {
-        "6.0": 16.5,
-        "3.0": 33.1,
+        "6.0": 16.4,
+        "3.0": 32.9,
         "0.0": 36.7
       },
       "mc_n_sim": 10000,
@@ -7796,7 +7571,7 @@
       "proj_low": -3.0,
       "proj_high": 7.9,
       "hist_mean": 2.68,
-      "composite_mult": 0.8267,
+      "composite_mult": 0.8266,
       "n_games": 449,
       "std_dev": 4.4,
       "interval_method": "empirical",
@@ -8259,11 +8034,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 1.4,
+      "mc_median": 1.6,
       "mc_probs": {
-        "6.0": 15.9,
-        "3.0": 34.1,
-        "0.0": 29.7
+        "6.0": 17.2,
+        "3.0": 36.0,
+        "0.0": 28.5
       },
       "mc_n_sim": 10000,
       "mc_n_games": 449
@@ -8703,9 +8478,9 @@
       "model": "historical",
       "mc_median": 1.4,
       "mc_probs": {
-        "6.0": 11.5,
-        "3.0": 34.2,
-        "0.0": 24.1
+        "6.0": 12.2,
+        "3.0": 34.6,
+        "0.0": 23.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 403
@@ -9102,11 +8877,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 0.9,
+      "mc_median": 1.0,
       "mc_probs": {
-        "6.0": 12.1,
-        "3.0": 29.8,
-        "0.0": 30.0
+        "6.0": 12.2,
+        "3.0": 30.5,
+        "0.0": 29.2
       },
       "mc_n_sim": 10000,
       "mc_n_games": 361
@@ -9450,11 +9225,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 0.8,
+      "mc_median": 0.7,
       "mc_probs": {
-        "6.0": 14.0,
-        "3.0": 31.5,
-        "0.0": 31.6
+        "6.0": 14.4,
+        "3.0": 31.9,
+        "0.0": 32.2
       },
       "mc_n_sim": 10000,
       "mc_n_games": 308
@@ -9790,9 +9565,9 @@
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 14.0,
-        "3.0": 27.1,
-        "0.0": 31.9
+        "6.0": 14.8,
+        "3.0": 28.1,
+        "0.0": 31.1
       },
       "mc_n_sim": 10000,
       "mc_n_games": 299
@@ -10175,9 +9950,9 @@
       "model": "historical",
       "mc_median": 0.7,
       "mc_probs": {
-        "6.0": 12.8,
-        "3.0": 29.9,
-        "0.0": 34.3
+        "6.0": 12.1,
+        "3.0": 29.2,
+        "0.0": 34.2
       },
       "mc_n_sim": 10000,
       "mc_n_games": 344
@@ -10200,7 +9975,7 @@
       "proj_low": -2.7,
       "proj_high": 6.2,
       "hist_mean": 1.54,
-      "composite_mult": 1.1274,
+      "composite_mult": 1.1319,
       "n_games": 189,
       "std_dev": 3.47,
       "interval_method": "empirical",
@@ -10405,9 +10180,9 @@
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 12.7,
-        "3.0": 28.0,
-        "0.0": 33.8
+        "6.0": 12.8,
+        "3.0": 27.9,
+        "0.0": 33.6
       },
       "mc_n_sim": 10000,
       "mc_n_games": 189
@@ -10916,128 +10691,12 @@
       "model": "historical",
       "mc_median": 0.8,
       "mc_probs": {
-        "6.0": 9.2,
-        "3.0": 25.5,
-        "0.0": 34.9
+        "6.0": 9.6,
+        "3.0": 25.9,
+        "0.0": 33.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 472
-    },
-    {
-      "name": "Jett Williams",
-      "mlb_id": 702284,
-      "positions": [
-        "SS, 3B, CF"
-      ],
-      "status": "inactive",
-      "team": "MIL",
-      "opponent": "LAD",
-      "venue": "American Family Field",
-      "probable_sp": "Roki Sasaki",
-      "sp_hand": "R",
-      "proj_pts": 1.2,
-      "proj_low": -2.8,
-      "proj_high": 5.2,
-      "hist_mean": 1.22,
-      "composite_mult": 1.0077,
-      "n_games": 77,
-      "std_dev": 3.12,
-      "interval_method": "empirical",
-      "score_dist": [
-        -2.7,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.0,
-        -2.0,
-        -2.0,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.2,
-        -1.0,
-        -1.0,
-        -0.8,
-        -0.5,
-        -0.5,
-        -0.2,
-        -0.2,
-        -0.2,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.3,
-        0.3,
-        0.3,
-        0.5,
-        0.5,
-        0.8,
-        0.8,
-        1.1,
-        1.3,
-        1.3,
-        1.3,
-        1.3,
-        2.0,
-        2.3,
-        2.5,
-        2.6,
-        2.6,
-        2.6,
-        2.7,
-        2.8,
-        2.9,
-        3.0,
-        3.0,
-        3.1,
-        3.3,
-        3.3,
-        3.4,
-        3.5,
-        3.8,
-        3.8,
-        4.3,
-        4.8,
-        5.5,
-        5.7,
-        6.4,
-        6.5,
-        6.6,
-        7.0,
-        8.5,
-        10.5,
-        12.0
-      ],
-      "confidence": {
-        "score": 66,
-        "label": "medium",
-        "pa_score": 0.591,
-        "ip_score": 0.373,
-        "babip_score": 1.0
-      },
-      "model": "historical",
-      "mc_median": 0.3,
-      "mc_probs": {
-        "6.0": 9.0,
-        "3.0": 26.2,
-        "0.0": 40.4
-      },
-      "mc_n_sim": 10000,
-      "mc_n_games": 77
     },
     {
       "name": "Drew Romo",
@@ -11091,8 +10750,8 @@
       "mc_median": -0.6,
       "mc_probs": {
         "6.0": 0.0,
-        "3.0": 10.4,
-        "0.0": 58.4
+        "3.0": 10.7,
+        "0.0": 57.1
       },
       "mc_n_sim": 10000,
       "mc_n_games": 19
@@ -11105,6 +10764,18 @@
         "DH"
       ],
       "status": "il10",
+      "proj_pts": null,
+      "proj_low": null,
+      "proj_high": null,
+      "model": "historical"
+    },
+    {
+      "name": "Jett Williams",
+      "mlb_id": 702284,
+      "positions": [
+        "SS, 3B, CF"
+      ],
+      "status": "minors",
       "proj_pts": null,
       "proj_low": null,
       "proj_high": null,
@@ -11126,12 +10797,12 @@
   ],
   "lineup_mc": {
     "probs": {
-      "40.0": 6.0,
-      "30.0": 21.8,
-      "20.0": 52.1,
-      "0.0": 2.3
+      "40.0": 6.1,
+      "30.0": 21.7,
+      "20.0": 51.9,
+      "0.0": 2.1
     },
-    "median": 20.7,
+    "median": 20.5,
     "n_sim": 10000,
     "n_starters": 9
   }
