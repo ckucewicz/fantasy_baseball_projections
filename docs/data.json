@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T08:42:02",
+  "generated_at": "2026-05-23T08:47:42",
   "season": 2025,
   "player_count": 14,
   "projections": [
@@ -1763,13 +1763,13 @@
       "probable_sp": "Jovani Mor\u00e1n",
       "sp_hand": "L",
       "sp_id": 663558,
-      "proj_pts": 2.1,
+      "proj_pts": 2.2,
       "confidence": {
-        "score": 75,
+        "score": 68,
         "label": "medium",
         "pa_score": 1.0,
         "ip_score": 0.0,
-        "babip_score": 1.0
+        "babip_score": 0.75
       },
       "stat_line": {
         "h_ab": "1.0H / 3.7AB",
@@ -1777,7 +1777,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.2,
-        "k": 0.84
+        "k": 0.85
       },
       "scoring_rows": [
         {
@@ -1788,15 +1788,15 @@
         },
         {
           "cat": "1B",
-          "proj": 0.79,
+          "proj": 0.82,
           "mult": "\u00d7  2.80",
-          "pts": 2.21
+          "pts": 2.3
         },
         {
           "cat": "2B",
-          "proj": 0.09,
+          "proj": 0.08,
           "mult": "\u00d7  3.80",
-          "pts": 0.34
+          "pts": 0.3
         },
         {
           "cat": "3B",
@@ -1830,19 +1830,19 @@
         },
         {
           "cat": "K",
-          "proj": 0.84,
+          "proj": 0.85,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.17
         },
         {
           "cat": "HBP",
-          "proj": 0.03,
+          "proj": 0.04,
           "mult": "\u00d7  1.50",
-          "pts": 0.05
+          "pts": 0.06
         }
       ],
-      "proj_low": -0.3,
-      "proj_high": 4.5,
+      "proj_low": -0.2,
+      "proj_high": 4.6,
       "interval_method": "empirical",
       "interval_games": 189,
       "score_dist": [
@@ -2039,8 +2039,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 1.66,
-          "adj_str": "+1.7",
+          "adj": 1.76,
+          "adj_str": "+1.8",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -2063,27 +2063,27 @@
         },
         {
           "label": "Park factor (Fenway Park)",
-          "adj": 0.04,
-          "adj_str": "+0.0",
+          "adj": -0.04,
+          "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "HR \u00d70.93 \u00b7 R \u00d71.04",
           "pill": "neutral"
         },
         {
-          "label": "BABIP (0.258 curr \u00b7 0.243 career)",
-          "adj": -0.05,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d70.99",
-          "pill": "lucky"
+          "label": "BABIP (0.258 curr \u00b7 0.298 career)",
+          "adj": 0.13,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "H \u00d71.03",
+          "pill": "unlucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.05,
+          "adj": -0.06,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "H \u00d71.00",
-          "pill": "neutral"
+          "pill": "slight drag"
         }
       ],
       "pitch_rows": [
@@ -2106,8 +2106,8 @@
           "adj_class": "fneg"
         }
       ],
-      "babip_note": "in line with career",
-      "data_source": "blended",
+      "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "season",
       "rank": 5
     },
     {
@@ -2721,7 +2721,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.31,
-        "k": 0.81
+        "k": 0.82
       },
       "scoring_rows": [
         {
@@ -2738,9 +2738,9 @@
         },
         {
           "cat": "2B",
-          "proj": 0.16,
+          "proj": 0.17,
           "mult": "\u00d7  3.80",
-          "pts": 0.61
+          "pts": 0.65
         },
         {
           "cat": "3B",
@@ -2774,7 +2774,7 @@
         },
         {
           "cat": "K",
-          "proj": 0.81,
+          "proj": 0.82,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.16
         },
@@ -3243,8 +3243,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.54,
-          "adj_str": "+2.5",
+          "adj": 2.6,
+          "adj_str": "+2.6",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -3259,7 +3259,7 @@
         },
         {
           "label": "Pitcher (J.T. Ginn \u00b7 xFIP 4.79)",
-          "adj": 0.22,
+          "adj": 0.2,
           "adj_str": "+0.2",
           "cls": "fpos",
           "mult": "H \u00d71.11 \u00b7 K \u00d71.03",
@@ -3267,15 +3267,15 @@
         },
         {
           "label": "Park factor (Petco Park)",
-          "adj": -0.11,
+          "adj": -0.1,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "HR \u00d70.88 \u00b7 R \u00d70.94",
           "pill": "suppressed"
         },
         {
-          "label": "BABIP (0.307 curr \u00b7 0.295 career)",
-          "adj": -0.04,
+          "label": "BABIP (0.307 curr \u00b7 0.298 career)",
+          "adj": -0.03,
           "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "H \u00d70.99",
@@ -3302,7 +3302,7 @@
         }
       ],
       "babip_note": "in line with career",
-      "data_source": "blended",
+      "data_source": "season",
       "rank": 7
     },
     {
@@ -3880,6 +3880,245 @@
       "rank": 8
     },
     {
+      "name": "Jett Williams",
+      "mlb_id": 702284,
+      "positions": [
+        "SS, 3B, CF"
+      ],
+      "status": "inactive",
+      "team": "",
+      "opponent": "LAD",
+      "venue": "American Family Field",
+      "probable_sp": "Roki Sasaki",
+      "sp_hand": "R",
+      "sp_id": 808963,
+      "proj_pts": 1.5,
+      "confidence": {
+        "score": 54,
+        "label": "medium",
+        "pa_score": 0.591,
+        "ip_score": 0.373,
+        "babip_score": 0.613
+      },
+      "stat_line": {
+        "h_ab": "0.9H / 3.7AB",
+        "hr": 0.07,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.53,
+        "k": 0.74
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.65,
+          "mult": "\u00d7  2.80",
+          "pts": 1.82
+        },
+        {
+          "cat": "2B",
+          "proj": 0.12,
+          "mult": "\u00d7  3.80",
+          "pts": 0.46
+        },
+        {
+          "cat": "3B",
+          "proj": 0.03,
+          "mult": "\u00d7  5.70",
+          "pts": 0.17
+        },
+        {
+          "cat": "HR",
+          "proj": 0.07,
+          "mult": "\u00d7  7.50",
+          "pts": 0.53
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.53,
+          "mult": "\u00d7  1.50",
+          "pts": 0.8
+        },
+        {
+          "cat": "K",
+          "proj": 0.74,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.15
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.05,
+          "mult": "\u00d7  1.50",
+          "pts": 0.07
+        }
+      ],
+      "proj_low": -0.7,
+      "proj_high": 3.7,
+      "interval_method": "empirical",
+      "interval_games": 77,
+      "score_dist": [
+        -2.7,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.0,
+        -2.0,
+        -2.0,
+        -1.9,
+        -1.9,
+        -1.9,
+        -1.9,
+        -1.9,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.5,
+        -1.5,
+        -1.5,
+        -1.5,
+        -1.5,
+        -1.5,
+        -1.2,
+        -1.0,
+        -1.0,
+        -0.8,
+        -0.5,
+        -0.5,
+        -0.2,
+        -0.2,
+        -0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.3,
+        0.3,
+        0.5,
+        0.5,
+        0.8,
+        0.8,
+        1.1,
+        1.3,
+        1.3,
+        1.3,
+        1.3,
+        2.0,
+        2.3,
+        2.5,
+        2.6,
+        2.6,
+        2.6,
+        2.7,
+        2.8,
+        2.9,
+        3.0,
+        3.0,
+        3.1,
+        3.3,
+        3.3,
+        3.4,
+        3.5,
+        3.8,
+        3.8,
+        4.3,
+        4.8,
+        5.5,
+        5.7,
+        6.4,
+        6.5,
+        6.6,
+        7.0,
+        8.5,
+        10.5,
+        12.0
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 1.88,
+          "adj_str": "+1.9",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "neutral"
+        },
+        {
+          "label": "Pitcher (Roki Sasaki \u00b7 xFIP 4.46)",
+          "adj": 0.16,
+          "adj_str": "+0.2",
+          "cls": "fpos",
+          "mult": "H \u00d71.05 \u00b7 K \u00d70.89",
+          "pill": "boosted"
+        },
+        {
+          "label": "Park factor (American Family Field)",
+          "adj": 0.01,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "HR \u00d71.06 \u00b7 R \u00d71.03",
+          "pill": "neutral"
+        },
+        {
+          "label": "BABIP (0.247 curr \u00b7 0.298 career)",
+          "adj": 0.17,
+          "adj_str": "+0.2",
+          "cls": "fpos",
+          "mult": "H \u00d71.03",
+          "pill": "unlucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": -0.04,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Sasaki 48% usage \u00b7 5% whiff",
+          "detail": "0.327 wOBA vs fastball \u2014 neutral",
+          "adj": -0.45,
+          "adj_str": "\u22120.5",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "season",
+      "rank": 9
+    },
+    {
       "name": "Josh Jung",
       "mlb_id": 673962,
       "positions": [
@@ -4330,7 +4569,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 9
+      "rank": 10
     },
     {
       "name": "Mickey Moniak",
@@ -4340,7 +4579,7 @@
         "LF",
         "RF"
       ],
-      "status": "active",
+      "status": "IL",
       "team": "",
       "opponent": "AZ",
       "venue": "Chase Field",
@@ -4838,245 +5077,6 @@
       ],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
-      "rank": 10
-    },
-    {
-      "name": "Cole Young",
-      "mlb_id": 702284,
-      "positions": [
-        "2B"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "KC",
-      "venue": "Kauffman Stadium",
-      "probable_sp": "Stephen Kolek",
-      "sp_hand": "R",
-      "sp_id": 663568,
-      "proj_pts": 1.3,
-      "confidence": {
-        "score": 70,
-        "label": "medium",
-        "pa_score": 0.591,
-        "ip_score": 1.0,
-        "babip_score": 0.613
-      },
-      "stat_line": {
-        "h_ab": "0.8H / 3.7AB",
-        "hr": 0.06,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.45,
-        "k": 0.73
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.63,
-          "mult": "\u00d7  2.80",
-          "pts": 1.76
-        },
-        {
-          "cat": "2B",
-          "proj": 0.12,
-          "mult": "\u00d7  3.80",
-          "pts": 0.46
-        },
-        {
-          "cat": "3B",
-          "proj": 0.03,
-          "mult": "\u00d7  5.70",
-          "pts": 0.17
-        },
-        {
-          "cat": "HR",
-          "proj": 0.06,
-          "mult": "\u00d7  7.50",
-          "pts": 0.45
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.45,
-          "mult": "\u00d7  1.50",
-          "pts": 0.68
-        },
-        {
-          "cat": "K",
-          "proj": 0.73,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.15
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.05,
-          "mult": "\u00d7  1.50",
-          "pts": 0.07
-        }
-      ],
-      "proj_low": -0.9,
-      "proj_high": 3.5,
-      "interval_method": "empirical",
-      "interval_games": 77,
-      "score_dist": [
-        -2.7,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.0,
-        -2.0,
-        -2.0,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.9,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.2,
-        -1.0,
-        -1.0,
-        -0.8,
-        -0.5,
-        -0.5,
-        -0.2,
-        -0.2,
-        -0.2,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.3,
-        0.3,
-        0.3,
-        0.5,
-        0.5,
-        0.8,
-        0.8,
-        1.1,
-        1.3,
-        1.3,
-        1.3,
-        1.3,
-        2.0,
-        2.3,
-        2.5,
-        2.6,
-        2.6,
-        2.6,
-        2.7,
-        2.8,
-        2.9,
-        3.0,
-        3.0,
-        3.1,
-        3.3,
-        3.3,
-        3.4,
-        3.5,
-        3.8,
-        3.8,
-        4.3,
-        4.8,
-        5.5,
-        5.7,
-        6.4,
-        6.5,
-        6.6,
-        7.0,
-        8.5,
-        10.5,
-        12.0
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 1.88,
-          "adj_str": "+1.9",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (L vs RHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "neutral"
-        },
-        {
-          "label": "Pitcher (Stephen Kolek \u00b7 xFIP 4.10)",
-          "adj": -0.11,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d70.98 \u00b7 K \u00d70.89",
-          "pill": "suppressed"
-        },
-        {
-          "label": "Park factor (Kauffman Stadium)",
-          "adj": -0.05,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "HR \u00d70.95 \u00b7 R \u00d70.97",
-          "pill": "neutral"
-        },
-        {
-          "label": "BABIP (0.247 curr \u00b7 0.298 career)",
-          "adj": 0.17,
-          "adj_str": "+0.2",
-          "cls": "fpos",
-          "mult": "H \u00d71.03",
-          "pill": "unlucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": -0.04,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "neutral"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "Kolek 65% usage \u00b7 6% whiff",
-          "detail": "0.327 wOBA vs fastball \u2014 neutral",
-          "adj": -0.39,
-          "adj_str": "\u22120.4",
-          "adj_class": "fneg"
-        }
-      ],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "season",
       "rank": 11
     },
     {
@@ -6890,9 +6890,9 @@
       "model": "historical",
       "mc_median": 2.8,
       "mc_probs": {
-        "6.0": 28.7,
-        "3.0": 48.3,
-        "0.0": 21.2
+        "6.0": 28.9,
+        "3.0": 47.8,
+        "0.0": 21.1
       },
       "mc_n_sim": 10000,
       "mc_n_games": 416
@@ -7342,9 +7342,9 @@
       "model": "historical",
       "mc_median": 2.1,
       "mc_probs": {
-        "6.0": 22.3,
-        "3.0": 42.8,
-        "0.0": 23.6
+        "6.0": 21.8,
+        "3.0": 42.7,
+        "0.0": 23.4
       },
       "mc_n_sim": 10000,
       "mc_n_games": 412
@@ -7400,9 +7400,9 @@
       "model": "historical",
       "mc_median": 0.1,
       "mc_probs": {
-        "6.0": 33.6,
-        "3.0": 39.0,
-        "0.0": 44.5
+        "6.0": 33.5,
+        "3.0": 38.9,
+        "0.0": 44.1
       },
       "mc_n_sim": 10000,
       "mc_n_games": 18
@@ -7773,9 +7773,9 @@
       "model": "historical",
       "mc_median": 1.1,
       "mc_probs": {
-        "6.0": 16.3,
-        "3.0": 33.4,
-        "0.0": 36.4
+        "6.0": 16.5,
+        "3.0": 33.1,
+        "0.0": 36.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 334
@@ -7796,7 +7796,7 @@
       "proj_low": -3.0,
       "proj_high": 7.9,
       "hist_mean": 2.68,
-      "composite_mult": 0.8266,
+      "composite_mult": 0.8267,
       "n_games": 449,
       "std_dev": 4.4,
       "interval_method": "empirical",
@@ -8259,11 +8259,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 1.5,
+      "mc_median": 1.4,
       "mc_probs": {
-        "6.0": 16.0,
-        "3.0": 34.6,
-        "0.0": 28.7
+        "6.0": 15.9,
+        "3.0": 34.1,
+        "0.0": 29.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 449
@@ -8703,8 +8703,8 @@
       "model": "historical",
       "mc_median": 1.4,
       "mc_probs": {
-        "6.0": 12.1,
-        "3.0": 34.8,
+        "6.0": 11.5,
+        "3.0": 34.2,
         "0.0": 24.1
       },
       "mc_n_sim": 10000,
@@ -9104,9 +9104,9 @@
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 12.2,
-        "3.0": 30.5,
-        "0.0": 29.7
+        "6.0": 12.1,
+        "3.0": 29.8,
+        "0.0": 30.0
       },
       "mc_n_sim": 10000,
       "mc_n_games": 361
@@ -9450,11 +9450,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 1.0,
+      "mc_median": 0.8,
       "mc_probs": {
-        "6.0": 14.4,
-        "3.0": 31.8,
-        "0.0": 31.4
+        "6.0": 14.0,
+        "3.0": 31.5,
+        "0.0": 31.6
       },
       "mc_n_sim": 10000,
       "mc_n_games": 308
@@ -9790,8 +9790,8 @@
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 14.8,
-        "3.0": 28.1,
+        "6.0": 14.0,
+        "3.0": 27.1,
         "0.0": 31.9
       },
       "mc_n_sim": 10000,
@@ -9805,7 +9805,7 @@
         "LF",
         "RF"
       ],
-      "status": "active",
+      "status": "IL",
       "team": "COL",
       "opponent": "AZ",
       "venue": "Chase Field",
@@ -10175,9 +10175,9 @@
       "model": "historical",
       "mc_median": 0.7,
       "mc_probs": {
-        "6.0": 12.7,
-        "3.0": 30.5,
-        "0.0": 33.7
+        "6.0": 12.8,
+        "3.0": 29.9,
+        "0.0": 34.3
       },
       "mc_n_sim": 10000,
       "mc_n_games": 344
@@ -10200,7 +10200,7 @@
       "proj_low": -2.7,
       "proj_high": 6.2,
       "hist_mean": 1.54,
-      "composite_mult": 1.1319,
+      "composite_mult": 1.1274,
       "n_games": 189,
       "std_dev": 3.47,
       "interval_method": "empirical",
@@ -10405,9 +10405,9 @@
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 13.6,
-        "3.0": 29.2,
-        "0.0": 33.1
+        "6.0": 12.7,
+        "3.0": 28.0,
+        "0.0": 33.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 189
@@ -10916,30 +10916,30 @@
       "model": "historical",
       "mc_median": 0.8,
       "mc_probs": {
-        "6.0": 9.9,
-        "3.0": 25.7,
-        "0.0": 34.3
+        "6.0": 9.2,
+        "3.0": 25.5,
+        "0.0": 34.9
       },
       "mc_n_sim": 10000,
       "mc_n_games": 472
     },
     {
-      "name": "Cole Young",
+      "name": "Jett Williams",
       "mlb_id": 702284,
       "positions": [
-        "2B"
+        "SS, 3B, CF"
       ],
-      "status": "active",
-      "team": "SEA",
-      "opponent": "KC",
-      "venue": "Kauffman Stadium",
-      "probable_sp": "Stephen Kolek",
+      "status": "inactive",
+      "team": "MIL",
+      "opponent": "LAD",
+      "venue": "American Family Field",
+      "probable_sp": "Roki Sasaki",
       "sp_hand": "R",
-      "proj_pts": 1.1,
-      "proj_low": -2.9,
-      "proj_high": 5.1,
+      "proj_pts": 1.2,
+      "proj_low": -2.8,
+      "proj_high": 5.2,
       "hist_mean": 1.22,
-      "composite_mult": 0.8922,
+      "composite_mult": 1.0077,
       "n_games": 77,
       "std_dev": 3.12,
       "interval_method": "empirical",
@@ -11023,18 +11023,18 @@
         12.0
       ],
       "confidence": {
-        "score": 82,
+        "score": 66,
         "label": "medium",
         "pa_score": 0.591,
-        "ip_score": 1.0,
+        "ip_score": 0.373,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.3,
       "mc_probs": {
-        "6.0": 5.5,
-        "3.0": 20.0,
-        "0.0": 40.5
+        "6.0": 9.0,
+        "3.0": 26.2,
+        "0.0": 40.4
       },
       "mc_n_sim": 10000,
       "mc_n_games": 77
@@ -11092,7 +11092,7 @@
       "mc_probs": {
         "6.0": 0.0,
         "3.0": 10.4,
-        "0.0": 58.5
+        "0.0": 58.4
       },
       "mc_n_sim": 10000,
       "mc_n_games": 19
@@ -11126,12 +11126,12 @@
   ],
   "lineup_mc": {
     "probs": {
-      "40.0": 5.8,
-      "30.0": 21.6,
-      "20.0": 51.9,
-      "0.0": 1.9
+      "40.0": 6.0,
+      "30.0": 21.8,
+      "20.0": 52.1,
+      "0.0": 2.3
     },
-    "median": 20.5,
+    "median": 20.7,
     "n_sim": 10000,
     "n_starters": 9
   }

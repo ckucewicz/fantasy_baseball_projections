@@ -663,6 +663,13 @@ function renderCard(p) {
       <div class="pright"><span class="pts" style="color:#bbb">—</span></div>
     </div></div>`;
   }
+  if (status === 'minors') {
+    return `<div class="card dimmed no-expand"><div class="card-main">
+      <div class="conf-bar" style="background:#ccc"></div><div class="rank">—</div>
+      <div class="pinfo"><div class="pname">${esc(p.name)}<span class="badge bil">MiLB</span><span class="ppos">${(p.positions||[]).join(', ')}</span></div><div class="pmeta">in minor leagues</div></div>
+      <div class="pright"><span class="pts" style="color:#bbb">—</span></div>
+    </div></div>`;
+  }
   if (status === 'no_game' || p.proj_pts === null) {
     return `<div class="card dimmed no-expand"><div class="card-main">
       <div class="conf-bar" style="background:#ccc"></div><div class="rank">—</div>

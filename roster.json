@@ -64,7 +64,7 @@
         "LF",
         "RF"
       ],
-      "status": "active"
+      "status": "IL"
     },
     {
       "name": "Aaron Judge",
@@ -121,14 +121,14 @@
       "status": "active"
     },
     {
-      "name": "Cole Young",
+      "name": "Jett Williams",
       "mlb_id": 702284,
-      "team": "SEA",
+      "team": "MIL",
       "bats": "L",
       "positions": [
-        "2B"
+        "SS, 3B, CF"
       ],
-      "status": "active"
+      "status": "inactive"
     },
     {
       "name": "Drew Romo",

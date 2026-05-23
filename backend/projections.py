@@ -165,8 +165,8 @@ def load_roster(path=ROSTER_PATH):
         data = json.load(f)
     players = data["players"]
     # Separate active/dtd from IL
-    active = [p for p in players if not p["status"].startswith("il")]
-    il     = [p for p in players if p["status"].startswith("il")]
+    active = [p for p in players if not p["status"].startswith("il") or p["status"] == "minors" and p["status"] != "minors"]
+    il     = [p for p in players if p["status"].startswith("il") or p["status"] == "minors"]
     return active, il
 
 
@@ -811,7 +811,7 @@ def fetch_all_data(active_players, matchups):
     batter_list = [
         {"name": p["name"], "mlb_id": p["mlb_id"]}
         for p in active_players
-        if p["status"] != "dtd" and not p["status"].startswith("il")
+        if p["status"] != "dtd" and not p["status"].startswith("il") and p["status"] != "minors" or p["status"] == "minors" and p["status"] != "minors"
     ]
 
     seen = set()
@@ -2610,7 +2610,7 @@ def project_player_historical(player, matchup, batter_season, batter_career,
     status = player.get("status", "active")
 
     # Check for IL/DTD
-    if status.startswith("il") or status == "dtd":
+    if status.startswith("il") or status == "dtd" or status == "minors":
         return {
             "name":       name,
             "mlb_id":     mlb_id,
@@ -2793,7 +2793,7 @@ def project_all(active_players, il_players, matchups,
 
     # Sort: active with projections first (desc pts), then DTD/no-game, then IL
     def sort_key(p):
-        if p["status"].startswith("il"):
+        if p["status"].startswith("il") or p["status"] == "minors":
             return (-1, 0)
         if p["proj_pts"] is None:
             return (0, 0)
@@ -3375,7 +3375,7 @@ def log_today_projections(projections, projections_historical=None):
         if proj.get("proj_pts") is None:
             continue
         if proj.get("status") in ("dtd", "no_game") or \
-           (proj.get("status") or "").startswith("il"):
+           (proj.get("status") or "").startswith("il") or proj.get("status") == "minors":
             continue
         entry = build_projection_log_entry(proj, today_str)
         hist  = hist_lookup.get(proj.get("mlb_id"))
