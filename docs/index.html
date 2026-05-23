@@ -534,10 +534,16 @@ function renderStatLine(sl) {
   return `${esc(sl.h_ab)} · ${sl.hr}HR · ${sl.r}R · ${sl.rbi}RBI · ${sl.bb}BB`;
 }
 function renderMeta(p) {
-  const hand    = p.sp_hand ? `${p.sp_hand}HP ` : '';
-  const sp      = p.probable_sp && p.probable_sp !== 'TBD' ? `${hand}${esc(p.probable_sp)}` : 'SP TBD';
+  const hand = p.sp_hand ? `${p.sp_hand}HP ` : '';
+  let spStr;
+  if (p.probable_sp && p.probable_sp !== 'TBD' && p.sp_id) {
+    const savantUrl = `https://baseballsavant.mlb.com/savant-player/${p.sp_id}`;
+    spStr = `<a href="${savantUrl}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:var(--color-border-secondary)">${hand}${esc(p.probable_sp)}</a>`;
+  } else {
+    spStr = p.probable_sp && p.probable_sp !== 'TBD' ? `${hand}${esc(p.probable_sp)}` : 'SP TBD';
+  }
   const oppLine = p.opponent ? `vs ${esc(p.opponent)} · ${esc(p.venue||'')}` : '— no game today';
-  return `<span style="display:block">${sp}</span><span style="display:block;font-size:10px;color:var(--color-text-tertiary);margin-top:1px">${oppLine}</span>`;
+  return `<span style="display:block">${spStr}</span><span style="display:block;font-size:10px;color:var(--color-text-tertiary);margin-top:1px">${oppLine}</span>`;
 }
 function renderFactorRows(factors) {
   if (!factors || !factors.length) return '';

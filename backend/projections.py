@@ -2401,6 +2401,7 @@ def project_player(player, matchup, batter_season, batter_career,
         "venue":        venue,
         "probable_sp":  sp_name,
         "sp_hand":      sp_hand,
+        "sp_id":        sp_id,
         "proj_pts":     proj_pts,
         "confidence":   confidence,
         "stat_line": {
