@@ -1033,6 +1033,40 @@ function renderAccuracy() {
   document.getElementById('cBiasMC').textContent   = mcBias;
   setCompare('cInRangeRate','cInRangeMC', rateInRPct, mcInRPct, false);
 
+  // ── Monte Carlo calibration ──
+  const calibCard = document.getElementById('calibCard');
+  const calibRows = logData.filter(r =>
+    r.actual_pts !== null &&
+    r.mc_probs && Object.keys(r.mc_probs).length > 0 &&
+    r.mc_hit_6 !== null && r.mc_hit_6 !== undefined
+  );
+
+  if (calibRows.length < 5) {
+    calibCard.innerHTML = `<div class="no-data-msg">Not enough data yet — ${calibRows.length} of 5 games needed.</div>`;
+  } else {
+    const thresholds = [
+      { key: "6.0",  hitKey: "mc_hit_6",    label: "6+ pts"   },
+      { key: "3.0",  hitKey: "mc_hit_3",    label: "3+ pts"   },
+      { key: "0.0",  hitKey: "mc_negative", label: "Negative" },
+    ];
+    const calibHtml = thresholds.map(t => {
+      const valid = calibRows.filter(r => r.mc_probs[t.key] !== undefined);
+      if (!valid.length) return '';
+      const predicted = valid.reduce((s,r) => s + r.mc_probs[t.key], 0) / valid.length;
+      const actual    = valid.filter(r => r[t.hitKey]).length / valid.length * 100;
+      const diff      = Math.abs(predicted - actual);
+      const color     = diff <= 10 ? '#3B6D11' : diff <= 20 ? '#BA7517' : '#A32D2D';
+      return `<div class="calib-row">
+        <span class="calib-label">${t.label}</span>
+        <div class="calib-vals">
+          <span class="calib-pred">predicted ${predicted.toFixed(0)}%</span>
+          <span class="calib-actual" style="color:${color}">actual ${actual.toFixed(0)}%</span>
+        </div>
+      </div>`;
+    }).join('');
+    calibCard.innerHTML = `<div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:8px">${calibRows.length} games · green = well calibrated (±10%)</div>${calibHtml}`;
+  }
+
   // ── Yesterday table ──
   const yesterdayTable = document.getElementById('yesterdayTable');
   const yesterdayLabel = document.getElementById('yesterdayLabel');

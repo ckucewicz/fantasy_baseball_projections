@@ -3384,11 +3384,22 @@ def log_today_projections(projections, projections_historical=None):
             entry["proj_low_hist"]  = hist.get("proj_low")
             entry["proj_high_hist"] = hist.get("proj_high")
             entry["in_range_hist"]  = None
+            entry["mc_probs"]       = hist.get("mc_probs", {})
+            entry["mc_n_sim"]       = hist.get("mc_n_sim", 0)
+            # Calibration fields — filled in tomorrow when actuals arrive
+            entry["mc_hit_6"]       = None  # did actual >= 6?
+            entry["mc_hit_3"]       = None  # did actual >= 3?
+            entry["mc_negative"]    = None  # did actual < 0?
         else:
             entry["proj_pts_hist"]  = None
             entry["proj_low_hist"]  = None
             entry["proj_high_hist"] = None
             entry["in_range_hist"]  = None
+            entry["mc_probs"]       = {}
+            entry["mc_n_sim"]       = 0
+            entry["mc_hit_6"]       = None
+            entry["mc_hit_3"]       = None
+            entry["mc_negative"]    = None
         new_entries.append(entry)
 
     log.extend(new_entries)
@@ -3455,6 +3466,10 @@ def fill_yesterday_actuals():
             h_pts = log[idx].get("proj_pts_hist")
             if h_pts is not None:
                 log[idx]["diff_hist"] = round(actual_pts - h_pts, 2)
+            # Monte Carlo calibration — did actual hit each threshold?
+            log[idx]["mc_hit_6"]    = actual_pts >= 6.0
+            log[idx]["mc_hit_3"]    = actual_pts >= 3.0
+            log[idx]["mc_negative"] = actual_pts < 0.0
             filled += 1
             diff_str = f"{diff:+.1f}" if diff is not None else "—"
             print(f"  {entry['player']:<22} proj={proj_pts:.1f}  actual={actual_pts:.1f}  diff={diff_str}")
