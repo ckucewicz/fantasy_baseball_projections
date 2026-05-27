@@ -1,5 +1,822 @@
 [
   {
+    "date": "2026-05-27",
+    "player": "Sal Stewart",
+    "mlb_id": 701398,
+    "team": "",
+    "position": "1B",
+    "opponent": "NYM",
+    "venue": "Citi Field",
+    "probable_sp": "Huascar Brazob\u00e1n",
+    "sp_hand": "R",
+    "proj_pts": 1.3,
+    "proj_low": 0.1,
+    "proj_high": 2.5,
+    "interval_method": "normal_approx",
+    "interval_games": 18,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 42,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.62
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.19
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.15
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.11
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -3.17
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Mickey Moniak",
+    "mlb_id": 666160,
+    "team": "",
+    "position": "CF",
+    "opponent": "LAD",
+    "venue": "UNIQLO Field at Dodger Stadium",
+    "probable_sp": "Shohei Ohtani",
+    "sp_hand": "R",
+    "proj_pts": 1.8,
+    "proj_low": -0.7,
+    "proj_high": 4.3,
+    "interval_method": "empirical",
+    "interval_games": 344,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 87,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.21
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.39
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.03
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.75
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Michael Busch",
+    "mlb_id": 683737,
+    "team": "",
+    "position": "1B",
+    "opponent": "PIT",
+    "venue": "PNC Park",
+    "probable_sp": "Bubba Chandler",
+    "sp_hand": "R",
+    "proj_pts": 1.6,
+    "proj_low": -0.9,
+    "proj_high": 4.1,
+    "interval_method": "empirical",
+    "interval_games": 334,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 83,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.79
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.19
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.13
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.01
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -2.41
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Manny Machado",
+    "mlb_id": 592518,
+    "team": "",
+    "position": "3B",
+    "opponent": "PHI",
+    "venue": "Petco Park",
+    "probable_sp": "Cristopher S\u00e1nchez",
+    "sp_hand": "L",
+    "proj_pts": 1.2,
+    "proj_low": -1.8,
+    "proj_high": 4.2,
+    "interval_method": "empirical",
+    "interval_games": 449,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.85
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.43
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.15
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.04
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.36
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Ketel Marte",
+    "mlb_id": 606466,
+    "team": "",
+    "position": "2B",
+    "opponent": "SF",
+    "venue": "Oracle Park",
+    "probable_sp": "Trevor McDonald",
+    "sp_hand": "R",
+    "proj_pts": 1.4,
+    "proj_low": -1.3,
+    "proj_high": 4.2,
+    "interval_method": "empirical",
+    "interval_games": 412,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 76,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.93
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.44
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.11
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.08
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.07
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -3.69
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.23
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Josh Jung",
+    "mlb_id": 673962,
+    "team": "",
+    "position": "3B",
+    "opponent": "HOU",
+    "venue": "Globe Life Field",
+    "probable_sp": "Mike Burrows",
+    "sp_hand": "R",
+    "proj_pts": 1.1,
+    "proj_low": -1.1,
+    "proj_high": 3.4,
+    "interval_method": "empirical",
+    "interval_games": 299,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.91
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.21
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.08
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.77
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Jorge Soler",
+    "mlb_id": 624585,
+    "team": "",
+    "position": "RF",
+    "opponent": "DET",
+    "venue": "Comerica Park",
+    "probable_sp": "Casey Mize",
+    "sp_hand": "R",
+    "proj_pts": 1.9,
+    "proj_low": -1.0,
+    "proj_high": 4.8,
+    "interval_method": "empirical",
+    "interval_games": 361,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 89,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.18
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.02
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.61
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.31
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Jake McCarthy",
+    "mlb_id": 664983,
+    "team": "",
+    "position": "CF",
+    "opponent": "LAD",
+    "venue": "UNIQLO Field at Dodger Stadium",
+    "probable_sp": "Shohei Ohtani",
+    "sp_hand": "R",
+    "proj_pts": 1.4,
+    "proj_low": -0.5,
+    "proj_high": 3.3,
+    "interval_method": "empirical",
+    "interval_games": 308,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 38,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.08
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.35
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.0
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.31
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": -0.86
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.45
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Geraldo Perdomo",
+    "mlb_id": 672695,
+    "team": "",
+    "position": "SS",
+    "opponent": "SF",
+    "venue": "Oracle Park",
+    "probable_sp": "Trevor McDonald",
+    "sp_hand": "R",
+    "proj_pts": 0.9,
+    "proj_low": -1.4,
+    "proj_high": 3.2,
+    "interval_method": "empirical",
+    "interval_games": 403,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 77,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.34
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.33
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.92
+      },
+      {
+        "factor": "pitch_type_offspeed",
+        "adjustment": 0.19
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Drew Romo",
+    "mlb_id": 691011,
+    "team": "",
+    "position": "C",
+    "opponent": "MIN",
+    "venue": "Rate Field",
+    "probable_sp": "Connor Prielipp",
+    "sp_hand": "L",
+    "proj_pts": 0.9,
+    "proj_low": -0.3,
+    "proj_high": 2.1,
+    "interval_method": "normal_approx",
+    "interval_games": 19,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 28,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 0.85
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.06
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.07
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.05
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Brooks Lee",
+    "mlb_id": 686797,
+    "team": "",
+    "position": "SS",
+    "opponent": "CWS",
+    "venue": "Rate Field",
+    "probable_sp": "Davis Martin",
+    "sp_hand": "R",
+    "proj_pts": 2.3,
+    "proj_low": -0.1,
+    "proj_high": 4.7,
+    "interval_method": "empirical",
+    "interval_games": 189,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.75
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.04
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.06
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.01
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.64
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.63
+      },
+      {
+        "factor": "pitch_type_offspeed",
+        "adjustment": 0.49
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Anthony Volpe",
+    "mlb_id": 683011,
+    "team": "",
+    "position": "SS",
+    "opponent": "KC",
+    "venue": "Kauffman Stadium",
+    "probable_sp": "Noah Cameron",
+    "sp_hand": "L",
+    "proj_pts": 1.2,
+    "proj_low": -1.3,
+    "proj_high": 3.7,
+    "interval_method": "empirical",
+    "interval_games": 472,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.08
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.35
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.09
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.91
+      },
+      {
+        "factor": "pitch_type_offspeed",
+        "adjustment": 0.26
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.19
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-05-27",
+    "player": "Aaron Judge",
+    "mlb_id": 592450,
+    "team": "",
+    "position": "RF",
+    "opponent": "KC",
+    "venue": "Kauffman Stadium",
+    "probable_sp": "Noah Cameron",
+    "sp_hand": "L",
+    "proj_pts": 3.2,
+    "proj_low": -0.7,
+    "proj_high": 7.1,
+    "interval_method": "empirical",
+    "interval_games": 416,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 90,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 4.81
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.55
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.1
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.12
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.13
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -6.79
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": -0.23
+      }
+    ],
+    "proj_pts_hist": null,
+    "proj_low_hist": null,
+    "proj_high_hist": null,
+    "in_range_hist": null,
+    "mc_probs": {},
+    "mc_n_sim": 0,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
     "date": "2026-05-25",
     "player": "Sal Stewart",
     "mlb_id": 701398,
