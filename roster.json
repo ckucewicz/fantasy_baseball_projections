@@ -152,6 +152,36 @@
       "status": "il10"
     },
     {
+      "name": "Troy Johnston",
+      "mlb_id": 687859,
+      "team": "COL",
+      "bats": "L",
+      "positions": [
+        "LF, RF, 1B"
+      ],
+      "status": "watchlist"
+    },
+    {
+      "name": "Austin Martin",
+      "mlb_id": 668885,
+      "team": "MIN",
+      "bats": "R",
+      "positions": [
+        "LF, RF"
+      ],
+      "status": "watchlist"
+    },
+    {
+      "name": "Logan O'Hoppe",
+      "mlb_id": 681351,
+      "team": "LAA",
+      "bats": "R",
+      "positions": [
+        "C"
+      ],
+      "status": "watchlist"
+    },
+    {
       "name": "Ramon Laureano",
       "mlb_id": 657656,
       "team": "SD",
