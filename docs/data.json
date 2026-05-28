@@ -1,8 +1,197 @@
 {
-  "generated_at": "2026-05-28T11:06:36",
+  "generated_at": "2026-05-28T17:42:41",
   "season": 2026,
-  "player_count": 7,
+  "player_count": 8,
   "projections": [
+    {
+      "name": "Drew Romo",
+      "mlb_id": 691011,
+      "positions": [
+        "C"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "MIN",
+      "venue": "Rate Field",
+      "probable_sp": "Simeon Woods Richardson",
+      "sp_hand": "R",
+      "sp_id": 680573,
+      "proj_pts": 1.9,
+      "confidence": {
+        "score": 14,
+        "label": "low",
+        "pa_score": 0.043,
+        "ip_score": 0.5,
+        "babip_score": 0.0
+      },
+      "stat_line": {
+        "h_ab": "0.8H / 3.7AB",
+        "hr": 0.18,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.27,
+        "k": 1.16
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.39,
+          "mult": "\u00d7  2.80",
+          "pts": 1.09
+        },
+        {
+          "cat": "2B",
+          "proj": 0.18,
+          "mult": "\u00d7  3.80",
+          "pts": 0.68
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.18,
+          "mult": "\u00d7  7.50",
+          "pts": 1.35
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.27,
+          "mult": "\u00d7  1.50",
+          "pts": 0.41
+        },
+        {
+          "cat": "K",
+          "proj": 1.16,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.23
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.04,
+          "mult": "\u00d7  1.50",
+          "pts": 0.05
+        }
+      ],
+      "proj_low": -0.1,
+      "proj_high": 3.9,
+      "interval_method": "empirical",
+      "interval_games": 37,
+      "score_dist": [
+        -2.6,
+        -2.2,
+        -2.2,
+        -2.1,
+        -2.0,
+        -1.9,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.5,
+        -0.7,
+        -0.7,
+        -0.7,
+        -0.7,
+        -0.5,
+        -0.5,
+        -0.2,
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        1.3,
+        1.5,
+        2.0,
+        2.2,
+        2.3,
+        2.8,
+        2.9,
+        4.2,
+        4.2,
+        4.6,
+        4.8,
+        5.3,
+        6.0,
+        6.2,
+        16.0
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 1.5,
+          "adj_str": "+1.5",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "neutral"
+        },
+        {
+          "label": "Pitcher (Simeon Woods Richardson \u00b7 xFIP 6.13)",
+          "adj": 0.39,
+          "adj_str": "+0.4",
+          "cls": "fpos",
+          "mult": "H \u00d71.20 \u00b7 K \u00d70.88",
+          "pill": "boosted"
+        },
+        {
+          "label": "Park factor (Rate Field)",
+          "adj": 0.13,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.10 \u00b7 R \u00d71.05",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.152 curr \u00b7 0.273 career)",
+          "adj": 0.32,
+          "adj_str": "+0.3",
+          "cls": "fpos",
+          "mult": "H \u00d71.06",
+          "pill": "unlucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.02,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [],
+      "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "blended",
+      "rank": 1
+    },
     {
       "name": "Jorge Soler",
       "mlb_id": 624585,
@@ -19,10 +208,10 @@
       "sp_id": 656427,
       "proj_pts": 1.6,
       "confidence": {
-        "score": 65,
+        "score": 66,
         "label": "medium",
-        "pa_score": 0.48,
-        "ip_score": 0.529,
+        "pa_score": 0.483,
+        "ip_score": 0.557,
         "babip_score": 1.0
       },
       "stat_line": {
@@ -31,7 +220,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.44,
-        "k": 1.22
+        "k": 1.23
       },
       "scoring_rows": [
         {
@@ -84,9 +273,9 @@
         },
         {
           "cat": "K",
-          "proj": 1.22,
+          "proj": 1.23,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.24
+          "pts": -0.25
         },
         {
           "cat": "HBP",
@@ -95,10 +284,10 @@
           "pts": 0.07
         }
       ],
-      "proj_low": -1.1,
-      "proj_high": 4.3,
+      "proj_low": -1.0,
+      "proj_high": 4.2,
       "interval_method": "empirical",
-      "interval_games": 276,
+      "interval_games": 277,
       "score_dist": [
         -3.1,
         -2.9,
@@ -160,6 +349,7 @@
         -0.9,
         -0.9,
         -0.8,
+        -0.7,
         -0.7,
         -0.7,
         -0.7,
@@ -395,11 +585,11 @@
           "pill": "neutral"
         },
         {
-          "label": "Pitcher (Jack Flaherty \u00b7 xFIP 4.83)",
-          "adj": 0.23,
-          "adj_str": "+0.2",
+          "label": "Pitcher (Jack Flaherty \u00b7 xFIP 4.74)",
+          "adj": 0.12,
+          "adj_str": "+0.1",
           "cls": "fpos",
-          "mult": "H \u00d71.11 \u00b7 K \u00d71.08",
+          "mult": "H \u00d71.10 \u00b7 K \u00d71.09",
           "pill": "boosted"
         },
         {
@@ -441,7 +631,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Michael Busch",
@@ -957,7 +1147,162 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 2
+      "rank": 3
+    },
+    {
+      "name": "Rikuu Nishida",
+      "mlb_id": 807747,
+      "positions": [
+        "LF, RF, 2B"
+      ],
+      "status": "watchlist",
+      "team": "",
+      "opponent": "MIN",
+      "venue": "Rate Field",
+      "probable_sp": "Simeon Woods Richardson",
+      "sp_hand": "R",
+      "sp_id": 680573,
+      "proj_pts": 1.5,
+      "confidence": {
+        "score": 12,
+        "label": "low",
+        "pa_score": 0.0,
+        "ip_score": 0.5,
+        "babip_score": 0.0
+      },
+      "stat_line": {
+        "h_ab": "1.1H / 3.7AB",
+        "hr": 0.02,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.08,
+        "k": 0.98
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 1.08,
+          "mult": "\u00d7  2.80",
+          "pts": 3.02
+        },
+        {
+          "cat": "2B",
+          "proj": 0.0,
+          "mult": "\u00d7  3.80",
+          "pts": 0.0
+        },
+        {
+          "cat": "3B",
+          "proj": 0.0,
+          "mult": "\u00d7  5.70",
+          "pts": 0.0
+        },
+        {
+          "cat": "HR",
+          "proj": 0.02,
+          "mult": "\u00d7  7.50",
+          "pts": 0.15
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.08,
+          "mult": "\u00d7  1.50",
+          "pts": 0.12
+        },
+        {
+          "cat": "K",
+          "proj": 0.98,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.2
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.0,
+          "mult": "\u00d7  1.50",
+          "pts": 0.0
+        }
+      ],
+      "proj_low": 0.3,
+      "proj_high": 2.7,
+      "interval_method": "normal_approx",
+      "interval_games": 3,
+      "score_dist": [
+        0.0,
+        0.8,
+        1.1
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 0.8,
+          "adj_str": "+0.8",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (L vs RHP)",
+          "adj": 0.21,
+          "adj_str": "+0.2",
+          "cls": "fpos",
+          "mult": "",
+          "pill": "boosted"
+        },
+        {
+          "label": "Pitcher (Simeon Woods Richardson \u00b7 xFIP 6.13)",
+          "adj": 0.54,
+          "adj_str": "+0.5",
+          "cls": "fpos",
+          "mult": "H \u00d71.20 \u00b7 K \u00d70.88",
+          "pill": "boosted"
+        },
+        {
+          "label": "Park factor (Rate Field)",
+          "adj": 0.11,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "HR \u00d71.10 \u00b7 R \u00d71.05",
+          "pill": "boosted"
+        },
+        {
+          "label": "BABIP (0.400 curr \u00b7 0.298 career)",
+          "adj": -0.3,
+          "adj_str": "\u22120.3",
+          "cls": "fneg",
+          "mult": "H \u00d70.94",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [],
+      "babip_note": "lucky \u2014 H rate nudged down",
+      "data_source": "season",
+      "rank": 4
     },
     {
       "name": "Josh Jung",
@@ -1346,7 +1691,7 @@
       ],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
-      "rank": 3
+      "rank": 5
     },
     {
       "name": "Logan O'Hoppe",
@@ -1361,12 +1706,12 @@
       "probable_sp": "Jack Flaherty",
       "sp_hand": "R",
       "sp_id": 656427,
-      "proj_pts": 1.2,
+      "proj_pts": 1.1,
       "confidence": {
         "score": 48,
         "label": "low",
         "pa_score": 0.214,
-        "ip_score": 0.529,
+        "ip_score": 0.557,
         "babip_score": 0.825
       },
       "stat_line": {
@@ -1386,9 +1731,9 @@
         },
         {
           "cat": "1B",
-          "proj": 0.64,
+          "proj": 0.63,
           "mult": "\u00d7  2.80",
-          "pts": 1.79
+          "pts": 1.76
         },
         {
           "cat": "2B",
@@ -1754,11 +2099,11 @@
           "pill": "neutral"
         },
         {
-          "label": "Pitcher (Jack Flaherty \u00b7 xFIP 4.83)",
-          "adj": 0.14,
+          "label": "Pitcher (Jack Flaherty \u00b7 xFIP 4.74)",
+          "adj": 0.11,
           "adj_str": "+0.1",
           "cls": "fpos",
-          "mult": "H \u00d71.11 \u00b7 K \u00d71.08",
+          "mult": "H \u00d71.10 \u00b7 K \u00d71.09",
           "pill": "boosted"
         },
         {
@@ -1799,7 +2144,7 @@
       ],
       "babip_note": "unlucky \u2014 H rate nudged up",
       "data_source": "blended",
-      "rank": 4
+      "rank": 6
     },
     {
       "name": "Brooks Lee",
@@ -2204,196 +2549,7 @@
       ],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
-      "rank": 5
-    },
-    {
-      "name": "Drew Romo",
-      "mlb_id": 691011,
-      "positions": [
-        "C"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "MIN",
-      "venue": "Rate Field",
-      "probable_sp": "Kendry Rojas",
-      "sp_hand": "L",
-      "sp_id": 696070,
-      "proj_pts": 1.0,
-      "confidence": {
-        "score": 5,
-        "label": "low",
-        "pa_score": 0.043,
-        "ip_score": 0.059,
-        "babip_score": 0.0
-      },
-      "stat_line": {
-        "h_ab": "0.5H / 3.7AB",
-        "hr": 0.11,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.58,
-        "k": 1.47
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.35,
-          "mult": "\u00d7  2.80",
-          "pts": 0.98
-        },
-        {
-          "cat": "2B",
-          "proj": 0.05,
-          "mult": "\u00d7  3.80",
-          "pts": 0.19
-        },
-        {
-          "cat": "3B",
-          "proj": 0.01,
-          "mult": "\u00d7  5.70",
-          "pts": 0.06
-        },
-        {
-          "cat": "HR",
-          "proj": 0.11,
-          "mult": "\u00d7  7.50",
-          "pts": 0.82
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.58,
-          "mult": "\u00d7  1.50",
-          "pts": 0.87
-        },
-        {
-          "cat": "K",
-          "proj": 1.47,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.29
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.0,
-          "mult": "\u00d7  1.50",
-          "pts": 0.01
-        }
-      ],
-      "proj_low": -1.0,
-      "proj_high": 3.0,
-      "interval_method": "empirical",
-      "interval_games": 37,
-      "score_dist": [
-        -2.6,
-        -2.2,
-        -2.2,
-        -2.1,
-        -2.0,
-        -1.9,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.5,
-        -0.7,
-        -0.7,
-        -0.7,
-        -0.7,
-        -0.5,
-        -0.5,
-        -0.2,
-        0.2,
-        0.4,
-        0.6,
-        0.8,
-        1.3,
-        1.5,
-        2.0,
-        2.2,
-        2.3,
-        2.8,
-        2.9,
-        4.2,
-        4.2,
-        4.6,
-        4.8,
-        5.3,
-        6.0,
-        6.2,
-        16.0
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 1.18,
-          "adj_str": "+1.2",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (R vs LHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "neutral"
-        },
-        {
-          "label": "Pitcher (Kendry Rojas \u00b7 xFIP 1.26)",
-          "adj": -0.24,
-          "adj_str": "\u22120.2",
-          "cls": "fneg",
-          "mult": "H \u00d70.80 \u00b7 K \u00d71.02",
-          "pill": "suppressed"
-        },
-        {
-          "label": "Park factor (Rate Field)",
-          "adj": 0.05,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "HR \u00d71.10 \u00b7 R \u00d71.05",
-          "pill": "neutral"
-        },
-        {
-          "label": "BABIP (0.152 curr \u00b7 0.273 career)",
-          "adj": 0.32,
-          "adj_str": "+0.3",
-          "cls": "fpos",
-          "mult": "H \u00d71.06",
-          "pill": "unlucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": 0.02,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "H \u00d71.00",
-          "pill": "neutral"
-        }
-      ],
-      "pitch_rows": [],
-      "babip_note": "unlucky \u2014 H rate nudged up",
-      "data_source": "blended",
-      "rank": 6
+      "rank": 7
     },
     {
       "name": "Austin Martin",
@@ -2740,7 +2896,7 @@
       ],
       "babip_note": "in line with career",
       "data_source": "blended",
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Sal Stewart",
@@ -2944,9 +3100,9 @@
       "proj_pts": 1.9,
       "proj_low": -3.0,
       "proj_high": 6.7,
-      "hist_mean": 2.09,
-      "composite_mult": 0.895,
-      "n_games": 276,
+      "hist_mean": 2.08,
+      "composite_mult": 0.8876,
+      "n_games": 277,
       "std_dev": 3.79,
       "interval_method": "empirical",
       "score_dist": [
@@ -3010,6 +3166,7 @@
         -0.9,
         -0.9,
         -0.8,
+        -0.7,
         -0.7,
         -0.7,
         -0.7,
@@ -3228,21 +3385,21 @@
         16.0
       ],
       "confidence": {
-        "score": 65,
+        "score": 66,
         "label": "medium",
-        "pa_score": 0.48,
-        "ip_score": 0.529,
+        "pa_score": 0.483,
+        "ip_score": 0.557,
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 0.9,
+      "mc_median": 1.0,
       "mc_probs": {
-        "6.0": 13.0,
-        "3.0": 31.6,
-        "0.0": 32.2
+        "6.0": 12.6,
+        "3.0": 30.8,
+        "0.0": 31.4
       },
       "mc_n_sim": 10000,
-      "mc_n_games": 276
+      "mc_n_games": 277
     },
     {
       "name": "Michael Busch",
@@ -3636,11 +3793,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 1.0,
+      "mc_median": 1.1,
       "mc_probs": {
-        "6.0": 13.8,
-        "3.0": 28.5,
-        "0.0": 34.5
+        "6.0": 14.4,
+        "3.0": 29.1,
+        "0.0": 34.0
       },
       "mc_n_sim": 10000,
       "mc_n_games": 362
@@ -3904,9 +4061,9 @@
       "model": "historical",
       "mc_median": 0.8,
       "mc_probs": {
-        "6.0": 12.4,
-        "3.0": 27.8,
-        "0.0": 30.8
+        "6.0": 12.6,
+        "3.0": 28.5,
+        "0.0": 31.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 227
@@ -4186,12 +4343,88 @@
       "model": "historical",
       "mc_median": 0.7,
       "mc_probs": {
-        "6.0": 11.1,
+        "6.0": 10.7,
         "3.0": 26.5,
-        "0.0": 33.4
+        "0.0": 34.0
       },
       "mc_n_sim": 10000,
       "mc_n_games": 241
+    },
+    {
+      "name": "Drew Romo",
+      "mlb_id": 691011,
+      "positions": [
+        "C"
+      ],
+      "status": "active",
+      "team": "CWS",
+      "opponent": "MIN",
+      "venue": "Rate Field",
+      "probable_sp": "Simeon Woods Richardson",
+      "sp_hand": "R",
+      "proj_pts": 1.4,
+      "proj_low": -3.0,
+      "proj_high": 6.0,
+      "hist_mean": 1.16,
+      "composite_mult": 1.2252,
+      "n_games": 37,
+      "std_dev": 3.56,
+      "interval_method": "empirical",
+      "score_dist": [
+        -2.6,
+        -2.2,
+        -2.2,
+        -2.1,
+        -2.0,
+        -1.9,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.5,
+        -0.7,
+        -0.7,
+        -0.7,
+        -0.7,
+        -0.5,
+        -0.5,
+        -0.2,
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        1.3,
+        1.5,
+        2.0,
+        2.2,
+        2.3,
+        2.8,
+        2.9,
+        4.2,
+        4.2,
+        4.6,
+        4.8,
+        5.3,
+        6.0,
+        6.2,
+        16.0
+      ],
+      "confidence": {
+        "score": 44,
+        "label": "low",
+        "pa_score": 0.043,
+        "ip_score": 0.5,
+        "babip_score": 1.0
+      },
+      "model": "historical",
+      "mc_median": 0.2,
+      "mc_probs": {
+        "6.0": 10.9,
+        "3.0": 27.2,
+        "0.0": 47.6
+      },
+      "mc_n_sim": 10000,
+      "mc_n_games": 37
     },
     {
       "name": "Logan O'Hoppe",
@@ -4209,7 +4442,7 @@
       "proj_low": -3.0,
       "proj_high": 6.3,
       "hist_mean": 1.58,
-      "composite_mult": 0.9087,
+      "composite_mult": 0.9008,
       "n_games": 291,
       "std_dev": 3.82,
       "interval_method": "empirical",
@@ -4507,21 +4740,63 @@
         18.2
       ],
       "confidence": {
-        "score": 53,
+        "score": 54,
         "label": "medium",
         "pa_score": 0.214,
-        "ip_score": 0.529,
+        "ip_score": 0.557,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.5,
       "mc_probs": {
-        "6.0": 9.8,
-        "3.0": 24.1,
-        "0.0": 38.9
+        "6.0": 9.9,
+        "3.0": 24.7,
+        "0.0": 39.0
       },
       "mc_n_sim": 10000,
       "mc_n_games": 291
+    },
+    {
+      "name": "Rikuu Nishida",
+      "mlb_id": 807747,
+      "positions": [
+        "LF, RF, 2B"
+      ],
+      "status": "watchlist",
+      "team": "CWS",
+      "opponent": "MIN",
+      "venue": "Rate Field",
+      "probable_sp": "Simeon Woods Richardson",
+      "sp_hand": "R",
+      "proj_pts": 1.4,
+      "proj_low": -0.9,
+      "proj_high": 3.7,
+      "hist_mean": 1.11,
+      "composite_mult": 1.2401,
+      "n_games": 3,
+      "std_dev": 1.8,
+      "interval_method": "normal_approx",
+      "score_dist": [
+        0.0,
+        0.8,
+        1.1
+      ],
+      "confidence": {
+        "score": 42,
+        "label": "low",
+        "pa_score": 0.0,
+        "ip_score": 0.5,
+        "babip_score": 1.0
+      },
+      "model": "historical",
+      "mc_median": 1.0,
+      "mc_probs": {
+        "6.0": 0.0,
+        "3.0": 0.0,
+        "0.0": 0.0
+      },
+      "mc_n_sim": 10000,
+      "mc_n_games": 3
     },
     {
       "name": "Austin Martin",
@@ -4748,88 +5023,12 @@
       "model": "historical",
       "mc_median": 0.6,
       "mc_probs": {
-        "6.0": 3.4,
-        "3.0": 22.3,
-        "0.0": 27.2
+        "6.0": 3.8,
+        "3.0": 22.1,
+        "0.0": 27.6
       },
       "mc_n_sim": 10000,
       "mc_n_games": 193
-    },
-    {
-      "name": "Drew Romo",
-      "mlb_id": 691011,
-      "positions": [
-        "C"
-      ],
-      "status": "active",
-      "team": "CWS",
-      "opponent": "MIN",
-      "venue": "Rate Field",
-      "probable_sp": "Kendry Rojas",
-      "sp_hand": "L",
-      "proj_pts": 1.1,
-      "proj_low": -3.0,
-      "proj_high": 5.6,
-      "hist_mean": 1.16,
-      "composite_mult": 0.9103,
-      "n_games": 37,
-      "std_dev": 3.56,
-      "interval_method": "empirical",
-      "score_dist": [
-        -2.6,
-        -2.2,
-        -2.2,
-        -2.1,
-        -2.0,
-        -1.9,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.5,
-        -0.7,
-        -0.7,
-        -0.7,
-        -0.7,
-        -0.5,
-        -0.5,
-        -0.2,
-        0.2,
-        0.4,
-        0.6,
-        0.8,
-        1.3,
-        1.5,
-        2.0,
-        2.2,
-        2.3,
-        2.8,
-        2.9,
-        4.2,
-        4.2,
-        4.6,
-        4.8,
-        5.3,
-        6.0,
-        6.2,
-        16.0
-      ],
-      "confidence": {
-        "score": 33,
-        "label": "low",
-        "pa_score": 0.043,
-        "ip_score": 0.059,
-        "babip_score": 1.0
-      },
-      "model": "historical",
-      "mc_median": 0.2,
-      "mc_probs": {
-        "6.0": 2.6,
-        "3.0": 21.4,
-        "0.0": 49.2
-      },
-      "mc_n_sim": 10000,
-      "mc_n_games": 37
     },
     {
       "name": "Sal Stewart",
@@ -4958,12 +5157,12 @@
   ],
   "lineup_mc": {
     "probs": {
-      "40.0": 0.0,
-      "30.0": 0.5,
-      "20.0": 5.8,
-      "0.0": 13.7
+      "40.0": 0.1,
+      "30.0": 0.9,
+      "20.0": 8.0,
+      "0.0": 13.5
     },
-    "median": 7.1,
+    "median": 7.6,
     "n_sim": 10000,
     "n_starters": 5
   }
