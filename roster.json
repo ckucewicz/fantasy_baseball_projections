@@ -192,6 +192,16 @@
       "status": "active"
     },
     {
+      "name": "Rikuu Nishida",
+      "mlb_id": 807747,
+      "team": "CWS",
+      "bats": "L",
+      "positions": [
+        "LF, RF, 2B"
+      ],
+      "status": "watchlist"
+    },
+    {
       "name": "Jake McCarthy",
       "mlb_id": 664983,
       "team": "COL",
