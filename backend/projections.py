@@ -2911,7 +2911,7 @@ def compute_lineup_mc(projections_hist, n_sim=10000,
     eligible = [
         p for p in projections_hist
         if p.get("score_dist") and p.get("composite_mult") and
-           p.get("proj_pts") is not None and p.get("status") == "active"
+           p.get("proj_pts") is not None and p.get("status") == "active"  # watchlist excluded
     ]
 
     if len(eligible) < 1:
@@ -3378,6 +3378,7 @@ def log_today_projections(projections, projections_historical=None):
            (proj.get("status") or "").startswith("il") or proj.get("status") == "minors":
             continue
         entry = build_projection_log_entry(proj, today_str)
+        entry["watchlist"] = (proj.get("status") == "watchlist")
         hist  = hist_lookup.get(proj.get("mlb_id"))
         if hist:
             entry["proj_pts_hist"]  = hist.get("proj_pts")
