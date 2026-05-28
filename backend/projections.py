@@ -3113,7 +3113,7 @@ def main():
 #   extract_player_game_stats(boxscore, mlb_id)
 #   load_log()
 #   save_log(log)
-    append_actuals(projections)
+    append_actuals(projections, projections_historical=projections_hist)
 #   build_log_entry(projection, actual_stats)
 # ─────────────────────────────────────────────
 
