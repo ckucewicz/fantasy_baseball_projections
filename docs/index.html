@@ -410,7 +410,7 @@
         <canvas id="trendChart" role="img" aria-label="Line chart comparing daily projected vs actual lineup total fantasy points">No data yet.</canvas>
       </div>
       <div class="chart-legend">
-        <span class="leg-item"><span class="leg-sq" style="background:rgba(99,153,34,0.25);border:1.5px solid #639922"></span>Projected range</span>
+        <span class="leg-item"><span class="leg-sq" style="background:rgba(55,138,221,0.20);border:1.5px solid #378ADD"></span>Projected range</span>
         <span class="leg-item"><span class="leg-sq" style="background:var(--blue);border:1px dashed var(--blue)"></span>Actual</span>
       </div>
     </div>
@@ -782,7 +782,7 @@ function renderPlayerChart() {
         plugins:{ legend:{display:false}, tooltip:{mode:'index',intersect:false} },
         scales:{
           x:{ grid:{display:false}, ticks:{font:{size:10}} },
-          y:{ grid:{color:'rgba(128,128,128,0.1)'}, ticks:{font:{size:10}}, min:0 }
+          y:{ grid:{color:'rgba(128,128,128,0.1)'}, ticks:{font:{size:10}} }
         }
       }
     });
@@ -966,7 +966,7 @@ function renderAccuracy() {
             label: 'Range high',
             data: bandHigh,
             borderColor: 'transparent',
-            backgroundColor: 'rgba(99,153,34,0.12)',
+            backgroundColor: 'rgba(55,138,221,0.12)',
             borderWidth: 0,
             pointRadius: 0,
             fill: '+1',
@@ -977,7 +977,7 @@ function renderAccuracy() {
             label: 'Range low',
             data: bandLow,
             borderColor: 'transparent',
-            backgroundColor: 'rgba(99,153,34,0.12)',
+            backgroundColor: 'rgba(55,138,221,0.12)',
             borderWidth: 0,
             pointRadius: 0,
             fill: false,
@@ -987,11 +987,11 @@ function renderAccuracy() {
           {
             label: 'Projected',
             data: projTotals,
-            borderColor: '#639922',
+            borderColor: '#378ADD',
             backgroundColor: 'transparent',
             borderWidth: 2,
             pointRadius: 3,
-            pointBackgroundColor: '#639922',
+            pointBackgroundColor: '#378ADD',
             tension: 0.3,
             fill: false
           },
@@ -999,12 +999,12 @@ function renderAccuracy() {
           {
             label: 'Actual',
             data: actualTotals,
-            borderColor: '#378ADD',
+            borderColor: '#639922',
             backgroundColor: 'transparent',
             borderWidth: 2,
             borderDash: [4,3],
             pointRadius: 3,
-            pointBackgroundColor: '#378ADD',
+            pointBackgroundColor: '#639922',
             pointStyle: 'rectRot',
             tension: 0.3,
             fill: false
