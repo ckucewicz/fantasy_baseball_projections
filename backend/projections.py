@@ -107,7 +107,7 @@ CONF_BABIP_GREAT = 0.020   # deviation <= this → full confidence from BABIP co
 CONF_BABIP_BAD   = 0.100   # deviation >= this → zero confidence from BABIP component
 
 # Current MLB season
-CURRENT_SEASON = 2025
+CURRENT_SEASON = 2026
 
 # Path to roster file (relative to this script)
 ROSTER_PATH = "../roster.json"
