@@ -64,7 +64,7 @@
         "LF",
         "RF"
       ],
-      "status": "IL"
+      "status": "il10"
     },
     {
       "name": "Aaron Judge",
@@ -152,12 +152,12 @@
       "status": "il10"
     },
     {
-      "name": "Anthony Volpe",
-      "mlb_id": 683011,
-      "team": "NYY",
+      "name": "Ramon Laureano",
+      "mlb_id": 657656,
+      "team": "SD",
       "bats": "R",
       "positions": [
-        "SS"
+        "LF, RF"
       ],
       "status": "active"
     },
