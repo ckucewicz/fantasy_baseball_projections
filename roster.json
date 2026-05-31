@@ -78,13 +78,12 @@
       "status": "active"
     },
     {
-      "name": "Jorge Soler",
-      "mlb_id": 624585,
-      "team": "LAA",
-      "bats": "R",
+      "name": "Jimmy Crooks",
+      "mlb_id": 699625,
+      "team": "STL",
+      "bats": "L",
       "positions": [
-        "RF",
-        "DH"
+        "C"
       ],
       "status": "active"
     },
