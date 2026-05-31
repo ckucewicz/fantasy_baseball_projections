@@ -7092,62 +7092,6 @@
   },
   {
     "date": "2026-05-22",
-    "player": "Jake Mccarthy",
-    "mlb_id": 664983,
-    "team": "",
-    "position": "CF",
-    "opponent": "AZ",
-    "venue": "Chase Field",
-    "probable_sp": "Michael Soroka",
-    "sp_hand": "R",
-    "proj_pts": 1.2,
-    "proj_low": -0.7,
-    "proj_high": 3.1,
-    "interval_method": "empirical",
-    "interval_games": 308,
-    "actual_pts": -1.3,
-    "diff": -2.5,
-    "in_range": false,
-    "confidence": 49,
-    "confidence_label": "low",
-    "did_not_play": false,
-    "factors": [
-      {
-        "factor": "base_rate",
-        "adjustment": 2.08
-      },
-      {
-        "factor": "platoon",
-        "adjustment": 0.0
-      },
-      {
-        "factor": "pitcher_difficulty",
-        "adjustment": 0.08
-      },
-      {
-        "factor": "park_factor",
-        "adjustment": 0.09
-      },
-      {
-        "factor": "babip_adjustment",
-        "adjustment": 0.31
-      },
-      {
-        "factor": "recent_form",
-        "adjustment": -0.0
-      },
-      {
-        "factor": "pitch_type_fastball",
-        "adjustment": -1.34
-      }
-    ],
-    "proj_pts_hist": null,
-    "proj_low_hist": null,
-    "proj_high_hist": null,
-    "in_range_hist": null
-  },
-  {
-    "date": "2026-05-22",
     "player": "Jake McCarthy",
     "mlb_id": 664983,
     "team": "",
