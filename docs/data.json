@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T00:53:46",
+  "generated_at": "2026-06-02T11:52:42",
   "season": 2026,
   "player_count": 16,
   "projections": [
@@ -560,11 +560,11 @@
       "sp_id": 702070,
       "proj_pts": 2.8,
       "confidence": {
-        "score": 70,
+        "score": 69,
         "label": "medium",
-        "pa_score": 0.589,
+        "pa_score": 0.591,
         "ip_score": 0.603,
-        "babip_score": 0.963
+        "babip_score": 0.912
       },
       "stat_line": {
         "h_ab": "1.0H / 3.7AB",
@@ -654,7 +654,6 @@
         -2.0,
         -2.0,
         -1.7,
-        -1.5,
         -1.1,
         -0.9,
         -0.7,
@@ -677,6 +676,7 @@
         0.6,
         0.6,
         0.6,
+        0.8,
         0.8,
         0.8,
         1.0,
@@ -753,16 +753,16 @@
           "pill": "boosted"
         },
         {
-          "label": "BABIP (0.280 curr \u00b7 0.257 career)",
-          "adj": -0.07,
+          "label": "BABIP (0.284 curr \u00b7 0.257 career)",
+          "adj": -0.08,
           "adj_str": "\u22120.1",
           "cls": "fneg",
-          "mult": "H \u00d70.99",
+          "mult": "H \u00d70.98",
           "pill": "lucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.01,
+          "adj": -0.02,
           "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
@@ -783,8 +783,8 @@
           "label": "Breaking ball",
           "badge_class": "pb-break",
           "meta": "Cameron 27% usage \u00b7 9% whiff",
-          "detail": "0.281 wOBA vs breaking ball \u2014 vulnerability",
-          "adj": 0.34,
+          "detail": "0.282 wOBA vs breaking ball \u2014 vulnerability",
+          "adj": 0.33,
           "adj_str": "+0.3",
           "adj_class": "fpos"
         }
@@ -807,17 +807,17 @@
       "probable_sp": "Eric Lauer",
       "sp_hand": "L",
       "sp_id": 641778,
-      "proj_pts": 2.7,
+      "proj_pts": 2.8,
       "confidence": {
-        "score": 61,
+        "score": 60,
         "label": "medium",
-        "pa_score": 0.549,
+        "pa_score": 0.56,
         "ip_score": 0.459,
-        "babip_score": 0.812
+        "babip_score": 0.762
       },
       "stat_line": {
         "h_ab": "1.2H / 3.7AB",
-        "hr": 0.22,
+        "hr": 0.23,
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.35,
@@ -850,9 +850,9 @@
         },
         {
           "cat": "HR",
-          "proj": 0.22,
+          "proj": 0.23,
           "mult": "\u00d7  7.50",
-          "pts": 1.65
+          "pts": 1.73
         },
         {
           "cat": "R",
@@ -885,10 +885,10 @@
           "pts": 0.08
         }
       ],
-      "proj_low": -0.1,
-      "proj_high": 5.5,
+      "proj_low": -0.0,
+      "proj_high": 5.6,
       "interval_method": "empirical",
-      "interval_games": 317,
+      "interval_games": 318,
       "score_dist": [
         -3.1,
         -2.9,
@@ -1139,6 +1139,7 @@
         5.9,
         5.9,
         6.1,
+        6.1,
         6.2,
         6.3,
         6.3,
@@ -1227,23 +1228,23 @@
         },
         {
           "label": "Pitcher (Eric Lauer \u00b7 xFIP 5.80)",
-          "adj": 0.41,
-          "adj_str": "+0.4",
+          "adj": 0.48,
+          "adj_str": "+0.5",
           "cls": "fpos",
           "mult": "H \u00d71.20 \u00b7 K \u00d70.96",
           "pill": "boosted"
         },
         {
           "label": "Park factor (Chase Field)",
-          "adj": 0.05,
+          "adj": 0.13,
           "adj_str": "+0.1",
           "cls": "fpos",
           "mult": "HR \u00d71.08 \u00b7 R \u00d71.04",
-          "pill": "neutral"
+          "pill": "boosted"
         },
         {
-          "label": "BABIP (0.275 curr \u00b7 0.310 career)",
-          "adj": 0.12,
+          "label": "BABIP (0.271 curr \u00b7 0.310 career)",
+          "adj": 0.13,
           "adj_str": "+0.1",
           "cls": "fpos",
           "mult": "H \u00d71.02",
@@ -1263,18 +1264,18 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Lauer 63% usage \u00b7 9% whiff",
-          "detail": "0.441 wOBA vs fastball \u2014 strength",
-          "adj": -4.66,
-          "adj_str": "\u22124.7",
+          "detail": "0.439 wOBA vs fastball \u2014 strength",
+          "adj": -4.59,
+          "adj_str": "\u22124.6",
           "adj_class": "fneg"
         },
         {
           "label": "Breaking ball",
           "badge_class": "pb-break",
           "meta": "Lauer 22% usage \u00b7 5% whiff",
-          "detail": "0.345 wOBA vs breaking ball \u2014 strength",
-          "adj": -0.5,
-          "adj_str": "\u22120.5",
+          "detail": "0.360 wOBA vs breaking ball \u2014 strength",
+          "adj": -0.75,
+          "adj_str": "\u22120.8",
           "adj_class": "fneg"
         }
       ],
@@ -1295,13 +1296,13 @@
       "probable_sp": "Grayson Rodriguez",
       "sp_hand": "R",
       "sp_id": 680570,
-      "proj_pts": 2.2,
+      "proj_pts": 2.3,
       "confidence": {
-        "score": 35,
+        "score": 34,
         "label": "low",
-        "pa_score": 0.434,
+        "pa_score": 0.449,
         "ip_score": 0.059,
-        "babip_score": 0.45
+        "babip_score": 0.412
       },
       "stat_line": {
         "h_ab": "1.2H / 3.7AB",
@@ -1320,9 +1321,9 @@
         },
         {
           "cat": "1B",
-          "proj": 0.92,
+          "proj": 0.93,
           "mult": "\u00d7  2.80",
-          "pts": 2.58
+          "pts": 2.6
         },
         {
           "cat": "2B",
@@ -1374,9 +1375,9 @@
         }
       ],
       "proj_low": 0.1,
-      "proj_high": 4.3,
+      "proj_high": 4.4,
       "interval_method": "empirical",
-      "interval_games": 99,
+      "interval_games": 100,
       "score_dist": [
         -2.4,
         -2.4,
@@ -1447,6 +1448,7 @@
         3.0,
         3.0,
         3.1,
+        3.1,
         3.2,
         3.4,
         3.5,
@@ -1481,7 +1483,7 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.66,
+          "adj": 2.67,
           "adj_str": "+2.7",
           "cls": "fneu",
           "mult": "",
@@ -1497,23 +1499,23 @@
         },
         {
           "label": "Pitcher (Grayson Rodriguez \u00b7 xFIP 4.96)",
-          "adj": 0.29,
-          "adj_str": "+0.3",
+          "adj": 0.23,
+          "adj_str": "+0.2",
           "cls": "fpos",
           "mult": "H \u00d71.14 \u00b7 K \u00d71.06",
           "pill": "boosted"
         },
         {
           "label": "Park factor (Angel Stadium)",
-          "adj": -0.01,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
+          "adj": -0.09,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
           "mult": "HR \u00d70.97 \u00b7 R \u00d70.97",
-          "pill": "neutral"
+          "pill": "suppressed"
         },
         {
-          "label": "BABIP (0.393 curr \u00b7 0.329 career)",
-          "adj": -0.2,
+          "label": "BABIP (0.396 curr \u00b7 0.329 career)",
+          "adj": -0.21,
           "adj_str": "\u22120.2",
           "cls": "fneg",
           "mult": "H \u00d70.96",
@@ -1533,9 +1535,9 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Rodriguez 53% usage \u00b7 8% whiff",
-          "detail": "0.335 wOBA vs fastball \u2014 neutral",
-          "adj": -0.78,
-          "adj_str": "\u22120.8",
+          "detail": "0.333 wOBA vs fastball \u2014 neutral",
+          "adj": -0.7,
+          "adj_str": "\u22120.7",
           "adj_class": "fneg"
         }
       ],
@@ -2096,11 +2098,11 @@
       "sp_id": 641778,
       "proj_pts": 1.7,
       "confidence": {
-        "score": 53,
+        "score": 52,
         "label": "medium",
-        "pa_score": 0.526,
+        "pa_score": 0.534,
         "ip_score": 0.459,
-        "babip_score": 0.6
+        "babip_score": 0.55
       },
       "stat_line": {
         "h_ab": "1.1H / 3.7AB",
@@ -2175,7 +2177,7 @@
       "proj_low": -0.8,
       "proj_high": 4.2,
       "interval_method": "empirical",
-      "interval_games": 314,
+      "interval_games": 315,
       "score_dist": [
         -2.9,
         -2.7,
@@ -2221,6 +2223,7 @@
         -1.7,
         -1.7,
         -1.7,
+        -1.5,
         -1.5,
         -1.5,
         -1.5,
@@ -2526,16 +2529,16 @@
           "pill": "boosted"
         },
         {
-          "label": "BABIP (0.244 curr \u00b7 0.296 career)",
-          "adj": 0.18,
+          "label": "BABIP (0.240 curr \u00b7 0.296 career)",
+          "adj": 0.19,
           "adj_str": "+0.2",
           "cls": "fpos",
-          "mult": "H \u00d71.03",
+          "mult": "H \u00d71.04",
           "pill": "unlucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.01,
+          "adj": -0.02,
           "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
@@ -2547,9 +2550,9 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Lauer 63% usage \u00b7 9% whiff",
-          "detail": "0.356 wOBA vs fastball \u2014 strength",
-          "adj": -1.52,
-          "adj_str": "\u22121.5",
+          "detail": "0.349 wOBA vs fastball \u2014 strength",
+          "adj": -1.26,
+          "adj_str": "\u22121.3",
           "adj_class": "fneg"
         }
       ],
@@ -3746,18 +3749,18 @@
       "sp_id": 680570,
       "proj_pts": 1.3,
       "confidence": {
-        "score": 45,
+        "score": 44,
         "label": "low",
-        "pa_score": 0.309,
+        "pa_score": 0.326,
         "ip_score": 0.059,
-        "babip_score": 0.975
+        "babip_score": 0.938
       },
       "stat_line": {
         "h_ab": "1.1H / 3.7AB",
         "hr": 0.08,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.27,
+        "bb": 0.28,
         "k": 0.8
       },
       "scoring_rows": [
@@ -3805,9 +3808,9 @@
         },
         {
           "cat": "BB",
-          "proj": 0.27,
+          "proj": 0.28,
           "mult": "\u00d7  1.50",
-          "pts": 0.41
+          "pts": 0.42
         },
         {
           "cat": "K",
@@ -3825,7 +3828,7 @@
       "proj_low": -0.6,
       "proj_high": 3.2,
       "interval_method": "empirical",
-      "interval_games": 258,
+      "interval_games": 259,
       "score_dist": [
         -2.7,
         -2.6,
@@ -4082,6 +4085,7 @@
         10.1,
         11.2,
         11.9,
+        12.7,
         13.2,
         14.0,
         14.0
@@ -4089,8 +4093,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.02,
-          "adj_str": "+2.0",
+          "adj": 2.08,
+          "adj_str": "+2.1",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -4105,7 +4109,7 @@
         },
         {
           "label": "Pitcher (Grayson Rodriguez \u00b7 xFIP 4.96)",
-          "adj": 0.28,
+          "adj": 0.31,
           "adj_str": "+0.3",
           "cls": "fpos",
           "mult": "H \u00d71.14 \u00b7 K \u00d71.06",
@@ -4120,17 +4124,17 @@
           "pill": "neutral"
         },
         {
-          "label": "BABIP (0.330 curr \u00b7 0.308 career)",
-          "adj": -0.07,
+          "label": "BABIP (0.333 curr \u00b7 0.308 career)",
+          "adj": -0.08,
           "adj_str": "\u22120.1",
           "cls": "fneg",
-          "mult": "H \u00d70.99",
+          "mult": "H \u00d70.98",
           "pill": "lucky"
         },
         {
           "label": "Recent form (14d)",
-          "adj": -0.01,
-          "adj_str": "\u22120.0",
+          "adj": 0.01,
+          "adj_str": "+0.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
           "pill": "neutral"
@@ -4141,418 +4145,15 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Rodriguez 53% usage \u00b7 8% whiff",
-          "detail": "0.363 wOBA vs fastball \u2014 strength",
-          "adj": -1.86,
-          "adj_str": "\u22121.9",
+          "detail": "0.380 wOBA vs fastball \u2014 strength",
+          "adj": -2.53,
+          "adj_str": "\u22122.5",
           "adj_class": "fneg"
         }
       ],
       "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
       "rank": 10
-    },
-    {
-      "name": "Josh Jung",
-      "mlb_id": 673962,
-      "positions": [
-        "3B"
-      ],
-      "status": "active",
-      "team": "",
-      "opponent": "STL",
-      "venue": "Busch Stadium",
-      "probable_sp": "Dustin May",
-      "sp_hand": "R",
-      "sp_id": 669160,
-      "proj_pts": 1.1,
-      "confidence": {
-        "score": 66,
-        "label": "medium",
-        "pa_score": 0.509,
-        "ip_score": 0.729,
-        "babip_score": 0.838
-      },
-      "stat_line": {
-        "h_ab": "1.0H / 3.7AB",
-        "hr": 0.12,
-        "r": 0.52,
-        "rbi": 0.5,
-        "bb": 0.22,
-        "k": 1.0
-      },
-      "scoring_rows": [
-        {
-          "cat": "AB",
-          "proj": 3.7,
-          "mult": "\u00d7 \u22120.50",
-          "pts": -1.85
-        },
-        {
-          "cat": "1B",
-          "proj": 0.63,
-          "mult": "\u00d7  2.80",
-          "pts": 1.76
-        },
-        {
-          "cat": "2B",
-          "proj": 0.17,
-          "mult": "\u00d7  3.80",
-          "pts": 0.65
-        },
-        {
-          "cat": "3B",
-          "proj": 0.04,
-          "mult": "\u00d7  5.70",
-          "pts": 0.23
-        },
-        {
-          "cat": "HR",
-          "proj": 0.12,
-          "mult": "\u00d7  7.50",
-          "pts": 0.9
-        },
-        {
-          "cat": "R",
-          "proj": 0.52,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "RBI",
-          "proj": 0.5,
-          "mult": "\u00d7  0.20",
-          "pts": 0.1
-        },
-        {
-          "cat": "BB",
-          "proj": 0.22,
-          "mult": "\u00d7  1.50",
-          "pts": 0.33
-        },
-        {
-          "cat": "K",
-          "proj": 1.0,
-          "mult": "\u00d7 \u22120.20",
-          "pts": -0.2
-        },
-        {
-          "cat": "HBP",
-          "proj": 0.03,
-          "mult": "\u00d7  1.50",
-          "pts": 0.04
-        }
-      ],
-      "proj_low": -1.3,
-      "proj_high": 3.5,
-      "interval_method": "empirical",
-      "interval_games": 232,
-      "score_dist": [
-        -3.4,
-        -3.1,
-        -2.9,
-        -2.9,
-        -2.6,
-        -2.6,
-        -2.6,
-        -2.6,
-        -2.5,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.4,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.2,
-        -2.0,
-        -2.0,
-        -2.0,
-        -2.0,
-        -1.9,
-        -1.8,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.7,
-        -1.6,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.5,
-        -1.2,
-        -1.2,
-        -1.2,
-        -1.0,
-        -0.9,
-        -0.7,
-        -0.7,
-        -0.7,
-        -0.7,
-        -0.5,
-        -0.5,
-        -0.5,
-        -0.4,
-        -0.4,
-        -0.3,
-        -0.3,
-        -0.3,
-        -0.2,
-        -0.1,
-        -0.1,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.1,
-        0.1,
-        0.1,
-        0.2,
-        0.3,
-        0.4,
-        0.4,
-        0.4,
-        0.4,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.9,
-        0.9,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.1,
-        1.1,
-        1.1,
-        1.3,
-        1.3,
-        1.3,
-        1.3,
-        1.4,
-        1.5,
-        1.5,
-        1.5,
-        1.6,
-        1.8,
-        1.8,
-        1.8,
-        1.8,
-        1.8,
-        1.8,
-        2.0,
-        2.0,
-        2.0,
-        2.0,
-        2.1,
-        2.1,
-        2.1,
-        2.2,
-        2.2,
-        2.6,
-        2.6,
-        2.6,
-        2.8,
-        2.8,
-        2.8,
-        3.0,
-        3.0,
-        3.0,
-        3.1,
-        3.2,
-        3.2,
-        3.4,
-        3.4,
-        3.4,
-        3.5,
-        3.6,
-        3.6,
-        3.6,
-        3.6,
-        3.7,
-        3.8,
-        3.8,
-        4.0,
-        4.1,
-        4.2,
-        4.3,
-        4.5,
-        4.6,
-        4.6,
-        4.6,
-        4.6,
-        4.8,
-        4.9,
-        5.1,
-        5.2,
-        5.6,
-        5.7,
-        5.7,
-        5.7,
-        5.8,
-        5.8,
-        5.9,
-        5.9,
-        6.0,
-        6.1,
-        6.3,
-        6.4,
-        6.4,
-        6.5,
-        6.8,
-        6.8,
-        6.8,
-        7.8,
-        8.0,
-        8.0,
-        8.2,
-        8.3,
-        8.3,
-        8.5,
-        8.6,
-        8.7,
-        8.7,
-        8.7,
-        8.8,
-        8.9,
-        9.1,
-        9.1,
-        9.1,
-        9.7,
-        10.2,
-        10.2,
-        10.5,
-        10.5,
-        10.6,
-        10.9,
-        11.2,
-        11.3,
-        11.6,
-        11.7,
-        12.3,
-        12.4,
-        17.0
-      ],
-      "factors": [
-        {
-          "label": "Base rate (season)",
-          "adj": 2.15,
-          "adj_str": "+2.1",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "baseline"
-        },
-        {
-          "label": "Platoon (R vs RHP)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
-          "cls": "fneu",
-          "mult": "",
-          "pill": "neutral"
-        },
-        {
-          "label": "Pitcher (Dustin May \u00b7 xFIP 4.06)",
-          "adj": -0.04,
-          "adj_str": "\u22120.0",
-          "cls": "fneu",
-          "mult": "H \u00d70.97 \u00b7 K \u00d70.97",
-          "pill": "neutral"
-        },
-        {
-          "label": "Park factor (Busch Stadium)",
-          "adj": -0.05,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "HR \u00d70.96 \u00b7 R \u00d70.97",
-          "pill": "neutral"
-        },
-        {
-          "label": "BABIP (0.347 curr \u00b7 0.314 career)",
-          "adj": -0.1,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
-          "mult": "H \u00d70.98",
-          "pill": "lucky"
-        },
-        {
-          "label": "Recent form (14d)",
-          "adj": 0.06,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "H \u00d71.00",
-          "pill": "slight boost"
-        }
-      ],
-      "pitch_rows": [
-        {
-          "label": "Fastball",
-          "badge_class": "pb-fast",
-          "meta": "May 65% usage \u00b7 9% whiff",
-          "detail": "0.374 wOBA vs fastball \u2014 strength",
-          "adj": -1.86,
-          "adj_str": "\u22121.9",
-          "adj_class": "fneg"
-        },
-        {
-          "label": "Breaking ball",
-          "badge_class": "pb-break",
-          "meta": "May 28% usage \u00b7 12% whiff",
-          "detail": "0.360 wOBA vs breaking ball \u2014 strength",
-          "adj": -0.22,
-          "adj_str": "\u22120.2",
-          "adj_class": "fneg"
-        }
-      ],
-      "babip_note": "lucky \u2014 H rate nudged down",
-      "data_source": "blended",
-      "rank": 11
     },
     {
       "name": "Logan O'Hoppe",
@@ -4567,13 +4168,13 @@
       "probable_sp": "Tomoyuki Sugano",
       "sp_hand": "R",
       "sp_id": 608372,
-      "proj_pts": 1.0,
+      "proj_pts": 1.2,
       "confidence": {
-        "score": 51,
-        "label": "medium",
-        "pa_score": 0.237,
+        "score": 49,
+        "label": "low",
+        "pa_score": 0.249,
         "ip_score": 0.687,
-        "babip_score": 0.775
+        "babip_score": 0.7
       },
       "stat_line": {
         "h_ab": "0.9H / 3.7AB",
@@ -4645,10 +4246,10 @@
           "pts": 0.08
         }
       ],
-      "proj_low": -1.4,
-      "proj_high": 3.4,
+      "proj_low": -1.2,
+      "proj_high": 3.5,
       "interval_method": "empirical",
-      "interval_games": 293,
+      "interval_games": 294,
       "score_dist": [
         -3.3,
         -3.1,
@@ -4673,6 +4274,7 @@
         -2.6,
         -2.6,
         -2.6,
+        -2.4,
         -2.4,
         -2.4,
         -2.4,
@@ -4978,8 +4580,8 @@
           "pill": "neutral"
         },
         {
-          "label": "BABIP (0.259 curr \u00b7 0.297 career)",
-          "adj": 0.11,
+          "label": "BABIP (0.253 curr \u00b7 0.297 career)",
+          "adj": 0.13,
           "adj_str": "+0.1",
           "cls": "fpos",
           "mult": "H \u00d71.02",
@@ -4987,8 +4589,8 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": 0.01,
-          "adj_str": "+0.0",
+          "adj": -0.01,
+          "adj_str": "\u22120.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
           "pill": "neutral"
@@ -4999,13 +4601,416 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Sugano 52% usage \u00b7 5% whiff",
-          "detail": "0.335 wOBA vs fastball \u2014 neutral",
-          "adj": -0.85,
-          "adj_str": "\u22120.8",
+          "detail": "0.332 wOBA vs fastball \u2014 neutral",
+          "adj": -0.72,
+          "adj_str": "\u22120.7",
           "adj_class": "fneg"
         }
       ],
       "babip_note": "unlucky \u2014 H rate nudged up",
+      "data_source": "blended",
+      "rank": 11
+    },
+    {
+      "name": "Josh Jung",
+      "mlb_id": 673962,
+      "positions": [
+        "3B"
+      ],
+      "status": "active",
+      "team": "",
+      "opponent": "STL",
+      "venue": "Busch Stadium",
+      "probable_sp": "Dustin May",
+      "sp_hand": "R",
+      "sp_id": 669160,
+      "proj_pts": 1.1,
+      "confidence": {
+        "score": 68,
+        "label": "medium",
+        "pa_score": 0.514,
+        "ip_score": 0.729,
+        "babip_score": 0.887
+      },
+      "stat_line": {
+        "h_ab": "1.0H / 3.7AB",
+        "hr": 0.12,
+        "r": 0.52,
+        "rbi": 0.5,
+        "bb": 0.22,
+        "k": 1.0
+      },
+      "scoring_rows": [
+        {
+          "cat": "AB",
+          "proj": 3.7,
+          "mult": "\u00d7 \u22120.50",
+          "pts": -1.85
+        },
+        {
+          "cat": "1B",
+          "proj": 0.63,
+          "mult": "\u00d7  2.80",
+          "pts": 1.76
+        },
+        {
+          "cat": "2B",
+          "proj": 0.17,
+          "mult": "\u00d7  3.80",
+          "pts": 0.65
+        },
+        {
+          "cat": "3B",
+          "proj": 0.04,
+          "mult": "\u00d7  5.70",
+          "pts": 0.23
+        },
+        {
+          "cat": "HR",
+          "proj": 0.12,
+          "mult": "\u00d7  7.50",
+          "pts": 0.9
+        },
+        {
+          "cat": "R",
+          "proj": 0.52,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "RBI",
+          "proj": 0.5,
+          "mult": "\u00d7  0.20",
+          "pts": 0.1
+        },
+        {
+          "cat": "BB",
+          "proj": 0.22,
+          "mult": "\u00d7  1.50",
+          "pts": 0.33
+        },
+        {
+          "cat": "K",
+          "proj": 1.0,
+          "mult": "\u00d7 \u22120.20",
+          "pts": -0.2
+        },
+        {
+          "cat": "HBP",
+          "proj": 0.03,
+          "mult": "\u00d7  1.50",
+          "pts": 0.04
+        }
+      ],
+      "proj_low": -1.3,
+      "proj_high": 3.5,
+      "interval_method": "empirical",
+      "interval_games": 232,
+      "score_dist": [
+        -3.4,
+        -3.1,
+        -2.9,
+        -2.9,
+        -2.6,
+        -2.6,
+        -2.6,
+        -2.6,
+        -2.5,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.4,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.2,
+        -2.0,
+        -2.0,
+        -2.0,
+        -2.0,
+        -1.9,
+        -1.8,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.7,
+        -1.6,
+        -1.5,
+        -1.5,
+        -1.5,
+        -1.5,
+        -1.2,
+        -1.2,
+        -1.0,
+        -0.9,
+        -0.7,
+        -0.7,
+        -0.7,
+        -0.7,
+        -0.5,
+        -0.5,
+        -0.5,
+        -0.4,
+        -0.4,
+        -0.3,
+        -0.3,
+        -0.3,
+        -0.2,
+        -0.1,
+        -0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.1,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.4,
+        0.4,
+        0.4,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.6,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.9,
+        0.9,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.1,
+        1.1,
+        1.1,
+        1.3,
+        1.3,
+        1.3,
+        1.3,
+        1.4,
+        1.5,
+        1.5,
+        1.5,
+        1.6,
+        1.8,
+        1.8,
+        1.8,
+        1.8,
+        1.8,
+        1.8,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.1,
+        2.1,
+        2.1,
+        2.2,
+        2.2,
+        2.6,
+        2.6,
+        2.6,
+        2.8,
+        2.8,
+        2.8,
+        3.0,
+        3.0,
+        3.0,
+        3.1,
+        3.2,
+        3.2,
+        3.4,
+        3.4,
+        3.4,
+        3.5,
+        3.6,
+        3.6,
+        3.6,
+        3.6,
+        3.7,
+        3.8,
+        3.8,
+        4.0,
+        4.1,
+        4.2,
+        4.3,
+        4.5,
+        4.6,
+        4.6,
+        4.6,
+        4.6,
+        4.8,
+        4.9,
+        5.1,
+        5.2,
+        5.6,
+        5.7,
+        5.7,
+        5.7,
+        5.8,
+        5.8,
+        5.9,
+        5.9,
+        6.0,
+        6.1,
+        6.3,
+        6.4,
+        6.4,
+        6.5,
+        6.8,
+        6.8,
+        6.8,
+        7.8,
+        8.0,
+        8.0,
+        8.2,
+        8.3,
+        8.3,
+        8.5,
+        8.6,
+        8.7,
+        8.7,
+        8.7,
+        8.8,
+        8.9,
+        9.1,
+        9.1,
+        9.1,
+        9.7,
+        10.2,
+        10.2,
+        10.5,
+        10.5,
+        10.6,
+        10.9,
+        11.2,
+        11.3,
+        11.6,
+        11.7,
+        12.3,
+        12.4,
+        17.0
+      ],
+      "factors": [
+        {
+          "label": "Base rate (season)",
+          "adj": 2.15,
+          "adj_str": "+2.1",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "baseline"
+        },
+        {
+          "label": "Platoon (R vs RHP)",
+          "adj": 0.0,
+          "adj_str": "+0.0",
+          "cls": "fneu",
+          "mult": "",
+          "pill": "neutral"
+        },
+        {
+          "label": "Pitcher (Dustin May \u00b7 xFIP 4.06)",
+          "adj": -0.04,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
+          "mult": "H \u00d70.97 \u00b7 K \u00d70.97",
+          "pill": "neutral"
+        },
+        {
+          "label": "Park factor (Busch Stadium)",
+          "adj": -0.05,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "HR \u00d70.96 \u00b7 R \u00d70.97",
+          "pill": "neutral"
+        },
+        {
+          "label": "BABIP (0.343 curr \u00b7 0.314 career)",
+          "adj": -0.09,
+          "adj_str": "\u22120.1",
+          "cls": "fneg",
+          "mult": "H \u00d70.98",
+          "pill": "lucky"
+        },
+        {
+          "label": "Recent form (14d)",
+          "adj": 0.05,
+          "adj_str": "+0.1",
+          "cls": "fpos",
+          "mult": "H \u00d71.00",
+          "pill": "neutral"
+        }
+      ],
+      "pitch_rows": [
+        {
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "May 65% usage \u00b7 9% whiff",
+          "detail": "0.367 wOBA vs fastball \u2014 strength",
+          "adj": -1.64,
+          "adj_str": "\u22121.6",
+          "adj_class": "fneg"
+        },
+        {
+          "label": "Breaking ball",
+          "badge_class": "pb-break",
+          "meta": "May 28% usage \u00b7 12% whiff",
+          "detail": "0.361 wOBA vs breaking ball \u2014 strength",
+          "adj": -0.22,
+          "adj_str": "\u22120.2",
+          "adj_class": "fneg"
+        }
+      ],
+      "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
       "rank": 12
     },
@@ -5022,13 +5027,13 @@
       "probable_sp": "Connor Prielipp",
       "sp_hand": "L",
       "sp_id": 687570,
-      "proj_pts": 1.0,
+      "proj_pts": 1.1,
       "confidence": {
-        "score": 34,
+        "score": 38,
         "label": "low",
         "pa_score": 0.0,
         "ip_score": 0.33,
-        "babip_score": 0.863
+        "babip_score": 1.0
       },
       "stat_line": {
         "h_ab": "0.9H / 3.7AB",
@@ -5036,7 +5041,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.08,
-        "k": 0.62
+        "k": 0.71
       },
       "scoring_rows": [
         {
@@ -5047,9 +5052,9 @@
         },
         {
           "cat": "1B",
-          "proj": 0.91,
+          "proj": 0.93,
           "mult": "\u00d7  2.80",
-          "pts": 2.55
+          "pts": 2.6
         },
         {
           "cat": "2B",
@@ -5089,9 +5094,9 @@
         },
         {
           "cat": "K",
-          "proj": 0.62,
+          "proj": 0.71,
           "mult": "\u00d7 \u22120.20",
-          "pts": -0.12
+          "pts": -0.14
         },
         {
           "cat": "HBP",
@@ -5100,15 +5105,15 @@
           "pts": 0.0
         }
       ],
-      "proj_low": -0.2,
-      "proj_high": 2.2,
+      "proj_low": -0.1,
+      "proj_high": 2.3,
       "interval_method": "normal_approx",
       "interval_games": 8,
       "score_dist": [
         -1.3,
         -1.0,
-        -0.5,
         0.0,
+        0.8,
         0.8,
         1.1,
         1.5,
@@ -5117,8 +5122,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 0.64,
-          "adj_str": "+0.6",
+          "adj": 0.71,
+          "adj_str": "+0.7",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -5148,24 +5153,16 @@
           "pill": "boosted"
         },
         {
-          "label": "BABIP (0.267 curr \u00b7 0.298 career)",
-          "adj": 0.11,
-          "adj_str": "+0.1",
-          "cls": "fpos",
-          "mult": "H \u00d71.02",
-          "pill": "unlucky"
-        },
-        {
           "label": "Recent form (14d)",
-          "adj": 0.0,
-          "adj_str": "+0.0",
+          "adj": -0.0,
+          "adj_str": "+-0.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
           "pill": "neutral"
         }
       ],
       "pitch_rows": [],
-      "babip_note": "unlucky \u2014 H rate nudged up",
+      "babip_note": "in line with career",
       "data_source": "season",
       "rank": 13
     },
@@ -5184,19 +5181,19 @@
       "sp_id": 663436,
       "proj_pts": 0.6,
       "confidence": {
-        "score": 66,
+        "score": 68,
         "label": "medium",
-        "pa_score": 0.4,
+        "pa_score": 0.406,
         "ip_score": 0.817,
-        "babip_score": 0.925
+        "babip_score": 0.963
       },
       "stat_line": {
         "h_ab": "0.8H / 3.7AB",
         "hr": 0.02,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.38,
-        "k": 0.75
+        "bb": 0.37,
+        "k": 0.74
       },
       "scoring_rows": [
         {
@@ -5243,13 +5240,13 @@
         },
         {
           "cat": "BB",
-          "proj": 0.38,
+          "proj": 0.37,
           "mult": "\u00d7  1.50",
-          "pts": 0.57
+          "pts": 0.55
         },
         {
           "cat": "K",
-          "proj": 0.75,
+          "proj": 0.74,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.15
         },
@@ -5261,7 +5258,7 @@
         }
       ],
       "proj_low": -1.1,
-      "proj_high": 2.3,
+      "proj_high": 2.2,
       "interval_method": "empirical",
       "interval_games": 197,
       "score_dist": [
@@ -5303,7 +5300,6 @@
         -1.0,
         -0.9,
         -0.9,
-        -0.8,
         -0.7,
         -0.7,
         -0.7,
@@ -5382,6 +5378,7 @@
         1.3,
         1.3,
         1.3,
+        1.4,
         1.5,
         1.5,
         1.5,
@@ -5482,7 +5479,7 @@
         },
         {
           "label": "Pitcher (Davis Martin \u00b7 xFIP 3.05)",
-          "adj": -0.35,
+          "adj": -0.34,
           "adj_str": "\u22120.3",
           "cls": "fneg",
           "mult": "H \u00d70.80 \u00b7 K \u00d71.02",
@@ -5497,11 +5494,11 @@
           "pill": "neutral"
         },
         {
-          "label": "BABIP (0.305 curr \u00b7 0.331 career)",
-          "adj": 0.09,
+          "label": "BABIP (0.308 curr \u00b7 0.331 career)",
+          "adj": 0.08,
           "adj_str": "+0.1",
           "cls": "fpos",
-          "mult": "H \u00d71.02",
+          "mult": "H \u00d71.01",
           "pill": "unlucky"
         },
         {
@@ -5518,8 +5515,8 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Martin 57% usage \u00b7 10% whiff",
-          "detail": "0.358 wOBA vs fastball \u2014 strength",
-          "adj": -1.04,
+          "detail": "0.356 wOBA vs fastball \u2014 strength",
+          "adj": -0.99,
           "adj_str": "\u22121.0",
           "adj_class": "fneg"
         }
@@ -5545,18 +5542,18 @@
       "sp_id": 663436,
       "proj_pts": 0.4,
       "confidence": {
-        "score": 66,
+        "score": 67,
         "label": "medium",
-        "pa_score": 0.483,
+        "pa_score": 0.489,
         "ip_score": 0.817,
-        "babip_score": 0.788
+        "babip_score": 0.812
       },
       "stat_line": {
         "h_ab": "0.8H / 3.7AB",
         "hr": 0.1,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.25,
+        "bb": 0.26,
         "k": 0.66
       },
       "scoring_rows": [
@@ -5604,9 +5601,9 @@
         },
         {
           "cat": "BB",
-          "proj": 0.25,
+          "proj": 0.26,
           "mult": "\u00d7  1.50",
-          "pts": 0.38
+          "pts": 0.39
         },
         {
           "cat": "K",
@@ -5800,6 +5797,7 @@
         2.7,
         2.8,
         2.8,
+        2.8,
         3.0,
         3.0,
         3.1,
@@ -5821,7 +5819,6 @@
         3.8,
         3.8,
         3.8,
-        4.0,
         4.0,
         4.1,
         4.3,
@@ -5876,7 +5873,7 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 1.8,
+          "adj": 1.82,
           "adj_str": "+1.8",
           "cls": "fneu",
           "mult": "",
@@ -5892,7 +5889,7 @@
         },
         {
           "label": "Pitcher (Davis Martin \u00b7 xFIP 3.05)",
-          "adj": -0.34,
+          "adj": -0.35,
           "adj_str": "\u22120.3",
           "cls": "fneg",
           "mult": "H \u00d70.80 \u00b7 K \u00d71.02",
@@ -5900,14 +5897,14 @@
         },
         {
           "label": "Park factor (Target Field)",
-          "adj": -0.05,
+          "adj": -0.06,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "HR \u00d70.94 \u00b7 R \u00d70.97",
-          "pill": "neutral"
+          "pill": "suppressed"
         },
         {
-          "label": "BABIP (0.288 curr \u00b7 0.251 career)",
+          "label": "BABIP (0.286 curr \u00b7 0.251 career)",
           "adj": -0.12,
           "adj_str": "\u22120.1",
           "cls": "fneg",
@@ -5937,9 +5934,9 @@
           "label": "Fastball",
           "badge_class": "pb-fast",
           "meta": "Martin 57% usage \u00b7 10% whiff",
-          "detail": "0.337 wOBA vs fastball \u2014 strength",
-          "adj": -0.53,
-          "adj_str": "\u22120.5",
+          "detail": "0.338 wOBA vs fastball \u2014 strength",
+          "adj": -0.55,
+          "adj_str": "\u22120.6",
           "adj_class": "fneg"
         }
       ],
@@ -5974,7 +5971,7 @@
         "r": 0.52,
         "rbi": 0.5,
         "bb": 0.08,
-        "k": 1.56
+        "k": 1.55
       },
       "scoring_rows": [
         {
@@ -5985,9 +5982,9 @@
         },
         {
           "cat": "1B",
-          "proj": 0.28,
+          "proj": 0.32,
           "mult": "\u00d7  2.80",
-          "pts": 0.78
+          "pts": 0.9
         },
         {
           "cat": "2B",
@@ -5997,9 +5994,9 @@
         },
         {
           "cat": "3B",
-          "proj": 0.02,
+          "proj": 0.01,
           "mult": "\u00d7  5.70",
-          "pts": 0.11
+          "pts": 0.06
         },
         {
           "cat": "HR",
@@ -6027,15 +6024,15 @@
         },
         {
           "cat": "K",
-          "proj": 1.56,
+          "proj": 1.55,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.31
         },
         {
           "cat": "HBP",
-          "proj": 0.09,
+          "proj": 0.08,
           "mult": "\u00d7  1.50",
-          "pts": 0.13
+          "pts": 0.12
         }
       ],
       "proj_low": -1.2,
@@ -6050,13 +6047,13 @@
         -1.7,
         -1.7,
         -1.7,
-        -0.7,
         -0.5,
         0.0,
         0.0,
         0.0,
         0.6,
         0.8,
+        1.6,
         3.1,
         3.6,
         5.5
@@ -6064,8 +6061,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": -0.45,
-          "adj_str": "+-0.5",
+          "adj": -0.39,
+          "adj_str": "+-0.4",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -6095,12 +6092,12 @@
           "pill": "neutral"
         },
         {
-          "label": "BABIP (0.000 curr \u00b7 0.185 career)",
-          "adj": 0.45,
-          "adj_str": "+0.4",
-          "cls": "fpos",
-          "mult": "H \u00d71.09",
-          "pill": "unlucky"
+          "label": "BABIP (0.333 curr \u00b7 0.185 career)",
+          "adj": -0.37,
+          "adj_str": "\u22120.4",
+          "cls": "fneg",
+          "mult": "H \u00d70.93",
+          "pill": "lucky"
         },
         {
           "label": "Recent form (14d)",
@@ -6112,7 +6109,7 @@
         }
       ],
       "pitch_rows": [],
-      "babip_note": "unlucky \u2014 H rate nudged up",
+      "babip_note": "lucky \u2014 H rate nudged down",
       "data_source": "blended",
       "rank": 16
     },
@@ -6580,9 +6577,9 @@
       "model": "historical",
       "mc_median": 3.1,
       "mc_probs": {
-        "6.0": 31.4,
-        "3.0": 50.6,
-        "0.0": 19.2
+        "6.0": 31.2,
+        "3.0": 50.9,
+        "0.0": 18.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 369
@@ -6600,13 +6597,13 @@
       "venue": "Chase Field",
       "probable_sp": "Eric Lauer",
       "sp_hand": "L",
-      "proj_pts": 3.4,
-      "proj_low": -2.3,
+      "proj_pts": 3.5,
+      "proj_low": -2.2,
       "proj_high": 9.1,
-      "hist_mean": 3.31,
-      "composite_mult": 1.0377,
-      "n_games": 317,
-      "std_dev": 4.44,
+      "hist_mean": 3.32,
+      "composite_mult": 1.0385,
+      "n_games": 318,
+      "std_dev": 4.43,
       "interval_method": "empirical",
       "score_dist": [
         -3.1,
@@ -6858,6 +6855,7 @@
         5.9,
         5.9,
         6.1,
+        6.1,
         6.2,
         6.3,
         6.3,
@@ -6928,21 +6926,21 @@
         21.3
       ],
       "confidence": {
-        "score": 66,
+        "score": 67,
         "label": "medium",
-        "pa_score": 0.549,
+        "pa_score": 0.56,
         "ip_score": 0.459,
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 2.7,
+      "mc_median": 2.6,
       "mc_probs": {
-        "6.0": 24.3,
-        "3.0": 46.4,
-        "0.0": 25.2
+        "6.0": 23.9,
+        "3.0": 45.8,
+        "0.0": 25.9
       },
       "mc_n_sim": 10000,
-      "mc_n_games": 317
+      "mc_n_games": 318
     },
     {
       "name": "Geraldo Perdomo",
@@ -6957,12 +6955,12 @@
       "probable_sp": "Eric Lauer",
       "sp_hand": "L",
       "proj_pts": 2.7,
-      "proj_low": -1.9,
+      "proj_low": -2.0,
       "proj_high": 7.4,
-      "hist_mean": 2.59,
-      "composite_mult": 1.0529,
-      "n_games": 314,
-      "std_dev": 3.64,
+      "hist_mean": 2.58,
+      "composite_mult": 1.0544,
+      "n_games": 315,
+      "std_dev": 3.65,
       "interval_method": "empirical",
       "score_dist": [
         -2.9,
@@ -7009,6 +7007,7 @@
         -1.7,
         -1.7,
         -1.7,
+        -1.5,
         -1.5,
         -1.5,
         -1.5,
@@ -7281,21 +7280,21 @@
         14.4
       ],
       "confidence": {
-        "score": 65,
+        "score": 66,
         "label": "medium",
-        "pa_score": 0.526,
+        "pa_score": 0.534,
         "ip_score": 0.459,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 1.9,
       "mc_probs": {
-        "6.0": 20.7,
-        "3.0": 39.2,
-        "0.0": 21.5
+        "6.0": 20.9,
+        "3.0": 39.4,
+        "0.0": 21.1
       },
       "mc_n_sim": 10000,
-      "mc_n_games": 314
+      "mc_n_games": 315
     },
     {
       "name": "Manny Machado",
@@ -7694,11 +7693,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 1.9,
+      "mc_median": 1.7,
       "mc_probs": {
-        "6.0": 22.3,
-        "3.0": 40.4,
-        "0.0": 29.3
+        "6.0": 21.6,
+        "3.0": 39.7,
+        "0.0": 29.2
       },
       "mc_n_sim": 10000,
       "mc_n_games": 367
@@ -7719,10 +7718,10 @@
       "proj_pts": 2.5,
       "proj_low": -3.0,
       "proj_high": 8.3,
-      "hist_mean": 2.75,
-      "composite_mult": 0.9142,
+      "hist_mean": 2.78,
+      "composite_mult": 0.913,
       "n_games": 77,
-      "std_dev": 4.5,
+      "std_dev": 4.48,
       "interval_method": "empirical",
       "score_dist": [
         -2.9,
@@ -7738,7 +7737,6 @@
         -2.0,
         -2.0,
         -1.7,
-        -1.5,
         -1.1,
         -0.9,
         -0.7,
@@ -7761,6 +7759,7 @@
         0.6,
         0.6,
         0.6,
+        0.8,
         0.8,
         0.8,
         1.0,
@@ -7806,16 +7805,16 @@
       "confidence": {
         "score": 72,
         "label": "medium",
-        "pa_score": 0.589,
+        "pa_score": 0.591,
         "ip_score": 0.603,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 23.5,
-        "3.0": 35.6,
-        "0.0": 32.1
+        "6.0": 23.8,
+        "3.0": 35.1,
+        "0.0": 30.5
       },
       "mc_n_sim": 10000,
       "mc_n_games": 77
@@ -8218,9 +8217,9 @@
       "model": "historical",
       "mc_median": 1.3,
       "mc_probs": {
-        "6.0": 17.5,
-        "3.0": 34.9,
-        "0.0": 34.3
+        "6.0": 18.2,
+        "3.0": 34.7,
+        "0.0": 34.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 366
@@ -8538,11 +8537,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 0.9,
+      "mc_median": 0.8,
       "mc_probs": {
-        "6.0": 17.5,
-        "3.0": 30.0,
-        "0.0": 32.0
+        "6.0": 17.7,
+        "3.0": 29.8,
+        "0.0": 33.3
       },
       "mc_n_sim": 10000,
       "mc_n_games": 283
@@ -8559,13 +8558,13 @@
       "venue": "Angel Stadium",
       "probable_sp": "Grayson Rodriguez",
       "sp_hand": "R",
-      "proj_pts": 1.8,
-      "proj_low": -2.7,
+      "proj_pts": 1.9,
+      "proj_low": -2.6,
       "proj_high": 6.3,
-      "hist_mean": 1.88,
-      "composite_mult": 0.9705,
-      "n_games": 99,
-      "std_dev": 3.5,
+      "hist_mean": 1.89,
+      "composite_mult": 0.9813,
+      "n_games": 100,
+      "std_dev": 3.48,
       "interval_method": "empirical",
       "score_dist": [
         -2.4,
@@ -8637,6 +8636,7 @@
         3.0,
         3.0,
         3.1,
+        3.1,
         3.2,
         3.4,
         3.5,
@@ -8669,21 +8669,21 @@
         15.1
       ],
       "confidence": {
-        "score": 51,
+        "score": 52,
         "label": "medium",
-        "pa_score": 0.434,
+        "pa_score": 0.449,
         "ip_score": 0.059,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 1.0,
       "mc_probs": {
-        "6.0": 12.9,
-        "3.0": 31.0,
-        "0.0": 36.3
+        "6.0": 12.3,
+        "3.0": 31.7,
+        "0.0": 35.5
       },
       "mc_n_sim": 10000,
-      "mc_n_games": 99
+      "mc_n_games": 100
     },
     {
       "name": "Josh Jung",
@@ -8701,7 +8701,7 @@
       "proj_low": -3.0,
       "proj_high": 6.7,
       "hist_mean": 2.08,
-      "composite_mult": 0.8001,
+      "composite_mult": 0.8003,
       "n_games": 232,
       "std_dev": 3.92,
       "interval_method": "empirical",
@@ -8738,6 +8738,7 @@
         -2.2,
         -2.2,
         -2.2,
+        -2.2,
         -2.0,
         -2.0,
         -2.0,
@@ -8758,7 +8759,6 @@
         -1.5,
         -1.5,
         -1.5,
-        -1.2,
         -1.2,
         -1.2,
         -1.0,
@@ -8942,16 +8942,16 @@
       "confidence": {
         "score": 71,
         "label": "medium",
-        "pa_score": 0.509,
+        "pa_score": 0.514,
         "ip_score": 0.729,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.8,
       "mc_probs": {
-        "6.0": 13.3,
-        "3.0": 27.4,
-        "0.0": 30.0
+        "6.0": 12.7,
+        "3.0": 26.6,
+        "0.0": 30.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 232
@@ -8969,13 +8969,13 @@
       "venue": "Angel Stadium",
       "probable_sp": "Grayson Rodriguez",
       "sp_hand": "R",
-      "proj_pts": 1.5,
+      "proj_pts": 1.6,
       "proj_low": -2.6,
-      "proj_high": 5.7,
-      "hist_mean": 1.71,
-      "composite_mult": 0.8969,
-      "n_games": 258,
-      "std_dev": 3.22,
+      "proj_high": 5.8,
+      "hist_mean": 1.75,
+      "composite_mult": 0.8959,
+      "n_games": 259,
+      "std_dev": 3.28,
       "interval_method": "empirical",
       "score_dist": [
         -2.7,
@@ -9233,14 +9233,15 @@
         10.1,
         11.2,
         11.9,
+        12.7,
         13.2,
         14.0,
         14.0
       ],
       "confidence": {
-        "score": 45,
+        "score": 46,
         "label": "low",
-        "pa_score": 0.309,
+        "pa_score": 0.326,
         "ip_score": 0.059,
         "babip_score": 1.0
       },
@@ -9248,11 +9249,11 @@
       "mc_median": 0.9,
       "mc_probs": {
         "6.0": 8.8,
-        "3.0": 25.6,
-        "0.0": 29.1
+        "3.0": 24.7,
+        "0.0": 29.6
       },
       "mc_n_sim": 10000,
-      "mc_n_games": 258
+      "mc_n_games": 259
     },
     {
       "name": "Logan O'Hoppe",
@@ -9269,9 +9270,9 @@
       "proj_pts": 1.4,
       "proj_low": -3.0,
       "proj_high": 6.3,
-      "hist_mean": 1.6,
-      "composite_mult": 0.8661,
-      "n_games": 293,
+      "hist_mean": 1.59,
+      "composite_mult": 0.8862,
+      "n_games": 294,
       "std_dev": 3.84,
       "interval_method": "empirical",
       "score_dist": [
@@ -9298,6 +9299,7 @@
         -2.6,
         -2.6,
         -2.6,
+        -2.4,
         -2.4,
         -2.4,
         -2.4,
@@ -9572,19 +9574,19 @@
       "confidence": {
         "score": 58,
         "label": "medium",
-        "pa_score": 0.237,
+        "pa_score": 0.249,
         "ip_score": 0.687,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.5,
       "mc_probs": {
-        "6.0": 9.5,
-        "3.0": 23.1,
-        "0.0": 38.6
+        "6.0": 9.6,
+        "3.0": 24.7,
+        "0.0": 38.9
       },
       "mc_n_sim": 10000,
-      "mc_n_games": 293
+      "mc_n_games": 294
     },
     {
       "name": "Brooks Lee",
@@ -9604,7 +9606,7 @@
       "proj_low": -3.0,
       "proj_high": 5.8,
       "hist_mean": 1.68,
-      "composite_mult": 0.7114,
+      "composite_mult": 0.7126,
       "n_games": 246,
       "std_dev": 3.56,
       "interval_method": "empirical",
@@ -9783,6 +9785,7 @@
         2.7,
         2.8,
         2.8,
+        2.8,
         3.0,
         3.0,
         3.1,
@@ -9804,7 +9807,6 @@
         3.8,
         3.8,
         3.8,
-        4.0,
         4.0,
         4.1,
         4.3,
@@ -9859,16 +9861,16 @@
       "confidence": {
         "score": 72,
         "label": "medium",
-        "pa_score": 0.483,
+        "pa_score": 0.489,
         "ip_score": 0.817,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.6,
       "mc_probs": {
-        "6.0": 5.4,
-        "3.0": 19.4,
-        "0.0": 32.7
+        "6.0": 5.5,
+        "3.0": 19.2,
+        "0.0": 32.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 246
@@ -9945,8 +9947,8 @@
       "mc_median": 0.2,
       "mc_probs": {
         "6.0": 7.8,
-        "3.0": 20.4,
-        "0.0": 48.7
+        "3.0": 20.2,
+        "0.0": 48.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 39
@@ -9966,8 +9968,8 @@
       "proj_pts": 1.1,
       "proj_low": -2.5,
       "proj_high": 4.7,
-      "hist_mean": 1.53,
-      "composite_mult": 0.7137,
+      "hist_mean": 1.54,
+      "composite_mult": 0.7142,
       "n_games": 197,
       "std_dev": 2.79,
       "interval_method": "empirical",
@@ -10010,7 +10012,6 @@
         -1.0,
         -0.9,
         -0.9,
-        -0.8,
         -0.7,
         -0.7,
         -0.7,
@@ -10089,6 +10090,7 @@
         1.3,
         1.3,
         1.3,
+        1.4,
         1.5,
         1.5,
         1.5,
@@ -10171,18 +10173,18 @@
         10.0
       ],
       "confidence": {
-        "score": 68,
+        "score": 69,
         "label": "medium",
-        "pa_score": 0.4,
+        "pa_score": 0.406,
         "ip_score": 0.817,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.4,
       "mc_probs": {
-        "6.0": 1.3,
-        "3.0": 20.5,
-        "0.0": 29.3
+        "6.0": 1.4,
+        "3.0": 19.7,
+        "0.0": 28.1
       },
       "mc_n_sim": 10000,
       "mc_n_games": 197
@@ -10199,10 +10201,10 @@
       "venue": "Target Field",
       "probable_sp": "Connor Prielipp",
       "sp_hand": "L",
-      "proj_pts": 0.6,
-      "proj_low": -1.8,
-      "proj_high": 2.9,
-      "hist_mean": 0.53,
+      "proj_pts": 0.7,
+      "proj_low": -1.6,
+      "proj_high": 3.0,
+      "hist_mean": 0.68,
       "composite_mult": 1.033,
       "n_games": 8,
       "std_dev": 1.8,
@@ -10210,8 +10212,8 @@
       "score_dist": [
         -1.3,
         -1.0,
-        -0.5,
         0.0,
+        0.8,
         0.8,
         1.1,
         1.5,
@@ -10225,11 +10227,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 0.0,
+      "mc_median": 0.8,
       "mc_probs": {
         "6.0": 0.0,
         "3.0": 0.0,
-        "0.0": 38.7
+        "0.0": 26.2
       },
       "mc_n_sim": 10000,
       "mc_n_games": 8
@@ -10246,11 +10248,11 @@
       "venue": "Busch Stadium",
       "probable_sp": "Nathan Eovaldi",
       "sp_hand": "R",
-      "proj_pts": -0.5,
-      "proj_low": -2.8,
-      "proj_high": 1.8,
-      "hist_mean": -0.53,
-      "composite_mult": 0.9173,
+      "proj_pts": -0.3,
+      "proj_low": -2.6,
+      "proj_high": 2.0,
+      "hist_mean": -0.31,
+      "composite_mult": 0.8877,
       "n_games": 17,
       "std_dev": 1.8,
       "interval_method": "normal_approx",
@@ -10262,13 +10264,13 @@
         -1.7,
         -1.7,
         -1.7,
-        -0.7,
         -0.5,
         0.0,
         0.0,
         0.0,
         0.6,
         0.8,
+        1.6,
         3.1,
         3.6,
         5.5
@@ -10281,11 +10283,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": -0.5,
+      "mc_median": 0.0,
       "mc_probs": {
         "6.0": 0.0,
-        "3.0": 11.9,
-        "0.0": 52.4
+        "3.0": 12.0,
+        "0.0": 47.3
       },
       "mc_n_sim": 10000,
       "mc_n_games": 17
@@ -10345,12 +10347,12 @@
   ],
   "lineup_mc": {
     "probs": {
-      "40.0": 8.5,
-      "30.0": 27.0,
-      "20.0": 57.7,
-      "0.0": 1.7
+      "40.0": 8.9,
+      "30.0": 27.7,
+      "20.0": 58.7,
+      "0.0": 1.4
     },
-    "median": 22.5,
+    "median": 22.7,
     "n_sim": 10000,
     "n_starters": 9
   }
