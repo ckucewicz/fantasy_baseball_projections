@@ -677,29 +677,32 @@ function renderCard(p) {
     const barColor  = confColor(conf.score || 0);
     const expanded  = renderExpanded(p);
     const hasExpand = expanded.trim().length > 0;
-    const chevron   = hasExpand ? `<span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>` : '';
-    return `<div class="card${hasExpand ? '' : ' no-expand'}" ${hasExpand ? 'onclick="toggle(this)"' : ''}>
-      <div class="card-main">
-        <div style="width:14px;height:14px;flex-shrink:0"></div>
-        <div class="conf-bar" style="background:${barColor}"></div>
-        <div class="rank">${p.rank || '—'}</div>
-        <div class="pinfo">
-          <div class="pname">${esc(p.name)}<span class="badge bwl">WL</span><span class="ppos">${(p.positions||[]).join(', ')} · ${esc(p.team||'')}</span></div>
-          <div class="pmeta">${renderMeta(p)}</div>
-          <div class="pstat">${renderStatLine(p.stat_line)}</div>
-        </div>
-        <div class="pright">
-          <span class="pts">${p.proj_pts !== null ? p.proj_pts.toFixed(1) : '—'}</span>
-          <span class="pts-lbl">proj pts</span>
-          ${(p.proj_low !== undefined && p.proj_high !== undefined)
-            ? `<span class="proj-range">${p.proj_low.toFixed(1)} – ${p.proj_high.toFixed(1)} <span style="opacity:0.6">50% CI</span></span>`
-            : ''}
-          ${p.interval_games ? `<span class="proj-range">${p.interval_games} games</span>` : ''}
-          ${chevron}
-        </div>
-      </div>
-      ${hasExpand ? `<div class="expanded">${expanded}</div>` : ''}
-    </div>`;
+    const chevron   = hasExpand ? '<span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>' : '';
+    const rangeHtml = (p.proj_low !== undefined && p.proj_high !== undefined)
+      ? '<span class="proj-range">' + p.proj_low.toFixed(1) + ' – ' + p.proj_high.toFixed(1) + ' <span style="opacity:0.6">50% CI</span></span>'
+      : '';
+    const gamesHtml = p.interval_games ? '<span class="proj-range">' + p.interval_games + ' games</span>' : '';
+    const expandHtml = hasExpand ? '<div class="expanded">' + expanded + '</div>' : '';
+    const cardClass = 'card' + (hasExpand ? '' : ' no-expand');
+    const clickAttr = hasExpand ? 'onclick="toggle(this)"' : '';
+    return '<div class="' + cardClass + '" ' + clickAttr + '>' +
+      '<div class="card-main">' +
+        '<div style="width:14px;height:14px;flex-shrink:0"></div>' +
+        '<div class="conf-bar" style="background:' + barColor + '"></div>' +
+        '<div class="rank">' + (p.rank || '—') + '</div>' +
+        '<div class="pinfo">' +
+          '<div class="pname">' + esc(p.name) + '<span class="badge bwl">WL</span><span class="ppos">' + (p.positions||[]).join(', ') + ' · ' + esc(p.team||'') + '</span></div>' +
+          '<div class="pmeta">' + renderMeta(p) + '</div>' +
+          '<div class="pstat">' + renderStatLine(p.stat_line) + '</div>' +
+        '</div>' +
+        '<div class="pright">' +
+          '<span class="pts">' + (p.proj_pts !== null ? p.proj_pts.toFixed(1) : '—') + '</span>' +
+          '<span class="pts-lbl">proj pts</span>' +
+          rangeHtml + gamesHtml + chevron +
+        '</div>' +
+      '</div>' +
+      expandHtml +
+    '</div>';
   }
   if (status === 'no_game' || p.proj_pts === null) {
     return `<div class="card dimmed no-expand"><div class="card-main">
@@ -1427,7 +1430,7 @@ function renderHistoricalTab(data) {
         <div class="conf-bar" style="background:${barColor}"></div>
         <div class="rank">${p.rank || '—'}</div>
         <div class="pinfo">
-          <div class="pname">${esc(p.name)}${isWatchlist ? '<span class="badge bwl">WL</span>' : ''} <span class="ppos">${(p.positions||[]).join('/')} · ${esc(p.team||''}</span></div>
+          <div class="pname">${esc(p.name)}${isWatchlist ? '<span class="badge bwl">WL</span>' : ''} <span class="ppos">${(p.positions||[]).join('/')} · ${esc(p.team||'')}</span></div>
           <div class="pmeta">${esc(p.probable_sp||'TBD')} · ${esc(p.venue||'')}</div>
           ${chanceBlock}
         </div>
