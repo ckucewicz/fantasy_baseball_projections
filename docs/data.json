@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T00:47:11",
+  "generated_at": "2026-06-02T00:53:46",
   "season": 2026,
   "player_count": 16,
   "projections": [
@@ -4168,7 +4168,7 @@
       "confidence": {
         "score": 66,
         "label": "medium",
-        "pa_score": 0.506,
+        "pa_score": 0.509,
         "ip_score": 0.729,
         "babip_score": 0.838
       },
@@ -4483,8 +4483,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.18,
-          "adj_str": "+2.2",
+          "adj": 2.15,
+          "adj_str": "+2.1",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -4499,19 +4499,19 @@
         },
         {
           "label": "Pitcher (Dustin May \u00b7 xFIP 4.06)",
-          "adj": -0.07,
-          "adj_str": "\u22120.1",
-          "cls": "fneg",
+          "adj": -0.04,
+          "adj_str": "\u22120.0",
+          "cls": "fneu",
           "mult": "H \u00d70.97 \u00b7 K \u00d70.97",
-          "pill": "suppressed"
+          "pill": "neutral"
         },
         {
           "label": "Park factor (Busch Stadium)",
-          "adj": -0.08,
+          "adj": -0.05,
           "adj_str": "\u22120.1",
           "cls": "fneg",
           "mult": "HR \u00d70.96 \u00b7 R \u00d70.97",
-          "pill": "suppressed"
+          "pill": "neutral"
         },
         {
           "label": "BABIP (0.347 curr \u00b7 0.314 career)",
@@ -5184,11 +5184,11 @@
       "sp_id": 663436,
       "proj_pts": 0.6,
       "confidence": {
-        "score": 67,
+        "score": 66,
         "label": "medium",
-        "pa_score": 0.397,
+        "pa_score": 0.4,
         "ip_score": 0.817,
-        "babip_score": 0.963
+        "babip_score": 0.925
       },
       "stat_line": {
         "h_ab": "0.8H / 3.7AB",
@@ -5303,10 +5303,10 @@
         -1.0,
         -0.9,
         -0.9,
+        -0.8,
         -0.7,
         -0.7,
         -0.7,
-        -0.5,
         -0.5,
         -0.5,
         -0.5,
@@ -5497,11 +5497,11 @@
           "pill": "neutral"
         },
         {
-          "label": "BABIP (0.308 curr \u00b7 0.331 career)",
-          "adj": 0.08,
+          "label": "BABIP (0.305 curr \u00b7 0.331 career)",
+          "adj": 0.09,
           "adj_str": "+0.1",
           "cls": "fpos",
-          "mult": "H \u00d71.01",
+          "mult": "H \u00d71.02",
           "pill": "unlucky"
         },
         {
@@ -6578,11 +6578,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 3.2,
+      "mc_median": 3.1,
       "mc_probs": {
-        "6.0": 31.8,
-        "3.0": 51.2,
-        "0.0": 19.0
+        "6.0": 31.4,
+        "3.0": 50.6,
+        "0.0": 19.2
       },
       "mc_n_sim": 10000,
       "mc_n_games": 369
@@ -6935,11 +6935,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 2.6,
+      "mc_median": 2.7,
       "mc_probs": {
-        "6.0": 23.7,
-        "3.0": 45.9,
-        "0.0": 26.0
+        "6.0": 24.3,
+        "3.0": 46.4,
+        "0.0": 25.2
       },
       "mc_n_sim": 10000,
       "mc_n_games": 317
@@ -7290,9 +7290,9 @@
       "model": "historical",
       "mc_median": 1.9,
       "mc_probs": {
-        "6.0": 20.2,
-        "3.0": 39.3,
-        "0.0": 20.8
+        "6.0": 20.7,
+        "3.0": 39.2,
+        "0.0": 21.5
       },
       "mc_n_sim": 10000,
       "mc_n_games": 314
@@ -7696,9 +7696,9 @@
       "model": "historical",
       "mc_median": 1.9,
       "mc_probs": {
-        "6.0": 21.8,
-        "3.0": 41.1,
-        "0.0": 28.8
+        "6.0": 22.3,
+        "3.0": 40.4,
+        "0.0": 29.3
       },
       "mc_n_sim": 10000,
       "mc_n_games": 367
@@ -7813,9 +7813,9 @@
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 23.2,
-        "3.0": 34.7,
-        "0.0": 32.8
+        "6.0": 23.5,
+        "3.0": 35.6,
+        "0.0": 32.1
       },
       "mc_n_sim": 10000,
       "mc_n_games": 77
@@ -8218,9 +8218,9 @@
       "model": "historical",
       "mc_median": 1.3,
       "mc_probs": {
-        "6.0": 17.9,
-        "3.0": 35.1,
-        "0.0": 34.5
+        "6.0": 17.5,
+        "3.0": 34.9,
+        "0.0": 34.3
       },
       "mc_n_sim": 10000,
       "mc_n_games": 366
@@ -8538,11 +8538,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 0.8,
+      "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 17.4,
-        "3.0": 29.0,
-        "0.0": 33.2
+        "6.0": 17.5,
+        "3.0": 30.0,
+        "0.0": 32.0
       },
       "mc_n_sim": 10000,
       "mc_n_games": 283
@@ -8679,8 +8679,8 @@
       "mc_median": 1.0,
       "mc_probs": {
         "6.0": 12.9,
-        "3.0": 31.3,
-        "0.0": 36.2
+        "3.0": 31.0,
+        "0.0": 36.3
       },
       "mc_n_sim": 10000,
       "mc_n_games": 99
@@ -8701,7 +8701,7 @@
       "proj_low": -3.0,
       "proj_high": 6.7,
       "hist_mean": 2.08,
-      "composite_mult": 0.7997,
+      "composite_mult": 0.8001,
       "n_games": 232,
       "std_dev": 3.92,
       "interval_method": "empirical",
@@ -8942,16 +8942,16 @@
       "confidence": {
         "score": 71,
         "label": "medium",
-        "pa_score": 0.506,
+        "pa_score": 0.509,
         "ip_score": 0.729,
         "babip_score": 1.0
       },
       "model": "historical",
       "mc_median": 0.8,
       "mc_probs": {
-        "6.0": 13.1,
-        "3.0": 27.0,
-        "0.0": 30.3
+        "6.0": 13.3,
+        "3.0": 27.4,
+        "0.0": 30.0
       },
       "mc_n_sim": 10000,
       "mc_n_games": 232
@@ -9247,9 +9247,9 @@
       "model": "historical",
       "mc_median": 0.9,
       "mc_probs": {
-        "6.0": 8.2,
-        "3.0": 24.7,
-        "0.0": 30.0
+        "6.0": 8.8,
+        "3.0": 25.6,
+        "0.0": 29.1
       },
       "mc_n_sim": 10000,
       "mc_n_games": 258
@@ -9580,8 +9580,8 @@
       "mc_median": 0.5,
       "mc_probs": {
         "6.0": 9.5,
-        "3.0": 23.2,
-        "0.0": 39.1
+        "3.0": 23.1,
+        "0.0": 38.6
       },
       "mc_n_sim": 10000,
       "mc_n_games": 293
@@ -9866,9 +9866,9 @@
       "model": "historical",
       "mc_median": 0.6,
       "mc_probs": {
-        "6.0": 6.1,
-        "3.0": 20.1,
-        "0.0": 32.9
+        "6.0": 5.4,
+        "3.0": 19.4,
+        "0.0": 32.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 246
@@ -9944,9 +9944,9 @@
       "model": "historical",
       "mc_median": 0.2,
       "mc_probs": {
-        "6.0": 7.6,
-        "3.0": 20.5,
-        "0.0": 48.8
+        "6.0": 7.8,
+        "3.0": 20.4,
+        "0.0": 48.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 39
@@ -9967,7 +9967,7 @@
       "proj_low": -2.5,
       "proj_high": 4.7,
       "hist_mean": 1.53,
-      "composite_mult": 0.7133,
+      "composite_mult": 0.7137,
       "n_games": 197,
       "std_dev": 2.79,
       "interval_method": "empirical",
@@ -10010,10 +10010,10 @@
         -1.0,
         -0.9,
         -0.9,
+        -0.8,
         -0.7,
         -0.7,
         -0.7,
-        -0.5,
         -0.5,
         -0.5,
         -0.5,
@@ -10173,16 +10173,16 @@
       "confidence": {
         "score": 68,
         "label": "medium",
-        "pa_score": 0.397,
+        "pa_score": 0.4,
         "ip_score": 0.817,
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 0.6,
+      "mc_median": 0.4,
       "mc_probs": {
-        "6.0": 1.8,
-        "3.0": 20.3,
-        "0.0": 27.9
+        "6.0": 1.3,
+        "3.0": 20.5,
+        "0.0": 29.3
       },
       "mc_n_sim": 10000,
       "mc_n_games": 197
@@ -10229,7 +10229,7 @@
       "mc_probs": {
         "6.0": 0.0,
         "3.0": 0.0,
-        "0.0": 38.1
+        "0.0": 38.7
       },
       "mc_n_sim": 10000,
       "mc_n_games": 8
@@ -10284,8 +10284,8 @@
       "mc_median": -0.5,
       "mc_probs": {
         "6.0": 0.0,
-        "3.0": 11.5,
-        "0.0": 52.8
+        "3.0": 11.9,
+        "0.0": 52.4
       },
       "mc_n_sim": 10000,
       "mc_n_games": 17
@@ -10345,12 +10345,12 @@
   ],
   "lineup_mc": {
     "probs": {
-      "40.0": 8.6,
-      "30.0": 27.1,
-      "20.0": 58.3,
-      "0.0": 1.6
+      "40.0": 8.5,
+      "30.0": 27.0,
+      "20.0": 57.7,
+      "0.0": 1.7
     },
-    "median": 22.4,
+    "median": 22.5,
     "n_sim": 10000,
     "n_starters": 9
   }
