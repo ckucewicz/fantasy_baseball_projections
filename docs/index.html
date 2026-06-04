@@ -108,7 +108,6 @@
   .bdtd { background: #FAEEDA; color: var(--amber); }
   .bil { background: #FCEBEB; color: var(--red); }
   .bno-game { background: #eee; color: #888; }
-  .bwl { background: #EDE9FE; color: #5B21B6; }
   .conf-pct-sm { font-size: 11px; font-weight: 500; text-align: right; }
   .proj-range { font-size: 10px; color: var(--color-text-tertiary); text-align: right; white-space: nowrap; margin-top: 1px; }
   .how-use-btn { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; background: var(--color-background-secondary); border-bottom: 0.5px solid var(--color-border-secondary); cursor: pointer; font-size: 12px; font-weight: 500; color: #185FA5; }
@@ -168,9 +167,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
   }
   .lineup-left { display: flex; flex-direction: column; gap: 2px; }
   .lineup-label { font-size: 11px; color: var(--text-3); }
@@ -259,7 +255,13 @@
   <div class="topbar">
     <div class="topbar-row">
       <span class="app-title">⚾ Bergwicz Deli Projections</span>
-      <span class="app-date" id="todayDate"></span>
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="app-date" id="todayDate"></span>
+        <a href="https://github.com/ckucewicz/fantasy_baseball_projections" target="_blank" rel="noopener" style="color:var(--text-3);display:flex;align-items:center;gap:4px;font-size:11px;text-decoration:none">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View repo
+        </a>
+      </span>
     </div>
     <div class="topbar-bottom">
       <span class="app-sub" id="appSub">Loading...</span>
@@ -675,35 +677,6 @@ function renderCard(p) {
       <div class="pright"><span class="pts" style="color:#bbb">—</span></div>
     </div></div>`;
   }
-  if (status === 'watchlist') {
-    const conf      = p.confidence || {};
-    const barColor  = confColor(conf.score || 0);
-    const expanded  = renderExpanded(p);
-    const hasExpand = expanded.trim().length > 0;
-    const chevron   = hasExpand ? `<span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>` : '';
-    return `<div class="card${hasExpand ? '' : ' no-expand'}" ${hasExpand ? 'onclick="toggle(this)"' : ''}>
-      <div class="card-main">
-        <div style="width:14px;height:14px;flex-shrink:0"></div>
-        <div class="conf-bar" style="background:${barColor}"></div>
-        <div class="rank">${p.rank || '—'}</div>
-        <div class="pinfo">
-          <div class="pname">${esc(p.name)}<span class="badge bwl">WL</span><span class="ppos">${(p.positions||[]).join(', ')} · ${esc(p.team||'')}</span></div>
-          <div class="pmeta">${renderMeta(p)}</div>
-          <div class="pstat">${renderStatLine(p.stat_line)}</div>
-        </div>
-        <div class="pright">
-          <span class="pts">${p.proj_pts !== null ? p.proj_pts.toFixed(1) : '—'}</span>
-          <span class="pts-lbl">proj pts</span>
-          ${(p.proj_low !== undefined && p.proj_high !== undefined)
-            ? `<span class="proj-range">${p.proj_low.toFixed(1)} – ${p.proj_high.toFixed(1)} <span style="opacity:0.6">50% CI</span></span>`
-            : ''}
-          ${p.interval_games ? `<span class="proj-range">${p.interval_games} games</span>` : ''}
-          ${chevron}
-        </div>
-      </div>
-      ${hasExpand ? `<div class="expanded">${expanded}</div>` : ''}
-    </div>`;
-  }
   if (status === 'no_game' || p.proj_pts === null) {
     return `<div class="card dimmed no-expand"><div class="card-main">
       <div class="conf-bar" style="background:#ccc"></div><div class="rank">—</div>
@@ -904,8 +877,7 @@ function populatePlayerSelect(log) {
 }
 
 function renderAccuracy() {
-  const allRows = filterLog(currentFilter).filter(r => r.actual_pts !== null && r.actual_pts !== undefined);
-  const rows = allRows.filter(r => !r.watchlist);
+  const rows = filterLog(currentFilter).filter(r => r.actual_pts !== null && r.actual_pts !== undefined);
 
   // ── Metrics ──
   if (rows.length === 0) {
@@ -954,7 +926,7 @@ function renderAccuracy() {
 
   // ── Trend chart — lineup total with shaded 50% CI band ──
   const byDate = {};
-  filterLog(currentFilter).filter(r => r.actual_pts !== null && !r.watchlist).forEach(r => {
+  filterLog(currentFilter).filter(r => r.actual_pts !== null).forEach(r => {
     if (!byDate[r.date]) byDate[r.date] = {proj:[], actual:[], low:[], high:[]};
     byDate[r.date].proj.push(r.proj_pts);
     byDate[r.date].actual.push(r.actual_pts);
@@ -1074,7 +1046,7 @@ function renderAccuracy() {
     playerTable.innerHTML = '<div class="no-data-msg">No accuracy data yet.<br>Check back after the first game day.</div>';
   } else {
     const byPlayer2 = {};
-    allRows.forEach(r => {
+    rows.forEach(r => {
       if (!byPlayer2[r.player]) byPlayer2[r.player] = {proj:[],actual:[]};
       byPlayer2[r.player].proj.push(r.proj_pts);
       byPlayer2[r.player].actual.push(r.actual_pts);
@@ -1103,7 +1075,7 @@ function renderAccuracy() {
   // ── Model comparison table ──
   populatePlayerSelect(logData);
 
-  const mcRows     = logData.filter(r => r.proj_pts_hist !== null && r.proj_pts_hist !== undefined && r.actual_pts !== null && !r.watchlist);
+  const mcRows     = logData.filter(r => r.proj_pts_hist !== null && r.proj_pts_hist !== undefined && r.actual_pts !== null);
   const rateErrors = rows.map(r => Math.abs(r.actual_pts - r.proj_pts));
   const mcErrors   = mcRows.map(r => Math.abs(r.actual_pts - r.proj_pts_hist));
 
@@ -1147,7 +1119,6 @@ function renderAccuracy() {
   const calibCard = document.getElementById('calibCard');
   const calibRows = logData.filter(r =>
     r.actual_pts !== null &&
-    !r.watchlist &&
     r.mc_probs && Object.keys(r.mc_probs).length > 0 &&
     r.mc_hit_6 !== null && r.mc_hit_6 !== undefined
   );
@@ -1339,7 +1310,7 @@ function renderHistoricalTab(data) {
   }
 
   // Compute optimal lineup for historical model
-  const histResult = computeOptimalLineup(projs.filter(p => p.status !== 'watchlist'));
+  const histResult = computeOptimalLineup(projs);
   if (histResult) {
     window._histStarterIds  = histResult.starterIds;
   window._histSelectedIds = new Set(histResult.starterIds);
@@ -1370,10 +1341,7 @@ function renderHistoricalTab(data) {
     const isStarter = window._histSelectedIds
       ? window._histSelectedIds.has(p.mlb_id)
       : (window._histStarterIds && window._histStarterIds.has(p.mlb_id));
-    const isWatchlist = p.status === 'watchlist';
-    const dot = isWatchlist
-      ? `<div style="width:14px;height:14px;flex-shrink:0"></div>`
-      : `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}"
+    const dot = `<div class="${isStarter ? 'starter-dot' : 'bench-dot'}"
       onclick="toggleHistPlayer(${p.mlb_id}, event)"
       role="checkbox" aria-checked="${isStarter}"
       aria-label="Toggle ${esc(p.name)} in Monte Carlo lineup"></div>`;
@@ -1430,7 +1398,7 @@ function renderHistoricalTab(data) {
         <div class="conf-bar" style="background:${barColor}"></div>
         <div class="rank">${p.rank || '—'}</div>
         <div class="pinfo">
-          <div class="pname">${esc(p.name)}${isWatchlist ? '<span class="badge bwl">WL</span>' : ''} <span class="ppos">${(p.positions||[]).join('/')} · ${esc(p.team||'')}</span></div>
+          <div class="pname">${esc(p.name)} <span class="ppos">${(p.positions||[]).join('/')} · ${esc(p.team||'')}</span></div>
           <div class="pmeta">${esc(p.probable_sp||'TBD')} · ${esc(p.venue||'')}</div>
           ${chanceBlock}
         </div>
@@ -1457,7 +1425,7 @@ function computeOptimalLineup(projections) {
   // Only active players with projections
   const active = projections.filter(p =>
     p.proj_pts !== null && p.proj_pts !== undefined &&
-    p.status === 'active'  // watchlist excluded
+    p.status === 'active'
   ).sort((a, b) => b.proj_pts - a.proj_pts);
 
   if (!active.length) return null;
