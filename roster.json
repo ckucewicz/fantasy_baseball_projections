@@ -75,7 +75,7 @@
         "RF",
         "DH"
       ],
-      "status": "active"
+      "status": "il10"
     },
     {
       "name": "Jimmy Crooks",
@@ -181,10 +181,10 @@
       "status": "watchlist"
     },
     {
-      "name": "Ramon Laureano",
-      "mlb_id": 657656,
-      "team": "SD",
-      "bats": "R",
+      "name": "Lars Nootbaar",
+      "mlb_id": 663457,
+      "team": "STL",
+      "bats": "L",
       "positions": [
         "LF, RF"
       ],
