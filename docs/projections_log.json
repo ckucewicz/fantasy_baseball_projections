@@ -1,5 +1,987 @@
 [
   {
+    "date": "2026-06-06",
+    "player": "Troy Johnston",
+    "mlb_id": 687859,
+    "team": "",
+    "position": "LF, RF, 1B",
+    "opponent": "MIL",
+    "venue": "Coors Field",
+    "probable_sp": "Jacob Misiorowski",
+    "sp_hand": "R",
+    "proj_pts": 2.2,
+    "proj_low": 0.1,
+    "proj_high": 4.3,
+    "interval_method": "empirical",
+    "interval_games": 103,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 53,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.68
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.47
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.05
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.24
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.0
+      }
+    ],
+    "watchlist": true,
+    "proj_pts_hist": 2.1,
+    "proj_low_hist": -2.4,
+    "proj_high_hist": 6.5,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 15.7,
+      "3.0": 34.7,
+      "0.0": 35.9
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Sal Stewart",
+    "mlb_id": 701398,
+    "team": "",
+    "position": "1B",
+    "opponent": "STL",
+    "venue": "Busch Stadium",
+    "probable_sp": "Matthew Liberatore",
+    "sp_hand": "L",
+    "proj_pts": 2.6,
+    "proj_low": -0.6,
+    "proj_high": 5.8,
+    "interval_method": "empirical",
+    "interval_games": 80,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 72,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 3.45
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.24
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.09
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.07
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -3.23
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.21
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.4,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 8.0,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 21.0,
+      "3.0": 36.0,
+      "0.0": 30.8
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Rikuu Nishida",
+    "mlb_id": 807747,
+    "team": "",
+    "position": "LF, RF, 2B",
+    "opponent": "PHI",
+    "venue": "Citizens Bank Park",
+    "probable_sp": "Andrew Painter",
+    "sp_hand": "R",
+    "proj_pts": 0.8,
+    "proj_low": -0.4,
+    "proj_high": 2.0,
+    "interval_method": "normal_approx",
+    "interval_games": 9,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 40,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 0.34
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.09
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.47
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.1
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.12
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.0
+      }
+    ],
+    "watchlist": true,
+    "proj_pts_hist": 0.4,
+    "proj_low_hist": -1.9,
+    "proj_high_hist": 2.7,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 0.0,
+      "3.0": 0.0,
+      "0.0": 33.2
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Michael Busch",
+    "mlb_id": 683737,
+    "team": "",
+    "position": "1B",
+    "opponent": "SF",
+    "venue": "Wrigley Field",
+    "probable_sp": "Landen Roupp",
+    "sp_hand": "R",
+    "proj_pts": 1.7,
+    "proj_low": -0.9,
+    "proj_high": 4.3,
+    "interval_method": "empirical",
+    "interval_games": 370,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 77,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.7
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.06
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.07
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -2.54
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.1,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 7.8,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 15.6,
+      "3.0": 33.0,
+      "0.0": 34.6
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Manny Machado",
+    "mlb_id": 592518,
+    "team": "",
+    "position": "3B",
+    "opponent": "NYM",
+    "venue": "Petco Park",
+    "probable_sp": "Nolan McLean",
+    "sp_hand": "R",
+    "proj_pts": 1.0,
+    "proj_low": -2.0,
+    "proj_high": 4.0,
+    "interval_method": "empirical",
+    "interval_games": 370,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 45,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.54
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.41
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.1
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.37
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.02
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.8
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.32
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.8,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 7.2,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 10.6,
+      "3.0": 29.8,
+      "0.0": 29.4
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Logan O'Hoppe",
+    "mlb_id": 681351,
+    "team": "",
+    "position": "C",
+    "opponent": "LAD",
+    "venue": "UNIQLO Field at Dodger Stadium",
+    "probable_sp": "Yoshinobu Yamamoto",
+    "sp_hand": "R",
+    "proj_pts": 1.0,
+    "proj_low": -1.4,
+    "proj_high": 3.4,
+    "interval_method": "empirical",
+    "interval_games": 295,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 55,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.81
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.4
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.03
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.12
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.0
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.36
+      }
+    ],
+    "watchlist": true,
+    "proj_pts_hist": 1.3,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 6.2,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 8.8,
+      "3.0": 23.1,
+      "0.0": 38.9
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Lars Nootbaar",
+    "mlb_id": 663457,
+    "team": "",
+    "position": "LF, RF",
+    "opponent": "CIN",
+    "venue": "Busch Stadium",
+    "probable_sp": "Nick Lodolo",
+    "sp_hand": "L",
+    "proj_pts": 2.3,
+    "proj_low": 0.4,
+    "proj_high": 4.2,
+    "interval_method": "empirical",
+    "interval_games": 245,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 6,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.2
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.12
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.01
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -2.43
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.0
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.8,
+    "proj_low_hist": -2.5,
+    "proj_high_hist": 6.2,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 11.6,
+      "3.0": 26.4,
+      "0.0": 27.5
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Ketel Marte",
+    "mlb_id": 606466,
+    "team": "",
+    "position": "2B",
+    "opponent": "WSH",
+    "venue": "Chase Field",
+    "probable_sp": "Zack Littell",
+    "sp_hand": "R",
+    "proj_pts": 2.1,
+    "proj_low": -0.7,
+    "proj_high": 4.9,
+    "interval_method": "empirical",
+    "interval_games": 320,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 64,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.76
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.23
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.14
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.16
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.05
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -5.66
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": -0.5
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 3.2,
+    "proj_low_hist": -2.5,
+    "proj_high_hist": 8.8,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 20.9,
+      "3.0": 43.9,
+      "0.0": 24.7
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Josh Jung",
+    "mlb_id": 673962,
+    "team": "",
+    "position": "3B",
+    "opponent": "CLE",
+    "venue": "Globe Life Field",
+    "probable_sp": "Tanner Bibee",
+    "sp_hand": "R",
+    "proj_pts": 1.1,
+    "proj_low": -1.2,
+    "proj_high": 3.5,
+    "interval_method": "empirical",
+    "interval_games": 235,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 73,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.14
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.08
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.93
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.8,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 6.8,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 12.9,
+      "3.0": 29.1,
+      "0.0": 30.6
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Jimmy Crooks",
+    "mlb_id": 699625,
+    "team": "",
+    "position": "C",
+    "opponent": "CIN",
+    "venue": "Busch Stadium",
+    "probable_sp": "Nick Lodolo",
+    "sp_hand": "L",
+    "proj_pts": 0.3,
+    "proj_low": -0.9,
+    "proj_high": 1.5,
+    "interval_method": "normal_approx",
+    "interval_games": 19,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 6,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 0.19
+      },
+      {
+        "factor": "platoon",
+        "adjustment": -0.11
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.19
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.09
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.65
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.0
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 0.6,
+    "proj_low_hist": -1.8,
+    "proj_high_hist": 2.9,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 0.0,
+      "3.0": 20.8,
+      "0.0": 41.5
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Jake McCarthy",
+    "mlb_id": 664983,
+    "team": "",
+    "position": "CF",
+    "opponent": "MIL",
+    "venue": "Coors Field",
+    "probable_sp": "Jacob Misiorowski",
+    "sp_hand": "R",
+    "proj_pts": 1.8,
+    "proj_low": -0.1,
+    "proj_high": 3.8,
+    "interval_method": "empirical",
+    "interval_games": 262,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 65,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.12
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.41
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.12
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.09
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.03
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.8,
+    "proj_low_hist": -2.4,
+    "proj_high_hist": 6.0,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 10.7,
+      "3.0": 28.7,
+      "0.0": 29.0
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Geraldo Perdomo",
+    "mlb_id": 672695,
+    "team": "",
+    "position": "SS",
+    "opponent": "WSH",
+    "venue": "Chase Field",
+    "probable_sp": "Zack Littell",
+    "sp_hand": "R",
+    "proj_pts": 1.4,
+    "proj_low": -1.1,
+    "proj_high": 3.9,
+    "interval_method": "empirical",
+    "interval_games": 318,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 64,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.2
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.23
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.09
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.16
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.01
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.78
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.5,
+    "proj_low_hist": -2.2,
+    "proj_high_hist": 7.1,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 16.2,
+      "3.0": 35.7,
+      "0.0": 21.0
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Drew Romo",
+    "mlb_id": 691011,
+    "team": "",
+    "position": "C",
+    "opponent": "PHI",
+    "venue": "Citizens Bank Park",
+    "probable_sp": "Andrew Painter",
+    "sp_hand": "R",
+    "proj_pts": 1.7,
+    "proj_low": -0.2,
+    "proj_high": 3.5,
+    "interval_method": "empirical",
+    "interval_games": 41,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 19,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.27
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.36
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.13
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.29
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.02
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.3,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 5.7,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 9.5,
+      "3.0": 24.5,
+      "0.0": 46.5
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Brooks Lee",
+    "mlb_id": 686797,
+    "team": "",
+    "position": "SS",
+    "opponent": "KC",
+    "venue": "Target Field",
+    "probable_sp": "Luinder Avila",
+    "sp_hand": "R",
+    "proj_pts": 2.4,
+    "proj_low": -0.0,
+    "proj_high": 4.8,
+    "interval_method": "empirical",
+    "interval_games": 249,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 58,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.8
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.31
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.07
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.04
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 1.71
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.43
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.6,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 6.1,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 11.2,
+      "3.0": 27.3,
+      "0.0": 34.2
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-06-06",
+    "player": "Austin Martin",
+    "mlb_id": 668885,
+    "team": "",
+    "position": "LF, RF",
+    "opponent": "KC",
+    "venue": "Target Field",
+    "probable_sp": "Luinder Avila",
+    "sp_hand": "R",
+    "proj_pts": 0.6,
+    "proj_low": -1.1,
+    "proj_high": 2.2,
+    "interval_method": "empirical",
+    "interval_games": 200,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 50,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 1.83
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.27
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.01
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.12
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.41
+      }
+    ],
+    "watchlist": true,
+    "proj_pts_hist": 1.1,
+    "proj_low_hist": -2.5,
+    "proj_high_hist": 4.6,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 1.5,
+      "3.0": 18.5,
+      "0.0": 28.1
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
     "date": "2026-06-05",
     "player": "Troy Johnston",
     "mlb_id": 687859,
@@ -14,9 +996,9 @@
     "proj_high": 4.7,
     "interval_method": "empirical",
     "interval_games": 102,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.5,
+    "diff": -3.0,
+    "in_range": false,
     "confidence": 45,
     "confidence_label": "low",
     "did_not_play": false,
@@ -54,16 +1036,17 @@
     "proj_pts_hist": 2.4,
     "proj_low_hist": -2.0,
     "proj_high_hist": 6.9,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 15.7,
       "3.0": 40.4,
       "0.0": 35.4
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -2.9
   },
   {
     "date": "2026-06-05",
@@ -80,9 +1063,9 @@
     "proj_high": 5.2,
     "interval_method": "empirical",
     "interval_games": 79,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 3.9,
+    "diff": 1.9,
+    "in_range": true,
     "confidence": 71,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -124,16 +1107,17 @@
     "proj_pts_hist": 2.5,
     "proj_low_hist": -3.0,
     "proj_high_hist": 8.2,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 23.1,
       "3.0": 34.7,
       "0.0": 31.1
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 1.4
   },
   {
     "date": "2026-06-05",
@@ -155,7 +1139,7 @@
     "in_range": null,
     "confidence": 45,
     "confidence_label": "low",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
@@ -217,7 +1201,7 @@
     "in_range": null,
     "confidence": 49,
     "confidence_label": "low",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
@@ -278,9 +1262,9 @@
     "proj_high": 3.8,
     "interval_method": "empirical",
     "interval_games": 369,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.4,
+    "diff": -1.6,
+    "in_range": true,
     "confidence": 75,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -322,16 +1306,17 @@
     "proj_pts_hist": 2.2,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.9,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 16.3,
       "3.0": 34.1,
       "0.0": 33.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -2.6
   },
   {
     "date": "2026-06-05",
@@ -348,9 +1333,9 @@
     "proj_high": 4.3,
     "interval_method": "empirical",
     "interval_games": 370,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.0,
+    "diff": -1.4,
+    "in_range": true,
     "confidence": 32,
     "confidence_label": "low",
     "did_not_play": false,
@@ -392,16 +1377,17 @@
     "proj_pts_hist": 2.0,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.3,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 14.0,
       "3.0": 32.9,
       "0.0": 29.1
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -2.0
   },
   {
     "date": "2026-06-05",
@@ -418,9 +1404,9 @@
     "proj_high": 3.5,
     "interval_method": "empirical",
     "interval_games": 295,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.0,
+    "diff": -1.1,
+    "in_range": true,
     "confidence": 48,
     "confidence_label": "low",
     "did_not_play": false,
@@ -458,16 +1444,17 @@
     "proj_pts_hist": 1.4,
     "proj_low_hist": -3.0,
     "proj_high_hist": 6.3,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 9.8,
       "3.0": 24.6,
       "0.0": 39.1
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -1.4
   },
   {
     "date": "2026-06-05",
@@ -484,9 +1471,9 @@
     "proj_high": 5.1,
     "interval_method": "empirical",
     "interval_games": 320,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.0,
+    "diff": -2.3,
+    "in_range": true,
     "confidence": 67,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -528,16 +1515,17 @@
     "proj_pts_hist": 3.0,
     "proj_low_hist": -2.6,
     "proj_high_hist": 8.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 21.1,
       "3.0": 42.9,
       "0.0": 25.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -3.0
   },
   {
     "date": "2026-06-05",
@@ -554,9 +1542,9 @@
     "proj_high": 3.5,
     "interval_method": "empirical",
     "interval_games": 234,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.5,
+    "diff": -1.7,
+    "in_range": true,
     "confidence": 72,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -598,16 +1586,17 @@
     "proj_pts_hist": 1.6,
     "proj_low_hist": -3.0,
     "proj_high_hist": 6.6,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 13.4,
       "3.0": 26.2,
       "0.0": 31.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -2.1
   },
   {
     "date": "2026-06-05",
@@ -624,9 +1613,9 @@
     "proj_high": 1.3,
     "interval_method": "normal_approx",
     "interval_games": 18,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.7,
+    "diff": -0.8,
+    "in_range": true,
     "confidence": 15,
     "confidence_label": "low",
     "did_not_play": false,
@@ -660,16 +1649,17 @@
     "proj_pts_hist": -0.1,
     "proj_low_hist": -2.4,
     "proj_high_hist": 2.2,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 0.0,
       "3.0": 22.3,
       "0.0": 44.0
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -0.6
   },
   {
     "date": "2026-06-05",
@@ -686,9 +1676,9 @@
     "proj_high": 3.5,
     "interval_method": "empirical",
     "interval_games": 261,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 5.5,
+    "diff": 3.9,
+    "in_range": false,
     "confidence": 59,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -726,16 +1716,17 @@
     "proj_pts_hist": 2.0,
     "proj_low_hist": -2.2,
     "proj_high_hist": 6.2,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 13.7,
       "3.0": 32.5,
       "0.0": 29.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 3.5
   },
   {
     "date": "2026-06-05",
@@ -752,9 +1743,9 @@
     "proj_high": 3.8,
     "interval_method": "empirical",
     "interval_games": 318,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.0,
+    "diff": -1.3,
+    "in_range": true,
     "confidence": 66,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -792,16 +1783,17 @@
     "proj_pts_hist": 2.4,
     "proj_low_hist": -2.3,
     "proj_high_hist": 7.0,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 13.8,
       "3.0": 35.9,
       "0.0": 20.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -2.4
   },
   {
     "date": "2026-06-05",
@@ -823,7 +1815,7 @@
     "in_range": null,
     "confidence": 24,
     "confidence_label": "low",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
@@ -880,9 +1872,9 @@
     "proj_high": 4.8,
     "interval_method": "empirical",
     "interval_games": 249,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.0,
+    "diff": -2.4,
+    "in_range": true,
     "confidence": 76,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -924,16 +1916,17 @@
     "proj_pts_hist": 1.6,
     "proj_low_hist": -2.9,
     "proj_high_hist": 6.2,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 14.0,
       "3.0": 28.6,
       "0.0": 33.1
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -1.6
   },
   {
     "date": "2026-06-05",
@@ -950,9 +1943,9 @@
     "proj_high": 2.4,
     "interval_method": "empirical",
     "interval_games": 200,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.0,
+    "diff": -0.7,
+    "in_range": true,
     "confidence": 67,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -990,16 +1983,17 @@
     "proj_pts_hist": 1.2,
     "proj_low_hist": -2.4,
     "proj_high_hist": 4.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 3.6,
       "3.0": 21.4,
       "0.0": 28.3
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -1.2
   },
   {
     "date": "2026-06-05",
@@ -1021,7 +2015,7 @@
     "in_range": null,
     "confidence": 60,
     "confidence_label": "medium",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
