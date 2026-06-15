@@ -78,10 +78,10 @@
       "status": "il10"
     },
     {
-      "name": "Jimmy Crooks",
-      "mlb_id": 699625,
-      "team": "STL",
-      "bats": "L",
+      "name": "Alejandro Kirk",
+      "mlb_id": 672386,
+      "team": "TOR",
+      "bats": "R",
       "positions": [
         "C"
       ],
@@ -120,22 +120,22 @@
       "status": "active"
     },
     {
-      "name": "Jett Williams",
-      "mlb_id": 702284,
-      "team": "MIL",
+      "name": "Kody Clemens",
+      "mlb_id": 665019,
+      "team": "MIN",
       "bats": "L",
       "positions": [
-        "SS, 3B, CF"
+        "1B, 2B, LF"
       ],
-      "status": "minors"
+      "status": "active"
     },
     {
-      "name": "Drew Romo",
-      "mlb_id": 691011,
-      "team": "CWS",
-      "bats": "S",
+      "name": "Spencer Jones",
+      "mlb_id": 682987,
+      "team": "NYY",
+      "bats": "L",
       "positions": [
-        "C"
+        "CF"
       ],
       "status": "active"
     },
@@ -151,36 +151,6 @@
       "status": "il10"
     },
     {
-      "name": "Troy Johnston",
-      "mlb_id": 687859,
-      "team": "COL",
-      "bats": "L",
-      "positions": [
-        "LF, RF, 1B"
-      ],
-      "status": "watchlist"
-    },
-    {
-      "name": "Austin Martin",
-      "mlb_id": 668885,
-      "team": "MIN",
-      "bats": "R",
-      "positions": [
-        "LF, RF"
-      ],
-      "status": "watchlist"
-    },
-    {
-      "name": "Logan O'Hoppe",
-      "mlb_id": 681351,
-      "team": "LAA",
-      "bats": "R",
-      "positions": [
-        "C"
-      ],
-      "status": "watchlist"
-    },
-    {
       "name": "Lars Nootbaar",
       "mlb_id": 663457,
       "team": "STL",
@@ -189,16 +159,6 @@
         "LF, RF"
       ],
       "status": "active"
-    },
-    {
-      "name": "Rikuu Nishida",
-      "mlb_id": 807747,
-      "team": "CWS",
-      "bats": "L",
-      "positions": [
-        "LF, RF, 2B"
-      ],
-      "status": "watchlist"
     },
     {
       "name": "Jake McCarthy",
