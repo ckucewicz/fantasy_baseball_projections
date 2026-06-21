@@ -10,7 +10,7 @@
         "C",
         "DH"
       ],
-      "status": "il10"
+      "status": "active"
     },
     {
       "name": "Sal Stewart",
@@ -108,14 +108,12 @@
       "status": "active"
     },
     {
-      "name": "Brooks Lee",
-      "mlb_id": 686797,
-      "team": "MIN",
-      "bats": "S",
+      "name": "J.P. Crawford",
+      "mlb_id": 641487,
+      "team": "SEA",
+      "bats": "L",
       "positions": [
-        "SS",
-        "2B",
-        "3B"
+        "SS"
       ],
       "status": "active"
     },
