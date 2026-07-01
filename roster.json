@@ -64,7 +64,7 @@
         "LF",
         "RF"
       ],
-      "status": "il10"
+      "status": "active"
     },
     {
       "name": "Aaron Judge",
@@ -128,12 +128,12 @@
       "status": "active"
     },
     {
-      "name": "Spencer Jones",
-      "mlb_id": 682987,
-      "team": "NYY",
-      "bats": "L",
+      "name": "Esmerlyn Valdez",
+      "mlb_id": 699013,
+      "team": "PIT",
+      "bats": "R",
       "positions": [
-        "CF"
+        "RF, DH"
       ],
       "status": "active"
     },
