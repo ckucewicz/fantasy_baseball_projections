@@ -2633,9 +2633,9 @@ def project_player_historical(player, matchup, batter_season, batter_career,
             "model":      "historical",
         }
 
-    sp_name    = matchup.get("probable_pitcher", {}).get("name", "TBD")
-    sp_id      = matchup.get("probable_pitcher", {}).get("id")
-    sp_hand    = matchup.get("probable_pitcher", {}).get("hand", "R")
+    sp_name    = ( matchup.get("probable_pitcher") or {}).get("name", "TBD")
+    sp_id      = (matchup.get("probable_pitcher") or {}).get("id")
+    sp_hand    = (matchup.get("probable_pitcher") or {}).get("hand", "R")
     opponent   = matchup.get("opponent", "")
     venue      = matchup.get("venue", "")
     venue_id   = matchup.get("venue_id")
