@@ -14,9 +14,9 @@
     "proj_high": 5.5,
     "interval_method": "empirical",
     "interval_games": 112,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 3.5,
+    "diff": 1.2,
+    "in_range": true,
     "confidence": 83,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -54,16 +54,17 @@
     "proj_pts_hist": 2.6,
     "proj_low_hist": -3.0,
     "proj_high_hist": 8.3,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 22.9,
       "3.0": 34.3,
       "0.0": 30.6
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 0.9
   },
   {
     "date": "2026-07-12",
@@ -80,9 +81,9 @@
     "proj_high": 3.2,
     "interval_method": "empirical",
     "interval_games": 320,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -2.4,
+    "diff": -3.2,
+    "in_range": false,
     "confidence": 67,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -120,16 +121,17 @@
     "proj_pts_hist": 1.4,
     "proj_low_hist": -3.0,
     "proj_high_hist": 6.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 7.5,
       "3.0": 22.0,
       "0.0": 35.6
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -3.8
   },
   {
     "date": "2026-07-12",
@@ -146,9 +148,9 @@
     "proj_high": 3.9,
     "interval_method": "empirical",
     "interval_games": 401,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 5.8,
+    "diff": 4.7,
+    "in_range": false,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -186,16 +188,17 @@
     "proj_pts_hist": 2.2,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.8,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 16.9,
       "3.0": 34.2,
       "0.0": 33.3
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 3.6
   },
   {
     "date": "2026-07-12",
@@ -212,9 +215,9 @@
     "proj_high": 4.4,
     "interval_method": "empirical",
     "interval_games": 403,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 6.8,
+    "diff": 5.4,
+    "in_range": false,
     "confidence": 70,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -256,16 +259,17 @@
     "proj_pts_hist": 2.0,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.4,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 14.3,
       "3.0": 32.6,
       "0.0": 29.2
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": true,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 4.8
   },
   {
     "date": "2026-07-12",
@@ -282,9 +286,9 @@
     "proj_high": 4.7,
     "interval_method": "empirical",
     "interval_games": 275,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 2.0,
+    "diff": -0.7,
+    "in_range": true,
     "confidence": 43,
     "confidence_label": "low",
     "did_not_play": false,
@@ -318,16 +322,17 @@
     "proj_pts_hist": 2.1,
     "proj_low_hist": -2.3,
     "proj_high_hist": 6.5,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 13.9,
       "3.0": 33.5,
       "0.0": 27.6
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -0.1
   },
   {
     "date": "2026-07-12",
@@ -344,9 +349,9 @@
     "proj_high": 3.5,
     "interval_method": "empirical",
     "interval_games": 244,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -2.4,
+    "diff": -3.7,
+    "in_range": false,
     "confidence": 83,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -384,16 +389,17 @@
     "proj_pts_hist": 1.5,
     "proj_low_hist": -3.0,
     "proj_high_hist": 6.6,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 11.3,
       "3.0": 25.6,
       "0.0": 38.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -3.9
   },
   {
     "date": "2026-07-12",
@@ -410,9 +416,9 @@
     "proj_high": 4.5,
     "interval_method": "empirical",
     "interval_games": 353,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -2.4,
+    "diff": -4.2,
+    "in_range": false,
     "confidence": 89,
     "confidence_label": "high",
     "did_not_play": false,
@@ -458,16 +464,17 @@
     "proj_pts_hist": 2.8,
     "proj_low_hist": -2.8,
     "proj_high_hist": 8.4,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 19.4,
       "3.0": 42.4,
       "0.0": 24.2
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -5.2
   },
   {
     "date": "2026-07-12",
@@ -484,9 +491,9 @@
     "proj_high": 3.9,
     "interval_method": "empirical",
     "interval_games": 263,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 10.0,
+    "diff": 8.4,
+    "in_range": false,
     "confidence": 68,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -524,16 +531,17 @@
     "proj_pts_hist": 2.0,
     "proj_low_hist": -2.9,
     "proj_high_hist": 7.0,
-    "in_range_hist": null,
+    "in_range_hist": false,
     "mc_probs": {
       "6.0": 15.0,
       "3.0": 32.2,
       "0.0": 30.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": true,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 8.0
   },
   {
     "date": "2026-07-12",
@@ -550,9 +558,9 @@
     "proj_high": 2.8,
     "interval_method": "empirical",
     "interval_games": 291,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 9.4,
+    "diff": 8.6,
+    "in_range": false,
     "confidence": 74,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -594,16 +602,17 @@
     "proj_pts_hist": 1.3,
     "proj_low_hist": -3.0,
     "proj_high_hist": 5.8,
-    "in_range_hist": null,
+    "in_range_hist": false,
     "mc_probs": {
       "6.0": 4.8,
       "3.0": 17.2,
       "0.0": 26.8
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": true,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 8.1
   },
   {
     "date": "2026-07-12",
@@ -620,9 +629,9 @@
     "proj_high": 4.3,
     "interval_method": "empirical",
     "interval_games": 350,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.0,
+    "diff": -1.9,
+    "in_range": true,
     "confidence": 93,
     "confidence_label": "high",
     "did_not_play": false,
@@ -660,16 +669,17 @@
     "proj_pts_hist": 2.4,
     "proj_low_hist": -2.2,
     "proj_high_hist": 7.0,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 14.4,
       "3.0": 35.3,
       "0.0": 20.4
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -2.4
   },
   {
     "date": "2026-07-12",
@@ -686,9 +696,9 @@
     "proj_high": 8.4,
     "interval_method": "empirical",
     "interval_games": 27,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 3.5,
+    "diff": -0.9,
+    "in_range": true,
     "confidence": 18,
     "confidence_label": "low",
     "did_not_play": false,
@@ -722,16 +732,17 @@
     "proj_pts_hist": 3.4,
     "proj_low_hist": -3.0,
     "proj_high_hist": 10.4,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 32.5,
       "3.0": 51.2,
       "0.0": 37.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 0.1
   },
   {
     "date": "2026-07-12",
@@ -748,9 +759,9 @@
     "proj_high": 6.0,
     "interval_method": "empirical",
     "interval_games": 376,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 1.9,
+    "diff": -1.2,
+    "in_range": true,
     "confidence": 71,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -788,16 +799,17 @@
     "proj_pts_hist": 2.9,
     "proj_low_hist": -2.9,
     "proj_high_hist": 8.8,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 22.5,
       "3.0": 40.5,
       "0.0": 31.0
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -1.0
   },
   {
     "date": "2026-07-12",
@@ -814,9 +826,9 @@
     "proj_high": 4.8,
     "interval_method": "empirical",
     "interval_games": 258,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 1.5,
+    "diff": -1.2,
+    "in_range": true,
     "confidence": 22,
     "confidence_label": "low",
     "did_not_play": false,
@@ -850,16 +862,17 @@
     "proj_pts_hist": 2.0,
     "proj_low_hist": -2.7,
     "proj_high_hist": 6.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 14.8,
       "3.0": 33.7,
       "0.0": 30.8
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -0.5
   },
   {
     "date": "2026-07-11",
