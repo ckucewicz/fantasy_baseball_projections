@@ -1,5 +1,397 @@
 [
   {
+    "date": "2026-07-23",
+    "player": "Manny Machado",
+    "mlb_id": 592518,
+    "team": "",
+    "position": "3B",
+    "opponent": "ATL",
+    "venue": "Truist Park",
+    "probable_sp": "Chris Sale",
+    "sp_hand": "L",
+    "proj_pts": 1.4,
+    "proj_low": -1.6,
+    "proj_high": 4.4,
+    "interval_method": "empirical",
+    "interval_games": 410,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 72,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.87
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.46
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.05
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.29
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.08
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.57
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.0,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 7.5,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 14.7,
+      "3.0": 33.4,
+      "0.0": 28.7
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-07-23",
+    "player": "Lars Nootbaar",
+    "mlb_id": 663457,
+    "team": "",
+    "position": "LF, RF",
+    "opponent": "AZ",
+    "venue": "Busch Stadium",
+    "probable_sp": "Brandon Pfaadt",
+    "sp_hand": "R",
+    "proj_pts": 2.7,
+    "proj_low": 0.8,
+    "proj_high": 4.6,
+    "interval_method": "empirical",
+    "interval_games": 281,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 55,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.51
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.2
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.01
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.1
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.01
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.1,
+    "proj_low_hist": -2.2,
+    "proj_high_hist": 6.5,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 13.9,
+      "3.0": 33.8,
+      "0.0": 28.2
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-07-23",
+    "player": "Kody Clemens",
+    "mlb_id": 665019,
+    "team": "",
+    "position": "1B, 2B, LF",
+    "opponent": "CLE",
+    "venue": "Progressive Field",
+    "probable_sp": "Gavin Williams",
+    "sp_hand": "R",
+    "proj_pts": 1.5,
+    "proj_low": -0.8,
+    "proj_high": 3.8,
+    "interval_method": "empirical",
+    "interval_games": 251,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 88,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.15
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.15
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.1
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.11
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.42
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.6,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 6.7,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 11.4,
+      "3.0": 26.6,
+      "0.0": 39.2
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-07-23",
+    "player": "Ketel Marte",
+    "mlb_id": 606466,
+    "team": "",
+    "position": "2B",
+    "opponent": "STL",
+    "venue": "Busch Stadium",
+    "probable_sp": "Michael McGreevy",
+    "sp_hand": "R",
+    "proj_pts": 1.2,
+    "proj_low": -1.6,
+    "proj_high": 4.0,
+    "interval_method": "empirical",
+    "interval_games": 360,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 90,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.69
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.46
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.15
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.06
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -2.43
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": -0.45
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.3,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 7.9,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 11.8,
+      "3.0": 33.9,
+      "0.0": 25.3
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-07-23",
+    "player": "Geraldo Perdomo",
+    "mlb_id": 672695,
+    "team": "",
+    "position": "SS",
+    "opponent": "STL",
+    "venue": "Busch Stadium",
+    "probable_sp": "Michael McGreevy",
+    "sp_hand": "R",
+    "proj_pts": 1.4,
+    "proj_low": -0.9,
+    "proj_high": 3.7,
+    "interval_method": "empirical",
+    "interval_games": 357,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 92,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.38
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.4
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.01
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.14
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.01
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.65
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.0,
+    "proj_low_hist": -2.7,
+    "proj_high_hist": 6.6,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 9.7,
+      "3.0": 29.5,
+      "0.0": 20.6
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-07-23",
+    "player": "Alejandro Kirk",
+    "mlb_id": 672386,
+    "team": "",
+    "position": "C",
+    "opponent": "TB",
+    "venue": "Rogers Centre",
+    "probable_sp": "Ian Seymour",
+    "sp_hand": "L",
+    "proj_pts": 2.4,
+    "proj_low": 0.2,
+    "proj_high": 4.5,
+    "interval_method": "empirical",
+    "interval_games": 264,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 38,
+    "confidence_label": "low",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.42
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.03
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.26
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.03
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.1,
+    "proj_low_hist": -2.6,
+    "proj_high_hist": 6.8,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 15.2,
+      "3.0": 34.3,
+      "0.0": 29.8
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
     "date": "2026-07-22",
     "player": "Sal Stewart",
     "mlb_id": 701398,
@@ -14,9 +406,9 @@
     "proj_high": 4.4,
     "interval_method": "empirical",
     "interval_games": 118,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 6.3,
+    "diff": 5.0,
+    "in_range": false,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -58,16 +450,17 @@
     "proj_pts_hist": 2.0,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 14.3,
       "3.0": 31.9,
       "0.0": 31.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": true,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 4.3
   },
   {
     "date": "2026-07-22",
@@ -84,9 +477,9 @@
     "proj_high": 4.5,
     "interval_method": "empirical",
     "interval_games": 325,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.8,
+    "diff": -1.3,
+    "in_range": true,
     "confidence": 79,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -124,16 +517,17 @@
     "proj_pts_hist": 2.4,
     "proj_low_hist": -2.9,
     "proj_high_hist": 7.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 19.9,
       "3.0": 32.7,
       "0.0": 35.6
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -1.6
   },
   {
     "date": "2026-07-22",
@@ -150,9 +544,9 @@
     "proj_high": 4.5,
     "interval_method": "empirical",
     "interval_games": 407,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.1,
+    "diff": -1.5,
+    "in_range": true,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -190,16 +584,17 @@
     "proj_pts_hist": 2.1,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 15.1,
       "3.0": 32.8,
       "0.0": 32.9
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -2.0
   },
   {
     "date": "2026-07-22",
@@ -216,9 +611,9 @@
     "proj_high": 4.8,
     "interval_method": "empirical",
     "interval_games": 409,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.9,
+    "diff": -2.7,
+    "in_range": true,
     "confidence": 72,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -256,16 +651,17 @@
     "proj_pts_hist": 2.2,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.6,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 16.0,
       "3.0": 35.7,
       "0.0": 28.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -3.1
   },
   {
     "date": "2026-07-22",
@@ -287,7 +683,7 @@
     "in_range": null,
     "confidence": 62,
     "confidence_label": "medium",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
@@ -344,9 +740,9 @@
     "proj_high": 4.0,
     "interval_method": "empirical",
     "interval_games": 250,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.9,
+    "diff": -0.8,
+    "in_range": true,
     "confidence": 88,
     "confidence_label": "high",
     "did_not_play": false,
@@ -384,16 +780,17 @@
     "proj_pts_hist": 1.7,
     "proj_low_hist": -3.0,
     "proj_high_hist": 6.8,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 12.3,
       "3.0": 27.8,
       "0.0": 39.3
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -0.8
   },
   {
     "date": "2026-07-22",
@@ -410,9 +807,9 @@
     "proj_high": 4.9,
     "interval_method": "empirical",
     "interval_games": 359,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 4.6,
+    "diff": 2.5,
+    "in_range": true,
     "confidence": 79,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -458,16 +855,17 @@
     "proj_pts_hist": 2.9,
     "proj_low_hist": -2.7,
     "proj_high_hist": 8.4,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 19.4,
       "3.0": 42.5,
       "0.0": 25.4
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 1.7
   },
   {
     "date": "2026-07-22",
@@ -489,7 +887,7 @@
     "in_range": null,
     "confidence": 95,
     "confidence_label": "high",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
@@ -550,9 +948,9 @@
     "proj_high": 3.6,
     "interval_method": "empirical",
     "interval_games": 297,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.9,
+    "diff": -0.8,
+    "in_range": true,
     "confidence": 84,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -594,16 +992,17 @@
     "proj_pts_hist": 2.2,
     "proj_low_hist": -2.2,
     "proj_high_hist": 6.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 14.2,
       "3.0": 35.5,
       "0.0": 27.3
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -1.3
   },
   {
     "date": "2026-07-22",
@@ -620,9 +1019,9 @@
     "proj_high": 4.1,
     "interval_method": "empirical",
     "interval_games": 356,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -1.2,
+    "diff": -2.9,
+    "in_range": false,
     "confidence": 84,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -660,16 +1059,17 @@
     "proj_pts_hist": 2.5,
     "proj_low_hist": -2.2,
     "proj_high_hist": 7.1,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 15.8,
       "3.0": 34.8,
       "0.0": 20.3
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -3.7
   },
   {
     "date": "2026-07-22",
@@ -686,9 +1086,9 @@
     "proj_high": 8.4,
     "interval_method": "empirical",
     "interval_games": 32,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -1.1,
+    "diff": -5.6,
+    "in_range": false,
     "confidence": 28,
     "confidence_label": "low",
     "did_not_play": false,
@@ -726,16 +1126,17 @@
     "proj_pts_hist": 3.4,
     "proj_low_hist": -3.0,
     "proj_high_hist": 10.1,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 28.4,
       "3.0": 54.0,
       "0.0": 30.8
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -4.5
   },
   {
     "date": "2026-07-22",
@@ -752,9 +1153,9 @@
     "proj_high": 6.3,
     "interval_method": "empirical",
     "interval_games": 382,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.8,
+    "diff": -2.7,
+    "in_range": true,
     "confidence": 77,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -796,16 +1197,17 @@
     "proj_pts_hist": 3.1,
     "proj_low_hist": -2.7,
     "proj_high_hist": 8.9,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 25.5,
       "3.0": 42.8,
       "0.0": 29.1
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -2.3
   },
   {
     "date": "2026-07-22",
@@ -822,9 +1224,9 @@
     "proj_high": 4.5,
     "interval_method": "empirical",
     "interval_games": 263,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 9.2,
+    "diff": 6.8,
+    "in_range": false,
     "confidence": 38,
     "confidence_label": "low",
     "did_not_play": false,
@@ -858,16 +1260,17 @@
     "proj_pts_hist": 2.0,
     "proj_low_hist": -2.6,
     "proj_high_hist": 6.7,
-    "in_range_hist": null,
+    "in_range_hist": false,
     "mc_probs": {
       "6.0": 14.8,
       "3.0": 33.4,
       "0.0": 31.6
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": true,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 7.2
   },
   {
     "date": "2026-07-21",
