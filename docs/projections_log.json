@@ -1,5 +1,137 @@
 [
   {
+    "date": "2026-09-21",
+    "player": "Kody Clemens",
+    "mlb_id": 665019,
+    "team": "",
+    "position": "1B, 2B, LF",
+    "opponent": "SF",
+    "venue": "Oracle Park",
+    "probable_sp": "Blade Tidwell",
+    "sp_hand": "R",
+    "proj_pts": 2.1,
+    "proj_low": -0.1,
+    "proj_high": 4.3,
+    "interval_method": "empirical",
+    "interval_games": 301,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 86,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.23
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": 0.4
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.18
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.09
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.0
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.37
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.8,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 6.9,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 13.7,
+      "3.0": 30.5,
+      "0.0": 38.0
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-09-21",
+    "player": "Alejandro Kirk",
+    "mlb_id": 672386,
+    "team": "",
+    "position": "C",
+    "opponent": "BAL",
+    "venue": "Oriole Park at Camden Yards",
+    "probable_sp": "Shane Baz",
+    "sp_hand": "R",
+    "proj_pts": 2.6,
+    "proj_low": 0.5,
+    "proj_high": 4.8,
+    "interval_method": "empirical",
+    "interval_games": 307,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 86,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.45
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.09
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": 0.05
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.05
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.5
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -0.39
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 2.3,
+    "proj_low_hist": -2.4,
+    "proj_high_hist": 7.0,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 15.4,
+      "3.0": 34.9,
+      "0.0": 27.9
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
     "date": "2026-09-20",
     "player": "Sal Stewart",
     "mlb_id": 701398,
@@ -14,9 +146,9 @@
     "proj_high": 5.8,
     "interval_method": "empirical",
     "interval_games": 173,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -2.2,
+    "diff": -5.0,
+    "in_range": false,
     "confidence": 66,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -50,16 +182,17 @@
     "proj_pts_hist": 3.0,
     "proj_low_hist": -2.4,
     "proj_high_hist": 8.4,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 27.2,
       "3.0": 41.5,
       "0.0": 27.4
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -5.2
   },
   {
     "date": "2026-09-20",
@@ -76,9 +209,9 @@
     "proj_high": 5.0,
     "interval_method": "empirical",
     "interval_games": 371,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.7,
+    "diff": -3.4,
+    "in_range": false,
     "confidence": 80,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -124,16 +257,17 @@
     "proj_pts_hist": 2.8,
     "proj_low_hist": -2.5,
     "proj_high_hist": 8.0,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 21.3,
       "3.0": 34.0,
       "0.0": 36.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -3.5
   },
   {
     "date": "2026-09-20",
@@ -150,9 +284,9 @@
     "proj_high": 4.8,
     "interval_method": "empirical",
     "interval_games": 460,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 2.1,
+    "diff": 0.2,
+    "in_range": true,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -194,16 +328,17 @@
     "proj_pts_hist": 2.3,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.8,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 16.9,
       "3.0": 36.0,
       "0.0": 32.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -0.2
   },
   {
     "date": "2026-09-20",
@@ -220,9 +355,9 @@
     "proj_high": 4.3,
     "interval_method": "empirical",
     "interval_games": 462,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -2.4,
+    "diff": -3.7,
+    "in_range": false,
     "confidence": 85,
     "confidence_label": "high",
     "did_not_play": false,
@@ -268,16 +403,17 @@
     "proj_pts_hist": 1.9,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.3,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 13.3,
       "3.0": 31.8,
       "0.0": 28.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -4.3
   },
   {
     "date": "2026-09-20",
@@ -294,9 +430,9 @@
     "proj_high": 3.7,
     "interval_method": "empirical",
     "interval_games": 328,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 5.3,
+    "diff": 3.5,
+    "in_range": false,
     "confidence": 88,
     "confidence_label": "high",
     "did_not_play": false,
@@ -330,16 +466,17 @@
     "proj_pts_hist": 1.9,
     "proj_low_hist": -2.5,
     "proj_high_hist": 6.2,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 12.3,
       "3.0": 30.0,
       "0.0": 28.1
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 3.4
   },
   {
     "date": "2026-09-20",
@@ -356,9 +493,9 @@
     "proj_high": 4.3,
     "interval_method": "empirical",
     "interval_games": 300,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -2.0,
+    "diff": -4.0,
+    "in_range": false,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -396,16 +533,17 @@
     "proj_pts_hist": 1.9,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.0,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 15.5,
       "3.0": 30.9,
       "0.0": 38.2
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -3.9
   },
   {
     "date": "2026-09-20",
@@ -422,9 +560,9 @@
     "proj_high": 4.7,
     "interval_method": "empirical",
     "interval_games": 396,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 3.8,
+    "diff": 1.8,
+    "in_range": true,
     "confidence": 87,
     "confidence_label": "high",
     "did_not_play": false,
@@ -466,16 +604,17 @@
     "proj_pts_hist": 3.1,
     "proj_low_hist": -2.3,
     "proj_high_hist": 8.5,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 21.3,
       "3.0": 44.5,
       "0.0": 23.8
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 0.7
   },
   {
     "date": "2026-09-20",
@@ -492,9 +631,9 @@
     "proj_high": 3.2,
     "interval_method": "empirical",
     "interval_games": 276,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -2.6,
+    "diff": -3.4,
+    "in_range": false,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -532,16 +671,17 @@
     "proj_pts_hist": 1.6,
     "proj_low_hist": -3.0,
     "proj_high_hist": 6.6,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 12.8,
       "3.0": 25.6,
       "0.0": 29.4
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -4.2
   },
   {
     "date": "2026-09-20",
@@ -558,9 +698,9 @@
     "proj_high": 3.7,
     "interval_method": "empirical",
     "interval_games": 349,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 3.5,
+    "diff": 1.8,
+    "in_range": true,
     "confidence": 79,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -602,16 +742,17 @@
     "proj_pts_hist": 2.4,
     "proj_low_hist": -2.2,
     "proj_high_hist": 7.0,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 16.2,
       "3.0": 36.9,
       "0.0": 25.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 1.1
   },
   {
     "date": "2026-09-20",
@@ -628,9 +769,9 @@
     "proj_high": 4.3,
     "interval_method": "empirical",
     "interval_games": 409,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 6.9,
+    "diff": 4.8,
+    "in_range": false,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -668,16 +809,17 @@
     "proj_pts_hist": 2.7,
     "proj_low_hist": -1.9,
     "proj_high_hist": 7.3,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 19.1,
       "3.0": 37.8,
       "0.0": 20.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": true,
+    "mc_hit_3": true,
+    "mc_negative": false,
+    "diff_hist": 4.2
   },
   {
     "date": "2026-09-20",
@@ -699,7 +841,7 @@
     "in_range": null,
     "confidence": 82,
     "confidence_label": "medium",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
@@ -764,9 +906,9 @@
     "proj_high": 6.1,
     "interval_method": "empirical",
     "interval_games": 432,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": -0.2,
+    "diff": -3.5,
+    "in_range": false,
     "confidence": 95,
     "confidence_label": "high",
     "did_not_play": false,
@@ -808,16 +950,17 @@
     "proj_pts_hist": 3.7,
     "proj_low_hist": -2.1,
     "proj_high_hist": 9.6,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 30.4,
       "3.0": 44.1,
       "0.0": 29.5
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": true,
+    "diff_hist": -3.9
   },
   {
     "date": "2026-09-20",
@@ -839,7 +982,7 @@
     "in_range": null,
     "confidence": 86,
     "confidence_label": "high",
-    "did_not_play": false,
+    "did_not_play": true,
     "factors": [
       {
         "factor": "base_rate",
