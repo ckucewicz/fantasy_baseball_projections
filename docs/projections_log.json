@@ -1,5 +1,149 @@
 [
   {
+    "date": "2026-09-29",
+    "player": "Michael Busch",
+    "mlb_id": 683737,
+    "team": "",
+    "position": "1B",
+    "opponent": "SD",
+    "venue": "Petco Park",
+    "probable_sp": "Michael King",
+    "sp_hand": "R",
+    "proj_pts": 1.2,
+    "proj_low": -1.6,
+    "proj_high": 4.0,
+    "interval_method": "empirical",
+    "interval_games": 467,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 95,
+    "confidence_label": "high",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.62
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.38
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.11
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": -0.05
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -1.71
+      },
+      {
+        "factor": "pitch_type_offspeed",
+        "adjustment": 0.34
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.7,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 7.2,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 8.3,
+      "3.0": 28.2,
+      "0.0": 33.6
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
+    "date": "2026-09-29",
+    "player": "Manny Machado",
+    "mlb_id": 592518,
+    "team": "",
+    "position": "3B",
+    "opponent": "CHC",
+    "venue": "Petco Park",
+    "probable_sp": "Matthew Boyd",
+    "sp_hand": "L",
+    "proj_pts": 1.5,
+    "proj_low": -1.5,
+    "proj_high": 4.5,
+    "interval_method": "empirical",
+    "interval_games": 469,
+    "actual_pts": null,
+    "diff": null,
+    "in_range": null,
+    "confidence": 83,
+    "confidence_label": "medium",
+    "did_not_play": false,
+    "factors": [
+      {
+        "factor": "base_rate",
+        "adjustment": 2.76
+      },
+      {
+        "factor": "platoon",
+        "adjustment": 0.0
+      },
+      {
+        "factor": "pitcher_difficulty",
+        "adjustment": -0.14
+      },
+      {
+        "factor": "park_factor",
+        "adjustment": -0.18
+      },
+      {
+        "factor": "babip_adjustment",
+        "adjustment": 0.2
+      },
+      {
+        "factor": "recent_form",
+        "adjustment": -0.04
+      },
+      {
+        "factor": "pitch_type_fastball",
+        "adjustment": -2.15
+      },
+      {
+        "factor": "pitch_type_offspeed",
+        "adjustment": 0.38
+      },
+      {
+        "factor": "pitch_type_breaking_ball",
+        "adjustment": 0.17
+      }
+    ],
+    "watchlist": false,
+    "proj_pts_hist": 1.9,
+    "proj_low_hist": -3.0,
+    "proj_high_hist": 7.3,
+    "in_range_hist": null,
+    "mc_probs": {
+      "6.0": 14.1,
+      "3.0": 32.3,
+      "0.0": 29.1
+    },
+    "mc_n_sim": 10000,
+    "mc_hit_6": null,
+    "mc_hit_3": null,
+    "mc_negative": null
+  },
+  {
     "date": "2026-09-27",
     "player": "Sal Stewart",
     "mlb_id": 701398,
