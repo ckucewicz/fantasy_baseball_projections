@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T12:41:23",
+  "generated_at": "2026-10-04T13:22:22",
   "season": 2026,
   "player_count": 1,
   "projections": [
@@ -13,10 +13,10 @@
       "team": "",
       "opponent": "MIL",
       "venue": "American Family Field",
-      "probable_sp": "Jacob Misiorowski",
+      "probable_sp": "Logan Henderson",
       "sp_hand": "R",
-      "sp_id": 694819,
-      "proj_pts": 1.9,
+      "sp_id": 701656,
+      "proj_pts": 1.2,
       "confidence": {
         "score": 83,
         "label": "medium",
@@ -29,8 +29,8 @@
         "hr": 0.17,
         "r": 0.52,
         "rbi": 0.5,
-        "bb": 0.37,
-        "k": 0.95
+        "bb": 0.35,
+        "k": 0.94
       },
       "scoring_rows": [
         {
@@ -77,13 +77,13 @@
         },
         {
           "cat": "BB",
-          "proj": 0.37,
+          "proj": 0.35,
           "mult": "\u00d7  1.50",
-          "pts": 0.55
+          "pts": 0.52
         },
         {
           "cat": "K",
-          "proj": 0.95,
+          "proj": 0.94,
           "mult": "\u00d7 \u22120.20",
           "pts": -0.19
         },
@@ -94,8 +94,8 @@
           "pts": 0.01
         }
       ],
-      "proj_low": -1.1,
-      "proj_high": 4.9,
+      "proj_low": -1.8,
+      "proj_high": 4.2,
       "interval_method": "empirical",
       "interval_games": 469,
       "score_dist": [
@@ -572,8 +572,8 @@
       "factors": [
         {
           "label": "Base rate (season)",
-          "adj": 2.54,
-          "adj_str": "+2.5",
+          "adj": 2.56,
+          "adj_str": "+2.6",
           "cls": "fneu",
           "mult": "",
           "pill": "baseline"
@@ -587,11 +587,11 @@
           "pill": "neutral"
         },
         {
-          "label": "Pitcher (Jacob Misiorowski \u00b7 xFIP 2.70)",
-          "adj": -0.44,
-          "adj_str": "\u22120.4",
+          "label": "Pitcher (Logan Henderson \u00b7 xFIP 2.23)",
+          "adj": -0.49,
+          "adj_str": "\u22120.5",
           "cls": "fneg",
-          "mult": "H \u00d70.80 \u00b7 K \u00d71.20",
+          "mult": "H \u00d70.80 \u00b7 K \u00d71.19",
           "pill": "suppressed"
         },
         {
@@ -612,7 +612,7 @@
         },
         {
           "label": "Recent form (14d)",
-          "adj": 0.01,
+          "adj": 0.02,
           "adj_str": "+0.0",
           "cls": "fneu",
           "mult": "H \u00d71.00",
@@ -621,12 +621,12 @@
       ],
       "pitch_rows": [
         {
-          "label": "Breaking ball",
-          "badge_class": "pb-break",
-          "meta": "Misiorowski 23% usage \u00b7 20% whiff",
-          "detail": "0.250 wOBA vs breaking ball \u2014 vulnerability",
-          "adj": -0.3,
-          "adj_str": "\u22120.3",
+          "label": "Fastball",
+          "badge_class": "pb-fast",
+          "meta": "Henderson 62% usage \u00b7 9% whiff",
+          "detail": "0.392 wOBA vs fastball \u2014 strength",
+          "adj": -1.0,
+          "adj_str": "\u22121.0",
           "adj_class": "fneg"
         }
       ],
@@ -862,13 +862,13 @@
       "team": "SD",
       "opponent": "MIL",
       "venue": "American Family Field",
-      "probable_sp": "Jacob Misiorowski",
+      "probable_sp": "Logan Henderson",
       "sp_hand": "R",
-      "proj_pts": 2.3,
+      "proj_pts": 2.0,
       "proj_low": -3.0,
-      "proj_high": 7.6,
+      "proj_high": 7.4,
       "hist_mean": 2.51,
-      "composite_mult": 0.9029,
+      "composite_mult": 0.8167,
       "n_games": 469,
       "std_dev": 4.19,
       "interval_method": "empirical",
@@ -1351,11 +1351,11 @@
         "babip_score": 1.0
       },
       "model": "historical",
-      "mc_median": 1.4,
+      "mc_median": 1.5,
       "mc_probs": {
-        "6.0": 16.0,
-        "3.0": 35.6,
-        "0.0": 30.0
+        "6.0": 15.3,
+        "3.0": 33.7,
+        "0.0": 29.8
       },
       "mc_n_sim": 10000,
       "mc_n_games": 469
@@ -1500,9 +1500,9 @@
       "40.0": 0.0,
       "30.0": 0.0,
       "20.0": 0.0,
-      "0.0": 29.9
+      "0.0": 29.0
     },
-    "median": 1.6,
+    "median": 1.5,
     "n_sim": 10000,
     "n_starters": 1
   }
