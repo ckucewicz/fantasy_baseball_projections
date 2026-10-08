@@ -14,9 +14,9 @@
     "proj_high": 5.4,
     "interval_method": "empirical",
     "interval_games": 469,
-    "actual_pts": null,
-    "diff": null,
-    "in_range": null,
+    "actual_pts": 0.6,
+    "diff": -1.8,
+    "in_range": true,
     "confidence": 58,
     "confidence_label": "medium",
     "did_not_play": false,
@@ -50,16 +50,17 @@
     "proj_pts_hist": 2.3,
     "proj_low_hist": -3.0,
     "proj_high_hist": 7.7,
-    "in_range_hist": null,
+    "in_range_hist": true,
     "mc_probs": {
       "6.0": 17.8,
       "3.0": 37.4,
       "0.0": 29.7
     },
     "mc_n_sim": 10000,
-    "mc_hit_6": null,
-    "mc_hit_3": null,
-    "mc_negative": null
+    "mc_hit_6": false,
+    "mc_hit_3": false,
+    "mc_negative": false,
+    "diff_hist": -1.7
   },
   {
     "date": "2026-10-06",
